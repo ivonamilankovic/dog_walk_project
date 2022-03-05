@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,6 +17,17 @@
             <li><a href="./signup.php">Signup</a></li>
         </ul>
     </header>
+
+
+    <div>
+        <!--Form for login-->
+        <h1>Login</h1>
+        <input id="uname" name="uname" type="text" placeholder="Email">
+        <br>
+        <input id="pass" name="pass" type="password" placeholder="Password">
+        <br>
+        <button id="loginBtn" type="submit">Login</button>
+    </div>
 
 </body>
 
