@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2022 at 11:46 PM
+-- Generation Time: Mar 07, 2022 at 05:43 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.0
 
@@ -72,6 +72,8 @@ CREATE TABLE `user` (
   `email` varchar(30) NOT NULL,
   `password` varchar(40) NOT NULL,
   `verify` tinyint(1) DEFAULT NULL,
+  `verification_code` varchar(4) NOT NULL,
+  `description` varchar(255) NOT NULL,
   `phone_number` varchar(20) NOT NULL,
   `address` varchar(40) NOT NULL,
   `picture` varchar(40) DEFAULT NULL,
