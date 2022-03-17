@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2022 at 05:43 PM
+-- Generation Time: Mar 17, 2022 at 09:40 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.0
 
@@ -91,13 +91,18 @@ CREATE TABLE `user` (
 -- Indexes for table `notebook`
 --
 ALTER TABLE `notebook`
-  ADD PRIMARY KEY (`id_notebook`);
+  ADD PRIMARY KEY (`id_notebook`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_walker` (`id_walker`),
+  ADD KEY `id_walk` (`id_walk`);
 
 --
 -- Indexes for table `reservation`
 --
 ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`id_reservation`);
+  ADD PRIMARY KEY (`id_reservation`),
+  ADD KEY `id_walker` (`id_walker`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `user`
@@ -126,6 +131,25 @@ ALTER TABLE `reservation`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(8) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `notebook`
+--
+ALTER TABLE `notebook`
+  ADD CONSTRAINT `notebook_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
+  ADD CONSTRAINT `notebook_ibfk_2` FOREIGN KEY (`id_walker`) REFERENCES `user` (`id_user`),
+  ADD CONSTRAINT `notebook_ibfk_3` FOREIGN KEY (`id_walk`) REFERENCES `reservation` (`id_reservation`);
+
+--
+-- Constraints for table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`id_walker`) REFERENCES `user` (`id_user`),
+  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
