@@ -11,6 +11,9 @@
 </head>
 
 <body>
+
+<!-- HEADER -->
+
 <div class="header h-75">
     <div class="container d-flex">
         <div class="me-auto p-3"><a href="./home.php"> <img src="images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
@@ -20,16 +23,21 @@
 
 </div>
 
+<!-- MAIN -->
 
 <div class="container">
 
+    <!-- SEARCH -->
 
     <div class="input-group rounded p-4">
         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
         </span>
     </div>
 
+    <!-- CARDS -->
+
     <div class="row justify-content-around">
+        <!-- BEST RATED DOG WALKERS -->
         <div class="border rounded col karta">
             <h3>Best rated dog walkers</h3>
 
@@ -108,9 +116,9 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
+
+        <!-- MOST ACTIVE DOG WALKERS -->
         <div class="border rounded col karta">
             <h3>Most active dog walkers</h3>
 
@@ -192,6 +200,8 @@
         </div>
     </div>
 
+    <!-- GALLERY -->
+
     <div class="p-4 d-flex justify-content-center">
         <div id="carouselExample" class="carousel carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -233,9 +243,46 @@
         </div>
     </div>
 
+
+<!-- WHY PAW WALKS -->
+
+<div class=" p-5 d-flex justify-content-center">
+
+    <table class=" w-50">
+        <tr>
+            <td colspan="2"><h1>Why Paw Walks?</h1></td>
+        </tr>
+        <tr>
+            <td><img src="images/paw.svg" alt="paw" class="paw"></td>
+            <td><h3>Here when you need us</h3></td>
+        </tr>
+        <tr>
+            <td class="line">|</td>
+            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+        </tr>
+        <tr>
+            <td><img src="images/paw.svg" alt="paw" class="paw"></td>
+            <td><h3>Safety is serious business</h3></td>
+        </tr>
+        <tr>
+            <td class="line">|</td>
+            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+        </tr>
+        <tr>
+            <td><img src="images/paw.svg" alt="paw" class="paw"></td>
+            <td><h3>All about convenience</h3></td>
+        </tr>
+        <tr>
+            <td class="line"></td>
+            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+        </tr>
+
+    </table>
 </div>
 
 
+</div>
+<!-- FOOTER -->
 <div class="footer">
     <div class="container  d-flex justify-content-between p-4">
         <img src="images/pawwalks.svg" class="logo" alt="PawWalksLogo"/>

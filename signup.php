@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <h1><a href="./home.php">Dog Walk</a></h1>
+        <h1><a href="./home.php"><img src="images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></h1>
         <ul>
             <li><a href="./allwalkers.php">All Walkers</a></li>
             <li><a href="./login.php">Login</a></li>
