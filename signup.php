@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<div class="header h-75">
     <header>
         <h1><a href="./home.php"><img src="images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></h1>
         <ul>
@@ -17,6 +18,7 @@
             <li><a href="./signup.php">Signup</a></li>
         </ul>
     </header>
+</div>
 
     <div class="container">
         <!--Form for signup-->

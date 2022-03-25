@@ -14,7 +14,7 @@
 
 <!-- HEADER -->
 
-<div class="header h-75">
+<div class="header">
     <div class="container d-flex">
         <div class="me-auto p-3"><a href="./home.php"> <img src="images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
         <div class="p-4"><button type="button" class="btn btn-light"><a href="./login.php" class="link text-dark">log-in</a></button></div>
