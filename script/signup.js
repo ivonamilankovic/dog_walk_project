@@ -39,9 +39,9 @@ function checkInputs(inputArray){
     //checks if fields are empty
     let flag = 0;
     inputArray.forEach(input =>{
-       if(input.value === null || input.value === ""){
-           flag++;
-       }
+        if(input.value === null || input.value === ""){
+            flag++;
+        }
     });
     if(flag === inputArray.length){
         errorMsg.innerText = "Fill out all fields!";
@@ -156,17 +156,17 @@ function checkDescription(input){
 
 //eventListeners
 regularUserBtn.addEventListener('click',()=>{
-   chooseYourStatusDiv.classList.remove('show');
-   chooseYourStatusDiv.classList.add('dontShow');
-   backBtn.classList.remove('dontShow');
-   backBtn.classList.add('show');
-   inputsForEveryone.classList.remove('dontShow');
-   inputsForEveryone.classList.add('show');
-   signupBtnUser.classList.remove('dontShow');
-   signupBtnUser.classList.add('show');
-   signupBtnWalker.classList.remove('show');
-   signupBtnWalker.classList.add('dontShow');
-   errorMsg.innerText = null;
+    chooseYourStatusDiv.classList.remove('show');
+    chooseYourStatusDiv.classList.add('dontShow');
+    backBtn.classList.remove('dontShow');
+    backBtn.classList.add('show');
+    inputsForEveryone.classList.remove('dontShow');
+    inputsForEveryone.classList.add('show');
+    signupBtnUser.classList.remove('dontShow');
+    signupBtnUser.classList.add('show');
+    signupBtnWalker.classList.remove('show');
+    signupBtnWalker.classList.add('dontShow');
+    errorMsg.innerText = null;
 });
 walkerUserBtn.addEventListener('click', ()=>{
     chooseYourStatusDiv.classList.remove('show');
@@ -200,12 +200,13 @@ backBtn.addEventListener('click',()=>{
     signupBtnUser.classList.add('dontShow');
     errorMsg.innerText = null;
 });
+
 signupBtnUser.addEventListener('click',()=>{
     errorMsg.innerText = null;
     checkInputs([firstNameField,lastNameField,emailField,pass1Field,pass2Field,phoneField,addressField]);
 });
 
 signupBtnWalker.addEventListener('click', ()=>{
-   errorMsg.innerText = null;
+    errorMsg.innerText = null;
     checkInputs([firstNameField,lastNameField,emailField,pass1Field,pass2Field,phoneField,addressField,favBreedField, descriptionField, picture]);
 });
