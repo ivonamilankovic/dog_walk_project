@@ -5,7 +5,8 @@ const inputsForEveryone = document.getElementById('inputsForEveryone');
 const inputsForWalkers = document.getElementById('inputsForWalkers');
 
 const errorMsg = document.getElementById('errorMsg');
-const signupBtn = document.getElementById('signupBtn');
+const signupBtnUser = document.getElementById('signupBtnUser');
+const signupBtnWalker = document.getElementById('signupBtnWalker');
 const backBtn = document.getElementById('back');
 const regularUserBtn = document.getElementById('roleUser');
 const walkerUserBtn = document.getElementById('roleWalker');
@@ -161,8 +162,10 @@ regularUserBtn.addEventListener('click',()=>{
    backBtn.classList.add('show');
    inputsForEveryone.classList.remove('dontShow');
    inputsForEveryone.classList.add('show');
-   signupBtn.classList.remove('dontShow');
-   signupBtn.classList.add('show');
+   signupBtnUser.classList.remove('dontShow');
+   signupBtnUser.classList.add('show');
+   signupBtnWalker.classList.remove('show');
+   signupBtnWalker.classList.add('dontShow');
    errorMsg.innerText = null;
 });
 walkerUserBtn.addEventListener('click', ()=>{
@@ -174,8 +177,10 @@ walkerUserBtn.addEventListener('click', ()=>{
     inputsForEveryone.classList.add('show');
     inputsForWalkers.classList.remove('dontShow');
     inputsForWalkers.classList.add('show');
-    signupBtn.classList.remove('dontShow');
-    signupBtn.classList.add('show');
+    signupBtnUser.classList.add('dontShow');
+    signupBtnUser.classList.remove('show');
+    signupBtnWalker.classList.add('show');
+    signupBtnWalker.classList.remove('dontShow');
     errorMsg.innerText = null;
 });
 backBtn.addEventListener('click',()=>{
@@ -188,16 +193,19 @@ backBtn.addEventListener('click',()=>{
     if(inputsForWalkers.classList.contains('show')) {
         inputsForWalkers.classList.remove('show');
         inputsForWalkers.classList.add('dontShow');
+        signupBtnWalker.classList.remove('show');
+        signupBtnWalker.classList.add('dontShow');
     }
-    signupBtn.classList.remove('show');
-    signupBtn.classList.add('dontShow');
+    signupBtnUser.classList.remove('show');
+    signupBtnUser.classList.add('dontShow');
     errorMsg.innerText = null;
 });
-signupBtn.addEventListener('click',()=>{
+signupBtnUser.addEventListener('click',()=>{
     errorMsg.innerText = null;
     checkInputs([firstNameField,lastNameField,emailField,pass1Field,pass2Field,phoneField,addressField]);
-    if(inputsForWalkers.classList.contains('show')){
-        //if user is walker, check that fields too
-        checkInputs([favBreedField, descriptionField, picture]);
-    }
+});
+
+signupBtnWalker.addEventListener('click', ()=>{
+   errorMsg.innerText = null;
+    checkInputs([firstNameField,lastNameField,emailField,pass1Field,pass2Field,phoneField,addressField,favBreedField, descriptionField, picture]);
 });

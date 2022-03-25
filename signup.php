@@ -13,7 +13,6 @@
     <header>
         <h1><a href="./home.php"><img src="images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></h1>
         <ul>
-            <li><a href="./allwalkers.php">All Walkers</a></li>
             <li><a href="./login.php">Login</a></li>
             <li><a href="./signup.php">Signup</a></li>
         </ul>
@@ -49,7 +48,8 @@
         </div>
         <small id="errorMsg"></small>
         <br>
-        <button id="signupBtn" class="dontShow" type="submit">Signup</button>
+        <button id="signupBtnUser" class="dontShow" type="submit">Signup</button>
+        <button id="signupBtnWalker" class="dontShow" type="submit">Signup</button>
     </div>
 
 
