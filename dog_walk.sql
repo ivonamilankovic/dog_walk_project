@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2022 at 10:51 AM
+-- Generation Time: Mar 26, 2022 at 06:10 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.0
 
@@ -18,8 +18,24 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `new_dog_walk`
+-- Database: `dog_walk_new`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dogs`
+--
+
+CREATE TABLE `dogs` (
+                        `id_dog` int(8) NOT NULL,
+                        `id_user` int(8) NOT NULL,
+                        `dogs_name` varchar(40) NOT NULL,
+                        `dogs_breed` varchar(30) NOT NULL,
+                        `dogs_gender` char(1) NOT NULL,
+                        `dogs_age` int(11) NOT NULL,
+                        `specifics` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -30,8 +46,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `notebook` (
                             `id_notebook` int(8) NOT NULL,
                             `id_reservation` int(8) NOT NULL,
-                            `id_walker` int(8) NOT NULL,
-                            `id_user` int(8) NOT NULL,
                             `path` text NOT NULL,
                             `duration` int(11) NOT NULL,
                             `walk_description` text NOT NULL
@@ -48,13 +62,11 @@ CREATE TABLE `reservation` (
                                `id_walker` int(8) NOT NULL,
                                `id_user` int(8) NOT NULL,
                                `date` datetime NOT NULL,
+                               `dog1` int(8) NOT NULL,
+                               `dog2` int(8) NOT NULL,
+                               `dog3` int(8) NOT NULL,
                                `start_location` varchar(40) NOT NULL,
                                `end_location` varchar(40) NOT NULL,
-                               `dogs_breed` varchar(40) NOT NULL,
-                               `dogs_name` varchar(40) NOT NULL,
-                               `dogs_gender` char(1) NOT NULL,
-                               `dogs_age` int(40) NOT NULL,
-                               `specifics` varchar(255) NOT NULL,
                                `description` text NOT NULL,
                                `is_finished` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -116,21 +128,29 @@ CREATE TABLE `walker` (
 --
 
 --
+-- Indexes for table `dogs`
+--
+ALTER TABLE `dogs`
+    ADD PRIMARY KEY (`id_dog`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Indexes for table `notebook`
 --
 ALTER TABLE `notebook`
     ADD PRIMARY KEY (`id_notebook`),
-  ADD KEY `id_reservation` (`id_reservation`),
-  ADD KEY `id_walker` (`id_walker`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `id_reservation` (`id_reservation`);
 
 --
 -- Indexes for table `reservation`
 --
 ALTER TABLE `reservation`
     ADD PRIMARY KEY (`id_reservation`),
-  ADD KEY `id_walker` (`id_walker`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `reservation_ibfk_1` (`id_walker`),
+  ADD KEY `reservation_ibfk_2` (`id_user`),
+  ADD KEY `reservation_ibfk_3` (`dog1`),
+  ADD KEY `reservation_ibfk_4` (`dog2`),
+  ADD KEY `reservation_ibfk_5` (`dog3`);
 
 --
 -- Indexes for table `user`
@@ -162,6 +182,12 @@ ALTER TABLE `walker`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `dogs`
+--
+ALTER TABLE `dogs`
+    MODIFY `id_dog` int(8) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `notebook`
@@ -198,19 +224,26 @@ ALTER TABLE `walker`
 --
 
 --
+-- Constraints for table `dogs`
+--
+ALTER TABLE `dogs`
+    ADD CONSTRAINT `dogs_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
 -- Constraints for table `notebook`
 --
 ALTER TABLE `notebook`
-    ADD CONSTRAINT `notebook_ibfk_1` FOREIGN KEY (`id_reservation`) REFERENCES `reservation` (`id_reservation`),
-  ADD CONSTRAINT `notebook_ibfk_2` FOREIGN KEY (`id_walker`) REFERENCES `walker` (`id_walker`),
-  ADD CONSTRAINT `notebook_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+    ADD CONSTRAINT `notebook_ibfk_1` FOREIGN KEY (`id_reservation`) REFERENCES `reservation` (`id_reservation`);
 
 --
 -- Constraints for table `reservation`
 --
 ALTER TABLE `reservation`
     ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`id_walker`) REFERENCES `walker` (`id_walker`),
-  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
+  ADD CONSTRAINT `reservation_ibfk_3` FOREIGN KEY (`dog1`) REFERENCES `dogs` (`id_dog`),
+  ADD CONSTRAINT `reservation_ibfk_4` FOREIGN KEY (`dog2`) REFERENCES `dogs` (`id_dog`),
+  ADD CONSTRAINT `reservation_ibfk_5` FOREIGN KEY (`dog3`) REFERENCES `dogs` (`id_dog`);
 
 --
 -- Constraints for table `user`
