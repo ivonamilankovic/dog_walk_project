@@ -47,7 +47,7 @@
 </div>
 
     <!-- GALLERY -->
-
+<!--
     <div class="p-4 d-flex justify-content-center">
         <div id="carouselExample" class="carousel carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -88,7 +88,7 @@
             </button>
         </div>
     </div>
-
+-->
     <!-- CARDS -->
 
     <div class="row justify-content-around">
@@ -105,7 +105,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <p class="card-text"><small class="text-muted">Ocena</small></p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <p class="card-text"><small class="text-muted">Ocena</small></p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                         </div>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <p class="card-text"><small class="text-muted">Ocena</small></p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                         </div>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <p class="card-text"><small class="text-muted">Ocena</small></p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                         </div>
                     </div>
                 </div>
@@ -166,7 +166,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <p class="card-text"><small class="text-muted">Ocena</small></p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                         </div>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <p class="card-text"><small class="text-muted">Ocena</small></p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                         </div>
                     </div>
                 </div>
@@ -202,7 +202,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <p class="card-text"><small class="text-muted">Ocena</small></p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                         </div>
                     </div>
                 </div>
@@ -217,7 +217,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <p class="card-text"><small class="text-muted">Ocena</small></p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                         </div>
                     </div>
                 </div>
@@ -232,7 +232,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <p class="card-text"><small class="text-muted">Ocena</small></p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                         </div>
                     </div>
                 </div>
@@ -247,7 +247,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <p class="card-text"><small class="text-muted">Ocena</small></p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                         </div>
                     </div>
                 </div>
@@ -286,6 +286,9 @@
         <tr>
             <td class="line"></td>
             <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+        </tr>
+        <tr>
+            <td colspan="2"><div class="d-flex justify-content-center m-4"><button class="btn btn-dark"><a href="signup.php" class="text-light">Sign Up</a> </button></div></td>
         </tr>
 
     </table>
