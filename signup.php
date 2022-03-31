@@ -24,34 +24,26 @@
         <!--Form for signup-->
         <h1>Signup</h1>
         <!--this will be shown, and click on one of the buttons will open form-->
-        <div id="chooseYourStatus" class="show">
+        <div id="chooseYourStatus" >
             <h3>Hello new user! Please select your status:</h3>
-            <button id="roleUser" name="regular-user">I'm a Regular user</button>
-            <button id="roleWalker" name="dog-walker">I'm a Dog walker</button>
+            <input type="radio" id="roleUser" name="user-type" checked>I'm a Regular user</input>
+            <br>
+            <input type="radio" id="roleWalker" name="user-type">I'm a Dog walker</input>
             <br>
         </div>
-        <!--this part will show for both types of users-->
-        <button id="back" class="dontShow">Go Back</button>
-        <div id="inputsForEveryone" class="dontShow">
-        <input id="firstName" name="fname" type="text" placeholder="First name" required><br>
-        <input id="lastName" name="lname" type="text" placeholder="Last name" required><br>
-        <input id="email" name="email" type="email" placeholder="Email" required><br>
-        <input id="pass1" name="pass1" type="password" placeholder="New password" minlength="6" maxlength="15" required><br>
-        <input id="pass2" name="pass2" type="password" placeholder="Repeat password" minlength="6" maxlength="15" required><br>
-        <input id="phone" name="phone" type="tel" placeholder="Phone number" maxlength="10" minlength="10" required><br>
-        <input id="address" name="address" type="text" placeholder="Address" required><br>
-        <!--this part will show just if user selects choose to be a dog walker-->
-        </div>
-        <div id="inputsForWalkers" class="dontShow">
-            <input id="favBreed" name="favBreed" type="text" placeholder="Your favourite breed of dog" required><br>
-            <textarea id="description" name="description" placeholder="Your short biography" rows="10" cols="40" required></textarea><br>
-            <label for="picture">Your picture:</label>
-            <input id="picture" name="picture" type="file" accept="image/*" required><br>
+        <!--inputs for all the users-->
+        <div id="inputsForEveryone">
+            <input id="firstName" name="fname" type="text" placeholder="First name" required><br>
+            <input id="lastName" name="lname" type="text" placeholder="Last name" required><br>
+            <input id="email" name="email" type="email" placeholder="Email" required><br>
+            <input id="pass1" name="pass1" type="password" placeholder="New password" minlength="6" maxlength="15" required><br>
+            <input id="pass2" name="pass2" type="password" placeholder="Repeat password" minlength="6" maxlength="15" required><br>
+            <input id="phone" name="phone" type="tel" placeholder="Phone number" maxlength="10" minlength="10" required><br>
+            <input id="address" name="address" type="text" placeholder="Address" required><br>
         </div>
         <small id="errorMsg"></small>
         <br>
-        <button id="signupBtnUser" class="dontShow" type="submit">Signup</button>
-        <button id="signupBtnWalker" class="dontShow" type="submit" >Signup</button>
+        <button id="signupBtn" type="submit" name="submitWalker" >Signup</button>
     </div>
 
 
