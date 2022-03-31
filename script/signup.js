@@ -43,7 +43,7 @@ function checkInputs(inputArray){
             flag++;
         }
     });
-    if(flag === inputArray.length){
+    if(flag === inputArray.length || flag > 1 ){
         errorMsg.innerText = "Fill out all fields!";
     }
     else {
@@ -112,7 +112,7 @@ function checkPassLength(input){
 }
 function checkPassMatch(pass1,pass2){
     //check if passwords match
-    if(pass1.value != null && pass2 != null && pass1 === pass2.value){
+    if(pass1.value != null && pass2.value != null && pass1.value === pass2.value){
         showSuccess(pass1);
         showSuccess(pass2);
     }
@@ -125,17 +125,34 @@ function checkPhone(input){
     if(input.value.length !== 10){
         showError(input, "Phone number must have 10 digits!");
     }
+    else if(isNaN(input.value)){
+        showError(input, "Phone number must have digits, not letters!")
+    }
     else {
         showSuccess(input);
     }
 }
 function checkPicture(input){
-    //checks if picture is added and is it in correct file type
+    //checks if picture is added
     if(input.value === null){
-        showError(input,"Picture must be entered");
+        showError(input, "Picture must be entered!");
     }
-    //?????????????file type????????????????
-    //jquery?
+    else {
+        //checks type of picture
+        let parts = input.value.split('.'); //path of picture
+        let ext = parts[parts.length - 1]; //get extension
+        switch (ext.toLowerCase()) {
+            case 'jpg':
+            case 'jpeg':
+            case 'png':
+            case 'gif':
+            case 'svg':
+            case 'webp':
+                return showSuccess(input);
+            default:
+                showError(input, "Unacceptable type of picture!");
+        }
+    }
 
 }
 function checkDescription(input){
