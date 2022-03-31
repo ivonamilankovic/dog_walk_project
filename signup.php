@@ -43,7 +43,7 @@
         </div>
         <small id="errorMsg"></small>
         <br>
-        <button id="signupBtn" type="submit" name="submitWalker" >Signup</button>
+        <button id="signupBtn" type="submit" name="submit" >Signup</button>
     </div>
 
 
