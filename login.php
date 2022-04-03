@@ -28,7 +28,7 @@
         <br>
         <small id="errorMessage"></small>
         <br>
-        <button id="loginBtn" type="submit">Login</button>
+        <button id="loginBtn" type="submit" name="submit">Login</button>
     </div>
 
     <script src="./script/login.js"></script>
