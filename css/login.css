@@ -10,3 +10,7 @@
 .logo{
     height:60px;
 }
+
+#uname, #pass{
+    width: 400px;
+}

@@ -55,3 +55,6 @@
     justify-content: center;
 }
 
+#goToLogin, #goToSignup{
+    cursor: pointer;
+}
