@@ -42,4 +42,16 @@
 .lista{
     list-style-type: none;
 }
+.three-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+.sirina-kartice{
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 

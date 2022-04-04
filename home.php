@@ -27,7 +27,8 @@
         <div class="row border rounded karta fixed">
             <h1 class="d-flex justify-content-center">The best dog walkers</h1>
 
-                    <div id="carouselExample" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div id="carouselExample" class="carousel carousel-dark slide" >
+<!--                        data-bs-ride="carousel"-->
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -37,9 +38,7 @@
                         </div>
 
                         <div class="carousel-inner d-flex justify-content-around">
-                            <div class="carousel-item active w-500 h-400" data-bs-interval="2000">
-
-
+                            <div class="carousel-item active" data-bs-interval="4000">
                                 <div class="card mb-3" style="max-width: 600px;">
                                     <div class="row g-0">
                                         <div class="col-md-4 align-self-center d-flex justify-content-center p-2">
@@ -48,17 +47,15 @@
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h5 class="card-title">Sara Babic</h5>
-                                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                <p class="card-text three-lines">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A architecto enim eos excepturi laborum nesciunt officia quas quis tempore voluptatum! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                                 <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
 
-                            <div class="carousel-item w-500 h-400" data-bs-interval="2000">
+                            <div class="carousel-item w-500 h-400" data-bs-interval="4000">
                                 <div class="card mb-3" style="max-width: 600px;">
                                     <div class="row g-0">
                                         <div class="col-md-4 align-self-center d-flex justify-content-center p-2">
@@ -67,14 +64,14 @@
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h5 class="card-title">Ivona Milankovic</h5>
-                                                <p class="card-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                                <p class="card-text three-lines">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A architecto enim eos excepturi laborum nesciunt officia quas quis tempore voluptatum! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                                 <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="carousel-item w-500 h-400" data-bs-interval="2000">
+                            <div class="carousel-item w-500 h-400" data-bs-interval="4000">
                                 <div class="card mb-3" style="max-width: 600px;">
                                     <div class="row g-0">
                                         <div class="col-md-4 align-self-center d-flex justify-content-center p-2">
@@ -83,7 +80,7 @@
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h5 class="card-title">Gagi</h5>
-                                                <p class="card-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                                                <p class="card-text three-lines">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A architecto enim eos excepturi laborum nesciunt officia quas quis tempore voluptatum! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                                 <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                                             </div>
                                         </div>
@@ -92,7 +89,7 @@
                             </div>
 
 
-                        <div class="carousel-item w-500 h-400" data-bs-interval="2000">
+                        <div class="carousel-item w-500 h-400" data-bs-interval="4000">
                             <div class="card mb-3" style="max-width: 600px;">
                                 <div class="row g-0">
                                     <div class="col-md-4 align-self-center d-flex justify-content-center p-2">
@@ -101,14 +98,14 @@
                                     <div class="col-md-8">
                                         <div class="card-body">
                                             <h5 class="card-title">Ivona Milankovic</h5>
-                                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            <p class="card-text three-lines">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A architecto enim eos excepturi laborum nesciunt officia quas quis tempore voluptatum! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                             <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item w-500 h-400" data-bs-interval="2000">
+                        <div class="carousel-item w-500 h-400" data-bs-interval="4000">
                             <div class="card mb-3" style="max-width: 600px;">
                                 <div class="row g-0">
                                     <div class="col-md-4 align-self-center d-flex justify-content-center p-2">
@@ -117,7 +114,7 @@
                                     <div class="col-md-8">
                                         <div class="card-body">
                                             <h5 class="card-title">Sara Babic</h5>
-                                            <p class="card-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                            <p class="card-text three-lines">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A architecto enim eos excepturi laborum nesciunt officia quas quis tempore voluptatum! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                             <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
                                         </div>
                                     </div>
