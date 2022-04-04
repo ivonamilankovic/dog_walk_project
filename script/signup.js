@@ -12,37 +12,31 @@ const pass1Field = document.getElementById('pass1');
 const pass2Field = document.getElementById('pass2');
 const phoneField = document.getElementById('phone');
 const addressField = document.getElementById('address');
+const goToLogin = document.getElementById('goToLogin');
 
 //functions
 function showSuccess(input){
     //shows green border on input
-    input.classList.remove('error');
-    input.classList.add('success');
+    input.classList.remove('is-invalid');
+    input.classList.add('is-valid');
 }
 function showError(input, mess){
     //shows red border on input and error message
-    input.classList.remove('success');
-    input.classList.add('error');
+    input.classList.remove('is-valid');
+    input.classList.add('is-invalid');
     errorMsg.innerText = mess.toString();
 }
 
 function checkInputs(inputArray){
     //checks if fields are empty
+
     let flag = 0;
-    inputArray.forEach(input =>{
-        if(input.value === null || input.value === ""){
-            flag++;
-        }
-    });
-    if(flag === inputArray.length || flag > 1 ){
-        errorMsg.innerText = "Fill out all fields!";
-    }
-    else {
         inputArray.forEach(input => {
             switch (input.type) {
                 case 'text':
                     if (input.value === "") {
                         showError(input, `${input.placeholder} is required!`);
+                        flag++;
                     } else {
                         showSuccess(input);
                     }
@@ -50,6 +44,7 @@ function checkInputs(inputArray){
                 case 'email':
                     if (input.value === "") {
                         showError(input, `${input.placeholder} is required!`);
+                        flag++;
                     } else {
                         checkEmail(input);
                     }
@@ -57,14 +52,16 @@ function checkInputs(inputArray){
                 case 'password':
                     if (input.value === "") {
                         showError(input, `${input.placeholder} is required!`);
+                        flag++;
                     } else {
                         checkPassLength(input);
                     }
-                    checkPassMatch(pass1Field,pass2Field);
+                    checkPassMatch(pass1Field, pass2Field);
                     break;
                 case 'tel':
                     if (input.value === "") {
                         showError(input, `${input.placeholder} is required!`);
+                        flag++;
                     } else {
                         checkPhone(input);
                     }
@@ -74,7 +71,10 @@ function checkInputs(inputArray){
             }
 
         });
-    }
+        if(flag){
+            errorMsg.innerText = "Fill out all fields!";
+        }
+
 }
 function checkEmail(input){
     //checks if email is in correct format
@@ -97,7 +97,7 @@ function checkPassLength(input){
 }
 function checkPassMatch(pass1,pass2){
     //check if passwords match
-    if(pass1.value != null && pass2.value != null && pass1.value === pass2.value){
+    if(pass1.value !== "" && pass2.value !== "" && pass1.value === pass2.value){
         showSuccess(pass1);
         showSuccess(pass2);
     }
@@ -125,4 +125,9 @@ signupBtn.addEventListener('click',()=>{
     errorMsg.innerText = null;
     checkInputs([firstNameField,lastNameField,emailField,pass1Field,pass2Field,phoneField,addressField]);
 });
+
+goToLogin.addEventListener('click', ()=>{
+    $("#modal_signup").modal('hide');
+    $("#modal_login").modal('show');
+})
 

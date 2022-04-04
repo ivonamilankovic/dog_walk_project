@@ -19,3 +19,12 @@
 .header{
     background-color: #9c7a97;
 }
+#firstName,
+#lastName,
+#email,
+#pass1,
+#pass2,
+#phone,
+#address{
+    width: 400px;
+}

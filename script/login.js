@@ -4,6 +4,7 @@ const unameField = document.getElementById('uname');
 const passField = document.getElementById('pass');
 const loginBtn = document.getElementById('loginBtn');
 const errorMessage = document.getElementById('errorMessage');
+const goToSignup = document.getElementById('goToSignup');
 
 //functions
 function showSuccess(input){
@@ -68,5 +69,10 @@ function checkPassLength(input){
 
 loginBtn.addEventListener('click',()=>{
     checkInput(unameField,passField);
+});
+
+goToSignup.addEventListener('click', ()=>{
+    $("#modal_login").modal('hide');
+   $("#modal_signup").modal('show');
 });
 

@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Paw Walks - Home Page</title>
-    <link rel="stylesheet" type="text/css" href="css/homeStyle.css"/>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/signup.css">
+    <link rel="stylesheet" type="text/css" href="./css/homeStyle.css"/>
 </head>
 
 <body>
@@ -17,8 +19,116 @@
     <div class="header">
         <div class="container d-flex">
             <div class="me-auto p-3"><a href="./home.php"> <img src="images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
-            <div class="p-4"><button type="button" class="btn btn-light"><a href="./login.php" class="link text-dark">log-in</a></button></div>
-            <div class="p-4"><button type="button" class="btn btn-light"><a href="./signup.php" class="link text-dark">sign-up</a></button></div>
+            <div class="p-4">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_login">
+                    Log in
+                </button>
+            </div>
+            <div class="p-4">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_signup">
+                    Sign up
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal for Log in-->
+
+    <div class="modal fade" id="modal_login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Log in</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body m-auto mt-4">
+                    <!--Form for login-->
+                    <div class="form-floating">
+                        <input  class="form-control" id="uname" name="uname" type="email" placeholder="Email">
+                        <label for="uname">Email</label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <input class="form-control" id="pass" name="pass" type="password" placeholder="Password">
+                        <label for="pass">Password</label>
+                    </div>
+                    <br>
+                    <small id="errorMessage"></small>
+                    <br>
+                    <button type="submit" name="submitLogin" id="loginBtn" class="btn btn-primary m-auto mt-4">Log in</button>
+                </div>
+                <div class="modal-footer">
+                    <br>
+                    <p>Don't have profile? <span class="text-primary" id="goToSignup">Sign up!</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Modal for sign up-->
+    <div class="modal fade" id="modal_signup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Sign up</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body m-auto my-4">
+                    <!--Form for signup-->
+                    <div id="chooseYourStatus" class=" m-auto mb-4">
+                        <p class="mb-0">Please select your status:</p>
+                        <input type="radio" id="roleUser" name="user-type" checked>I'm a Regular user</input>
+                        <br>
+                        <input type="radio" id="roleWalker" name="user-type">I'm a Dog walker</input>
+                        <br>
+                    </div>
+                    <!--inputs for all the users-->
+                    <div id="inputsForEveryone">
+                        <div class="form-floating">
+                            <input class="form-control" id="firstName" name="fname" type="text" placeholder="First name" required>
+                            <label for="firstName">First Name</label>
+                        </div>
+                        <br>
+                        <div class="form-floating">
+                            <input class="form-control" id="lastName" name="lname" type="text" placeholder="Last name" required>
+                            <label for="lastName">Last Name</label>
+                        </div>
+                        <br>
+                        <div class="form-floating">
+                            <input class="form-control" id="email" name="email" type="email" placeholder="Email" required>
+                            <label for="email">Email</label>
+                        </div>
+                        <br>
+                        <div class="form-floating">
+                            <input class="form-control" id="pass1" name="pass1" type="password" placeholder="Your password" minlength="6" maxlength="15" required>
+                            <label for="pass1">Your Password</label>
+                        </div>
+                        <br>
+                        <div class="form-floating">
+                            <input class="form-control" id="pass2" name="pass2" type="password" placeholder="Repeat password" minlength="6" maxlength="15" required>
+                            <label for="pass2">Repeat Password</label>
+                        </div>
+                        <br>
+                        <div class="form-floating">
+                            <input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone number" maxlength="10" minlength="10" required>
+                            <label for="phone">Phone Number</label>
+                        </div>
+                        <br>
+                        <div class="form-floating">
+                            <input class="form-control" id="address" name="address" type="text" placeholder="Address" required>
+                            <label for="address">Address</label>
+                        </div>
+                        <br>
+                    </div>
+                    <small id="errorMsg"></small>
+                    <br>
+                    <button type="submit" name="submitSignup" id="signupBtn" class="btn btn-primary m-auto mt-4">Register</button>
+                </div>
+                <div class="modal-footer">
+                    <p>Already have a profile? <span class="text-primary" id="goToLogin">Log in!</span></p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -165,7 +275,11 @@
                 </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="./script/signup.js"></script>
+    <script src="./script/login.js"></script>
 
 </body>
 
