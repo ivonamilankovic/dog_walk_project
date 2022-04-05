@@ -39,6 +39,12 @@
     align-items: center;
     justify-content: center;
 }
+.width{
+    width: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .lista{
     list-style-type: none;
 }

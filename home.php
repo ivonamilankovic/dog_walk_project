@@ -132,10 +132,11 @@
         </div>
     </div>
 
-            <!-- THE BEST DOG WALKERS -->
+            <!-- BEST DOG WALKERS -->
     <div class="container p-4 d-flex justify-content-center">
         <div class="row border rounded karta fixed">
-            <h1 class="d-flex justify-content-center">The best dog walkers</h1>
+            <h1 class="d-flex justify-content-center">Best dog walkers</h1>
+
 
                     <div id="carouselExample" class="carousel carousel-dark slide" >
 <!--                        data-bs-ride="carousel"-->
@@ -147,12 +148,11 @@
                             <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="3" aria-label="Slide 4"></button>
                             <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="4" aria-label="Slide 5"></button>
                         </div>
-
                         <div class="carousel-inner d-flex justify-content-around">
-                            <div class="carousel-item active" data-bs-interval="4000">
+                            <div class="carousel-item active width" data-bs-interval="4000">
                                 <div class="card mb-3" style="max-width: 600px;">
                                     <div class="row g-0">
-                                        <div class="col-md-4 align-self-center d-flex justify-content-center p-2">
+                                        <div class="col-md-4 align-self-center d-flex justify-content-around p-2">
                                             <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
                                         </div>
                                         <div class="col-md-8">
@@ -233,8 +233,6 @@
                             </div>
                         </div>
                         </div>
-
-
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
@@ -244,10 +242,8 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-
-
+            </div>
         </div>
-    </div>
 
 <!-- FOOTER -->
     <div class="footer fixed-bottom">
