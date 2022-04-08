@@ -149,10 +149,10 @@
                             <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="4" aria-label="Slide 5"></button>
                         </div>
                         <div class="carousel-inner d-flex justify-content-around">
-                            <div class="carousel-item active width" data-bs-interval="4000">
+                            <div class="carousel-item active w-500 h-400" data-bs-interval="4000">
                                 <div class="card mb-3" style="max-width: 600px;">
                                     <div class="row g-0">
-                                        <div class="col-md-4 align-self-center d-flex justify-content-around p-2">
+                                        <div class="col-md-4 align-self-center d-flex justify-content-center p-2">
                                             <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
                                         </div>
                                         <div class="col-md-8">
