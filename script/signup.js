@@ -151,16 +151,16 @@ function send(){
         url: './include/signup.inc.php',
         method: 'post',
         data: {
-            role: role,
-            firstName: firstNameField.value,
-            lastName: lastNameField.value,
-            email: emailField.value,
-            pass1: pass1Field.value,
-            pass2: pass2Field.value,
-            phone: phoneField.value,
-            address: addressField.value,
-            city: cityField.value,
-            postalCode: postalCodeField.value
+            "role": role,
+            "firstName": firstNameField.value,
+            "lastName": lastNameField.value,
+            "email": emailField.value,
+            "pass1": pass1Field.value,
+            "pass2": pass2Field.value,
+            "phone": phoneField.value,
+            "address": addressField.value,
+            "city": cityField.value,
+            "postalCode": postalCodeField.value
         },
         success:(response) => {
             console.log(response);

@@ -5,6 +5,7 @@ class Signup extends Dbconn {
     private $addressID;//, $userID;
 
     protected function createUser($role, $firstName, $lastName, $email, $password, $phone){
+        print_r("user");
         //inserts users data in user table
         $sql1 = "INSERT INTO user(role,first_name,last_name,email,password,phone_number,address_id,is_verified, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?,?,?)";
         $stmt = $this->setConnection()->prepare($sql1);
@@ -25,6 +26,7 @@ class Signup extends Dbconn {
 
 
     protected function createAddress($address, $city, $postalCode){
+        print_r("addr");
         //inserts address in address table
         $sql2 = "INSERT INTO address (street, city, postal_code) VALUES (?,?,?)";
         $stmt1 = $this->setConnection()->prepare($sql2);

@@ -23,6 +23,7 @@ class SignupControler extends Signup {
     //function for sending data to make new user
     public function signupUser()
     {
+        print_r("controler");
         if($this->emptyInput() === false){
             header("location: ../home.php?error=emptyInput");
             exit();
@@ -103,7 +104,7 @@ class SignupControler extends Signup {
         }
     }
 
-    //function that checks if phone number is correcrt length and if its just numbers
+    //function that checks if phone number is correct length and if its just numbers
     private function validPhoneNumber(){
         if(strlen($this->phone) !== 10 || gettype($this->phone) !== "integer"){
             return false;
