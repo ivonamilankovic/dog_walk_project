@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +59,7 @@
                     <br>
                     <small id="errorMessage"></small>
                     <br>
-                    <button type="submit" name="submitLogin" id="loginBtn" class="btn btn-primary m-auto mt-4">Log in</button>
+                    <button type="submit" name="submit" id="loginBtn" class="btn btn-primary m-auto mt-4">Log in</button>
                 </div>
                 <div class="modal-footer">
                     <br>
@@ -120,10 +124,20 @@
                             <label for="address">Address</label>
                         </div>
                         <br>
+                        <div class="form-floating">
+                            <input class="form-control" id="city" name="city" type="text" placeholder="City" required>
+                            <label for="city">City</label>
+                        </div>
+                        <br>
+                        <div class="form-floating">
+                            <input class="form-control" id="postalCode" name="postalCode" type="number" placeholder="Postal Code" max="5" min="5" required>
+                            <label for="postalCode">Postal Code</label>
+                        </div>
+                        <br>
                     </div>
                     <small id="errorMsg"></small>
                     <br>
-                    <button type="submit" name="submitSignup" id="signupBtn" class="btn btn-primary m-auto mt-4">Register</button>
+                    <button type="submit" name="submit" id="signupBtn" class="btn btn-primary m-auto mt-4">Register</button>
                 </div>
                 <div class="modal-footer">
                     <p>Already have a profile? <span class="text-primary" id="goToLogin">Log in!</span></p>
@@ -273,10 +287,12 @@
         </div>
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="./script/signup.js"></script>
     <script src="./script/login.js"></script>
+
 
 </body>
 

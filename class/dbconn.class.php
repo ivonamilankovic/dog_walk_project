@@ -7,8 +7,8 @@ class Dbconn{
     protected function setConnection(){
         try{
             $dsn = "mysql:host=" . HOST . ";dbname=" . DB;
-            $pdo = new PDO($dsn, USER, PASS);
-            return $pdo; //it returns connection
+            $conn = new PDO($dsn, USER, PASS);
+            return $conn; //it returns connection
         }
         catch(PDOException $e){
             echo "Error: " . $e->getMessage();

@@ -25,6 +25,8 @@
 #pass1,
 #pass2,
 #phone,
-#address{
+#address,
+#city,
+#postalCode{
     width: 400px;
 }

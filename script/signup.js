@@ -3,8 +3,6 @@
 const errorMsg = document.getElementById('errorMsg');
 const signupBtn = document.getElementById('signupBtn');
 
-//const roleUser = document.getElementById('roleUser');
-//const roleWalker = document.getElementById('roleWalker');
 const firstNameField = document.getElementById('firstName');
 const lastNameField = document.getElementById('lastName');
 const emailField = document.getElementById('email');
@@ -12,7 +10,13 @@ const pass1Field = document.getElementById('pass1');
 const pass2Field = document.getElementById('pass2');
 const phoneField = document.getElementById('phone');
 const addressField = document.getElementById('address');
+const cityField = document.getElementById('city');
+const postalCodeField = document.getElementById('postalCode');
 const goToLogin = document.getElementById('goToLogin');
+
+const roleUser = document.getElementById('roleUser');
+const roleWalker = document.getElementById('roleWalker');
+let role;
 
 //functions
 function showSuccess(input){
@@ -66,6 +70,14 @@ function checkInputs(inputArray){
                         checkPhone(input);
                     }
                     break;
+                case 'number':
+                    if(input.value === ""){
+                        showError(input, `${input.placeholder} is required!`);
+                        flag++;
+                    }else{
+                        checkPostalCode(input);
+                    }
+                    break;
                 default:
                     errorMsg.innerText = "Fill out all fields!";
             }
@@ -117,13 +129,53 @@ function checkPhone(input){
         showSuccess(input);
     }
 }
+function checkPostalCode(input){
+    if(input.value.length !== 5){
+        showError(input, "Postal code must have 5 digits!");
+    }
+    else{
+        showSuccess(input);
+    }
+}
+function getRoleOfUser(){
+    if(roleUser.checked){
+        role = "customer";
+    }
+    else if(roleWalker.checked){
+        role = "walker";
+    }
+}
 
+function send(){
+    $.ajax({
+        url: './include/signup.inc.php',
+        method: 'post',
+        data: {
+            role: role,
+            firstName: firstNameField.value,
+            lastName: lastNameField.value,
+            email: emailField.value,
+            pass1: pass1Field.value,
+            pass2: pass2Field.value,
+            phone: phoneField.value,
+            address: addressField.value,
+            city: cityField.value,
+            postalCode: postalCodeField.value
+        },
+        success:(response) => {
+            console.log(response);
+        }
+    });
+
+}
 
 //eventListeners
 
 signupBtn.addEventListener('click',()=>{
     errorMsg.innerText = null;
-    checkInputs([firstNameField,lastNameField,emailField,pass1Field,pass2Field,phoneField,addressField]);
+    checkInputs([firstNameField,lastNameField,emailField,pass1Field,pass2Field,phoneField,addressField, cityField, postalCodeField]);
+    getRoleOfUser();
+    send();
 });
 
 goToLogin.addEventListener('click', ()=>{
