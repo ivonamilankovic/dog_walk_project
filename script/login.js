@@ -72,7 +72,10 @@ loginBtn.addEventListener('click',()=>{
 });
 
 goToSignup.addEventListener('click', ()=>{
+    $("#errorMessage").innerText = null;
+    $("#errorMsg").innerText = null;
     $("#modal_login").modal('hide');
-   $("#modal_signup").modal('show');
+    $("#modal_signup").modal('show');
+
 });
 

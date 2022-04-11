@@ -23,45 +23,55 @@ class SignupControler extends Signup {
     //function for sending data to make new user
     public function signupUser()
     {
-        print_r("controler");
         if($this->emptyInput() === false){
-            header("location: ../home.php?error=emptyInput");
-            exit();
+            $array = array("error"=>"emptyInput");
+             echo json_encode($array);
+             return;
         }
         if($this->passLength() === false){
-            header("location: ../home.php?error=passwordWrongLength");
-            exit();
+            $array = array("error"=>"passwordWrongLength");
+            echo json_encode($array);
+            return;
         }
         if($this->passMatch() === false){
-            header("location: ../home.php?error=passwordsDontMatch");
-            exit();
+            $array = array("error"=>"passwordsDontMatch");
+            echo json_encode($array);
+            return;
         }
         if($this->checkEmail() === false){
-            header("location: ../home.php?error=wrongEmail");
-            exit();
+            $array = array("error"=>"wrongEmail");
+            echo json_encode($array);
+            return;
         }
         if($this->validPhoneNumber() === false){
-            header("location: ../home.php?error=wrongPhone");
-            exit();
+            $array = array("error"=>"wrongPhone");
+            echo json_encode($array);
+            return;
         }
         if($this->validRole() === false){
-            header("location: ../home.php?error=wrongRole");
-            exit();
+            $array = array("error"=>"wrongRole");
+            echo json_encode($array);
+            return;
         }
         if($this->validPostalCode() === false){
-            header("location: ../home.php?error=wrongPostalCode");
-            exit();
+            $array = array( "error"=>"wrongPostalCode");
+            echo json_encode($array);
+            return;
         }
+/*
         if($this->isEmailTaken($this->email) === true){
-            header("location: ../home.php?error=emailAlreadyTaken");
-            exit();
-        }
+            $array = array("error"=>"emailAlreadyTaken");
+            echo json_encode($array);
+            return;
+        }*/
 
         //function that creates users address(because it is in separate table)
         $this->createAddress($this->address, $this->city, $this->postalCode);
         //function that creates user
         $this->createUser($this->role,$this->firstName,$this->lastName,$this->email,$this->pass1, $this->phone);
 
+        $array = array("all" => "done");
+        echo json_encode($array);
     }
 
     //function that checks if data is empty
@@ -105,8 +115,9 @@ class SignupControler extends Signup {
     }
 
     //function that checks if phone number is correct length and if its just numbers
+    //  !!!!!!!!!!!!!!!!!!!DODATI DA PROVERI DA LI SU SAMO BROJEVI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     private function validPhoneNumber(){
-        if(strlen($this->phone) !== 10 || gettype($this->phone) !== "integer"){
+        if(strlen($this->phone) !== 10){
             return false;
         }
         else{

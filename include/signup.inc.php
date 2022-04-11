@@ -1,4 +1,7 @@
 <?php
+include_once '../class/dbconn.class.php';
+include_once '../class/signup.class.php';
+include_once '../class/signupControler.class.php';
 
 //get data that are sent from ajax
 
@@ -13,16 +16,8 @@
     $city = $_POST['city'];
     $postalCode = $_POST['postalCode'];
 
-//print_r($role." ". $firstName." ".$lastName." ".$email." ".$pass1." ".$pass2." ".$phone." ".$address." ".$city." ".$postalCode);
-print_r("inc");
-
-include_once '../class/dbconn.class.php';
-include_once '../class/signup.class.php';
-include_once '../class/signupControler.class.php';
-
 //create class that will be used for creating user
 $signup = new SignupControler($role,$firstName,$lastName,$email,$pass1,$pass2,$phone,$address,$city,$postalCode);
 $signup->signupUser();
-header("location: ../home.php?error=none");
 
 ?>

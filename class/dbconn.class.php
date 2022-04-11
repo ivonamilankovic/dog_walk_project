@@ -3,7 +3,8 @@
 include_once "../include/dbconfig.inc.php";
 
 class Dbconn{
-
+    public $conn;
+    
     protected function setConnection(){
         try{
             $dsn = "mysql:host=" . HOST . ";dbname=" . DB;

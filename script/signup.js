@@ -146,10 +146,10 @@ function getRoleOfUser(){
     }
 }
 
-function send(){
+function makeUser(){
     $.ajax({
         url: './include/signup.inc.php',
-        method: 'post',
+        method: 'POST',
         data: {
             "role": role,
             "firstName": firstNameField.value,
@@ -162,8 +162,17 @@ function send(){
             "city": cityField.value,
             "postalCode": postalCodeField.value
         },
+        dataType: "JSON",
         success:(response) => {
-            console.log(response);
+            console.log(response); //{"all":"done"} if everything is done successfully, if not {"error" : "...."}
+            if(response.error === "stmtCreateAddressFail" || response.error === "stmtLastAddressIDFail" || response.error === "stmtCreateUserFail"){
+                errorMsg.innerText = "Failed creating user. Please try again!";
+                //!!!!!!!!!!!!!!!!!!!!!ovo nekako namestiti da radi???????????????????????????????
+            }
+
+        },
+        error: (msg) => {
+            console.log(msg);
         }
     });
 
@@ -175,11 +184,13 @@ signupBtn.addEventListener('click',()=>{
     errorMsg.innerText = null;
     checkInputs([firstNameField,lastNameField,emailField,pass1Field,pass2Field,phoneField,addressField, cityField, postalCodeField]);
     getRoleOfUser();
-    send();
+    makeUser();
 });
 
 goToLogin.addEventListener('click', ()=>{
+    $("#errorMessage").innerText = null;
+    $("#errorMsg").innerText = null;
     $("#modal_signup").modal('hide');
     $("#modal_login").modal('show');
-})
+});
 
