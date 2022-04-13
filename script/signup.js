@@ -109,6 +109,8 @@ function checkPassMatch(pass1,pass2){
     if(pass1.value !== "" && pass2.value !== "" && pass1.value === pass2.value){
         showSuccess1(pass1);
         showSuccess1(pass2);
+        checkPassLength(pass1);
+        checkPassLength(pass2);
     }
     else{
         showError1(pass2,"Passwords do not match!");
