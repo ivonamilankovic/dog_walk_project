@@ -22,14 +22,14 @@
 
     <div class="header">
         <div class="container d-flex">
-            <div class="me-auto p-3"><a href="./home.php"> <img src="images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
-            <div class="p-4">
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal_login">
+            <div class="me-auto p-4"><a href="./home.php"> <img src="images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
+            <div class="p-4 align-self-center">
+                <button type="button" class="btn btn-outline-dark"data-bs-toggle="modal" data-bs-target="#modal_login">
                     Log in
                 </button>
             </div>
-            <div class="p-4">
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal_signup">
+            <div class="p-4 align-self-center">
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modal_signup">
                     Sign up
                 </button>
             </div>
@@ -107,9 +107,11 @@
                     <!--Form for signup-->
                     <div id="chooseYourStatus" class=" m-auto mb-4">
                         <p class="mb-0">Please select your status:</p>
-                        <input type="radio" id="roleUser" name="user-type" checked>I'm a Regular user</input>
+                        <input type="radio" id="roleUser" name="user-type" checked/>
+                        <label for="roleUser">I'm a Regular user</label>
                         <br>
-                        <input type="radio" id="roleWalker" name="user-type">I'm a Dog walker</input>
+                        <input type="radio" id="roleWalker" name="user-type"/>
+                        <label for="roleWalker">I'm a Dog walker</label>
                         <br>
                     </div>
                     <!--inputs for all the users-->
@@ -170,122 +172,209 @@
             </div>
         </div>
     </div>
+    <!--    BEST DOG WALKERS-->
 
-            <!-- BEST DOG WALKERS -->
     <div class="container p-4 d-flex justify-content-center">
         <div class="row border rounded karta fixed">
             <h1 class="d-flex justify-content-center">Best dog walkers</h1>
 
-
-                    <div id="carouselExample" class="carousel carousel-dark slide" >
-<!--                        data-bs-ride="carousel"-->
-                        <div
-                                class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                        </div>
-                        <div class="carousel-inner d-flex justify-content-around">
-                            <div class="carousel-item active w-500 h-400" data-bs-interval="4000">
-                                <div class="card mb-3" style="max-width: 600px;">
-                                    <div class="row g-0">
-                                        <div class="col-md-4 align-self-center d-flex justify-content-center p-2">
-                                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Sara Babic</h5>
-                                                <p class="card-text three-lines">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A architecto enim eos excepturi laborum nesciunt officia quas quis tempore voluptatum! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="carousel-item w-500 h-400" data-bs-interval="4000">
-                                <div class="card mb-3" style="max-width: 600px;">
-                                    <div class="row g-0">
-                                        <div class="col-md-4 align-self-center d-flex justify-content-center p-2">
-                                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Ivona Milankovic</h5>
-                                                <p class="card-text three-lines">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A architecto enim eos excepturi laborum nesciunt officia quas quis tempore voluptatum! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item w-500 h-400" data-bs-interval="4000">
-                                <div class="card mb-3" style="max-width: 600px;">
-                                    <div class="row g-0">
-                                        <div class="col-md-4 align-self-center d-flex justify-content-center p-2">
-                                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Gagi</h5>
-                                                <p class="card-text three-lines">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A architecto enim eos excepturi laborum nesciunt officia quas quis tempore voluptatum! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        <div class="carousel-item w-500 h-400" data-bs-interval="4000">
-                            <div class="card mb-3" style="max-width: 600px;">
-                                <div class="row g-0">
-                                    <div class="col-md-4 align-self-center d-flex justify-content-center p-2">
-                                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Ivona Milankovic</h5>
-                                            <p class="card-text three-lines">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A architecto enim eos excepturi laborum nesciunt officia quas quis tempore voluptatum! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item w-500 h-400" data-bs-interval="4000">
-                            <div class="card mb-3" style="max-width: 600px;">
-                                <div class="row g-0">
-                                    <div class="col-md-4 align-self-center d-flex justify-content-center p-2">
-                                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Sara Babic</h5>
-                                            <p class="card-text three-lines">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A architecto enim eos excepturi laborum nesciunt officia quas quis tempore voluptatum! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+            <!--1.karta-->
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4 align-self-center p-2">
+                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
                     </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Ime Prezime</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!--2.karta-->
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4 align-self-center p-2">
+                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Ime Prezime</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--3.karta-->
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4 align-self-center p-2">
+                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Ime Prezime</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--active-more-->
+            <div class="collapse p-0" id="walkerToggleExternalContent">
+                <!--4.karta-->
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4 align-self-center p-2">
+                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Ime Prezime</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--5.karta-->
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4 align-self-center p-2">
+                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Ime Prezime</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--More walkers..-->
+            <div class="container-fluid d-flex justify-content-center">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#walkerToggleExternalContent" aria-controls="walkerToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <small><a href="#">More dog walkers...</a></small>
+                </button>
+            </div>
+
+
+            </div>
+
+
+    <!--    MOST ACTIVE DOG WALKERS -->
+        <div class="row border rounded karta fixed">
+            <h1 class="d-flex justify-content-center">Most active dog walkers</h1>
+            <!--1.karta-->
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4 align-self-center p-2">
+                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Ime Prezime</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--2.karta-->
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4 align-self-center p-2">
+                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Ime Prezime</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--3.karta-->
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4 align-self-center p-2">
+                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Ime Prezime</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--active-more-->
+            <div class="collapse p-0" id="walkerToggleExternalContent">
+                <!--4.karta-->
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4 align-self-center p-2">
+                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Ime Prezime</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--5.karta-->
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4 align-self-center p-2">
+                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Ime Prezime</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--More walkers..-->
+            <div class="container-fluid d-flex justify-content-center">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#walkerToggleExternalContent" aria-controls="walkerToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <small><a href="#">More dog walkers...</a></small>
+                </button>
+            </div>
+
+
+
         </div>
+    </div>
+
+
 
 <!-- FOOTER -->
-    <div class="footer fixed-bottom">
+    <div class="footer"> <!--???fixed-bottom???-->
         <div class="container  d-flex justify-content-between p-4">
             <img src="images/pawwalks.svg" class="logo" alt="PawWalksLogo"/>
 
@@ -302,7 +391,7 @@
                 </div>
             <div>
                 <h6><b>Apply</b></h6>
-                <a href="#" class="text-dark">Become a Dog Walker</a>
+                <a href="#" class="text-dark" data-bs-toggle="modal" data-bs-target="#modal_signup">Become a Dog Walker</a>
             </div>
                 <div class="d-flex align-self-end">
                     <a href="#" class="p-2"><img src="images/facebook.png" alt="facebookLogo" class="social"></a>
