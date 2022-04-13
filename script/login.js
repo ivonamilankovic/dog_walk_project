@@ -9,13 +9,13 @@ const goToSignup = document.getElementById('goToSignup');
 //functions
 function showSuccess(input){
     //shows green border on input
-    input.classList.remove('error');
-    input.classList.add('success');
+    input.classList.remove('is-invalid');
+    input.classList.add('is-valid');
 }
 function showError(input, mess){
     //shows red border on input and error message
-    input.classList.remove('success');
-    input.classList.add('error');
+    input.classList.remove('is-valid');
+    input.classList.add('is-invalid');
     errorMessage.innerText = mess.toString();
 }
 function checkInput(username, password){

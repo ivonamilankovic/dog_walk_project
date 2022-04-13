@@ -14,8 +14,7 @@ class Signup extends Dbconn {
             $stmt = null;
             $array = array("error" => "stmtCreateUserFail");
             echo json_encode($array);
-            //  !!!!!!!!!!!!!11DODATI MOZDA DA OBRISE ONDA UNETU ANDRESU I !!!! DA VRATI ISPIS DA JE BILO NEUSPESNO DA PROBA OPET!!!!!!!!!!!!!
-            return;
+            die();
         }
         $stmt = null;
 
@@ -32,7 +31,7 @@ class Signup extends Dbconn {
             $stmt1 = null;
             $array = array("error" => "stmtCreateAddressFail");
             echo json_encode($array);
-            return;
+            die();
         } else {
             $sqlLastID = "SELECT id FROM address ORDER BY id DESC LIMIT 1";
             $stmtLastID = $this->setConnection()->prepare($sqlLastID);
@@ -40,7 +39,7 @@ class Signup extends Dbconn {
                 $stmtLastID = null;
                 $array = array("error" => "stmtLastAddressIDFail");
                 echo json_encode($array);
-                return;
+                die();
             } else {
                 while ($row = $stmtLastID->fetch(PDO::FETCH_ASSOC)) {
                     $this->addressID = $row['id'];
@@ -61,7 +60,7 @@ class Signup extends Dbconn {
             $stmt3 = null;
             $array = array("error"=>"stmtIsEmailTakenFail");
             echo json_encode($array);
-            return;
+            die();
         }
 
 
