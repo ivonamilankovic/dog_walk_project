@@ -24,16 +24,41 @@
         <div class="container d-flex">
             <div class="me-auto p-3"><a href="./home.php"> <img src="images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
             <div class="p-4">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_login">
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal_login">
                     Log in
                 </button>
             </div>
             <div class="p-4">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_signup">
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal_signup">
                     Sign up
                 </button>
             </div>
+            <!--toggle search-->
+            <div class="p-4">
+                <nav class="navbar">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <a href="#"><img src="./images/loupe.png" alt="search" class="social"></a>
+                        </button>
+                    </div>
+                </nav>
+
+            </div>
         </div>
+    </div>
+
+    <!--active toggle search-->
+    <div class=" d-flex justify-content-around">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="p-4">
+            <div class="input-group rounded" style="width: 600px">
+                <input type="search" class="form-control rounded" placeholder="Search for dog walkers..." aria-label="Search" aria-describedby="search-addon" />
+                <span class="input-group-text border-0" id="search-addon">
+                <button type="button" class="btn btn-light">All dog walkers</button>
+                </span>
+            </div>
+        </div>
+    </div>
     </div>
 
     <!--Modal for Log in-->
