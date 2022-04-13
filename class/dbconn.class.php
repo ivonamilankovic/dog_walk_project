@@ -12,7 +12,7 @@ class Dbconn{
             return $conn; //it returns connection
         }
         catch(PDOException $e){
-            echo "Error: " . $e->getMessage();
+            //echo "Error: " . $e->getMessage();
             die();
             //if there is a problem with connection to db, it will show on the screen
         }
