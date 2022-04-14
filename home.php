@@ -172,11 +172,11 @@
             </div>
         </div>
     </div>
-    <!--    BEST DOG WALKERS-->
+    <!--    BEST RATED DOG WALKERS-->
 
     <div class="container p-4 d-flex justify-content-center">
         <div class="row border rounded karta fixed">
-            <h1 class="d-flex justify-content-center">Best dog walkers</h1>
+            <h1 class="d-flex justify-content-center">Best rated dog walkers</h1>
 
             <!--1.karta-->
             <div class="card mb-3" style="max-width: 540px;">
@@ -188,7 +188,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
                         </div>
                     </div>
                 </div>
@@ -203,7 +203,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
                         </div>
                     </div>
                 </div>
@@ -219,7 +219,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
                         </div>
                     </div>
                 </div>
@@ -238,7 +238,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Ime Prezime</h5>
                                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                                <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
                             </div>
                         </div>
                     </div>
@@ -253,7 +253,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Ime Prezime</h5>
                                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                                <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
                             </div>
                         </div>
                     </div>
@@ -263,10 +263,16 @@
 
             <!--More walkers..-->
             <div class="container-fluid d-flex justify-content-center">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#walkerToggleExternalContent" aria-controls="walkerToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <small><a href="#">More dog walkers...</a></small>
+                <button id="more1" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#walkerToggleExternalContent" aria-controls="walkerToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <small id="text1" style="text-decoration: underline">More dog walkers...</small>
                 </button>
             </div>
+            <script>
+                document.getElementById('more1').addEventListener('click', function (){
+                    document.getElementById('text').textContent = "Less dog walkers...";
+                    document.getElementById('text1').textContent = "Less dog walkers...";
+                })
+            </script>
 
 
             </div>
@@ -285,7 +291,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Br. šetnji</small></span>
                         </div>
                     </div>
                 </div>
@@ -300,7 +306,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Br. šetnji</small></span>
                         </div>
                     </div>
                 </div>
@@ -316,7 +322,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ime Prezime</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Br. šetnji</small></span>
                         </div>
                     </div>
                 </div>
@@ -335,7 +341,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Ime Prezime</h5>
                                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                                <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Br. šetnji</small></span>
                             </div>
                         </div>
                     </div>
@@ -350,7 +356,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Ime Prezime</h5>
                                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted"><a href="#">View</a></small></p>
+                                <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Br. šetnji</small></span>
                             </div>
                         </div>
                     </div>
@@ -361,10 +367,16 @@
 
             <!--More walkers..-->
             <div class="container-fluid d-flex justify-content-center">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#walkerToggleExternalContent" aria-controls="walkerToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <small><a href="#">More dog walkers...</a></small>
+                <button id="more" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#walkerToggleExternalContent" aria-controls="walkerToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <small id="text" style="text-decoration: underline">More dog walkers...</small>
                 </button>
             </div>
+            <script>
+                document.getElementById('more').addEventListener('click', function (){
+                    document.getElementById('text').textContent = "Less dog walkers...";
+                    document.getElementById('text1').textContent = "Less dog walkers...";
+                })
+            </script>
 
 
 
