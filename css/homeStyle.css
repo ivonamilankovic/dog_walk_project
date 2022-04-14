@@ -19,8 +19,9 @@
 }
 
 .social{
-    width: 30px;
-    height: 30px;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
 }
 .paw{
     display: flex;

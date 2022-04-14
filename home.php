@@ -54,11 +54,20 @@
             <div class="input-group rounded" style="width: 600px">
                 <input type="search" class="form-control rounded" placeholder="Search for dog walkers..." aria-label="Search" aria-describedby="search-addon" />
                 <span class="input-group-text border-0" id="search-addon">
-                <button type="button" class="btn btn-light">All dog walkers</button>
+                <button type="button" class="btn btn-light">Search</button>
                 </span>
             </div>
         </div>
     </div>
+    </div>
+    <!--About us-->
+    <div class="container border rounded p-4 mt-4" style="background-color: rgba(142,187,119,0.68)">
+        <div class="d-flex align-items-start"><img src="images/paw.svg" class="social"><h1 class="">Here when you need us</h1></div>
+        <h5 class="p-4">Whether you're looking for daily walks, planning a trip, stuck at work, or just want your best friend to have some company — we offer any day, anytime care.</h5>
+        <div class="d-flex align-items-start"><img src="images/paw.svg" class="social"><h1>Safety is serious business</h1></div>
+        <h5 class="p-4">Your dog's safety is our top priority. Every Pet Caregiver passes an enhanced background check, our services are insured, and support is standing by around the clock.</h5>
+        <div class="d-flex align-items-start"><img src="images/paw.svg" class="social"><h1>We've been around the block</h1></div>
+        <h5 class="p-4">Paw Walks! has a trusted record of experience with over 10M pet care services across 4,600 cities and counting. More than 150,000 Pet Caregivers nationwide are dog people, and it shows.</h5>
     </div>
 
     <!--Modal for Log in-->
