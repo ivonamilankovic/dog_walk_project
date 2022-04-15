@@ -1,5 +1,6 @@
 'use strict';
 
+const message = document.getElementById('message');
 const errorMsg = document.getElementById('errorMsg');
 const signupBtn = document.getElementById('signupBtn');
 
@@ -167,6 +168,11 @@ function makeUser(){
             if(response.error === "stmtCreateAddressFail" || response.error === "stmtLastAddressIDFail" || response.error === "stmtCreateUserFail"){
                 errorMsg.innerText = "Failed creating user. Please try again!";
                 //!!!!!!!!!!!!!!!!!!!!!ovo nekako namestiti da radi???????????????????????????????
+            }
+            else if(response.all === "done"){
+                $("#modal_signup").modal('hide');
+                $("#modal_login").modal('show');
+                message.innerText = "You have successfully signed up. Now you can log in!";
             }
 
         },

@@ -23,8 +23,19 @@
     <div class="header">
         <div class="container d-flex">
             <div class="me-auto p-4"><a href="./home.php"> <img src="images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
+            <?php
+                if(isset($_SESSION['id'])){
+                    ?>
+                    <div class="p-4 align-self-center">
+                        <button type="button" class="btn btn-outline-dark">
+                            <a href="./include/logout.inc.php" style="color: black; text-decoration: none;"> Log out </a>
+                        </button>
+                    </div>
+        <?php
+                }else{
+            ?>
             <div class="p-4 align-self-center">
-                <button type="button" class="btn btn-outline-dark"data-bs-toggle="modal" data-bs-target="#modal_login">
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modal_login">
                     Log in
                 </button>
             </div>
@@ -33,6 +44,9 @@
                     Sign up
                 </button>
             </div>
+        <?php
+                }
+        ?>
             <!--toggle search-->
             <div class="p-4">
                 <nav class="navbar">
@@ -81,6 +95,8 @@
                 </div>
                 <div class="modal-body m-auto mt-4">
                     <!--Form for login-->
+                    <h4 id="message"></h4>
+                    <br>
                     <div class="form-floating">
                         <input  class="form-control" id="uname" name="uname" type="email" placeholder="Email">
                         <label for="uname">Email</label>

@@ -65,10 +65,41 @@ function checkPassLength(input){
     }
 }
 
+function logUser(){
+    $.ajax({
+       url: './include/login.inc.php',
+       method: 'POST',
+       data: {
+           "user": unameField.value,
+           "password": passField.value
+       },
+        dataType: "JSON",
+        success:(response) => {
+           console.log(response);
+           if(response.error === "stmtGetUserFailed" ){
+               errorMessage.innerText = "Failed to login!";
+           }
+           else if(response.error === "userNotFound"){
+               errorMessage.innerText = "User not found. Try again!";
+           }
+           else if(response.error === "passwordIncorrect"){
+               errorMessage.innerText = "Your password is incorrect. Try again!";
+           }
+           else if(response.all === "done"){
+               window.location.reload();
+           }
+        },
+        error:(msg) => {
+           console.log(msg);
+        }
+    });
+}
+
 //eventListeners
 
 loginBtn.addEventListener('click',()=>{
     checkInput(unameField,passField);
+    logUser();
 });
 
 goToSignup.addEventListener('click', ()=>{

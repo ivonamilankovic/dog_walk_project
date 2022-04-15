@@ -14,3 +14,6 @@
 #uname, #pass{
     width: 400px;
 }
+#message{
+    color: green;
+}
