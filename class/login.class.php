@@ -2,6 +2,7 @@
 
 class Login extends Dbconn{
 
+    //function that checks if email and password are good and if they are it logs user
     protected function getUser($username,$password){
         $sql = "SELECT * FROM user WHERE email=?";
         $stmt = $this->setConnection()->prepare($sql);

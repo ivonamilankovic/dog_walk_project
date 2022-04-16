@@ -85,7 +85,7 @@ function logUser(){
            else if(response.error === "passwordIncorrect"){
                errorMessage.innerText = "Your password is incorrect. Try again!";
            }
-           else if(response.all === "done"){
+           else if(response.login === "done"){
                window.location.reload();
            }
         },

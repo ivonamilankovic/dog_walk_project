@@ -4,7 +4,7 @@
 .dontShow{
     display: none;
 }
-#errorMsg{
+#errorMsg, #errorVerification{
     color: #f00;
 }
 .error{
@@ -29,4 +29,7 @@
 #city,
 #postalCode{
     width: 400px;
+}
+#messageVerification{
+    color: green;
 }
