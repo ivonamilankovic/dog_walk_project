@@ -6,10 +6,10 @@ class GetVerification extends Dbconn {
     public function sendVerificationCode($email){
         $code = rand(100000,999999);
 
-        $sql5 = "UPDATE user SET verification_code = ? WHERE email = ?";
+        $sql5 = "UPDATE user SET verification_code = ?, updated_at = ? WHERE email = ?";
         $stmtCode = $this->setConnection()->prepare($sql5);
 
-        if(!$stmtCode->execute([$code,$email])){
+        if(!$stmtCode->execute([$code,date('Y-m-d H:i:s'),$email])){
             $stmtCode = null;
             $array = array("error" => "stmtSendVerificationFailed");
             echo json_encode($array);
