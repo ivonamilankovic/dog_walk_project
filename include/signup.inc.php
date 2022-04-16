@@ -2,6 +2,8 @@
 include_once '../class/dbconn.class.php';
 include_once '../class/signup.class.php';
 include_once '../class/signupControler.class.php';
+include_once '../class/getVerification.class.php' ;
+include_once '../class/getVerificationControler.class.php' ;
 
 //get data that are sent from ajax
 
@@ -19,5 +21,8 @@ include_once '../class/signupControler.class.php';
 //create class that will be used for creating user
 $signup = new SignupControler($role,$firstName,$lastName,$email,$pass1,$pass2,$phone,$address,$city,$postalCode);
 $signup->signupUser();
+//create class that sends verification code
+$verify = new GetVerificationControler($email);
+$verify->getCode();
 
 ?>

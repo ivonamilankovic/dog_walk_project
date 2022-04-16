@@ -22,16 +22,25 @@ class Login extends Dbconn{
         }
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        $checkPass = password_verify($password,$user["password"]);
 
-        if($checkPass === false){
-            $stmt = null;
-            $array = array("error" => "passwordIncorrect");
+        if($user['is_verified'] == 1) {
+
+            $checkPass = password_verify($password, $user["password"]);
+
+            if ($checkPass === false) {
+                $stmt = null;
+                $array = array("error" => "passwordIncorrect");
+                echo json_encode($array);
+                die();
+            } elseif ($checkPass === true) {
+                session_start();
+                $_SESSION['id'] = $user["id"];
+            }
+        }
+        else{
+            $array = array("error" => "userNotVerified");
             echo json_encode($array);
             die();
-        }elseif ($checkPass === true){
-            session_start();
-            $_SESSION['id'] = $user["id"];
         }
 
     }

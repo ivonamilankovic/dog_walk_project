@@ -167,7 +167,7 @@ function makeUser(){
         },
         dataType: "JSON",
         success:(response) => {
-            console.log(response); //{"all":"done"} if everything is done successfully, if not {"error" : "...."}
+            console.log(response);
             //if any statement fails, creating user is failing
             if(response.error === "stmtCreateAddressFail" || response.error === "stmtLastAddressIDFail" || response.error === "stmtCreateUserFail" || response.error === "stmtIsEmailTakenFail"){
                 errorMsg.innerText = "Failed creating user. Please try again!";
@@ -176,7 +176,8 @@ function makeUser(){
                 //if email is taken, user wont be made
                 showError1(emailField,"Email is already taken. Please choose another.");
             }
-            else if(response.signup === "done"){
+            //if everything is fine it opens modal to enter verification code
+            else if(response.signup === "done" || response.verify === "sent"){
                 $("#modal_signup").modal('hide');
                 $("#modal_verification").modal('show');
             }

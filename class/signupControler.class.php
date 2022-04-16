@@ -69,11 +69,9 @@ class SignupControler extends Signup {
         $this->createAddress($this->address, $this->city, $this->postalCode);
         //function that creates user
         $this->createUser($this->role,$this->firstName,$this->lastName,$this->email,$this->pass1, $this->phone);
-        //function that sends verification code
-        $this->sendVerificationCode($this->email);
 
-        $array = array("signup" => "done");
-        echo json_encode($array);
+        //$array = array("signup" => "done");
+        //echo json_encode($array);
     }
 
     //function that checks if data is empty

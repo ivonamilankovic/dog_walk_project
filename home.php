@@ -220,6 +220,7 @@
                     </div>
                     <br>
                     <small id="errorVerification"></small>
+                    <br>
                     <button type="submit" name="submit" id="verifyBtn" class="btn btn-primary m-auto mt-4">Verify</button>
                 </div>
             </div>
