@@ -58,20 +58,20 @@ class SignupControler extends Signup {
             echo json_encode($array);
             return;
         }
-/*
+
         if($this->isEmailTaken($this->email) === true){
             $array = array("error"=>"emailAlreadyTaken");
             echo json_encode($array);
             return;
-        }*/
+        }
 
         //function that creates users address(because it is in separate table)
         $this->createAddress($this->address, $this->city, $this->postalCode);
         //function that creates user
         $this->createUser($this->role,$this->firstName,$this->lastName,$this->email,$this->pass1, $this->phone);
 
-        $array = array("all" => "done");
-        echo json_encode($array);
+        //$array = array("signup" => "done");
+        //echo json_encode($array);
     }
 
     //function that checks if data is empty

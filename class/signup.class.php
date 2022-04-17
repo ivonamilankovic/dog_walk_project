@@ -51,12 +51,11 @@ class Signup extends Dbconn {
     }
 
     //function that checks if email is already taken by some other user
-    //  !!!!!!!!!!!!!!!!NOT WORKING YET !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
     protected function isEmailTaken($email){
-        $sql4 = "SELECT * FROM user WHERE email = ".$email;
+        $sql4 = "SELECT * FROM user WHERE email = ?";
         $stmt3 = $this->setConnection()->prepare($sql4);
 
-        if(!$stmt3->execute()){
+        if(!$stmt3->execute([$email])){
             $stmt3 = null;
             $array = array("error"=>"stmtIsEmailTakenFail");
             echo json_encode($array);

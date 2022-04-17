@@ -1,8 +1,12 @@
 'use strict';
 
+const message = document.getElementById('message');
 const errorMsg = document.getElementById('errorMsg');
+const errorVerify = document.getElementById('errorVerification');
 const signupBtn = document.getElementById('signupBtn');
+const verifyBtn = document.getElementById('verifyBtn');
 
+const codeField = document.getElementById('ver_code');
 const firstNameField = document.getElementById('firstName');
 const lastNameField = document.getElementById('lastName');
 const emailField = document.getElementById('email');
@@ -163,18 +167,57 @@ function makeUser(){
         },
         dataType: "JSON",
         success:(response) => {
-            console.log(response); //{"all":"done"} if everything is done successfully, if not {"error" : "...."}
-            if(response.error === "stmtCreateAddressFail" || response.error === "stmtLastAddressIDFail" || response.error === "stmtCreateUserFail"){
+            console.log(response);
+            //if any statement fails, creating user is failing
+            if(response.error === "stmtCreateAddressFail" || response.error === "stmtLastAddressIDFail" || response.error === "stmtCreateUserFail" || response.error === "stmtIsEmailTakenFail"){
                 errorMsg.innerText = "Failed creating user. Please try again!";
-                //!!!!!!!!!!!!!!!!!!!!!ovo nekako namestiti da radi???????????????????????????????
             }
-
+            else if(response.error === "emailAlreadyTaken"){
+                //if email is taken, user wont be made
+                showError1(emailField,"Email is already taken. Please choose another.");
+            }
+            //if everything is fine it opens modal to enter verification code
+            else if(response.signup === "done" || response.verify === "sent"){
+                $("#modal_signup").modal('hide');
+                $("#modal_verification").modal('show');
+            }
         },
         error: (msg) => {
             console.log(msg);
         }
     });
 
+}
+
+function checkVerificationCode(){
+    if(codeField.value !== "" && codeField.value.length === 6){
+        $.ajax({
+           url: './include/verify.inc.php',
+           method: 'POST',
+           data: {
+               "code" : codeField.value
+           },
+           dataType: "JSON",
+           success: (response) =>{
+               console.log(response);
+               if (response.verify === "done"){
+                   $("#modal_verification").modal('hide');
+                   $("#modal_login").modal('show');
+                   message.innerText = "You have successfully signed up . Now you can log in!";
+               }
+               else if(response.error === "stmtCheckCodeFailed" || response.error === "stmtGetVerifiedFailed"){
+                   errorVerify.innerText = "Failed to verify account. Please try again.";
+               }
+           },
+            error: (msg) => {
+               console.log(msg);
+            }
+        });
+    }
+    else{
+        showError1(codeField, "");
+        errorVerify.innerText = "Verification code must be 6 digits!";
+    }
 }
 
 //eventListeners
@@ -194,3 +237,6 @@ goToLogin.addEventListener('click', ()=>{
     $("#modal_login").modal('show');
 });
 
+verifyBtn.addEventListener('click', () => {
+   checkVerificationCode();
+});

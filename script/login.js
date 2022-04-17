@@ -65,10 +65,76 @@ function checkPassLength(input){
     }
 }
 
+function logUser(){
+    $.ajax({
+       url: './include/login.inc.php',
+       method: 'POST',
+       data: {
+           "user": unameField.value,
+           "password": passField.value
+       },
+        dataType: "JSON",
+        success:(response) => {
+           console.log(response);
+           if(response.error === "stmtGetUserFailed" ){
+               errorMessage.innerText = "Failed to login!";
+           }
+           else if(response.error === "userNotFound"){
+               errorMessage.innerText = "User not found. Try again!";
+           }
+           else if(response.error === "passwordIncorrect"){
+               errorMessage.innerText = "Your password is incorrect. Try again!";
+           }
+           else if(response.error === "userNotVerified"){
+               const element = document.createElement('span');
+               const text = document.createTextNode('here');
+               element.appendChild(text);
+               errorMessage.innerText = "User is not verified. To be able to login please verify your profile ";
+               errorMessage.appendChild(element);
+               document.querySelector('#errorMessage span').addEventListener('click', () => {
+                  getNewVerificationCode();
+               });
+           }
+           else if(response.login === "done"){
+               window.location.reload();
+           }
+        },
+        error:(msg) => {
+           console.log(msg);
+        }
+    });
+}
+
+function getNewVerificationCode(){
+    $.ajax({
+       url: './include/getNewVerificationCode.inc.php',
+        method: 'POST',
+        dataType: "JSON",
+        data: {
+           "email": unameField.value
+        },
+        success: (response) => {
+           console.log(response);
+           if(response.error === "stmtSendVerificationFailed"){
+               errorMessage.innerText = "Failed to send new code. Please try again.";
+           }
+           else if(response.verify === "sent"){
+               $("#modal_login").modal('hide');
+               $("#modal_verification").modal('show');
+           }
+        },
+        error: (msg) => {
+           console.log(msg);
+        }
+    });
+}
+
 //eventListeners
 
 loginBtn.addEventListener('click',()=>{
+    errorMessage.innerText = null;
     checkInput(unameField,passField);
+    logUser();
 });
 
 goToSignup.addEventListener('click', ()=>{

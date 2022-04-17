@@ -23,8 +23,24 @@
     <div class="header">
         <div class="container d-flex">
             <div class="me-auto p-4"><a href="./home.php"> <img src="images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
+            <?php
+                if(isset($_SESSION['id'])){
+                    ?>
+                    <div class="p-4 align-self-center">
+                        <button type="button" class="btn btn-outline-dark">
+                            <a href="./include/logout.inc.php" style="color: black; text-decoration: none;"> Log out </a>
+                        </button>
+                    </div><div class="p-4 align-self-center">
+                        <button type="button" class="btn btn-outline-dark">
+                            <a href="#" style="color: black; text-decoration: none;"> My Profile </a>
+                        </button>
+                    </div>
+
+        <?php
+                }else{
+            ?>
             <div class="p-4 align-self-center">
-                <button type="button" class="btn btn-outline-dark"data-bs-toggle="modal" data-bs-target="#modal_login">
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modal_login">
                     Log in
                 </button>
             </div>
@@ -33,6 +49,9 @@
                     Sign up
                 </button>
             </div>
+        <?php
+                }
+        ?>
             <!--toggle search-->
             <div class="p-4">
                 <nav class="navbar">
@@ -81,6 +100,8 @@
                 </div>
                 <div class="modal-body m-auto mt-4">
                     <!--Form for login-->
+                    <h5 id="message"></h5>
+                    <br>
                     <div class="form-floating">
                         <input  class="form-control" id="uname" name="uname" type="email" placeholder="Email">
                         <label for="uname">Email</label>
@@ -181,6 +202,32 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal for verification code -->
+    <div class="modal fade" id="modal_verification" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Verification</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body m-auto mt-4">
+                    <h5 id="messageVerification">We sent you verification code on your mail address! Please enter it here.</h5>
+                    <br>
+                    <div class="form-floating">
+                        <input  class="form-control" id="ver_code" name="ver_code" type="text" placeholder="Verification Code">
+                        <label for="ver_code">Verification Code</label>
+                    </div>
+                    <br>
+                    <small id="errorVerification"></small>
+                    <br>
+                    <button type="submit" name="submit" id="verifyBtn" class="btn btn-primary m-auto mt-4">Verify</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!--    BEST RATED DOG WALKERS-->
 
     <div class="container d-flex justify-content-between karte">
