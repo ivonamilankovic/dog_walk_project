@@ -183,8 +183,8 @@
     </div>
     <!--    BEST RATED DOG WALKERS-->
 
-    <div class="container p-4 d-flex justify-content-center">
-        <div class="row border rounded karta fixed">
+    <div class="container d-flex justify-content-between karte">
+        <div class="row border rounded karta d-flex justify-content-center fixed">
             <h1 class="d-flex justify-content-center">Best rated dog walkers</h1>
 
             <!--1.karta-->
@@ -288,7 +288,7 @@
 
 
     <!--    MOST ACTIVE DOG WALKERS -->
-        <div class="row border rounded karta fixed">
+        <div class="row border rounded karta d-flex justify-content-center fixed">
             <h1 class="d-flex justify-content-center">Most active dog walkers</h1>
             <!--1.karta-->
             <div class="card mb-3" style="max-width: 540px;">
