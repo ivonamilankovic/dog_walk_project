@@ -79,14 +79,25 @@
         </div>
     </div>
     </div>
-    <!--About us-->
-    <div class="container border rounded p-4 mt-4" style="background-color: rgba(142,187,119,0.68)">
-        <div class="d-flex align-items-start"><img src="images/paw.svg" class="social"><h1 class="">Here when you need us</h1></div>
-        <h5 class="p-4">Whether you're looking for daily walks, planning a trip, stuck at work, or just want your best friend to have some company — we offer any day, anytime care.</h5>
-        <div class="d-flex align-items-start"><img src="images/paw.svg" class="social"><h1>Safety is serious business</h1></div>
-        <h5 class="p-4">Your dog's safety is our top priority. Every Pet Caregiver passes an enhanced background check, our services are insured, and support is standing by around the clock.</h5>
-        <div class="d-flex align-items-start"><img src="images/paw.svg" class="social"><h1>We've been around the block</h1></div>
-        <h5 class="p-4">Paw Walks! has a trusted record of experience with over 10M pet care services across 4,600 cities and counting. More than 150,000 Pet Caregivers nationwide are dog people, and it shows.</h5>
+    <!--freedom for your dog-->
+    <div class="container mt-4">
+        <img src="images/freedom.jpg" alt="dog">
+    </div>
+    <!--how to use site-->
+    <div class="container border rounded p-4 mt-4" style="background-color: rgba(142,187,119,0.76)">
+        <div class="position-relative m-4">
+            <div class="progress" style="height: 1px;">
+                <div class="progress" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 4rem; height:4rem; background-color: #866464"><b>1</b></button>
+            <button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 4rem; height:4rem; background-color: #866464""><b>2</b></button>
+            <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 4rem; height:4rem; background-color: #866464""><b>3</b></button>
+        </div>
+        <div class="position-relative mt-4 p-4 d-flex justify-content-between">
+            <div style="height:2rem;"><h3>Sign Up!</h3></div>
+            <div style="height:2rem;"><h3>Find your dog walker!</h3></div>
+            <div style="height:2rem;"><h3>Enjoy your freedom!</h3></div>
+        </div>
     </div>
 
     <!--Modal for Log in-->
@@ -282,8 +293,6 @@
             </div>
 
 
-            <!--active-more-->
-            <div class="collapse p-0" id="walkerToggleExternalContent">
                 <!--4.karta-->
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
@@ -314,25 +323,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-            <!--More walkers..-->
-            <div class="container-fluid d-flex justify-content-center">
-                <button id="more1" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#walkerToggleExternalContent" aria-controls="walkerToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <small id="text1" style="text-decoration: underline">More dog walkers...</small>
-                </button>
-            </div>
-            <script>
-                document.getElementById('more1').addEventListener('click', function (){
-                    document.getElementById('text').textContent = "Less dog walkers...";
-                    document.getElementById('text1').textContent = "Less dog walkers...";
-                })
-            </script>
-
-
-            </div>
-
+        </div>
 
     <!--    MOST ACTIVE DOG WALKERS -->
         <div class="row border rounded karta d-flex justify-content-center fixed">
@@ -384,9 +375,6 @@
                 </div>
             </div>
 
-
-            <!--active-more-->
-            <div class="collapse p-0" id="walkerToggleExternalContent">
                 <!--4.karta-->
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
@@ -417,31 +405,22 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-
-            <!--More walkers..-->
-            <div class="container-fluid d-flex justify-content-center">
-                <button id="more" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#walkerToggleExternalContent" aria-controls="walkerToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <small id="text" style="text-decoration: underline">More dog walkers...</small>
-                </button>
-            </div>
-            <script>
-                document.getElementById('more').addEventListener('click', function (){
-                    document.getElementById('text').textContent = "Less dog walkers...";
-                    document.getElementById('text1').textContent = "Less dog walkers...";
-                })
-            </script>
-
-
-
         </div>
+    </div>
+
+    <!--About us-->
+    <div class="container border rounded p-4 mb-4" style="background-color: rgba(142,187,119,0.68);">
+        <div class="d-flex align-items-start"><img src="images/paw.svg" class="social"><h1 class="">Here when you need us</h1></div>
+        <h5 class="p-4">Whether you're looking for daily walks, planning a trip, stuck at work, or just want your best friend to have some company — we offer any day, anytime care.</h5>
+        <div class="d-flex align-items-start"><img src="images/paw.svg" class="social"><h1>Safety is serious business</h1></div>
+        <h5 class="p-4">Your dog's safety is our top priority. Every Pet Caregiver passes an enhanced background check, our services are insured, and support is standing by around the clock.</h5>
+        <div class="d-flex align-items-start"><img src="images/paw.svg" class="social"><h1>We've been around the block</h1></div>
+        <h5 class="p-4">Paw Walks! has a trusted record of experience with over 10M pet care services across 4,600 cities and counting. More than 150,000 Pet Caregivers nationwide are dog people, and it shows.</h5>
     </div>
 
 
 
-<!-- FOOTER -->
+    <!-- FOOTER -->
     <div class="footer"> <!--???fixed-bottom???-->
         <div class="container  d-flex justify-content-between p-4">
             <img src="images/pawwalks.svg" class="logo" alt="PawWalksLogo"/>
