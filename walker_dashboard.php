@@ -21,11 +21,13 @@
                     Profile
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">List of Walks</a></li>
+                    <form method="post">
+                    <li><a class="dropdown-item" id="btnListOfWalks" name="btnListOfWalks" href="#">List of Walks</a></li>
                     <li><a class="dropdown-item" href="#">Edit Profile</a></li>
                     <li><a class="dropdown-item" href="#">Change password</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">LogOut</a></li>
+                    </form>
                 </ul>
             </div>
         </div>
@@ -43,6 +45,7 @@
         <tr>
             <th scope="col">Broj setnje</th>
             <th scope="col">Dogs</th>
+            <th scope="col">Breeds</th>
             <th scope="col">Status</th>
             <th scope="col">Datum</th>
             <th scope="col">Rate</th>
@@ -51,12 +54,13 @@
         <tr>
             <td>1.</td>
             <td>Fluffy</td>
+            <td>American Bulldog - Američki Bulldog</td>
             <td>Pending</td>
             <td>2022.02.04</td>
             <td>-</td>
             <td>
                 <select>
-                    <option>Pending</option>
+                    <option>Select</option>
                         <option value="Accepted">Accepted</option>
                         <option value="Declined">Declined</option>
                 </select>
@@ -65,12 +69,13 @@
         <tr>
             <td>2.</td>
             <td>Puppy</td>
+            <td>Africanis - Afrički Pas</td>
             <td>Finished</td>
             <td>2022.11.10.</td>
             <td>***</td>
             <td>
                 <select>
-                    <option>Pending</option>
+                    <option>Select</option>
                     <option value="Accepted">Accepted</option>
                     <option value="Declined">Declined</option>
                 </select>
@@ -78,8 +83,6 @@
         </tr>
     </table>
 </div>
-
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

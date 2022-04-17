@@ -85,18 +85,12 @@
     </div>
     <!--how to use site-->
     <div class="container border rounded p-4 mt-4" style="background-color: rgba(142,187,119,0.76)">
-        <div class="position-relative m-4">
-            <div class="progress" style="height: 1px;">
-                <div class="progress" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="position-relative mt-4 pt-4">
+            <div class="d-flex justify-content-around">
+            <button type="button" class="translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 10rem; height:4rem; background-color: #866464"><b>Sign Up!</b></button>
+            <button type="button" class=" translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 10rem; height:4rem; background-color: #866464""><b>Find your dog walker!</b></button>
+            <button type="button" class="translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 10rem; height:4rem; background-color: #866464""><b>Enjoy your freedom!</b></button>
             </div>
-            <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 4rem; height:4rem; background-color: #866464"><b>1</b></button>
-            <button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 4rem; height:4rem; background-color: #866464""><b>2</b></button>
-            <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 4rem; height:4rem; background-color: #866464""><b>3</b></button>
-        </div>
-        <div class="position-relative mt-4 p-4 d-flex justify-content-between">
-            <div style="height:2rem;"><h3>Sign Up!</h3></div>
-            <div style="height:2rem;"><h3>Find your dog walker!</h3></div>
-            <div style="height:2rem;"><h3>Enjoy your freedom!</h3></div>
         </div>
     </div>
 
