@@ -70,12 +70,13 @@
     <div class=" d-flex justify-content-around">
     <div class="collapse" id="navbarToggleExternalContent">
         <div class="p-4">
-            <div class="input-group rounded" style="width: 600px">
-                <input type="search" class="form-control rounded" placeholder="Search for dog walkers..." aria-label="Search" aria-describedby="search-addon" />
-                <span class="input-group-text border-0" id="search-addon">
-                <button type="button" class="btn btn-light">Search</button>
-                </span>
+            <div class="input-group rounded" style="width: 600px; height: 60px">
+                <input type="search" class="form-control rounded border border-dark" placeholder="Search for dog walkers..." aria-label="Search" aria-describedby="search-addon" />
+                <button type="button" class="btn btn-dark search" style="width: 120px">Search</button>
             </div>
+        </div>
+        <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-outline-dark" style="width: 600px">Show all dog walkers...</button>
         </div>
     </div>
     </div>
@@ -84,14 +85,14 @@
         <img src="images/freedom.jpg" alt="dog">
     </div>
     <!--how to use site-->
-    <div class="container border rounded p-4 mt-4" style="background-color: rgba(142,187,119,0.76)">
-        <div class="position-relative mt-4 pt-4">
-            <div class="d-flex justify-content-around">
-            <button type="button" class="translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 10rem; height:4rem; background-color: #866464"><b>Sign Up!</b></button>
-            <button type="button" class=" translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 10rem; height:4rem; background-color: #866464""><b>Find your dog walker!</b></button>
-            <button type="button" class="translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 10rem; height:4rem; background-color: #866464""><b>Enjoy your freedom!</b></button>
+    <div class="container border rounded-pill p-4 mt-4" style="background-color: rgba(142,187,119,0.76)">
+            <div class="d-flex justify-content-between align-items-center">
+                <button type="button" class="btn btn-outline-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#modal_signup" style="width: 10rem; height:4rem; background-color: #866464"><b>Sign Up!</b></button>
+                <div><img src="images/arrow.png" alt="arrow" style="width: 90px; height: 80px"></div>
+                <button type="button" class=" btn btn-outline-dark rounded-pill" style="width: 10rem; height:4rem; background-color: #866464""><b>Find your dog walker!</b></button>
+                <div><img src="images/arrow.png" alt="arrow" style="width: 90px; height: 80px"></div>
+                <button type="button" class="btn btn-outline-dark rounded-pill" style="width: 10rem; height:4rem; background-color: #866464""><b>Enjoy your freedom!</b></button>
             </div>
-        </div>
     </div>
 
     <!--Modal for Log in-->
