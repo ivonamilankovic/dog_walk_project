@@ -11,9 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Paw Walks - Home Page</title>
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../css/signup.css">
-    <link rel="stylesheet" type="text/css" href="../css/homeStyle.css"/>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/signup.css">
+    <link rel="stylesheet" type="text/css" href="./css/homeStyle.css"/>
 </head>
 
 <body>
@@ -22,13 +22,13 @@
 
     <div class="header">
         <div class="container d-flex">
-            <div class="me-auto p-4"><a href="home.php"> <img src="../images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
+            <div class="me-auto p-4"><a href="home.php"> <img src="./images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
             <?php
                 if(isset($_SESSION['id'])){
                     ?>
                     <div class="p-4 align-self-center">
                         <button type="button" class="btn btn-outline-dark">
-                            <a href="../include/logout.inc.php" style="color: black; text-decoration: none;"> Log out </a>
+                            <a href="./include/logout.inc.php" style="color: black; text-decoration: none;"> Log out </a>
                         </button>
                     </div><div class="p-4 align-self-center">
                         <button type="button" class="btn btn-outline-dark">
@@ -57,7 +57,7 @@
                 <nav class="navbar">
                     <div class="container-fluid">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <a href="#"><img src="../images/loupe.png" alt="search" class="social"></a>
+                            <a href="#"><img src="./images/loupe.png" alt="search" class="social"></a>
                         </button>
                     </div>
                 </nav>
@@ -82,15 +82,15 @@
     </div>
     <!--freedom for your dog-->
     <div class="container mt-4">
-        <img src="../images/freedom.jpg" alt="dog">
+        <img src="./images/freedom.jpg" alt="dog">
     </div>
     <!--how to use site-->
     <div class="container border rounded-pill p-4 mt-4" style="background-color: rgba(142,187,119,0.76)">
             <div class="d-flex justify-content-between align-items-center">
                 <button type="button" class="btn btn-outline-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#modal_signup" style="width: 10rem; height:4rem; background-color: #866464"><b>Sign Up!</b></button>
-                <div><img src="../images/arrow.png" alt="arrow" style="width: 90px; height: 80px"></div>
+                <div><img src="./images/arrow.png" alt="arrow" style="width: 90px; height: 80px"></div>
                 <button type="button" class=" btn btn-outline-dark rounded-pill" style="width: 10rem; height:4rem; background-color: #866464""><b>Find your dog walker!</b></button>
-                <div><img src="../images/arrow.png" alt="arrow" style="width: 90px; height: 80px"></div>
+                <div><img src="./images/arrow.png" alt="arrow" style="width: 90px; height: 80px"></div>
                 <button type="button" class="btn btn-outline-dark rounded-pill" style="width: 10rem; height:4rem; background-color: #866464""><b>Enjoy your freedom!</b></button>
             </div>
     </div>
@@ -405,11 +405,11 @@
 
     <!--About us-->
     <div class="container border rounded p-4 mb-4" style="background-color: rgba(142,187,119,0.68);">
-        <div class="d-flex align-items-start"><img src="../images/paw.svg" class="social"><h1 class="">Here when you need us</h1></div>
+        <div class="d-flex align-items-start"><img src="./images/paw.svg" class="social"><h1 class="">Here when you need us</h1></div>
         <h5 class="p-4">Whether you're looking for daily walks, planning a trip, stuck at work, or just want your best friend to have some company — we offer any day, anytime care.</h5>
-        <div class="d-flex align-items-start"><img src="../images/paw.svg" class="social"><h1>Safety is serious business</h1></div>
+        <div class="d-flex align-items-start"><img src="./images/paw.svg" class="social"><h1>Safety is serious business</h1></div>
         <h5 class="p-4">Your dog's safety is our top priority. Every Pet Caregiver passes an enhanced background check, our services are insured, and support is standing by around the clock.</h5>
-        <div class="d-flex align-items-start"><img src="../images/paw.svg" class="social"><h1>We've been around the block</h1></div>
+        <div class="d-flex align-items-start"><img src="./images/paw.svg" class="social"><h1>We've been around the block</h1></div>
         <h5 class="p-4">Paw Walks! has a trusted record of experience with over 10M pet care services across 4,600 cities and counting. More than 150,000 Pet Caregivers nationwide are dog people, and it shows.</h5>
     </div>
 
@@ -418,7 +418,7 @@
     <!-- FOOTER -->
     <div class="footer"> <!--???fixed-bottom???-->
         <div class="container  d-flex justify-content-between p-4">
-            <img src="../images/pawwalks.svg" class="logo" alt="PawWalksLogo"/>
+            <img src="./images/pawwalks.svg" class="logo" alt="PawWalksLogo"/>
 
                 <div>
                     <h6><b>Company</b></h6>
@@ -436,9 +436,9 @@
                 <a href="#" class="text-dark" data-bs-toggle="modal" data-bs-target="#modal_signup">Become a Dog Walker</a>
             </div>
                 <div class="d-flex align-self-end">
-                    <a href="#" class="p-2"><img src="../images/facebook.png" alt="facebookLogo" class="social"></a>
-                    <a href="#" class="p-2"><img src="../images/linkedin.png" alt="linkedinLogo" class="social"></a>
-                    <a href="#" class="p-2"><img src="../images/instagram.png" alt="intagramLogo" class="social"></a>
+                    <a href="#" class="p-2"><img src="./images/facebook.png" alt="facebookLogo" class="social"></a>
+                    <a href="#" class="p-2"><img src="./images/linkedin.png" alt="linkedinLogo" class="social"></a>
+                    <a href="#" class="p-2"><img src="./images/instagram.png" alt="intagramLogo" class="social"></a>
                 </div>
         </div>
     </div>
@@ -446,8 +446,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="../script/signup.js"></script>
-    <script src="../script/login.js"></script>
+    <script src="./script/signup.js"></script>
+    <script src="./script/login.js"></script>
 
 
 </body>
