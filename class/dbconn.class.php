@@ -10,6 +10,7 @@ class Dbconn{
             $dsn = "mysql:host=" . HOST . ";dbname=" . DB;
             $conn = new PDO($dsn, USER, PASS);
             return $conn; //it returns connection
+
         }
         catch(PDOException $e){
             //echo "Error: " . $e->getMessage();

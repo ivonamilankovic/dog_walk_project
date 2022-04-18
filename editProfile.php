@@ -23,11 +23,11 @@
                 </button>
                 <ul class="dropdown-menu">
                     <form method="post">
-                    <li><a class="dropdown-item" id="btnListOfWalks" name="btnListOfWalks" href="#">List of Walks</a></li>
-                    <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Change password</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">LogOut</a></li>
+                        <li><a class="dropdown-item" id="btnListOfWalks" name="btnListOfWalks" href="./listOfWalks.php">List of Walks</a></li>
+                        <li><a class="dropdown-item" href="./editProfile.php">Edit Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Change password</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">LogOut</a></li>
                     </form>
                 </ul>
             </div>
@@ -40,50 +40,6 @@
     </div>
 </div>
 
-<!--List of walks-->
-<!--<div class="container">
-    <table class="table">
-        <tr>
-            <th scope="col">Broj setnje</th>
-            <th scope="col">Dogs</th>
-            <th scope="col">Breeds</th>
-            <th scope="col">Status</th>
-            <th scope="col">Datum</th>
-            <th scope="col">Rate</th>
-            <th scope="col">Select</th>
-        </tr>
-        <tr>
-            <td>1.</td>
-            <td>Fluffy</td>
-            <td>American Bulldog - Američki Bulldog</td>
-            <td>Pending</td>
-            <td>2022.02.04</td>
-            <td>-</td>
-            <td>
-                <select>
-                    <option>Select</option>
-                        <option value="Accepted">Accepted</option>
-                        <option value="Declined">Declined</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>2.</td>
-            <td>Puppy</td>
-            <td>Africanis - Afrički Pas</td>
-            <td>Finished</td>
-            <td>2022.11.10.</td>
-            <td>***</td>
-            <td>
-                <select>
-                    <option>Select</option>
-                    <option value="Accepted">Accepted</option>
-                    <option value="Declined">Declined</option>
-                </select>
-            </td>
-        </tr>
-    </table>
-</div> -->
 
 <!--Edit Profile-->
 <div class="container d-flex align-self-center" style="padding: 120px 0 0 0">
@@ -96,8 +52,8 @@
                             <div class="user-avatar">
                                 <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle m-2" alt="Profile picture">
                             </div>
-                            <h5 class="user-name">Ime Prezime</h5>
-                            <h6 class="user-email">imeprezime@gmail.com</h6>
+                            <h5 class="user-email" style="font-weight: bold">imeprezime@gmail.com</h5>
+                            <h6 class="user-name">Ime Prezime</h6>
                         </div>
                         <div class="about">
                             <h5>About</h5>
@@ -134,8 +90,14 @@
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="favbreed">Favourite dog breeds</label>
-                                <input class="form-control" id="favbreed" placeholder="Enter your favourite dog breed">
+                                <label for="favbreed">Favourite dog breed</label>
+                                <!--choose favourite dog breed-->
+                                <form action="insert.php" method="post">
+                                    <select>
+                                        <option value="pudla">pudla</option>
+                                    </select>
+
+                                </form>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -150,7 +112,6 @@
                                 <img src="https://picsum.photos/100/100" class="img-fluid rounded-circle m-2" alt="Profile picture">
                                 <form action="/action_page.php">
                                     <input type="file" id="myFile" name="filename">
-                                    <input type="submit" value="submit">
                                 </form>
                             </div>
                         </div>
@@ -180,9 +141,8 @@
                     </div>
                     <div class="row gutters">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="text-right">
-                                <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
-                                <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+                            <div class="text-right d-flex justify-content-center">
+                                <button type="button" id="submit" name="submit" class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Update</button>
                             </div>
                         </div>
                     </div>
@@ -192,10 +152,6 @@
     </div>
 </div>
 
-
-
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -203,4 +159,5 @@
 </body>
 </html>
 
-<?php
+
+
