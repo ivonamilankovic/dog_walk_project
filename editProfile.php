@@ -91,8 +91,8 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="favbreed">Favourite dog breed</label>
-                                <!--choose favourite dog breed-->
-                                <form action="insert.php" method="post">
+                                <!--get options from database-->
+                                <form action="#" method="post">
                                     <select>
                                         <option value="pudla">pudla</option>
                                     </select>
@@ -109,7 +109,7 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="filename">Choose imege: </label> <br>
-                                <img src="https://picsum.photos/100/100" class="img-fluid rounded-circle m-2" alt="Profile picture">
+                                <img src="https://picsum.photos/100/100" class="img-fluid rounded-circle m-2 p-4" alt="Profile picture">
                                 <form action="/action_page.php">
                                     <input type="file" id="myFile" name="filename">
                                 </form>
