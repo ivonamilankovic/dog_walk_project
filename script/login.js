@@ -67,7 +67,7 @@ function checkPassLength(input){
 
 function logUser(){
     $.ajax({
-       url: './include/login.inc.php',
+       url: '../include/login.inc.php',
        method: 'POST',
        data: {
            "user": unameField.value,
@@ -107,7 +107,7 @@ function logUser(){
 
 function getNewVerificationCode(){
     $.ajax({
-       url: './include/getNewVerificationCode.inc.php',
+       url: '../include/getNewVerificationCode.inc.php',
         method: 'POST',
         dataType: "JSON",
         data: {

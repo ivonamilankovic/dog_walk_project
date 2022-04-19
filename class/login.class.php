@@ -35,6 +35,7 @@ class Login extends Dbconn{
             } elseif ($checkPass === true) {
                 session_start();
                 $_SESSION['id'] = $user["id"];
+                $_SESSION['role'] = $user['role'];
             }
         }
         else{

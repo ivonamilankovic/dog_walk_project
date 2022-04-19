@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,40 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DogWalker - dashboard</title>
     <link rel="stylesheet" type="text/css" href="../css/editProfileStyle.css">
+    <link rel="stylesheet" href="../css/homeStyle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+<?php
+require_once '../page_parts/header.php';
 
-<!-- HEADER -->
-
-    <div class="fixed-top" style="background-color: #9c7a97">
-        <div class="d-flex container">
-            <div class="me-auto p-4"><a href="../home.php"> <img src="../images/pawwalks.svg" alt="PawWalks-logo" style="height: 60px"></a></div>
-            <div class="p-4 align-self-center">
-                <img src="https://picsum.photos/50/50" class="img-fluid rounded-circle m-2" alt="Profile picture">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Profile
-                    </button>
-                    <ul class="dropdown-menu">
-                        <form method="post">
-                            <li><a class="dropdown-item" id="btnListOfWalks" name="btnListOfWalks" href="./listOfWalks.php">List of Walks</a></li>
-                            <li><a class="dropdown-item" href="./editProfile.php">Edit Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Change password</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">LogOut</a></li>
-                        </form>
-                    </ul>
-                </div>
-            </div>
-            <div class="p-4 align-self-center">
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modal_signup">
-                    LogOut
-                </button>
-            </div>
-        </div>
-    </div>
-
+?>
     <!--Edit Profile-->
     <div class="container d-flex align-self-center" style="padding: 120px 0 0 0">
         <div class="row gutters">

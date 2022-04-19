@@ -6,8 +6,8 @@
         </button>
         <ul class="dropdown-menu">
             <form method="post">
-                <li><a class="dropdown-item" id="btnListOfWalks" name="btnListOfWalks" href="../walker_dashboard/listOfWalks.php">List of Walks</a></li>
-                <li><a class="dropdown-item" href="../walker_dashboard/editProfile.php">Edit Profile</a></li>
+                <li><a class="dropdown-item" id="btnListOfWalks" name="btnListOfWalks" href="#">List of Walks</a></li>
+                <li><a class="dropdown-item" href="../customer_dashboard/editCustomerProfile.php">Edit Profile</a></li>
                 <li><a class="dropdown-item" href="#">Change password</a></li>
             </form>
         </ul>

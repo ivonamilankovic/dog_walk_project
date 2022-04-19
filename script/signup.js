@@ -151,7 +151,7 @@ function getRoleOfUser(){
 
 function makeUser(){
     $.ajax({
-        url: './include/signup.inc.php',
+        url: '../include/signup.inc.php',
         method: 'POST',
         data: {
             "role": role,
@@ -192,7 +192,7 @@ function makeUser(){
 function checkVerificationCode(){
     if(codeField.value !== "" && codeField.value.length === 6){
         $.ajax({
-           url: './include/verify.inc.php',
+           url: '../include/verify.inc.php',
            method: 'POST',
            data: {
                "code" : codeField.value
