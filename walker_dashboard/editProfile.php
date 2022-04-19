@@ -6,39 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DogWalker - dashboard</title>
-    <link rel="stylesheet" type="text/css" href="css/editProfileStyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/editProfileStyle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-<!-- HEADER -->
-
-<div class="fixed-top" style="background-color: #9c7a97">
-    <div class="d-flex container">
-        <div class="me-auto p-4"><a href="./home.php"> <img src="images/pawwalks.svg" alt="PawWalks-logo" style="height: 60px"></a></div>
-        <div class="p-4 align-self-center">
-            <img src="https://picsum.photos/50/50" class="img-fluid rounded-circle m-2" alt="Profile picture">
-            <div class="btn-group">
-                <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Profile
-                </button>
-                <ul class="dropdown-menu">
-                    <form method="post">
-                        <li><a class="dropdown-item" id="btnListOfWalks" name="btnListOfWalks" href="./listOfWalks.php">List of Walks</a></li>
-                        <li><a class="dropdown-item" href="./editProfile.php">Edit Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Change password</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">LogOut</a></li>
-                    </form>
-                </ul>
-            </div>
-        </div>
-        <div class="p-4 align-self-center">
-            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modal_signup">
-                LogOut
-            </button>
-        </div>
-    </div>
-</div>
+<!--HEADER-->
+<?php
+require "./walker_header.php";
+?>
 
 
 <!--Edit Profile-->
@@ -110,7 +85,7 @@
                             <div class="form-group">
                                 <label for="filename">Choose imege: </label> <br>
                                 <img src="https://picsum.photos/100/100" class="img-fluid rounded-circle m-2 p-4" alt="Profile picture">
-                                <form action="/action_page.php">
+                                <form action="#">
                                     <input type="file" id="myFile" name="filename">
                                 </form>
                             </div>
