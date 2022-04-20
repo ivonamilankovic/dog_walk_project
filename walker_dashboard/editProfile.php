@@ -82,7 +82,7 @@ session_start();
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="biography">Biography:</label>
-                                <input class="form-control" id="biography" placeholder="Biography..." style="height: 200px">
+                                <textarea class="form-control" id="biography" placeholder="Biography..." style="height: 200px"></textarea>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
