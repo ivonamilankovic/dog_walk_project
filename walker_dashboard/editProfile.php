@@ -21,7 +21,7 @@ session_start();
 
 
 <!--Edit Profile-->
-<div class="container d-flex align-self-center" style="padding: 120px 0 0 0">
+<div class="container d-flex align-self-center" style="padding: 40px 0 0 0">
     <div class="row gutters">
         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
             <div class="card h-100">
@@ -71,9 +71,33 @@ session_start();
                             <div class="form-group">
                                 <label for="favbreed">Favourite dog breed</label>
                                 <!--get options from database-->
+                                <?php
+                                require ("../include/dbconfig.inc.php");
+                                require ("../class/dbconn.class.php");
+                                 //extends Dbconn {}
+                                $sql = "SELECT breed_name FROM breeds";
+                                try{
+                                    $dsn = "mysql:host=" . HOST . ";dbname=" . DB;
+                                    $conn = new PDO($dsn, USER, PASS);
+                                    $stmt=$conn->prepare($sql);
+                                    $stmt->execute();
+                                    $results = $stmt->fetchAll();
+                                }
+                                catch (Exception $ex){
+                                    echo($ex -> getMessage());
+                                }
+
+                                ?>
                                 <form action="#" method="post">
-                                    <select>
-                                        <option value="pudla">pudla</option>
+                                    <select style="width: 455px">
+                                        <option value="choose">--choose--</option>
+                                        <?php
+                                        foreach ($results as $output) {?>
+                                        <option value="<?php echo $output["breed_name"];?>"><?php echo $output["breed_name"];?></option>
+                                        <?php
+                                        }
+                                        ?>
+
                                     </select>
 
                                 </form>

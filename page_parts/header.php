@@ -1,6 +1,6 @@
 <!-- HEADER -->
 
-<div class="header fixed-top">
+<div class="header">
     <div class="container d-flex">
         <div class="me-auto p-4"><a href="../pages/home.php"> <img src="../images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
         <?php
@@ -19,7 +19,7 @@
 
     <div class="p-4 align-self-center">
         <button type="button" class="btn btn-outline-dark">
-            <a href="../include/logout.inc.php" style="color: black; text-decoration: none;"> Log out </a>
+            <a href="../include/logout.inc.php" style="color: #000000; text-decoration: none;"> Log out </a>
         </button>
     </div>
             <?php
