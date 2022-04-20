@@ -2,11 +2,12 @@
 
 class GetVerificationControler extends GetVerification{
 
-    private $email;
+    private $email, $columnName;
 
     //constructor
-    public function __construct($email){
+    public function __construct($email,$columnName){
         $this->email=$email;
+        $this->columnName = $columnName;
     }
 
     //function that sends code
@@ -23,7 +24,7 @@ class GetVerificationControler extends GetVerification{
         }
 
         //actual function that sends code
-        $this->sendVerificationCode($this->email);
+        $this->sendVerificationCode($this->email, $this->columnName);
 
         $array = array("verify" => "sent");
         echo json_encode($array);

@@ -5,9 +5,9 @@ include_once '../class/verify.class.php';
 include_once '../class/verifyControler.class.php';
 
 //get code from ajax
-$code = $_POST['code'];
+$code = $_POST['fpCode'];
 
-$column = "verification_code";
+$column = "forgot_password_code";
 
 //class that checks if code match
 $verify = new VerifyControler($code, $column);

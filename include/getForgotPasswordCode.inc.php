@@ -7,8 +7,9 @@ include_once '../class/getVerificationControler.class.php' ;
 //get data sent from ajax
 $email = $_POST['email'];
 
-$column = "verification_code";
+$column = "forgot_password_code";
 
 //class that send new verification code
 $verify = new GetVerificationControler($email,$column);
 $verify->getCode();
+

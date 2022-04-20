@@ -5,6 +5,15 @@ const passField = document.getElementById('pass');
 const loginBtn = document.getElementById('loginBtn');
 const errorMessage = document.getElementById('errorMessage');
 const goToSignup = document.getElementById('goToSignup');
+const forgotPasswordTxt = document.getElementById('forgotPass');
+const errorForgotPass = document.getElementById('errorForgotPass');
+const forgotPassCodeBtn = document.getElementById('forgotPassCodeBtn');
+const forgotPassField = document.getElementById('fp_code');
+const newPassBtn = document.getElementById('newPassBtn');
+const newPass1 = document.getElementById('newPass1');
+const newPass2 = document.getElementById('newPass2');
+const errorNewPass = document.getElementById('errorNewPass');
+
 
 //functions
 function showSuccess(input){
@@ -17,6 +26,7 @@ function showError(input, mess){
     input.classList.remove('is-valid');
     input.classList.add('is-invalid');
     errorMessage.innerText = mess.toString();
+    errorNewPass.innerText = mess.toString();
 }
 function checkInput(username, password){
     //checks if fields are empty
@@ -104,7 +114,6 @@ function logUser(){
         }
     });
 }
-
 function getNewVerificationCode(){
     $.ajax({
        url: '../include/getNewVerificationCode.inc.php',
@@ -115,7 +124,7 @@ function getNewVerificationCode(){
         },
         success: (response) => {
            console.log(response);
-           if(response.error === "stmtSendVerificationFailed"){
+           if(response.error === "stmtSendCodeFailed"){
                errorMessage.innerText = "Failed to send new code. Please try again.";
            }
            else if(response.verify === "sent"){
@@ -128,6 +137,69 @@ function getNewVerificationCode(){
         }
     });
 }
+function sendCodeForNewPassword(){
+    if(unameField.value !== "") {
+        $.ajax({
+            url: '../include/getForgotPasswordCode.inc.php',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                "email": unameField.value
+            },
+            success: (response) => {
+                console.log(response);
+                if (response.verify === "sent") {
+                    $("#modal_login").modal('hide');
+                    $("#modal_forgotPassCode").modal('show');
+                } else if (response.error === "stmtSendCodeFailed") {
+                    errorForgotPass.innerText = "Failed to send code. Please try again.";
+                }
+            },
+            error: (msg) => {
+                console.log(msg);
+            }
+
+        });
+    }
+    else {
+        errorMessage.innerText = "Enter your email to reset password.";
+    }
+}
+function checkForgotPassCode() {
+    if(forgotPassField.value !== "" && forgotPassField.value.length === 6){
+        $.ajax({
+            url: '../include/checkForgotPassCode.inc.php',
+            method: 'POST',
+            dataType: "JSON",
+            data: {
+                "fpCode" : forgotPassField.value
+            },
+            success: (response) => {
+                console.log(response);
+                if(response.verify === "done"){
+                    $("#modal_forgotPassCode").modal('hide');
+                    $("#modal_changePassword").modal('show');
+                    $("#errorNewPass").innerText = null;
+                }
+                else if(response.error === "stmtCheckCodeFailed" || response.error === "stmtGetVerifiedFailed"){
+                    errorForgotPass.innerText = "Failed to check code. Please try again.";
+                }
+            },
+            error: (msg) => {
+                console.log(msg);
+            }
+
+        });
+    }
+    else{
+        errorForgotPass.innerText = "Code must have 6 digits.";
+    }
+}
+
+function submitNewPassword(){
+
+}
+
 
 //eventListeners
 
@@ -145,3 +217,25 @@ goToSignup.addEventListener('click', ()=>{
 
 });
 
+passField.addEventListener("keyup", (event) => {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        loginBtn.click();
+    }
+});
+
+forgotPasswordTxt.addEventListener('click', () => {
+    errorForgotPass.innerText = null;
+    sendCodeForNewPassword();
+});
+
+forgotPassCodeBtn.addEventListener('click', () => {
+   checkForgotPassCode();
+});
+
+newPassBtn.addEventListener('click', () => {
+    checkPassLength(newPass1);
+    checkPassLength(newPass2);
+    checkPassMatch(newPass1,newPass2);
+    submitNewPassword();
+});

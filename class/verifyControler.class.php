@@ -2,11 +2,12 @@
 
 class VerifyControler extends Verify{
 
-    private $code;
+    private $code, $columnName;
 
     //constructor
-    public function __construct($code){
+    public function __construct($code, $columnName){
         $this->code = $code;
+        $this->columnName = $columnName;
     }
 
     //function that checks if code is right
@@ -22,7 +23,7 @@ class VerifyControler extends Verify{
             return;
         }
         //checks code match with the one in db
-        $this->codeMatch($this->code);
+        $this->codeMatch($this->code, $this->columnName);
 
         $array = array("verify" => "done");
         echo json_encode($array);

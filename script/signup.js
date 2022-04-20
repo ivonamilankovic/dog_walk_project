@@ -33,6 +33,7 @@ function showError1(input, mess){
     input.classList.remove('is-valid');
     input.classList.add('is-invalid');
     errorMsg.innerText = mess.toString();
+    errorNewPass.innerText = mess.toString();
 }
 
 function checkInputs(inputArray){

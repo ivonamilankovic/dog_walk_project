@@ -21,3 +21,8 @@
 #message{
     color: green;
 }
+#forgotPass{
+    color: #00f;
+    text-decoration: underline;
+    cursor: pointer;
+}

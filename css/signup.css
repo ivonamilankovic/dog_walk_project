@@ -30,6 +30,6 @@
 #postalCode{
     width: 400px;
 }
-#messageVerification{
+.messageVerification{
     color: green;
 }

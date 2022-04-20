@@ -92,6 +92,7 @@
                     <input class="form-control" id="pass" name="pass" type="password" placeholder="Password">
                     <label for="pass">Password</label>
                 </div>
+                <small id="forgotPass">Forgot password?</small>
                 <br>
                 <small id="errorMessage"></small>
                 <br>
@@ -202,6 +203,58 @@
                 <small id="errorVerification"></small>
                 <br>
                 <button type="submit" name="submit" id="verifyBtn" class="btn btn-primary m-auto mt-4">Verify</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal for forgotten password code-->
+<div class="modal fade" id="modal_forgotPassCode" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Is it really you?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body m-auto mt-4">
+                <h5 class="messageVerification">We sent you code on your mail address! Please enter it here.</h5>
+                <br>
+                <div class="form-floating">
+                    <input  class="form-control" id="fp_code" name="fp_code" type="text" placeholder="Forgotten Password Code">
+                    <label for="fp_code">Forgotten Password Code</label>
+                </div>
+                <br>
+                <small id="errorForgotPass"></small>
+                <br>
+                <button type="submit" name="submit" id="forgotPassCodeBtn" class="btn btn-primary m-auto mt-4">Verify</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal for changing password-->
+<div class="modal fade" id="modal_changePassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Change your password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body m-auto mt-4">
+                <h5 class="messageVerification">Now you can change your password!</h5>
+                <br>
+                <div class="form-floating">
+                    <input  class="form-control" id="newPass1" name="newPass1" type="text" placeholder="New Password">
+                    <label for="newPass1">New Password</label>
+                </div>
+                <div class="form-floating">
+                    <input  class="form-control" id="newPass2" name="newPass2" type="text" placeholder="Repeat Password">
+                    <label for="newPass2">Repeat Password</label>
+                </div>
+                <br>
+                <small id="errorNewPass"></small>
+                <br>
+                <button type="submit" name="submit" id="newPassBtn" class="btn btn-primary m-auto mt-4">Change</button>
             </div>
         </div>
     </div>
