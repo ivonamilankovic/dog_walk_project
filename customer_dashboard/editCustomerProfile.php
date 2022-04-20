@@ -44,10 +44,11 @@ require_once '../page_parts/header.php';
             <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
                 <div class="card h-100">
                     <div class="card-body">
-                        <div class="row gutters">
+                        <div class="row gutters" >
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <h6 class="mb-2 text-primary">Personal Details</h6>
                             </div>
+
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="fullName">First name</label>
@@ -66,34 +67,22 @@ require_once '../page_parts/header.php';
                                     <input type="text" class="form-control" id="phone" placeholder="Enter phone number">
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label for="favbreed">Favourite dog breed</label>
-                                    <!--get options from database-->
-                                    <form action="#" method="post">
-                                        <select>
-                                            <option value="pudla">pudla</option>
-                                        </select>
-
-                                    </form>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="filename">Choose imege: </label> <br>
+                                        <div class="form-group">
+                                            <img src="https://picsum.photos/100/100" class="img-fluid rounded-circle m-2" alt="Profile picture">
+                                        </div>
+                                        <form action="#" class="p-4">
+                                            <input type="file" id="myFile" name="filename">
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label for="biography">Biography:</label>
-                                    <input class="form-control" id="biography" placeholder="Biography..." style="height: 200px">
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label for="filename">Choose imege: </label> <br>
-                                    <img src="https://picsum.photos/100/100" class="img-fluid rounded-circle m-2 p-4" alt="Profile picture">
-                                    <form action="#">
-                                        <input type="file" id="myFile" name="filename">
-                                    </form>
-                                </div>
-                            </div>
                         </div>
+
+
+
+
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <h6 class="mt-3 mb-2 text-primary">Address</h6>
@@ -103,7 +92,7 @@ require_once '../page_parts/header.php';
                                     <label for="Street">Street</label>
                                     <input type="name" class="form-control" id="Street" placeholder="Enter Street">
                                 </div>
-                            </div>
+                            </div> <br>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="ciTy">City</label>

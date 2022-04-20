@@ -17,11 +17,13 @@
             }
         ?>
 
-    <div class="p-4 align-self-center">
-        <button type="button" class="btn btn-outline-dark">
-            <a href="../include/logout.inc.php" style="color: #000000; text-decoration: none;"> Log out </a>
-        </button>
-    </div>
+        <div class="p-4 align-self-center">
+            <a href="../include/logout.inc.php">
+                <button type="button" class="btn btn-outline-dark">
+                    Log out
+                </button>
+            </a>
+        </div>
             <?php
             }
 

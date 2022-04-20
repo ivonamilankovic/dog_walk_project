@@ -6,7 +6,8 @@
         </button>
         <ul class="dropdown-menu">
             <form method="post">
-                <li><a class="dropdown-item" id="btnListOfWalks" name="btnListOfWalks" href="#">List of Walks</a></li>
+                <li><a class="dropdown-item" id="btnListOfWalks" name="btnListOfWalks" href="../customer_dashboard/dogAccount.php">Dog account</a></li>
+                <li><a class="dropdown-item" id="btnListOfWalks" name="btnListOfWalks" href="../customer_dashboard/reservedWalks.php">Reserved walks</a></li>
                 <li><a class="dropdown-item" href="../customer_dashboard/editCustomerProfile.php">Edit Profile</a></li>
                 <li><a class="dropdown-item" href="#">Change password</a></li>
             </form>
