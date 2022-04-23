@@ -1,0 +1,4 @@
+sve lozinke za account-e su 123456
+
+u getVerification.class samo comment-ovati tudji mejl
+

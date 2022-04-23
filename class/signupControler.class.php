@@ -127,7 +127,7 @@ class SignupControler extends Signup {
 
     //function that checks if role is one of three possibilities: customer, walker, or admin
     private function validRole(){
-        if($this->role == "customer" || $this->role == "walker" || $this->role == "admin"){
+        if($this->role === "customer" || $this->role === "walker" || $this->role === "admin"){
             return true;
         }
         else{
@@ -135,9 +135,9 @@ class SignupControler extends Signup {
         }
     }
 
-    //function that checks if postal code has only 5 digits
+    //function that checks postal code
     private function validPostalCode(){
-        if(strlen($this->postalCode) !== 5){
+        if(strlen($this->postalCode) < 5 || strlen($this->postalCode) > 10){
             return false;
         }
         else{

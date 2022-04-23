@@ -8,7 +8,8 @@ include_once '../class/getVerificationControler.class.php' ;
 $email = $_POST['email'];
 
 $column = "verification_code";
+$type = "old";
 
 //class that send new verification code
-$verify = new GetVerificationControler($email,$column);
+$verify = new GetVerificationControler($email,$column, $type);
 $verify->getCode();

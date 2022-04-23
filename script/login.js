@@ -1,14 +1,17 @@
 'use strict';
 
+//login modal
 const unameField = document.getElementById('uname');
 const passField = document.getElementById('pass');
 const loginBtn = document.getElementById('loginBtn');
 const errorMessage = document.getElementById('errorMessage');
 const goToSignup = document.getElementById('goToSignup');
 const forgotPasswordTxt = document.getElementById('forgotPass');
+//enter forgot pass code modal
 const errorForgotPass = document.getElementById('errorForgotPass');
 const forgotPassCodeBtn = document.getElementById('forgotPassCodeBtn');
 const forgotPassField = document.getElementById('fp_code');
+//enter new pass modal
 const newPassBtn = document.getElementById('newPassBtn');
 const newPass1 = document.getElementById('newPass1');
 const newPass2 = document.getElementById('newPass2');
@@ -76,6 +79,7 @@ function checkPassLength(input){
 }
 
 function logUser(){
+    //sends data to log user on page
     $.ajax({
        url: '../include/login.inc.php',
        method: 'POST',
@@ -93,7 +97,7 @@ function logUser(){
                errorMessage.innerText = "User not found. Try again!";
            }
            else if(response.error === "passwordIncorrect"){
-               errorMessage.innerText = "Your password is incorrect. Try again!";
+               showError(passField, "Your password is incorrect. Try again!");
            }
            else if(response.error === "userNotVerified"){
                const element = document.createElement('span');
@@ -115,6 +119,7 @@ function logUser(){
     });
 }
 function getNewVerificationCode(){
+    //sends new verification code to persons email
     $.ajax({
        url: '../include/getNewVerificationCode.inc.php',
         method: 'POST',
@@ -124,8 +129,11 @@ function getNewVerificationCode(){
         },
         success: (response) => {
            console.log(response);
-           if(response.error === "stmtSendCodeFailed"){
+           if(response.error === "stmtSendCodeFailed" || response.error === "stmtFindUserEmailFailed"){
                errorMessage.innerText = "Failed to send new code. Please try again.";
+           }
+           else if(response.error === "notExistingAccount"){
+               errorMessage.innerText = "Account with that mail do not have profile.";
            }
            else if(response.verify === "sent"){
                $("#modal_login").modal('hide');
@@ -138,6 +146,7 @@ function getNewVerificationCode(){
     });
 }
 function sendCodeForNewPassword(){
+    //sends code on persons email for changing password
     if(unameField.value !== "") {
         $.ajax({
             url: '../include/getForgotPasswordCode.inc.php',
@@ -151,8 +160,10 @@ function sendCodeForNewPassword(){
                 if (response.verify === "sent") {
                     $("#modal_login").modal('hide');
                     $("#modal_forgotPassCode").modal('show');
-                } else if (response.error === "stmtSendCodeFailed") {
-                    errorForgotPass.innerText = "Failed to send code. Please try again.";
+                } else if (response.error === "stmtSendCodeFailed" || response.error === "stmtFindUserEmailFailed") {
+                    errorMessage.innerText = "Failed to send code. Please try again.";
+                } else if (response.error === "notExistingAccount"){
+                    errorMessage.innerText = "Account with that mail do not have profile.";
                 }
             },
             error: (msg) => {
@@ -166,9 +177,10 @@ function sendCodeForNewPassword(){
     }
 }
 function checkForgotPassCode() {
+    //checks if codes for changing passwords match
     if(forgotPassField.value !== "" && forgotPassField.value.length === 6){
         $.ajax({
-            url: '../include/checkForgotPassCode.inc.php',
+            url: '../include/verifyForgotPassCode.inc.php',
             method: 'POST',
             dataType: "JSON",
             data: {
@@ -195,21 +207,43 @@ function checkForgotPassCode() {
         errorForgotPass.innerText = "Code must have 6 digits.";
     }
 }
-
 function submitNewPassword(){
-
+    //changes password
+    $.ajax({
+        url: '../include/changePassword.inc.php',
+        method: 'POST',
+        dataType: "JSON",
+        data:{
+            "newPass1": newPass1.value,
+            "newPass2": newPass2.value,
+            "fpCode": forgotPassField.value
+        },
+        success: (response) => {
+            console.log(response);
+            if(response.newPassword === "set"){
+                $("#modal_changePassword").modal('hide');
+                $("#modal_login").modal('show');
+                $("#errorMessage").innerText = null;
+            }else if(response.error === "stmtSetNewPasswordFailed"){
+                errorNewPass.innerText = "Failed to set new password. Try again.";
+            }
+        },
+        error: (msg) => {
+            console.log(msg);
+        }
+    });
 }
 
-
 //eventListeners
-
 loginBtn.addEventListener('click',()=>{
+    //button for login on page
     errorMessage.innerText = null;
     checkInput(unameField,passField);
     logUser();
 });
 
 goToSignup.addEventListener('click', ()=>{
+    //switching modals from login to signup
     $("#errorMessage").innerText = null;
     $("#errorMsg").innerText = null;
     $("#modal_login").modal('hide');
@@ -218,6 +252,7 @@ goToSignup.addEventListener('click', ()=>{
 });
 
 passField.addEventListener("keyup", (event) => {
+    //if enter is pressed it will automatically trigger button for login
     if (event.keyCode === 13) {
         event.preventDefault();
         loginBtn.click();
@@ -225,15 +260,18 @@ passField.addEventListener("keyup", (event) => {
 });
 
 forgotPasswordTxt.addEventListener('click', () => {
+    //if forgot password link is clicked it will send code
     errorForgotPass.innerText = null;
     sendCodeForNewPassword();
 });
 
 forgotPassCodeBtn.addEventListener('click', () => {
+    //button to check if codes matches
    checkForgotPassCode();
 });
 
 newPassBtn.addEventListener('click', () => {
+    //button for changing password to something new
     checkPassLength(newPass1);
     checkPassLength(newPass2);
     checkPassMatch(newPass1,newPass2);

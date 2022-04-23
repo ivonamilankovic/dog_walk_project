@@ -1,5 +1,0 @@
-git add a \\stage area
-git commit -m "poruka"
-
-git push origin master
-git pull origin master

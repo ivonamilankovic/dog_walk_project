@@ -170,7 +170,7 @@
                     </div>
                     <br>
                     <div class="form-floating">
-                        <input class="form-control" id="postalCode" name="postalCode" type="number" placeholder="Postal Code" max="5" min="5" required>
+                        <input class="form-control" id="postalCode" name="postalCode" type="number" placeholder="Postal Code" minlength="5" maxlength="10" required>
                         <label for="postalCode">Postal Code</label>
                     </div>
                     <br>
@@ -195,7 +195,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body m-auto mt-4">
-                <h5 id="messageVerification">We sent you verification code on your mail address! Please enter it here.</h5>
+                <h5 class="messageVerification">We sent you verification code on your mail address! Please enter it here.</h5>
                 <br>
                 <div class="form-floating">
                     <input  class="form-control" id="ver_code" name="ver_code" type="text" placeholder="Verification Code">
@@ -246,11 +246,11 @@
                 <h5 class="messageVerification">Now you can change your password!</h5>
                 <br>
                 <div class="form-floating">
-                    <input  class="form-control" id="newPass1" name="newPass1" type="text" placeholder="New Password">
+                    <input  class="form-control" id="newPass1" name="newPass1" type="password" placeholder="New Password">
                     <label for="newPass1">New Password</label>
                 </div>
                 <div class="form-floating">
-                    <input  class="form-control" id="newPass2" name="newPass2" type="text" placeholder="Repeat Password">
+                    <input  class="form-control" id="newPass2" name="newPass2" type="password" placeholder="Repeat Password">
                     <label for="newPass2">Repeat Password</label>
                 </div>
                 <br>

@@ -2,7 +2,7 @@
 
 class Signup extends Dbconn {
 
-    private $addressID;//, $userID;
+    private $addressID;
 
     protected function createUser($role, $firstName, $lastName, $email, $password, $phone){
         //inserts users data in user table

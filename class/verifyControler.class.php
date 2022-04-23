@@ -38,6 +38,7 @@ class VerifyControler extends Verify{
             return true;
         }
     }
+    //function that checks if code is correct length
     private function codeLength(){
         if(strlen($this->code) !== 6){
             return false;

@@ -1,4 +1,4 @@
-#errorMessage{
+#errorMessage, #errorNewPass, #errorForgotPass{
     color: #f00;
 }
 #errorMessage span {

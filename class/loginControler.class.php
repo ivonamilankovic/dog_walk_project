@@ -13,9 +13,12 @@ class LoginControler extends Login {
     //function that log user on page
     public function LogUser(){
         if($this->emptyInput() === true){
-            $array = array(
-                "error" => "emptyInput"
-            );
+            $array = array("error" => "emptyInput");
+            echo json_encode($array);
+            return;
+        }
+        if($this->checkEmail() === false){
+            $array = array("error"=>"wrongEmail");
             echo json_encode($array);
             return;
         }
@@ -34,6 +37,15 @@ class LoginControler extends Login {
         }
         else{
             return false;
+        }
+    }
+    //function that checks if email is in correct format
+    private function checkEmail(){
+        if(!filter_var($this->username, FILTER_VALIDATE_EMAIL)){
+            return false;
+        }
+        else{
+            return true;
         }
     }
 }

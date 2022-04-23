@@ -134,14 +134,16 @@ function checkPhone(input){
     }
 }
 function checkPostalCode(input){
-    if(input.value.length !== 5){
-        showError1(input, "Postal code must have 5 digits!");
+    //checks length of postal code
+    if(input.value.length < 5 || input.value.length > 10){
+        showError1(input, "Postal code must have 5 to 10 digits!");
     }
     else{
         showSuccess1(input);
     }
 }
 function getRoleOfUser(){
+    //gets role of user by seeing which radiobutton is selected
     if(roleUser.checked){
         role = "customer";
     }
@@ -151,6 +153,7 @@ function getRoleOfUser(){
 }
 
 function makeUser(){
+    //send data to make new user in db
     $.ajax({
         url: '../include/signup.inc.php',
         method: 'POST',
@@ -189,11 +192,11 @@ function makeUser(){
     });
 
 }
-
 function checkVerificationCode(){
+    //checks if verification codes are matching
     if(codeField.value !== "" && codeField.value.length === 6){
         $.ajax({
-           url: '../include/verify.inc.php',
+           url: '../include/verifyVerificationCode.inc.php',
            method: 'POST',
            data: {
                "code" : codeField.value
@@ -222,8 +225,8 @@ function checkVerificationCode(){
 }
 
 //eventListeners
-
 signupBtn.addEventListener('click',()=>{
+    //button for signup
     errorMsg.innerText = null;
     checkInputs([firstNameField,lastNameField,emailField,pass1Field,pass2Field,phoneField,addressField, cityField, postalCodeField]);
     checkPassMatch(pass1Field,pass2Field);
@@ -232,6 +235,7 @@ signupBtn.addEventListener('click',()=>{
 });
 
 goToLogin.addEventListener('click', ()=>{
+    //switches modals from signup to login modal
     $("#errorMessage").innerText = null;
     $("#errorMsg").innerText = null;
     $("#modal_signup").modal('hide');
@@ -239,5 +243,6 @@ goToLogin.addEventListener('click', ()=>{
 });
 
 verifyBtn.addEventListener('click', () => {
+    //checks if verification code matches
    checkVerificationCode();
 });
