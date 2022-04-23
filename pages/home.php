@@ -23,12 +23,12 @@
     include_once '../page_parts/header.php';
 ?>
     <!--freedom for your dog-->
-    <div class="container mt-4 p-4">
-        <img src="../images/freedom.jpg" alt="dog">
+    <div class="container mt-4 p-4 mx-auto" >
+        <img src="../images/freedom.jpg" alt="dog" id="homePicture">
     </div>
     <!--how to use site-->
-    <div class="container border rounded-pill p-4 mt-4" style="background-color: rgba(142,187,119,0.76)">
-            <div class="d-flex justify-content-between align-items-center">
+    <div class="container border rounded-pill p-4 mt-4" style="background-color: #C4C4C4">
+            <div class="d-flex justify-content-between align-items-center site-journey">
                 <button type="button" class="btn btn-outline-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#modal_signup" style="width: 10rem; height:4rem; background-color: #866464"><b>Sign Up!</b></button>
                 <div><img src="../images/arrow.png" alt="arrow" style="width: 90px; height: 80px"></div>
                 <button id="findWalkers1" type="button" class="findWalkers btn btn-outline-dark rounded-pill" style="width: 10rem; height:4rem; background-color: #866464"><b>Find your dog walker!</b></button>
@@ -62,7 +62,7 @@
             <!--2.karta-->
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
-                    <div class="col-md-4 align-self-center p-2">
+                    <div class="col-md-4 align-self-center p-2 ">
                         <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
                     </div>
                     <div class="col-md-8">
@@ -208,13 +208,13 @@
     </div>
 
     <!--About us-->
-    <div class="container border rounded p-4 mb-4" style="background-color: rgba(142,187,119,0.68);">
-        <div class="d-flex align-items-start"><img src="../images/paw.svg" class="social"><h1 class="">Here when you need us</h1></div>
-        <h5 class="p-4">Whether you're looking for daily walks, planning a trip, stuck at work, or just want your best friend to have some company — we offer any day, anytime care.</h5>
-        <div class="d-flex align-items-start"><img src="../images/paw.svg" class="social"><h1>Safety is serious business</h1></div>
-        <h5 class="p-4">Your dog's safety is our top priority. Every Pet Caregiver passes an enhanced background check, our services are insured, and support is standing by around the clock.</h5>
-        <div class="d-flex align-items-start"><img src="../images/paw.svg" class="social"><h1>We've been around the block</h1></div>
-        <h5 class="p-4">Paw Walks! has a trusted record of experience with over 10M pet care services across 4,600 cities and counting. More than 150,000 Pet Caregivers nationwide are dog people, and it shows.</h5>
+    <div class="container border rounded p-4 mb-4" style="background-color: #C4C4C4; ">
+        <div class="d-flex align-items-start "><img src="../images/paw.svg" class="social"><h2>Here when you need us</h2></div>
+        <p class="p-4 about-text">Whether you're looking for daily walks, planning a trip, stuck at work, or just want your best friend to have some company — we offer any day, anytime care.</p>
+        <div class="d-flex align-items-start"><img src="../images/paw.svg" class="social"><h2>Safety is serious business</h2></div>
+        <p class="p-4 about-text">Your dog's safety is our top priority. Every Pet Caregiver passes an enhanced background check, our services are insured, and support is standing by around the clock.</p>
+        <div class="d-flex align-items-start"><img src="../images/paw.svg" class="social"><h2>We've been around the block</h2></div>
+        <p class="p-4 about-text">Paw Walks! has a trusted record of experience with over 10M pet care services across 4,600 cities and counting. More than 150,000 Pet Caregivers nationwide are dog people, and it shows.</p>
     </div>
 
 
@@ -222,24 +222,24 @@
     <!-- FOOTER -->
     <div class="footer">
         <div class="container d-flex justify-content-between p-4">
-            <img src="../images/pawwalks.svg" class="logo" alt="PawWalksLogo"/>
+            <img src="../images/pawwalks.svg" class="logo bottom-logo" alt="PawWalksLogo"/>
 
-                <div>
+                <div class="footer-part">
                     <h6><b>Company</b></h6>
-                    <a href="#" class="text-dark">About PawWalks</a> <br>
-                    <a href="#" class="text-dark">Blog</a>
+                    <a href="#" >About PawWalks</a> <br>
+                    <a href="#">Blog</a>
                 </div>
-                <div>
+                <div class="footer-part">
                     <h6><b>Support</b></h6>
-                    <a href="#" class="text-dark">Trust and Safety</a> <br>
-                    <a href="#" class="text-dark">Help Center & Safety</a> <br>
-                    <a href="#" class="text-dark">Community guidelines</a>
+                    <a href="#" >Trust and Safety</a> <br>
+                    <a href="#">Help Center & Safety</a> <br>
+                    <a href="#" >Community guidelines</a>
                 </div>
-            <div>
-                <h6><b>Apply</b></h6>
-                <a href="#" class="text-dark" data-bs-toggle="modal" data-bs-target="#modal_signup">Become a Dog Walker</a>
-            </div>
-                <div class="d-flex align-self-end">
+                <div class="footer-part">
+                    <h6><b>Apply</b></h6>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal_signup">Become a Dog Walker</a>
+                </div>
+                <div class="d-flex align-self-end soc-icons footer-part">
                     <a href="#" class="p-2"><img src="../images/facebook.png" alt="facebookLogo" class="social"></a>
                     <a href="#" class="p-2"><img src="../images/linkedin.png" alt="linkedinLogo" class="social"></a>
                     <a href="#" class="p-2"><img src="../images/instagram.png" alt="intagramLogo" class="social"></a>

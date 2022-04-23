@@ -31,12 +31,12 @@
             ?>
 
             <div class="p-3 align-self-center">
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modal_login">
+                <button type="button" class="btn btn-outline-dark header-btn" data-bs-toggle="modal" data-bs-target="#modal_login">
                     Log in
                 </button>
             </div>
             <div class="p-3 align-self-center">
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modal_signup">
+                <button type="button" class="btn btn-outline-dark header-btn" data-bs-toggle="modal" data-bs-target="#modal_signup">
                     Sign up
                 </button>
             </div>
@@ -94,11 +94,11 @@
                     <input class="form-control" id="pass" name="pass" type="password" placeholder="Password">
                     <label for="pass">Password</label>
                 </div>
-                <small id="forgotPass">Forgot password?</small>
+                <small id="forgotPass" class="text-primary" >Forgot password?</small>
                 <br>
                 <small id="errorMessage"></small>
                 <br>
-                <button type="submit" name="submit" id="loginBtn" class="btn btn-primary m-auto mt-4">Log in</button>
+                <button type="submit" name="submit" id="loginBtn" class="btn btn-primary m-auto mt-4" style=" background-color: #866464; border: black;">Log in</button>
             </div>
             <div class="modal-footer">
                 <br>
@@ -179,7 +179,7 @@
                 </div>
                 <small id="errorMsg"></small>
                 <br>
-                <button type="submit" name="submit" id="signupBtn" class="btn btn-primary m-auto mt-4">Register</button>
+                <button type="submit" name="submit" id="signupBtn" class="btn btn-primary m-auto mt-4" style="background-color: #866464; border: black;">Register</button>
             </div>
             <div class="modal-footer">
                 <p>Already have a profile? <span class="text-primary" id="goToLogin">Log in!</span></p>
@@ -206,7 +206,7 @@
                 <br>
                 <small id="errorVerification"></small>
                 <br>
-                <button type="submit" name="submit" id="verifyBtn" class="btn btn-primary m-auto mt-4">Verify</button>
+                <button type="submit" name="submit" id="verifyBtn" class="btn btn-primary m-auto mt-4" style="background-color: #866464; border: black;">Verify</button>
             </div>
         </div>
     </div>
@@ -230,7 +230,7 @@
                 <br>
                 <small id="errorForgotPass"></small>
                 <br>
-                <button type="submit" name="submit" id="forgotPassCodeBtn" class="btn btn-primary m-auto mt-4">Verify</button>
+                <button type="submit" name="submit" id="forgotPassCodeBtn" class="btn btn-primary m-auto mt-4" style=" background-color: #866464; border: black;">Verify</button>
             </div>
         </div>
     </div>
@@ -259,7 +259,7 @@
                 <br>
                 <small id="errorNewPass"></small>
                 <br>
-                <button type="submit" name="submit" id="newPassBtn" class="btn btn-primary m-auto mt-4">Change</button>
+                <button type="submit" name="submit" id="newPassBtn" class="btn btn-primary m-auto mt-4" style="background-color: #866464; border: black;">Change</button>
             </div>
         </div>
     </div>

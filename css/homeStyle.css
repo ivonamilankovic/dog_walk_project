@@ -5,6 +5,7 @@
 .logo{
     margin-top: 5px;
     height:65px;
+    text-align: center;
 }
 .btn{
     color: black;
@@ -15,13 +16,19 @@
     padding: 20px;
     margin: 30px 5px 20px 5px;
 }
-.footer{
-    background-color: #C4C4C4;
-}
 .footer a{
     text-decoration: none;
+    color: #000;
+ }
+.footer{
+    height: 40vh;
+    padding-top: 55px;
+    background-color: #0a0a0a;
+    color: #000;
 }
-
+.bottom-logo, .soc-icons, .footer div{
+    filter: invert(50%);
+}
 .social{
     padding: 10px;
     width: 50px;
@@ -69,10 +76,76 @@
 #goToLogin, #goToSignup{
     cursor: pointer;
 }
+#homePicture{
+    display: block;
+    margin: auto;
+}
+.about-text{
+    font-size: 1.25rem;
+}
 
 @media only screen and (max-width: 1400px) {
     .karte{
         display: none;
         flex-direction: column;
     }
+    #homePicture{
+        max-width: 1100px;
+    }
+}
+@media only screen and (max-width: 1200px){
+    #homePicture{
+        max-width: 800px;
+    }
+}
+@media only screen and (max-width: 960px){
+    #homePicture{
+        max-width: 600px;
+    }
+    .logo{
+        height: 55px;
+    }
+    .header-btn{
+        width: 82px;
+        font-size: 0.70rem;
+        font-weight: 600;
+    }
+    .karta h1{
+        font-size: 1.5rem;
+    }
+    .rounded-circle{
+        display: block;
+        margin: auto;
+    }
+    .card-title{
+        text-align: center;
+    }
+    .site-journey{
+        display: block !important;
+        text-align: center;
+    }
+    .site-journey img{
+        transform: rotate(-90deg);
+    }
+    .footer{
+        height: 65vh;
+        justify-content: space-evenly;
+     }
+    .footer-part{
+        margin: 15px;
+    }
+    .bottom-logo {
+        display: none;
+    }
+    .soc-icons{
+        display: block !important;
+    }
+
+}
+@media only screen and (max-width: 780px){
+    #homePicture{
+        max-width: 520px;
+    }
+
+
 }

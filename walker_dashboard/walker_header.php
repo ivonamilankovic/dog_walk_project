@@ -6,7 +6,7 @@
         </button>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="../walker_dashboard/listOfWalks.php">List of Walks</a></li>
-            <li><a class="dropdown-item" href="./editWalkerProfile.php">Edit Profile</a></li>
+            <li><a class="dropdown-item" href="../walker_dashboard/editWalkerProfile.php">Edit Profile</a></li>
             <li><a class="dropdown-item" href="../pages/changePassword.php">Change password</a></li>
         </ul>
     </div>

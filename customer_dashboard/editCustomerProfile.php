@@ -37,7 +37,7 @@ session_start();
 
 ?>
     <!--Edit Profile-->
-    <div class="container d-flex align-self-center" style="padding: 120px 0 0 0">
+    <div class="container d-flex align-self-center" style="padding: 50px 0">
         <div class="row gutters">
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                 <div class="card h-100">
