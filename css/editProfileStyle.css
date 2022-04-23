@@ -29,7 +29,7 @@ body {
     font-weight: 400;
     color: #9fa8b9;
 }
-.account-settings .about {
+.account-settings .about , .all-my-dogs{
     margin: 2rem 0 0 0;
     text-align: center;
 }

@@ -120,12 +120,14 @@
                 <!--Form for signup-->
                 <div id="chooseYourStatus" class=" m-auto mb-4">
                     <p class="mb-0">Please select your status:</p>
-                    <input type="radio" id="roleUser" name="user-type" checked/>
-                    <label for="roleUser">I'm a Regular user</label>
-                    <br>
-                    <input type="radio" id="roleWalker" name="user-type"/>
-                    <label for="roleWalker">I'm a Dog walker</label>
-                    <br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="user-type" id="roleUser" checked>
+                        <label class="form-check-label" for="roleUser">I'm a Regular user</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="user-type" id="roleWalker">
+                        <label class="form-check-label" for="roleWalker">I'm a Dog walker</label>
+                    </div>
                 </div>
                 <!--inputs for all the users-->
                 <div id="inputsForEveryone">
@@ -249,6 +251,7 @@
                     <input  class="form-control" id="newPass1" name="newPass1" type="password" placeholder="New Password">
                     <label for="newPass1">New Password</label>
                 </div>
+                <br>
                 <div class="form-floating">
                     <input  class="form-control" id="newPass2" name="newPass2" type="password" placeholder="Repeat Password">
                     <label for="newPass2">Repeat Password</label>

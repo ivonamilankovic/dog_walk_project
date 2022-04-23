@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2022 at 12:35 PM
+-- Generation Time: Apr 23, 2022 at 03:01 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -472,7 +472,7 @@ INSERT INTO `user` (`id`, `role`, `first_name`, `last_name`, `email`, `password`
 (59, 'walker', 'Misko', 'Lukic', 'luki@testmail.com', '$2y$10$Ys40O7/0BGFWxU/fHFV5oeyXjXIQjCSShZwS1rsOL8Rzne0TZP/MO', NULL, '7485620158', 59, NULL, 1, '765480', '2022-04-23 12:26:02', '2022-04-23 12:26:28'),
 (60, 'walker', 'Lenka', 'Petrovic', 'petrlenka@testmail.com', '$2y$10$i8a/G2lCZXo.UIO0Iz8KN.zBpbeN7KTpnR.IJZh2ea6U9ceR9We.a', NULL, '5621484518', 60, NULL, 1, '515233', '2022-04-23 12:28:18', '2022-04-23 12:28:35'),
 (61, 'customer', 'Milorad', 'Vasic', 'mili@testmail.com', '$2y$10$q4oY0hwtVcWlefUQogW3fOgrp/ON5Gfaiw6aWf5yMLLb9CZfWbPZS', NULL, '4856214856', 61, NULL, 1, '331298', '2022-04-23 12:29:31', '2022-04-23 12:29:53'),
-(62, 'customer', 'Vesna', 'Vesic', 'vv@testmail.com', '$2y$10$lX6EIvY8xfLsCno49GVi6uAd4sYo52.R42OFRKkhI5hnrMbq0uRcm', NULL, '7863245632', 62, NULL, 1, '594331', '2022-04-23 12:32:43', '2022-04-23 12:33:08');
+(62, 'customer', 'Vesna', 'Vesic', 'vv@testmail.com', '$2y$10$l8NVgP6hheyrPhkA.qwjEeykDJ/qc/LAYN0wJ3D6ZWD1MFkAn8iwi', NULL, '7863245632', 62, NULL, 1, '594331', '2022-04-23 12:32:43', '2022-04-23 14:57:29');
 
 -- --------------------------------------------------------
 
@@ -508,6 +508,13 @@ CREATE TABLE `walker_details` (
   `walker_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `walker_details`
+--
+
+INSERT INTO `walker_details` (`id`, `biography`, `is_active`, `walker_id`) VALUES
+(5, 'hello im masha', 0, 58);
+
 -- --------------------------------------------------------
 
 --
@@ -519,6 +526,13 @@ CREATE TABLE `walker_favourite_breeds` (
   `breed_id` int(10) UNSIGNED NOT NULL,
   `walker_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `walker_favourite_breeds`
+--
+
+INSERT INTO `walker_favourite_breeds` (`id`, `breed_id`, `walker_id`) VALUES
+(5, 27, 58);
 
 -- --------------------------------------------------------
 
@@ -637,7 +651,7 @@ ALTER TABLE `walk`
 -- AUTO_INCREMENT for table `walker_details`
 --
 ALTER TABLE `walker_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `walker_favourite_breeds`

@@ -5,11 +5,9 @@
             Profile
         </button>
         <ul class="dropdown-menu">
-            <form method="post">
-                <li><a class="dropdown-item" id="btnListOfWalks" name="btnListOfWalks" href="../walker_dashboard/listOfWalks.php">List of Walks</a></li>
-                <li><a class="dropdown-item" href="../walker_dashboard/editProfile.php">Edit Profile</a></li>
-                <li><a class="dropdown-item" href="#">Change password</a></li>
-            </form>
+            <li><a class="dropdown-item" href="../walker_dashboard/listOfWalks.php">List of Walks</a></li>
+            <li><a class="dropdown-item" href="./editWalkerProfile.php">Edit Profile</a></li>
+            <li><a class="dropdown-item" href="../pages/changePassword.php">Change password</a></li>
         </ul>
     </div>
 </div>

@@ -5,12 +5,12 @@ include_once '../class/setNewPassword.class.php';
 include_once '../class/setNewPasswordControler.class.php';
 
 //get data sent from ajax
-$newPass1 = $_POST['newPass1'];
-$newPass2 = $_POST['newPass2'];
-$fpCode = $_POST['fpCode'];
+$newPass1 = $_POST['password1'];
+$newPass2 = $_POST['password2'];
+$email = $_POST['email'];
 
-$column = "forgot_password_code";
+$column = "email";
 
 //class that sets new password
-$setPass = new SetNewPasswordControler($newPass1,$newPass2, $fpCode, $column);
+$setPass = new SetNewPasswordControler($newPass1,$newPass2, $email, $column);
 $setPass->setPassword();
