@@ -3,7 +3,8 @@
 }
 
 .logo{
-    height:60px;
+    margin-top: 5px;
+    height:65px;
 }
 .btn{
     color: black;
@@ -16,6 +17,9 @@
 }
 .footer{
     background-color: #C4C4C4;
+}
+.footer a{
+    text-decoration: none;
 }
 
 .social{

@@ -13,7 +13,8 @@
     <title>Paw Walks - Home Page</title>
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/signup.css">
-    <link rel="stylesheet" type="text/css" href="../css/homeStyle.css"/>
+    <link rel="stylesheet" href="../css/homeStyle.css">
+    <link rel="stylesheet" href="../css/scrollbar.css">
 </head>
 
 <body>
@@ -30,18 +31,19 @@
             <div class="d-flex justify-content-between align-items-center">
                 <button type="button" class="btn btn-outline-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#modal_signup" style="width: 10rem; height:4rem; background-color: #866464"><b>Sign Up!</b></button>
                 <div><img src="../images/arrow.png" alt="arrow" style="width: 90px; height: 80px"></div>
-                <button type="button" class=" btn btn-outline-dark rounded-pill" style="width: 10rem; height:4rem; background-color: #866464""><b>Find your dog walker!</b></button>
+                <button id="findWalkers1" type="button" class="findWalkers btn btn-outline-dark rounded-pill" style="width: 10rem; height:4rem; background-color: #866464"><b>Find your dog walker!</b></button>
                 <div><img src="../images/arrow.png" alt="arrow" style="width: 90px; height: 80px"></div>
-                <button type="button" class="btn btn-outline-dark rounded-pill" style="width: 10rem; height:4rem; background-color: #866464""><b>Enjoy your freedom!</b></button>
+                <button id="findWalkers2" type="button" class="findWalkers btn btn-outline-dark rounded-pill" style="width: 10rem; height:4rem; background-color: #866464"><b>Enjoy your freedom!</b></button>
             </div>
     </div>
 
-    <!--    BEST RATED DOG WALKERS-->
+
+<!--all walkers-->
 
     <div class="container d-flex justify-content-between karte">
         <div class="row border rounded karta d-flex justify-content-center fixed">
             <h1 class="d-flex justify-content-center">Best rated dog walkers</h1>
-
+            <!--    BEST RATED DOG WALKERS-->
             <!--1.karta-->
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
@@ -218,8 +220,8 @@
 
 
     <!-- FOOTER -->
-    <div class="footer"> <!--???fixed-bottom???-->
-        <div class="container  d-flex justify-content-between p-4">
+    <div class="footer">
+        <div class="container d-flex justify-content-between p-4">
             <img src="../images/pawwalks.svg" class="logo" alt="PawWalksLogo"/>
 
                 <div>
@@ -250,7 +252,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="../script/signup.js"></script>
     <script src="../script/login.js"></script>
-
+    <script src="../script/home.js"></script>
 
 </body>
 

@@ -2,7 +2,7 @@
 
 <div class="header">
     <div class="container d-flex">
-        <div class="me-auto p-4"><a href="../pages/home.php"> <img src="../images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
+        <div class="me-auto p-3"><a href="../pages/home.php"> <img src="../images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
         <?php
         if(isset($_SESSION['id'])){
 
@@ -17,7 +17,7 @@
             }
         ?>
 
-        <div class="p-4 align-self-center">
+        <div class="p-3 align-self-center">
             <a href="../include/logout.inc.php">
                 <button type="button" class="btn btn-outline-dark">
                     Log out
@@ -30,12 +30,12 @@
         else{
             ?>
 
-            <div class="p-4 align-self-center">
+            <div class="p-3 align-self-center">
                 <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modal_login">
                     Log in
                 </button>
             </div>
-            <div class="p-4 align-self-center">
+            <div class="p-3 align-self-center">
                 <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modal_signup">
                     Sign up
                 </button>
@@ -44,7 +44,7 @@
         }
         ?>
         <!--toggle search-->
-        <div class="p-4">
+        <div class="p-3">
             <nav class="navbar">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,14 +60,14 @@
 <!--active toggle search-->
 <div class=" d-flex justify-content-around">
     <div class="collapse" id="navbarToggleExternalContent">
-        <div class="p-4">
+        <div class="p-3">
             <div class="input-group rounded" style="width: 600px; height: 60px">
                 <input type="search" class="form-control rounded border border-dark" placeholder="Search for dog walkers..." aria-label="Search" aria-describedby="search-addon" />
                 <button type="button" class="btn btn-dark search" style="width: 120px">Search</button>
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-outline-dark" style="width: 600px">Show all dog walkers...</button>
+            <button type="button" class="findWalkers btn btn-outline-dark" style="width: 600px">Show all dog walkers...</button>
         </div>
     </div>
 </div>
