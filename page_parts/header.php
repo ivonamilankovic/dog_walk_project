@@ -144,17 +144,16 @@
                             <label for="email">Email</label>
                         </div>
                         <div class="form-floating col-lg-6">
+                            <input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone number" maxlength="10" minlength="10" required style="width: 300px">
+                            <label for="phone">Phone Number</label>
+                        </div>
+                        <div class="form-floating col-lg-6">
                             <input class="form-control" id="pass1" name="pass1" type="password" placeholder="Your password" minlength="6" maxlength="15" required style="width: 300px">
                             <label for="pass1">Your Password</label>
                         </div>
                         <div class="form-floating col-lg-6">
                             <input class="form-control" id="pass2" name="pass2" type="password" placeholder="Repeat password" minlength="6" maxlength="15" required style="width: 300px">
                             <label for="pass2">Repeat Password</label>
-                        </div>
-
-                        <div class="form-floating col-lg-6">
-                            <input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone number" maxlength="10" minlength="10" required style="width: 300px">
-                            <label for="phone">Phone Number</label>
                         </div>
                         <div class="form-floating col-lg-6">
                             <input class="form-control" id="address" name="address" type="text" placeholder="Address" required style="width: 300px">
