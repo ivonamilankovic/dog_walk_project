@@ -49,7 +49,7 @@ class GetVerification extends Dbconn
                 $txt = "Your code is: " . $code . "\nTo verify your email address, enter your code here: url";
             }
             //mail($to, $subject, $txt, 'From: sarababic01@yahoo.com');
-            mail($to, $subject, $txt, 'From: ivonamilankovic@yahoo.com');
+            mail($to, $subject, $txt, 'From: sarababic01@yahoo.com');
 
         }
     }

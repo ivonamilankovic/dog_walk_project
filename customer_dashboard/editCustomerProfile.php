@@ -44,14 +44,14 @@ session_start();
                     <div class="card-body">
                         <div class="account-settings">
                             <div class="user-profile">
-                                <div class="user-avatar">
+                                <div class="user-avatar d-flex justify-content-center">
                                     <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle m-2" alt="Profile picture">
                                 </div>
                                 <h5 class="user-email" style="font-weight: bold"><?php echo $userData['email'];?></h5>
                                 <h6 class="user-name"><?php echo $userData['first_name']." ".$userData['last_name'];?></h6>
                             </div>
                             <div class="all-my-dogs">
-                                <h5>All My Dogs</h5>
+                                <h5><b>My Dogs</b></h5>
                                 <p>Lily</p>
                                 <p>Pedro</p>
                                 <p>Lucy</p>
@@ -86,17 +86,18 @@ session_start();
                                     <input type="text" class="form-control" id="phone" placeholder="Enter phone number" value="<?php echo $userData['phone_number'];?>">
                                 </div>
                             </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center">
+                                <div class="form-group">
+                                    <label for="filename">Choose image: </label> <br>
                                     <div class="form-group">
-                                        <label for="filename">Choose image: </label> <br>
-                                        <div class="form-group">
-                                            <img src="https://picsum.photos/100/100" class="img-fluid rounded-circle m-2" alt="Profile picture">
-                                        </div>
-                                        <form action="#" class="p-4">
-                                            <input type="file" id="myFile" name="filename">
-                                        </form>
+                                        <img src="https://picsum.photos/100/100" class="img-fluid rounded-circle m-2" alt="Profile picture">
                                     </div>
+                                    <form action="#" class="p-4">
+                                        <input type="file" id="myFile" name="filename">
+                                    </form>
                                 </div>
+                            </div>
+
                         </div>
 
 

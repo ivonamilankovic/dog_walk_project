@@ -23,11 +23,10 @@
     include_once '../page_parts/header.php';
 ?>
     <!--freedom for your dog-->
-    <div class="container mt-4 p-4 mx-auto" >
-        <img src="../images/freedom.jpg" alt="dog" id="homePicture">
-    </div>
-    <!--how to use site-->
-    <div class="container border rounded-pill p-4 mt-4" style="background-color: #C4C4C4">
+    <div class="container mt-4 p-4" >
+        <img src="../images/freedom.jpg" alt="dog" class="img-fluid w-100" id="homePicture">
+        <!--how to use site-->
+        <div class="container-fluid border rounded-pill p-4 mt-4" style="background-color: #C4C4C4">
             <div class="d-flex justify-content-between align-items-center site-journey">
                 <button type="button" class="btn btn-outline-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#modal_signup" style="width: 10rem; height:4rem; background-color: #866464"><b>Sign Up!</b></button>
                 <div><img src="../images/arrow.png" alt="arrow" style="width: 90px; height: 80px"></div>
@@ -35,7 +34,9 @@
                 <div><img src="../images/arrow.png" alt="arrow" style="width: 90px; height: 80px"></div>
                 <button id="findWalkers2" type="button" class="findWalkers btn btn-outline-dark rounded-pill" style="width: 10rem; height:4rem; background-color: #866464"><b>Enjoy your freedom!</b></button>
             </div>
+        </div>
     </div>
+
 
 
 <!--all walkers-->
@@ -43,7 +44,7 @@
     <div class="container d-flex justify-content-between karte">
         <div class="row border rounded karta d-flex justify-content-center fixed">
             <h1 class="d-flex justify-content-center">Best rated dog walkers</h1>
-            <!--    BEST RATED DOG WALKERS-->
+            <!--BEST RATED DOG WALKERS-->
             <!--1.karta-->
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
@@ -108,6 +109,21 @@
                     </div>
                 </div>
                 <!--5.karta-->
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4 align-self-center p-2">
+                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Ime Prezime</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--6.karta-->
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
                         <div class="col-md-4 align-self-center p-2">
@@ -204,11 +220,26 @@
                         </div>
                     </div>
                 </div>
+                <!--6.karta-->
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4 align-self-center p-2">
+                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Ime Prezime</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
 
     <!--About us-->
-    <div class="container border rounded p-4 mb-4" style="background-color: #C4C4C4; ">
+    <div class="container-fluid border rounded p-4" style="background-color: #C4C4C4; ">
         <div class="d-flex align-items-start "><img src="../images/paw.svg" class="social"><h2>Here when you need us</h2></div>
         <p class="p-4 about-text">Whether you're looking for daily walks, planning a trip, stuck at work, or just want your best friend to have some company — we offer any day, anytime care.</p>
         <div class="d-flex align-items-start"><img src="../images/paw.svg" class="social"><h2>Safety is serious business</h2></div>
@@ -221,7 +252,7 @@
 
     <!-- FOOTER -->
     <div class="footer">
-        <div class="container d-flex justify-content-between p-4">
+        <div class="container-fluid d-flex justify-content-between p-4">
             <img src="../images/pawwalks.svg" class="logo bottom-logo" alt="PawWalksLogo"/>
 
                 <div class="footer-part">

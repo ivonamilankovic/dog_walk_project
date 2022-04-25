@@ -49,7 +49,7 @@ session_start();
                 <div class="card-body">
                     <div class="account-settings">
                         <div class="user-profile">
-                            <div class="user-avatar">
+                            <div class="user-avatar d-flex justify-content-center">
                                 <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle m-2" alt="Profile picture">
                             </div>
                             <h5 class="user-email" style="font-weight: bold"><?php echo $userData['email'];?></h5>
@@ -90,7 +90,7 @@ session_start();
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="favbreed">Favourite dog breed</label>
+                                <label for="favbreed">Favourite dog breed</label> <br>
                                 <!--get options from database-->
                                 <?php
 
@@ -107,7 +107,7 @@ session_start();
                                 }
 
                                 ?>
-                                <select style="width: 455px">
+                                <select class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <option value="choose" disabled selected>--choose--</option>
                                     <?php
                                         foreach ($results as $output) {?>

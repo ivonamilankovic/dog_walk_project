@@ -21,6 +21,9 @@ session_start();
 include_once '../page_parts/header.php';
 ?>
 
+<div class="text-right d-flex justify-content-center">
+    <button type="button" id="submit" name="submit" class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000"><a href="./createDog.php" style="color: #000000; text-decoration: none; font-weight: bold;">Add Dog to your profile...</a></button>
+</div>
 
 
 
