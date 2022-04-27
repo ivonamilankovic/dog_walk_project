@@ -86,15 +86,15 @@ session_start();
                                     <input type="text" class="form-control" id="phone" placeholder="Enter phone number" value="<?php echo $userData['phone_number'];?>">
                                 </div>
                             </div>
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="filename">Choose image: </label> <br>
-                                    <div class="form-group">
-                                        <img src="https://picsum.photos/100/100" class="img-fluid rounded-circle m-2" alt="Profile picture">
+                                    <div class="form-group d-flex justify-content-between align-items-center">
+                                        <img src="https://picsum.photos/60/60" class="img-fluid rounded-circle m-2" alt="Profile picture">
+                                        <form action="#">
+                                            <input type="file" id="myFile" name="filename">
+                                        </form>
                                     </div>
-                                    <form action="#" class="p-4">
-                                        <input type="file" id="myFile" name="filename">
-                                    </form>
                                 </div>
                             </div>
 
@@ -105,7 +105,7 @@ session_start();
 
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <h6 class="mt-3 mb-2 text-primary">Address</h6>
+                                <h6 class="mt-1 mb-2 text-primary">Address</h6>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">

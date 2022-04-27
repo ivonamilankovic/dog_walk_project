@@ -20,7 +20,6 @@ class Signup extends Dbconn {
 
     }
 
-
     protected function createAddress($address, $city, $postalCode)
     {
         //inserts address in address table
