@@ -263,8 +263,6 @@
                 <div class="footer-part">
                     <h6><b>Support</b></h6>
                     <a href="#" >Trust and Safety</a> <br>
-                    <a href="#">Help Center & Safety</a> <br>
-                    <a href="#" >Community guidelines</a>
                 </div>
                 <div class="footer-part">
                     <h6><b>Apply</b></h6>

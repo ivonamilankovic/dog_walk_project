@@ -53,7 +53,7 @@ require_once ("../include/dbconfig.inc.php");
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="phone">Age</label>
-                                <input type="text" class="form-control" id="phone" placeholder="Dogs age" value="">
+                                <input type="number" class="form-control" id="phone" placeholder="Dogs age" value="">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -86,19 +86,10 @@ require_once ("../include/dbconfig.inc.php");
                                 </select>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="form-group">
                                 <label for="biography">Notes:</label>
                                 <textarea class="form-control" id="biography" placeholder="About your Dog..." style="height: 200px"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="filename">Choose image: </label> <br>
-                                <img src="https://picsum.photos/100/100" class="img-fluid rounded-circle m-2 p-4" alt="Profile picture">
-                                <form action="#">
-                                    <input type="file" id="myFile" name="filename">
-                                </form>
                             </div>
                         </div>
                         <div class="row gutters">

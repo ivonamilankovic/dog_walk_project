@@ -116,63 +116,62 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Sign up</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body m-auto my-2 row gutters">
+            <div class="modal-body m-auto my-2 row gutters mx-auto">
                 <!--Form for signup-->
                 <div id="chooseYourStatus" class=" m-auto mb-4 row gutters d-flex justify-content-center">
-                    <p class="mb-1">Please select your status:</p>
-                    <div class="form-check col-lg-6">
+                    <p class="d-flex justify-content-center">Please select your status:</p>
+                    <div class="form-check col-lg-6 mx-auto" style="width: 200px">
                         <input class="form-check-input" type="radio" name="user-type" id="roleUser" checked>
                         <label class="form-check-label" for="roleUser">I'm a Regular user</label>
                     </div>
-                    <div class="form-check col-lg-6">
+                    <div class="form-check col-lg-6 mx-auto" style="width: 200px">
                         <input class="form-check-input" type="radio" name="user-type" id="roleWalker">
                         <label class="form-check-label" for="roleWalker">I'm a Dog walker</label>
                     </div>
                 </div>
                 <!--inputs for all the users-->
                 <div id="inputsForEveryone" class="row g-2 d-flex justify-content-center">
-                        <div class="form-floating col-lg-6">
+                        <div class="form-floating col-lg-6 mx-2" style="width: 300px">
                             <input class="form-control form-control-sm" id="firstName" name="fname" type="text" placeholder="First name" required style="width: 300px">
                             <label for="firstName">First Name</label>
                         </div>
-                        <div class="form-floating col-lg-6">
+                        <div class="form-floating col-lg-6 mx-2" style="width: 300px">
                             <input class="form-control form-control-lg" id="lastName" name="lname" type="text" placeholder="Last name" required style="width: 300px">
                             <label for="lastName">Last Name</label>
                         </div>
-                        <div class="form-floating col-lg-6">
+                        <div class="form-floating col-lg-6 mx-2" style="width: 300px">
                             <input class="form-control" id="email" name="email" type="email" placeholder="Email" required style="width: 300px">
                             <label for="email">Email</label>
                         </div>
-                        <div class="form-floating col-lg-6">
+                        <div class="form-floating col-lg-6 mx-2" style="width: 300px">
                             <input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone number" maxlength="10" minlength="10" required style="width: 300px">
                             <label for="phone">Phone Number</label>
                         </div>
-                        <div class="form-floating col-lg-6">
+                        <div class="form-floating col-lg-6 mx-2" style="width: 300px">
                             <input class="form-control" id="pass1" name="pass1" type="password" placeholder="Your password" minlength="6" maxlength="15" required style="width: 300px">
                             <label for="pass1">Your Password</label>
                         </div>
-                        <div class="form-floating col-lg-6">
+                        <div class="form-floating col-lg-6 mx-2" style="width: 300px">
                             <input class="form-control" id="pass2" name="pass2" type="password" placeholder="Repeat password" minlength="6" maxlength="15" required style="width: 300px">
                             <label for="pass2">Repeat Password</label>
                         </div>
-                        <div class="form-floating col-lg-6">
+                        <div class="form-floating col-lg-6 mx-2" style="width: 300px">
                             <input class="form-control" id="address" name="address" type="text" placeholder="Address" required style="width: 300px">
                             <label for="address">Address</label>
                         </div>
 
-                        <div class="form-floating col-lg-6">
+                        <div class="form-floating col-lg-6 mx-2" style="width: 300px">
                             <input class="form-control" id="city" name="city" type="text" placeholder="City" required style="width: 300px">
                             <label for="city">City</label>
                         </div>
-                        <div class="form-floating col-lg-6">
+                        <div class="form-floating col-lg-6 mx-2" style="width: 300px">
                             <input class="form-control" id="postalCode" name="postalCode" type="number" placeholder="Postal Code" minlength="5" maxlength="10" required style="width: 300px">
                             <label for="postalCode">Postal Code</label>
                         </div>
-                        <br>
                 </div>
                 <small id="errorMsg"></small>
                 <br>
-                <button type="submit" name="submit" id="signupBtn" class="btn btn-primary m-auto mt-4" style="background-color: #866464; border: black;">Register</button>
+                <button type="submit" name="submit" id="signupBtn" class="btn btn-primary m-auto mt-4 col-lg-8" style="background-color: #866464; border: black;">Register</button>
             </div>
             <div class="modal-footer">
                 <p>Already have a profile? <span class="text-primary" id="goToLogin">Log in!</span></p>

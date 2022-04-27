@@ -1,5 +1,5 @@
 <div class="p-4 align-self-center">
-    <img src="https://picsum.photos/50/50" class="img-fluid rounded-circle m-2" alt="Profile picture">
+    <img src="https://picsum.photos/50/50" class="img-fluid rounded-circle m-2 mx-auto" alt="Profile picture">
     <div class="btn-group">
         <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             Profile
