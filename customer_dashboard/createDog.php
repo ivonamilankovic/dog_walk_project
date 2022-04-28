@@ -30,76 +30,78 @@ require_once ("../include/dbconfig.inc.php");
         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
             <div class="card h-100">
                 <div class="card-body">
-                    <div class="row gutters">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <h6 class="mb-2 text-primary">Dog Details</h6>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="firstName">Dogs name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="Enter Dogs name" value="">
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="lastName">Dogs gender</label>
-                                <select class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <option value="choose" disabled selected>--choose--</option>
-                                    <option value="male">male</option>
-                                    <option value="female">female</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="phone">Age</label>
-                                <input type="number" class="form-control" id="phone" placeholder="Dogs age" value="">
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="favbreed">Dogs breed</label> <br>
-                                <!--get options from database-->
-                                <?php
-
-                                $sql = "SELECT breed_name FROM breeds";
-                                try{
-                                    $dsn = "mysql:host=" . HOST . ";dbname=" . DB;
-                                    $conn = new PDO($dsn, USER, PASS);
-                                    $stmt=$conn->prepare($sql);
-                                    $stmt->execute();
-                                    $results = $stmt->fetchAll();
-                                }
-                                catch (Exception $ex){
-                                    echo($ex -> getMessage());
-                                }
-
-                                ?>
-                                <select class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <option value="choose" disabled selected>--choose--</option>
-                                    <?php
-                                    foreach ($results as $output) {?>
-                                        <option value="<?php echo $output["breed_name"];?>"><?php echo $output["breed_name"];?></option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="form-group">
-                                <label for="biography">Notes:</label>
-                                <textarea class="form-control" id="biography" placeholder="About your Dog..." style="height: 200px"></textarea>
-                            </div>
-                        </div>
+                    <form action="../include/createDog.inc.php" method="post">
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="text-right d-flex justify-content-center">
-                                    <button type="button" id="submit" name="submit" class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Create a Dog</button>
+                                <h6 class="mb-2 text-primary">Dog Details</h6>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="dogName">Dogs name</label>
+                                    <input type="text" class="form-control" name="dogName" id="dogName" placeholder="Enter Dogs name" value="">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="gender">Dogs gender</label>
+                                    <select class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" name="dogGender">
+                                        <option value="choose" name="dogGender" disabled selected>--choose--</option>
+                                        <option value="m" name="dogGender">male</option>
+                                        <option value="f" name="dogGender">female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="dogAge">Age</label>
+                                    <input type="number" class="form-control" name="dogAge" id="age" placeholder="Dogs age" value="">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="dog_breed">Dogs breed</label> <br>
+                                    <!--get options from database-->
+                                    <?php
+
+                                    $sql = "SELECT breed_name, id FROM breeds";
+                                    try{
+                                        $dsn = "mysql:host=" . HOST . ";dbname=" . DB;
+                                        $conn = new PDO($dsn, USER, PASS);
+                                        $stmt=$conn->prepare($sql);
+                                        $stmt->execute();
+                                        $results = $stmt->fetchAll();
+                                    }
+                                    catch (Exception $ex){
+                                        echo($ex -> getMessage());
+                                    }
+
+                                    ?>
+                                    <select class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" name="breed_id">
+                                        <option value="choose" name="breed_id" disabled selected>--choose--</option>
+                                        <?php
+                                        foreach ($results as $output) {?>
+                                            <option value="<?php echo $output["id"];?>" name="breed_id"><?php echo $output["breed_name"];?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group">
+                                     <label for="notes">Notes:</label>
+                                    <textarea class="form-control" id="notes" name="notes" placeholder="About your Dog..." style="height: 200px"></textarea>
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="text-right d-flex justify-content-center">
+                                        <button type="submit" name="createDog" class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Create a Dog</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

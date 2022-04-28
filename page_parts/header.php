@@ -9,7 +9,6 @@
             if($_SESSION['role'] === "customer"){
 
                 require_once '../customer_dashboard/customer_header.php';
-
                 }
             elseif ($_SESSION['role'] === "walker"){
 
