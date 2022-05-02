@@ -58,7 +58,7 @@ class createDogControler extends Create{
 
     private function invalidAge(){
         $result = true;
-        if($this->dogAge < 0 && $this->dogAge >= 30){
+        if($this->dogAge < 0 || $this->dogAge >= 30){
             $result = false;
         }
         return $result;

@@ -1,6 +1,6 @@
 <!-- HEADER -->
 
-<div class="header">
+<div class="header sticky-top">
     <div class="container d-flex">
         <div class="me-auto p-3"><a href="../pages/home.php"> <img src="../images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
         <?php

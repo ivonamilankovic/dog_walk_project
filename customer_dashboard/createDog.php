@@ -44,7 +44,7 @@ require_once ("../include/dbconfig.inc.php");
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="gender">Dogs gender</label>
-                                    <select class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" name="dogGender">
+                                    <select class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" name="dogGender" id="dogGender">
                                         <option value="choose" name="dogGender" disabled selected>--choose--</option>
                                         <option value="m" name="dogGender">male</option>
                                         <option value="f" name="dogGender">female</option>
@@ -54,7 +54,7 @@ require_once ("../include/dbconfig.inc.php");
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="dogAge">Age</label>
-                                    <input type="number" class="form-control" name="dogAge" id="age" placeholder="Dogs age" value="">
+                                    <input type="number" class="form-control" name="dogAge" id="dogAge" placeholder="Dogs age" min="0" max="30" maxlength="2" value="">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -76,7 +76,7 @@ require_once ("../include/dbconfig.inc.php");
                                     }
 
                                     ?>
-                                    <select class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" name="breed_id">
+                                    <select class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" name="breed_id" id="dogBreed">
                                         <option value="choose" name="breed_id" disabled selected>--choose--</option>
                                         <?php
                                         foreach ($results as $output) {?>
@@ -93,10 +93,13 @@ require_once ("../include/dbconfig.inc.php");
                                     <textarea class="form-control" id="notes" name="notes" placeholder="About your Dog..." style="height: 200px"></textarea>
                                 </div>
                             </div>
+                            <br>
+                            <small id="errorDog" style="color: #ff0000"></small>
+                            <br>
                             <div class="row gutters">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="text-right d-flex justify-content-center">
-                                        <button type="submit" name="createDog" class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Create a Dog</button>
+                                        <button type="submit" name="createDog" id="createBtn" class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Create a Dog</button>
                                     </div>
                                 </div>
                             </div>

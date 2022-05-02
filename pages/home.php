@@ -23,7 +23,7 @@
     include_once '../page_parts/header.php';
 ?>
     <!--freedom for your dog-->
-    <div class="container mt-4 p-4" >
+    <div class="container mt-4 p-4">
         <img src="../images/freedom.jpg" alt="dog" class="img-fluid w-100" id="homePicture">
         <!--how to use site-->
         <div class="container-fluid border rounded-pill p-4 mt-4" style="background-color: #C4C4C4">
