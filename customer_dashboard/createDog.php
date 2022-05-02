@@ -54,7 +54,7 @@ require_once ("../include/dbconfig.inc.php");
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="dogAge">Age</label>
-                                    <input type="number" class="form-control" name="dogAge" id="dogAge" placeholder="Dogs age" min="0" max="30" maxlength="2" value="">
+                                    <input type="age" class="form-control" name="dogAge" id="dogAge" placeholder="Dogs age" min="0" max="30" maxlength="2" value="">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -90,7 +90,7 @@ require_once ("../include/dbconfig.inc.php");
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="form-group">
                                      <label for="notes">Notes:</label>
-                                    <textarea class="form-control" id="notes" name="notes" placeholder="About your Dog..." style="height: 200px"></textarea>
+                                    <textarea class="form-control" id="notes" name="notes" placeholder="About your Dog..." style="height: 200px" type="notes"></textarea>
                                 </div>
                             </div>
                             <br>
@@ -111,14 +111,11 @@ require_once ("../include/dbconfig.inc.php");
     </div>
 </div>
 
-
-
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="../script/home.js"></script>
+<script src="../script/createDog.js"></script>
 
 </body>
 </html>
