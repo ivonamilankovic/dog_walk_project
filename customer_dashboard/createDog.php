@@ -30,7 +30,7 @@ require_once ("../include/dbconfig.inc.php");
         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
             <div class="card h-100">
                 <div class="card-body">
-                    <form action="../include/createDog.inc.php" method="post">
+                    <form action="../include/createDog.inc.php" method="post" id="createDogForm">
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <h6 class="mb-2 text-primary">Dog Details</h6>

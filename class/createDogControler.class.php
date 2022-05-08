@@ -43,6 +43,8 @@ class createDogControler extends Create{
         //call the functions!!!!
         $this->setDog($this->dogName, $this->dogGender, $this->dogAge, $this->notes, $this->breed_id, $this->owner_id);
 
+        /*$array = array("createDog" => "done");
+        echo json_encode($array);*/
     }
 
     private function isEmpty($input){

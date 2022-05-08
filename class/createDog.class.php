@@ -6,6 +6,10 @@ class Create extends Dbconn{
         $pdoStatement = $pdo->prepare('INSERT INTO dog (dog_name, gender, age, notes, breed_id, owner_id) VALUES (?, ?, ?, ?, ?, ?);');
 
         if(!$pdoStatement->execute(array($dogName, $dogGender, $dogAge, $notes, $breed_id, $owner_id))){
+            //$pdoStatement = null;
+            /*$array = array("error" => "stmtCreateDogFail");
+            echo json_encode($array);
+            die();*/
             header("location: ../customer_dashboard/createDog.php?error=stmtfailed");
             exit();
         }
