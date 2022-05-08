@@ -21,6 +21,67 @@ session_start();
 include_once '../page_parts/header.php';
 ?>
 
+<!--cards-->
+<?php
+    require_once '../page_parts/header.php';
+    require_once ("../include/dbconfig.inc.php");
+
+    $sqlDog = "SELECT d.dog_name, d.gender, d.age, d.notes, d.breed_id, d.owner_id, b.breed_name FROM dog d
+                    INNER JOIN breeds b ON b.id = d.breed_id
+                    WHERE d.owner_id = ".$_SESSION['id'];
+
+    try{
+        $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+        $stmtDog=$conn->prepare($sqlDog);
+        $stmtDog->execute();
+        $dogData = $stmtDog->fetchAll(PDO::FETCH_ASSOC);
+
+        $rows = array();
+        while( $stmtDog->fetch(PDO::FETCH_ASSOC))
+            $rows[] = $stmtDog;
+    }
+    catch (Exception $ex){
+        echo($ex -> getMessage());
+    }
+
+
+?>
+<div class="container d-flex justify-content-around p-4">
+    <?php
+        foreach ($dogData as $dog){
+    ?>
+    <div class="border border-2 border-dark rounded p-4 text-center" style="background-color: rgba(191,172,170,0.75); border-color: #44310d;">
+            <div class="p-2"><b><?php echo $dog['dog_name']; ?></b></div>
+            <div class="p-2">Dogs breed: <?php echo $dog['breed_name']; ?></div>
+            <div class="p-2">Gender:
+                <?php
+                if($dog['gender'] === 'm'){
+                    echo "male";
+                }
+                elseif($dog['gender'] === "f"){
+                    echo "female";
+                }
+                ?>
+            </div>
+            <div class="p-2">Age: <?php echo $dog['age']; ?></div>
+            <div class="p-2"><?php echo $dog['notes']; ?></div>
+
+        <!--uraditi da radi delete dugme-->
+            <div class="p-2"><button class="btn btn-secondary btn-sm" style="background-color: #bfacd5">Delete Dog</button></div>
+    </div>
+    <?php
+        }
+    ?>
+</div>
+
+
+
+
+
+
+
+
+
 
 
 <div class="text-right d-flex justify-content-center">

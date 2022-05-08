@@ -24,11 +24,22 @@ session_start();
                     INNER JOIN address a ON a.id = u.address_id
                     WHERE u.id = ".$_SESSION['id'];
 
-    try{
+    $sqlDogNames = "SELECT dog_name, owner_id FROM dog
+                            WHERE owner_id = ".$_SESSION['id'];
+
+
+
+try{
         $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+        //for user
         $stmtUser=$conn->prepare($sqlUser);
         $stmtUser->execute();
         $userData = $stmtUser->fetch(PDO::FETCH_ASSOC);
+
+        //for dog names
+        $stmtDogName=$conn->prepare($sqlDogNames);
+        $stmtDogName->execute();
+        $dogNameData = $stmtDogName->fetchAll(PDO::FETCH_ASSOC);
     }
     catch (Exception $ex){
         echo($ex -> getMessage());
@@ -52,9 +63,15 @@ session_start();
                             </div>
                             <div class="all-my-dogs">
                                 <h5><b>My Dogs</b></h5>
-                                <p>Lily</p>
-                                <p>Pedro</p>
-                                <p>Lucy</p>
+                                <?php
+                                    foreach ($dogNameData as $dogData) {
+                                ?>
+                                        <!--sko nema psa, link do createDog-->
+                                <a href="dogAccount.php"><?php echo $dogData['dog_name'] ?></a> <br>
+
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
