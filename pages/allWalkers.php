@@ -10,7 +10,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Paw Walks - Home Page</title>
+    <title>Paw Walks - All Walkers</title>
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/signup.css">
     <link rel="stylesheet" href="../css/homeStyle.css">
@@ -23,10 +23,16 @@ session_start();
 include_once '../page_parts/header.php';
 include_once '../include/dbconfig.inc.php';
 
-$sqlWalkers = "SELECT u.first_name, u.last_name, u.picture, wd.biography FROM user u
+if(isset($_GET['name'])){
+    $sqlWalkers = "SELECT u.id, u.first_name, u.last_name, u.picture, wd.biography FROM user u
+                INNER JOIN walker_details wd ON wd.walker_id = u.id
+                WHERE  u.role='walker' AND (u.first_name LIKE '%".$_GET['name']."%' OR u.last_name LIKE '%".$_GET['name']."%' );";
+}else {
+
+    $sqlWalkers = "SELECT u.id, u.first_name, u.last_name, u.picture, wd.biography FROM user u
                 INNER JOIN walker_details wd ON wd.walker_id = u.id
                 WHERE  u.role='walker'";
-
+}
 try{
     $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
     $stmtWalker=$conn->prepare($sqlWalkers);
@@ -37,6 +43,7 @@ catch (Exception $ex){
     echo($ex -> getMessage());
 }
 
+if(!empty($walkers)){
 
 foreach ($walkers as $walker){
     ?>
@@ -48,11 +55,16 @@ foreach ($walkers as $walker){
                     <div class="col-md-4 align-self-center p-2">
                         <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 my-3">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $walker['first_name']." ".$walker['last_name'];?></h5>
                             <p class="card-text"><?php echo $walker['biography'];?></p>
-                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
+                            <span class="d-flex justify-content-between align-middle">
+                                <small class="text-muted">
+                                    <a id="viewWalker" href="./oneWalker.php?walker=<?php echo $walker['id'];?>">View</a>
+                                </small>
+                                <small>Ocena</small>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -61,6 +73,12 @@ foreach ($walkers as $walker){
     </div>
 
     <?php
+}
+}
+else{
+    ?>
+    <h5 class="mt-5 text-center">No results.</h5>
+<?php
 }
 ?>
 

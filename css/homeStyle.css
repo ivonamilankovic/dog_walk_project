@@ -83,6 +83,15 @@
     font-size: 1.25rem;
 }
 
+#viewWalker{
+    background-color: #9c7a97;
+    border: 1px solid black;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+}
+
 @media only screen and (max-width: 1400px) {
     .karte{
         display: none;

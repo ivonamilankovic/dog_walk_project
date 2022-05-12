@@ -251,7 +251,7 @@
 
 
     <!-- FOOTER -->
-    <div class="footer">
+    <div class="footer py-5">
         <div class="container-fluid d-flex justify-content-between p-4">
             <img src="../images/pawwalks.svg" class="logo bottom-logo" alt="PawWalksLogo"/>
 

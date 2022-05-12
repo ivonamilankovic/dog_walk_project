@@ -47,7 +47,7 @@
             <nav class="navbar">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <a href="#"><img src="../images/loupe.png" alt="search" class="social"></a>
+                        <img src="../images/loupe.png" alt="search" class="social">
                     </button>
                 </div>
             </nav>
@@ -61,8 +61,8 @@
     <div class="collapse" id="navbarToggleExternalContent">
         <div class="p-3">
             <div class="input-group rounded" style="width: 600px; height: 60px">
-                <input type="search" class="form-control rounded border border-dark" placeholder="Search for dog walkers..." aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" class="btn btn-dark search" style="width: 120px">Search</button>
+                <input id="searchInput" type="search" class="form-control rounded border border-dark" placeholder="Search for dog walkers..." aria-label="Search" aria-describedby="search-addon" />
+                <button id="searchWalkersBtn" type="button" class="btn btn-dark search" style="width: 120px">Search</button>
             </div>
         </div>
         <div class="d-flex justify-content-center">
