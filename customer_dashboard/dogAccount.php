@@ -46,13 +46,19 @@ include_once '../page_parts/header.php';
 
 
 ?>
-<div class="container d-flex justify-content-around p-4">
+<div class="container row p-4 m-auto">
     <?php
         foreach ($dogData as $dog){
     ?>
-    <div class="border border-2 border-dark rounded p-4 text-center" style="background-color: rgba(191,172,170,0.75); border-color: #44310d;">
+    <div class="col-4 mx-auto my-3 border border-2 border-dark rounded p-4 text-center" style="background-color: rgba(191,172,170,0.75); border-color: #44310d; width: 380px; height: 380px">
             <div class="p-2"><b><?php echo $dog['dog_name']; ?></b></div>
-            <div class="p-2">Dogs breed: <?php echo $dog['breed_name']; ?></div>
+            <div class="p-2">Dogs breed: <?php
+                if(strlen($dog['breed_name']) >20) {
+                    echo substr($dog['breed_name'], 0, 20)."...";
+                }
+                else {
+                    echo $dog['breed_name'];
+                }?></div>
             <div class="p-2">Gender:
                 <?php
                 if($dog['gender'] === 'm'){
@@ -64,7 +70,7 @@ include_once '../page_parts/header.php';
                 ?>
             </div>
             <div class="p-2">Age: <?php echo $dog['age']; ?></div>
-            <div class="p-2"><?php echo $dog['notes']; ?></div>
+            <div class="p-2">About: <?php echo $dog['notes']; ?></div>
 
         <!--uraditi da radi delete dugme-->
             <div class="p-2"><button class="btn btn-secondary btn-sm" style="background-color: #bfacd5">Delete Dog</button></div>
@@ -85,7 +91,7 @@ include_once '../page_parts/header.php';
 
 
 <div class="text-right d-flex justify-content-center">
-    <button type="button" id="submit" name="submit" class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000"><a href="./createDog.php" style="color: #000000; text-decoration: none; font-weight: bold;">Add Dog to your profile...</a></button>
+    <a href="./createDog.php" style="color: #000000; text-decoration: none; font-weight: bold;"><button class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000">Add Dog to your profile...</button></a>
 </div>
 
 

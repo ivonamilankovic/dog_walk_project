@@ -183,7 +183,7 @@ function makeUser(){
             //if everything is fine it opens modal to enter verification code
             else if(response.signup === "done" || response.verify === "sent"){
                 $("#modal_signup").modal('hide');
-                $("#modal_verification").modal('show');
+                alert("We sent you link on email to verify yourself.");
             }
         },
         error: (msg) => {
@@ -191,37 +191,6 @@ function makeUser(){
         }
     });
 
-}
-function checkVerificationCode(){
-    //checks if verification codes are matching
-    if(codeField.value !== "" && codeField.value.length === 6){
-        $.ajax({
-           url: '../include/verifyVerificationCode.inc.php',
-           method: 'POST',
-           data: {
-               "code" : codeField.value
-           },
-           dataType: "JSON",
-           success: (response) =>{
-               console.log(response);
-               if (response.verify === "done"){
-                   $("#modal_verification").modal('hide');
-                   $("#modal_login").modal('show');
-                   message.innerText = "You have successfully signed up . Now you can log in!";
-               }
-               else if(response.error === "stmtCheckCodeFailed" || response.error === "stmtGetVerifiedFailed"){
-                   errorVerify.innerText = "Failed to verify account. Please try again.";
-               }
-           },
-            error: (msg) => {
-               console.log(msg);
-            }
-        });
-    }
-    else{
-        showError1(codeField, "");
-        errorVerify.innerText = "Verification code must be 6 digits!";
-    }
 }
 
 //eventListeners
@@ -242,7 +211,3 @@ goToLogin.addEventListener('click', ()=>{
     $("#modal_login").modal('show');
 });
 
-verifyBtn.addEventListener('click', () => {
-    //checks if verification code matches
-   checkVerificationCode();
-});

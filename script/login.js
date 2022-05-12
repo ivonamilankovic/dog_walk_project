@@ -7,14 +7,6 @@ const loginBtn = document.getElementById('loginBtn');
 const errorMessage = document.getElementById('errorMessage');
 const goToSignup = document.getElementById('goToSignup');
 const forgotPasswordTxt = document.getElementById('forgotPass');
-//enter forgot pass code modal
-const errorForgotPass = document.getElementById('errorForgotPass');
-const forgotPassCodeBtn = document.getElementById('forgotPassCodeBtn');
-const forgotPassField = document.getElementById('fp_code');
-//enter new pass modal
-const newPassBtn = document.getElementById('newPassBtn');
-const newPass1 = document.getElementById('newPass1');
-const newPass2 = document.getElementById('newPass2');
 const errorNewPass = document.getElementById('errorNewPass');
 
 
@@ -159,7 +151,7 @@ function sendCodeForNewPassword(){
                 console.log(response);
                 if (response.verify === "sent") {
                     $("#modal_login").modal('hide');
-                    $("#modal_forgotPassCode").modal('show');
+                    alert("We have sent you link on email to verify yourself!");
                 } else if (response.error === "stmtSendCodeFailed" || response.error === "stmtFindUserEmailFailed") {
                     errorMessage.innerText = "Failed to send code. Please try again.";
                 } else if (response.error === "notExistingAccount"){
@@ -175,63 +167,6 @@ function sendCodeForNewPassword(){
     else {
         errorMessage.innerText = "Enter your email to reset password.";
     }
-}
-function checkForgotPassCode() {
-    //checks if codes for changing passwords match
-    if(forgotPassField.value !== "" && forgotPassField.value.length === 6){
-        $.ajax({
-            url: '../include/verifyForgotPassCode.inc.php',
-            method: 'POST',
-            dataType: "JSON",
-            data: {
-                "fpCode" : forgotPassField.value
-            },
-            success: (response) => {
-                console.log(response);
-                if(response.verify === "done"){
-                    $("#modal_forgotPassCode").modal('hide');
-                    $("#modal_changePassword").modal('show');
-                    $("#errorNewPass").innerText = null;
-                }
-                else if(response.error === "stmtCheckCodeFailed" || response.error === "stmtGetVerifiedFailed"){
-                    errorForgotPass.innerText = "Failed to check code. Please try again.";
-                }
-            },
-            error: (msg) => {
-                console.log(msg);
-            }
-
-        });
-    }
-    else{
-        errorForgotPass.innerText = "Code must have 6 digits.";
-    }
-}
-function submitNewPassword(){
-    //changes password
-    $.ajax({
-        url: '../include/changePassword.inc.php',
-        method: 'POST',
-        dataType: "JSON",
-        data:{
-            "newPass1": newPass1.value,
-            "newPass2": newPass2.value,
-            "fpCode": forgotPassField.value
-        },
-        success: (response) => {
-            console.log(response);
-            if(response.newPassword === "set"){
-                $("#modal_changePassword").modal('hide');
-                $("#modal_login").modal('show');
-                $("#errorMessage").innerText = null;
-            }else if(response.error === "stmtSetNewPasswordFailed"){
-                errorNewPass.innerText = "Failed to set new password. Try again.";
-            }
-        },
-        error: (msg) => {
-            console.log(msg);
-        }
-    });
 }
 
 //eventListeners
@@ -261,19 +196,6 @@ passField.addEventListener("keyup", (event) => {
 
 forgotPasswordTxt.addEventListener('click', () => {
     //if forgot password link is clicked it will send code
-    errorForgotPass.innerText = null;
+   // errorForgotPass.innerText = null;
     sendCodeForNewPassword();
-});
-
-forgotPassCodeBtn.addEventListener('click', () => {
-    //button to check if codes matches
-   checkForgotPassCode();
-});
-
-newPassBtn.addEventListener('click', () => {
-    //button for changing password to something new
-    checkPassLength(newPass1);
-    checkPassLength(newPass2);
-    checkPassMatch(newPass1,newPass2);
-    submitNewPassword();
 });

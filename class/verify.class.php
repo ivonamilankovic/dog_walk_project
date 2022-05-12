@@ -19,10 +19,10 @@ class Verify extends Dbconn{
             $sql2 = "";
 
             if($columnName === "verification_code") {
-                $sql2 = "UPDATE user SET is_verified = 1, updated_at = ? WHERE id = ?";
+                $sql2 = "UPDATE user SET is_verified = 1, updated_at = ?, verification_code = null WHERE id = ?";
             }
             elseif($columnName === "forgot_password_code"){
-                $sql2 = "UPDATE user SET updated_at = ? WHERE id = ?";
+                $sql2 = "UPDATE user SET updated_at = ?, forgot_password_code = null WHERE id = ?";
             }
 
             $stmt2 = $this->setConnection()->prepare($sql2);

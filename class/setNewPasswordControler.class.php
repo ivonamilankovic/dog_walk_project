@@ -2,14 +2,13 @@
 
 class SetNewPasswordControler extends SetNewPassword{
 
-    private $newPass1, $newPass2, $value, $column;
+    private $newPass1, $newPass2, $email;
 
     //constructor
-    public function __construct($newPass1,$newPass2,$value, $column){
+    public function __construct($newPass1,$newPass2,$email){
         $this->newPass1 = $newPass1;
         $this->newPass2 = $newPass2;
-        $this->value = $value;
-        $this->column = $column;
+        $this->email = $email;
     }
 
     //function that checks password and code
@@ -27,7 +26,7 @@ class SetNewPasswordControler extends SetNewPassword{
         }
 
         //sets new password in db
-        $this->makeNewPassword($this->newPass1, $this->value, $this->column);
+        $this->makeNewPassword($this->newPass1, $this->email);
 
         $array = array( "newPassword" => "set");
         echo json_encode($array);

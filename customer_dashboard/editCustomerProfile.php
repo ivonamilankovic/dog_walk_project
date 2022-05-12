@@ -61,13 +61,14 @@ try{
                                 <h5 class="user-email" style="font-weight: bold"><?php echo $userData['email'];?></h5>
                                 <h6 class="user-name"><?php echo $userData['first_name']." ".$userData['last_name'];?></h6>
                             </div>
+                            <hr>
                             <div class="all-my-dogs">
                                 <h5><b>My Dogs</b></h5>
                                 <?php
                                     foreach ($dogNameData as $dogData) {
                                 ?>
                                         <!--sko nema psa, link do createDog-->
-                                <a href="dogAccount.php"><?php echo $dogData['dog_name'] ?></a> <br>
+                                <a href="dogAccount.php" style="text-decoration: none; color: black;"><?php echo $dogData['dog_name'] ?></a> <br>
 
                                 <?php
                                 }

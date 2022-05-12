@@ -46,7 +46,7 @@ function checkPassMatch(pass1,pass2){
 function changePassword(){
     //changes password
     $.ajax({
-        url: '../include/changePasswordFromProfile.inc.php',
+        url: '../include/changePassword.inc.php',
         method: 'POST',
         dataType: "JSON",
         data:{
@@ -58,6 +58,7 @@ function changePassword(){
             console.log(response);
             if(response.newPassword === "set"){
                 $("#newErrorMessage").innerText = null;
+                alert("You have succesfully changed your password!");
             }else if(response.error === "stmtSetNewPasswordFailed"){
                 errorNewPass.innerText = "Failed to set new password. Try again.";
             }

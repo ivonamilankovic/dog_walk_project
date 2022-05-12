@@ -43,13 +43,13 @@ class GetVerification extends Dbconn
             $txt = "";
             if ($columnName === "forgot_password_code") {
                 $subject = "Paw walks sends you code to reset your password!";
-                $txt = "Your code is: " . $code . ".\nTo reset your password, enter your code here: url ";
+                $txt = "Your code is: " . $code . ".\nTo reset your password, enter your code here: http://localhost/dog_walk/pages/active.php?code=".$code."&col=fp";
             } elseif ($columnName === "verification_code") {
                 $subject = "Welcome to Paw Walks!";
-                $txt = "Your code is: " . $code . "\nTo verify your email address, enter your code here: url";
+                $txt = "Your code is: " . $code . "\nTo verify your email address, enter your code here: http://localhost/dog_walk/pages/active.php?code=".$code."&col=ver";
             }
+            mail($to, $subject, $txt, 'From: ivonamilankovic@yahoo.com');
             //mail($to, $subject, $txt, 'From: sarababic01@yahoo.com');
-            mail($to, $subject, $txt, 'From: sarababic01@yahoo.com');
 
         }
     }

@@ -52,12 +52,12 @@ session_start();
                             <div class="user-avatar d-flex justify-content-center">
                                 <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle m-2" alt="Profile picture">
                             </div>
-                            <h5 class="user-email" style="font-weight: bold"><?php echo $userData['email'];?></h5>
-                            <h6 class="user-name"><?php echo $userData['first_name']. " " . $userData['last_name'];?></h6>
+                            <h5 class="user-email" style="font-weight: bold"><?php if(!empty($userData['email'])) echo $userData['email'];?></h5>
+                            <h6 class="user-name"><?php if(!empty($userData['first_name']) && !empty($userData['last_name'])) echo $userData['first_name']. " " . $userData['last_name'];?></h6>
                         </div>
                         <div class="about">
                             <h5>About</h5>
-                            <p><?php echo $userData['biography'];?></p>
+                            <p><?php if(!empty($userData['biography'])) echo $userData['biography'];?></p>
                         </div>
                     </div>
                 </div>
@@ -73,19 +73,19 @@ session_start();
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="firstName">First name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" value="<?php echo $userData['first_name'];?>">
+                                <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" value="<?php if(!empty($userData['first_name'])) echo $userData['first_name'];?>">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="lastName">Last name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" value="<?php echo $userData['last_name'];?>">
+                                <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" value="<?php if(!empty($userData['last_name'])) echo $userData['last_name'];?>">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input type="text" class="form-control" id="phone" placeholder="Enter phone number" value="<?php echo $userData['phone_number'];?>">
+                                <input type="text" class="form-control" id="phone" placeholder="Enter phone number" value="<?php if(!empty($userData['phone_number'])) echo $userData['phone_number'];?>">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -121,7 +121,7 @@ session_start();
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="biography">Biography:</label>
-                                <textarea class="form-control" id="biography" placeholder="Biography..." style="height: 200px"><?php echo $userData['biography'];?> </textarea>
+                                <textarea class="form-control" id="biography" placeholder="Biography..." style="height: 200px"><?php if(!empty($userData['biography'])) echo $userData['biography'];?> </textarea>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -141,19 +141,19 @@ session_start();
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="Street">Street</label>
-                                <input type="text" class="form-control" id="Street" placeholder="Enter Street" value="<?php echo $userData['street'];?>">
+                                <input type="text" class="form-control" id="Street" placeholder="Enter Street" value="<?php if(!empty($userData['street'])) echo $userData['street'];?>">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="city">City</label>
-                                <input type="text" class="form-control" id="city" placeholder="Enter City" value="<?php echo $userData['city'];?>">
+                                <input type="text" class="form-control" id="city" placeholder="Enter City" value="<?php if(!empty($userData['city'])) echo $userData['city'];?>">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="zip">Postal Code</label>
-                                <input type="text" class="form-control" id="zip" placeholder="Postal Code" value="<?php echo $userData['postal_code'];?>">
+                                <input type="text" class="form-control" id="zip" placeholder="Postal Code" value="<?php if(!empty($userData['postal_code'])) echo $userData['postal_code'];?>">
                             </div>
                         </div>
                     </div>
