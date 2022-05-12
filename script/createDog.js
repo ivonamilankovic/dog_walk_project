@@ -10,77 +10,65 @@ const notes = document.getElementById('notes');
 
 const createBtn = document.getElementById('createBtn');
 
-//functions
-function showSuccess2(input){
-    //shows green border on input
-    input.classList.remove('is-invalid');
-    input.classList.add('is-valid');
-}
-function showError2(input, mess){
-    //shows red border on input and error message
-    input.classList.remove('is-valid');
-    input.classList.add('is-invalid');
-    errorDog.innerText = mess.toString();
-}
 
 //check functions
-function chkName(input){
+function chkName(input,errOutput){
     if (input.value === "") {
-        showError2(input, "Fill out all fields!");
+        showError(input, "Fill out all fields!",errOutput);
         return false;
     } else {
-        showSuccess2(input);
+        showSuccess(input);
         return true;
     }
 }
 
-function chkNotes(input){
+function chkNotes(input,errOutput){
     if(input.value === ""){
-        showError2(input, "Fill out all fields!");
+        showError(input, "Fill out all fields!",errOutput);
         return false;
     }else{
-        showSuccess2(input);
+        showSuccess(input);
         return true;
     }
 }
 
-function checkAge(input){
+function checkAge(input,errOutput){
     if(input.value === ""){
-        showError2(input, "Fill out all fields!");
+        showError(input, "Fill out all fields!",errOutput);
         return false;
     }
     else if(isNaN(input.value)){
-        showError2(input, "You should type in a number!");
+        showError(input, "You should type in a number!",errOutput);
         return false;
     }
     else if(input.value < 0 || input.value >=30){
-        showError2(input, "Age should be between 0 and 30.");
+        showError(input, "Age should be between 0 and 30.",errOutput);
         return false;
     }
     else{
-        showSuccess2(input);
+        showSuccess(input);
         return true;
     }
 }
 
-function chkGender(input){
+function chkGender(input,errOutput){
     if(input.value === "choose"){
-        showError2(input, "Choose dog gender!");
+        showError(input, "Choose dog gender!",errOutput);
         return false;
     }
     else{
-        showSuccess2(input);
+        showSuccess(input,errOutput);
         return true;
     }
 }
 
-function chkBreed(input){
+function chkBreed(input,errOutput){
     if(input.value === "choose"){
-        showError2(input, "Choose dog breed!");
+        showError(input, "Choose dog breed!",errOutput);
         return false;
     }
     else{
-        showSuccess2(input);
+        showSuccess(input);
         return true;
     }
 }
@@ -93,27 +81,27 @@ createBtn.addEventListener('click',function(event){
 
     //button for signup
     errorDog.innerText = null;
-    let x = chkName(dogName);
+    let x = chkName(dogName,errorDog);
     if(!x){
         formIsOk = false;
     }
 
-    let y = checkAge(dogAge);
+    let y = checkAge(dogAge,errorDog);
     if(!y){
         formIsOk = false;
     }
 
-    let z = chkNotes(notes);
+    let z = chkNotes(notes,errorDog);
     if(!z){
         formIsOk = false;
     }
 
-    let j = chkGender(dogGender);
+    let j = chkGender(dogGender,errorDog);
     if(!j){
         formIsOk = false;
     }
 
-    let i = chkBreed(dogBreed);
+    let i = chkBreed(dogBreed,errorDog);
     if(!i){
         formIsOk = false;
     }

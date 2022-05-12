@@ -58,19 +58,25 @@ try{
                                 <div class="user-avatar d-flex justify-content-center">
                                     <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle m-2" alt="Profile picture">
                                 </div>
-                                <h5 class="user-email" style="font-weight: bold"><?php echo $userData['email'];?></h5>
+                                <h5 id="emailCust" class="user-email" style="font-weight: bold"><?php echo $userData['email'];?></h5>
                                 <h6 class="user-name"><?php echo $userData['first_name']." ".$userData['last_name'];?></h6>
                             </div>
                             <hr>
                             <div class="all-my-dogs">
                                 <h5><b>My Dogs</b></h5>
                                 <?php
+                                if(!empty($dogNameData)){
+
                                     foreach ($dogNameData as $dogData) {
                                 ?>
-                                        <!--sko nema psa, link do createDog-->
-                                <a href="dogAccount.php" style="text-decoration: none; color: black;"><?php echo $dogData['dog_name'] ?></a> <br>
+                                <a href="./dogAccount.php" style="text-decoration: none; color: black;"><?php echo $dogData['dog_name'] ?></a> <br>
 
                                 <?php
+                                    }
+                                }else{
+                                    ?>
+                                    <a href="./createDog.php">Here you can insert all your dogs!</a><br>
+                                    <?php
                                 }
                                 ?>
                             </div>
@@ -89,19 +95,19 @@ try{
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="firstName">First name</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" value="<?php echo $userData['first_name'];?>">
+                                    <input type="text" class="form-control" id="firstNameCust" placeholder="Enter your first name" value="<?php echo $userData['first_name'];?>">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="lastName">Last name</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" value="<?php echo $userData['last_name'];?>">
+                                    <input type="text" class="form-control" id="lastNameCust" placeholder="Enter your last name" value="<?php echo $userData['last_name'];?>">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input type="text" class="form-control" id="phone" placeholder="Enter phone number" value="<?php echo $userData['phone_number'];?>">
+                                    <input type="text" class="form-control" id="phoneCust" placeholder="Enter phone number" value="<?php echo $userData['phone_number'];?>">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -110,7 +116,7 @@ try{
                                     <div class="form-group d-flex justify-content-between align-items-center">
                                         <img src="https://picsum.photos/60/60" class="img-fluid rounded-circle m-2" alt="Profile picture">
                                         <form action="#">
-                                            <input type="file" id="myFile" name="filename">
+                                            <input type="file" id="myFileCust" name="filename">
                                         </form>
                                     </div>
                                 </div>
@@ -128,26 +134,29 @@ try{
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="Street">Street</label>
-                                    <input type="text" class="form-control" id="Street" placeholder="Enter Street" value="<?php echo $userData['street'];?>">
+                                    <input type="text" class="form-control" id="streetCust" placeholder="Enter Street" value="<?php echo $userData['street'];?>">
                                 </div>
                             </div> <br>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="city">City</label>
-                                    <input type="text" class="form-control" id="city" placeholder="Enter City" value="<?php echo $userData['city'];?>">
+                                    <input type="text" class="form-control" id="cityCust" placeholder="Enter City" value="<?php echo $userData['city'];?>">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="zip">Postal Code</label>
-                                    <input type="text" class="form-control" id="zip" placeholder="Postal Code" value="<?php echo $userData['postal_code'];?>">
+                                    <input type="text" class="form-control" id="zipCust" placeholder="Postal Code" value="<?php echo $userData['postal_code'];?>">
                                 </div>
                             </div>
                         </div>
+                        <br>
+                        <small id="errorUpdateCust" style="color: red;"></small>
+                        <br>
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="text-right d-flex justify-content-center">
-                                    <button type="button" id="submit" name="submit" class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Update</button>
+                                    <button id="updateCustomer" class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Update</button>
                                 </div>
                             </div>
                         </div>
@@ -161,7 +170,8 @@ try{
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="../script/home.js"></script>
-
+<script src="../script/editCustomerProfile.js"></script>
+<script src="../script/checkFunctions.js"></script>
 </body>
 </html>
 

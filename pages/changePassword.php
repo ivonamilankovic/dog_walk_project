@@ -94,6 +94,7 @@ session_start();
         <script src="../script/home.js"></script>
         <script src="../script/login.js"></script>
         <script src="../script/signup.js"></script>
+    <script src="../script/checkFunctions.js"></script>
 
     </body>
 </html>

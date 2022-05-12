@@ -71,5 +71,6 @@ foreach ($walkers as $walker){
 <script src="../script/signup.js"></script>
 <script src="../script/login.js"></script>
 <script src="../script/home.js"></script>
+<script src="../script/checkFunctions.js"></script>
 </body>
 </html>

@@ -43,7 +43,7 @@
 
     <div class="container d-flex justify-content-between karte">
         <div class="row border rounded karta d-flex justify-content-center fixed">
-            <h1 class="d-flex justify-content-center">Best rated dog walkers</h1>
+            <h1 class="d-flex justify-content-center">Best rated walkers</h1>
             <!--BEST RATED DOG WALKERS-->
             <!--1.karta-->
             <div class="card mb-3" style="max-width: 540px;">
@@ -142,7 +142,7 @@
 
     <!--    MOST ACTIVE DOG WALKERS -->
         <div class="row border rounded karta d-flex justify-content-center fixed">
-            <h1 class="d-flex justify-content-center">Most active dog walkers</h1>
+            <h1 class="d-flex justify-content-center">Most active walkers</h1>
             <!--1.karta-->
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
@@ -239,12 +239,12 @@
     </div>
 
     <!--About us-->
-    <div class="container-fluid border rounded p-4" style="background-color: #C4C4C4; ">
-        <div class="d-flex align-items-start "><img src="../images/paw.svg" class="social"><h2>Here when you need us</h2></div>
+    <div class="container-fluid border rounded p-4" style="background-color: #C4C4C4; text-align: center;">
+        <div class="d-inline"><img src="../images/paw.svg" class="social"><h2>Here when you need us</h2></div>
         <p class="p-4 about-text">Whether you're looking for daily walks, planning a trip, stuck at work, or just want your best friend to have some company — we offer any day, anytime care.</p>
-        <div class="d-flex align-items-start"><img src="../images/paw.svg" class="social"><h2>Safety is serious business</h2></div>
+        <div class="d-inline"><img src="../images/paw.svg" class="social"><h2>Safety is serious business</h2></div>
         <p class="p-4 about-text">Your dog's safety is our top priority. Every Pet Caregiver passes an enhanced background check, our services are insured, and support is standing by around the clock.</p>
-        <div class="d-flex align-items-start"><img src="../images/paw.svg" class="social"><h2>We've been around the block</h2></div>
+        <div class="d-inline"><img src="../images/paw.svg" class="social"><h2>We've been around the block</h2></div>
         <p class="p-4 about-text">Paw Walks! has a trusted record of experience with over 10M pet care services across 4,600 cities and counting. More than 150,000 Pet Caregivers nationwide are dog people, and it shows.</p>
     </div>
 
@@ -282,6 +282,7 @@
     <script src="../script/signup.js"></script>
     <script src="../script/login.js"></script>
     <script src="../script/home.js"></script>
+    <script src="../script/checkFunctions.js"></script>
 
 </body>
 
