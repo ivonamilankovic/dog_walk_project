@@ -66,13 +66,48 @@ catch (Exception $ex){
                                 <p style="text-indent: 30px;"><?php echo $walker['breed_name'];?></p>
                             </div>
                             <br>
-                            <button id="openReservation" class="ms-5 my-3" style="background-color: #9c7a97;border: 1px solid black; border-radius: 5px; display: block;">Click here to reserve walk with me!</button>
-                            <div id="reservationDiv" style="display: none;">
-                                <!--Part for reservation-->
-
-                            </div>
+                            <button id="openReservation" class="ms-5 my-3" style="padding: 12px; background-color: #9c7a97;border: 1px solid black; border-radius: 5px; display: block;">Click here to reserve walk with me!</button>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="row g-0 mt-4" id="reservationDiv" style="display: none;">
+                <div class="col-10 mx-auto">
+                    <!--Part for reservation-->
+                    <div class="form-floating">
+                        <input  class="form-control" id="dateOfWalk" name="dateOfWalk" type="datetime-local" placeholder="Date of walk">
+                        <label for="dateOfWalk">Date of Walk</label>
+                    </div>
+                    <br>
+                    <select class="form-select" style="height: 72px;">
+                        <option disabled selected>hh:mm</option>
+                        <option value="00:15">00:15</option>
+                        <option value="00:30">00:30</option>
+                        <option value="00:45">00:45</option>
+                        <option value="01:00">01:00</option>
+                        <option value="01:15">01:15</option>
+                        <option value="01:30">01:30</option>
+                        <option value="01:45">01:45</option>
+                        <option value="02:00">02:00</option>
+                    </select>
+                    <br>
+                    <div class="form-floating">
+                        <input  class="form-control" id="startLoc" name="startLoc" type="text" placeholder="Start Location">
+                        <label for="startLoc">Start Location</label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <input  class="form-control" id="endLoc" name="endLoc" type="text" placeholder="End Location">
+                        <label for="endLoc">End Location</label>
+                    </div>
+
+                    <br>
+                    <div class="form-floating">
+                        <textarea class="form-control" id="details" style="height: 160px;" placeholder="Enter some extra info if you want..."></textarea>
+                        <label for="details">Enter some extra info if you want...</label>
+                    </div>
+                    <br>
+                    <button id="submitReservation" class="mx-auto my-3" style="padding: 12px; background-color: #9c7a97;border: 1px solid black; border-radius: 5px; display: block;">Submit my reservation</button>
                 </div>
             </div>
         </div>

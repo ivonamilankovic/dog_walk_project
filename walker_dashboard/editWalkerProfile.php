@@ -131,7 +131,7 @@ session_start();
                                 }
 
                                 ?>
-                                <select id="favBreedSelect" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <select id="favBreedSelect" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 form-select">
                                     <option value="choose" disabled selected>--choose--</option>
                                     <?php
                                         foreach ($results as $output) {?>
