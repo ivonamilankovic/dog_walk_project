@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2022 at 03:01 PM
+-- Generation Time: May 13, 2022 at 12:31 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -42,9 +42,11 @@ INSERT INTO `address` (`id`, `street`, `city`, `postal_code`) VALUES
 (39, 'ulica vts', 'subotica', 24000),
 (58, 'Ulica kesten 2', 'Novi sad', 400423),
 (59, 'Prizrenska 98', 'Beograd', 111115),
-(60, 'Zagrebacka 15', 'Subotica', 240015),
+(60, 'Kralja Kraljica 15', 'Subotica', 240015),
 (61, 'Rajhla Ferenca 5', 'Subotica', 24001),
-(62, 'Orlovska ulica 55', 'Novi sad', 400652);
+(62, 'Orlovska ulica 55', 'Novi sad', 400652),
+(63, 'cfvgbj', 'hcfbhj', 45698),
+(64, 'ulica 12345', 'zsxdgfchvjbn', 41532);
 
 -- --------------------------------------------------------
 
@@ -439,6 +441,17 @@ CREATE TABLE `dog` (
   `owner_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `dog`
+--
+
+INSERT INTO `dog` (`id`, `dog_name`, `gender`, `age`, `notes`, `breed_id`, `owner_id`) VALUES
+(4, 'misko', 'm', 8, 'slatkis mali', 72, 64),
+(5, 'mika', 'f', 3, 'mika moja lepa', 81, 64),
+(6, 'lala', 'f', 1, 'lalicica', 90, 64),
+(7, 'nin', 'm', 5, 'ninikaaaaaaaaaaaaa', 254, 64),
+(8, 'rari', 'm', 6, 'mrgud', 22, 64);
+
 -- --------------------------------------------------------
 
 --
@@ -467,12 +480,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `role`, `first_name`, `last_name`, `email`, `password`, `forgot_password_code`, `phone_number`, `address_id`, `picture`, `is_verified`, `verification_code`, `created_at`, `updated_at`) VALUES
-(39, 'admin', 'ivi', 'ivona', 'ivonamilankovic@gmail.com', '$2y$10$n2fzpj/gEDHueyoSNKByYuDU0TFHZmmquGk5B0dtYR60vLSldP/MO', '812964', '2145369870', 39, NULL, 1, '745427', '2022-04-16 16:38:48', '2022-04-23 11:57:06'),
-(58, 'walker', 'Masa', 'Macic', 'masa@testmail.com', '$2y$10$zLu5wdCLape9lXr0RtWWmutiACJs0m9NKrjnnVImLD4xetTmpHtry', NULL, '1235456248', 58, NULL, 1, '190375', '2022-04-23 12:24:23', '2022-04-23 12:24:54'),
+(58, 'walker', 'Masa', 'Macic', 'masa@testmail.com', '$2y$10$zLu5wdCLape9lXr0RtWWmutiACJs0m9NKrjnnVImLD4xetTmpHtry', NULL, '1235456248', 58, '', 1, '190375', '2022-04-23 12:24:23', '2022-05-12 22:20:42'),
 (59, 'walker', 'Misko', 'Lukic', 'luki@testmail.com', '$2y$10$Ys40O7/0BGFWxU/fHFV5oeyXjXIQjCSShZwS1rsOL8Rzne0TZP/MO', NULL, '7485620158', 59, NULL, 1, '765480', '2022-04-23 12:26:02', '2022-04-23 12:26:28'),
-(60, 'walker', 'Lenka', 'Petrovic', 'petrlenka@testmail.com', '$2y$10$i8a/G2lCZXo.UIO0Iz8KN.zBpbeN7KTpnR.IJZh2ea6U9ceR9We.a', NULL, '5621484518', 60, NULL, 1, '515233', '2022-04-23 12:28:18', '2022-04-23 12:28:35'),
+(60, 'walker', 'Lenkica', 'Petrovic', 'petrlenka@testmail.com', '$2y$10$i8a/G2lCZXo.UIO0Iz8KN.zBpbeN7KTpnR.IJZh2ea6U9ceR9We.a', NULL, '9999451899', 60, '', 1, '515233', '2022-04-23 12:28:18', '2022-05-12 21:25:40'),
 (61, 'customer', 'Milorad', 'Vasic', 'mili@testmail.com', '$2y$10$q4oY0hwtVcWlefUQogW3fOgrp/ON5Gfaiw6aWf5yMLLb9CZfWbPZS', NULL, '4856214856', 61, NULL, 1, '331298', '2022-04-23 12:29:31', '2022-04-23 12:29:53'),
-(62, 'customer', 'Vesna', 'Vesic', 'vv@testmail.com', '$2y$10$l8NVgP6hheyrPhkA.qwjEeykDJ/qc/LAYN0wJ3D6ZWD1MFkAn8iwi', NULL, '7863245632', 62, NULL, 1, '594331', '2022-04-23 12:32:43', '2022-04-23 14:57:29');
+(62, 'customer', 'Vesna', 'Vesic', 'vv@testmail.com', '$2y$10$l8NVgP6hheyrPhkA.qwjEeykDJ/qc/LAYN0wJ3D6ZWD1MFkAn8iwi', NULL, '7863245632', 62, NULL, 1, '594331', '2022-04-23 12:32:43', '2022-04-23 14:57:29'),
+(64, 'customer', 'ivi', 'ivi', 'ivonamilankovic@gmail.com', '$2y$10$0K4epRie2rguJK.tn0rubOA79LlyEFnvVw6Sqkp7Edmy6nCGpRhea', NULL, '1236547899', 64, '', 1, '630333', '2022-05-12 12:40:17', '2022-05-13 12:24:48');
 
 -- --------------------------------------------------------
 
@@ -483,10 +496,10 @@ INSERT INTO `user` (`id`, `role`, `first_name`, `last_name`, `email`, `password`
 CREATE TABLE `walk` (
   `id` int(10) UNSIGNED NOT NULL,
   `walk_date` datetime NOT NULL,
-  `start_location` int(10) UNSIGNED NOT NULL,
+  `start_location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `end_location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `duration` int(11) NOT NULL,
+  `duration` time NOT NULL,
   `path` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` enum('pending','confirmed','declined','in progress','finished') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `code` char(6) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -513,7 +526,9 @@ CREATE TABLE `walker_details` (
 --
 
 INSERT INTO `walker_details` (`id`, `biography`, `is_active`, `walker_id`) VALUES
-(5, 'hello im masha', 0, 58);
+(5, 'hello im masha how are you', 0, 58),
+(6, 'hhellolooooooooooooo ', 0, 59),
+(11, 'ja sam lenkica ko si ti ', 1, 60);
 
 -- --------------------------------------------------------
 
@@ -532,7 +547,9 @@ CREATE TABLE `walker_favourite_breeds` (
 --
 
 INSERT INTO `walker_favourite_breeds` (`id`, `breed_id`, `walker_id`) VALUES
-(5, 27, 58);
+(5, 22, 58),
+(13, 94, 59),
+(14, 78, 60);
 
 -- --------------------------------------------------------
 
@@ -586,7 +603,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `walk`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_start_location_adress_idx` (`start_location`),
   ADD KEY `fk_customer_user_idx` (`customer_id`),
   ADD KEY `fk_walker_user_idx` (`walker_id`);
 
@@ -621,7 +637,7 @@ ALTER TABLE `walk_dogs`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `breeds`
@@ -633,13 +649,13 @@ ALTER TABLE `breeds`
 -- AUTO_INCREMENT for table `dog`
 --
 ALTER TABLE `dog`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `walk`
@@ -651,13 +667,13 @@ ALTER TABLE `walk`
 -- AUTO_INCREMENT for table `walker_details`
 --
 ALTER TABLE `walker_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `walker_favourite_breeds`
 --
 ALTER TABLE `walker_favourite_breeds`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `walk_dogs`
@@ -687,7 +703,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `walk`
   ADD CONSTRAINT `fk_customer_user` FOREIGN KEY (`customer_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `fk_start_location_adress` FOREIGN KEY (`start_location`) REFERENCES `address` (`id`),
   ADD CONSTRAINT `fk_walker_user` FOREIGN KEY (`walker_id`) REFERENCES `user` (`id`);
 
 --
