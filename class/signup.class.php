@@ -6,11 +6,11 @@ class Signup extends Dbconn {
 
     protected function createUser($role, $firstName, $lastName, $email, $password, $phone){
         //inserts users data in user table
-        $sql1 = "INSERT INTO user(role,first_name,last_name,email,password,phone_number,address_id,is_verified, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        $sql1 = "INSERT INTO user(role,first_name,last_name,email,password,phone_number,address_id,is_verified, created_at, updated_at, registration_expires) VALUES (?,?,?,?,?,?,?,?,?,?,DATE_ADD(now(),INTERVAL 2 HOUR ))";
         $stmt = $this->setConnection()->prepare($sql1);
         $hashedPassword = password_hash($password,PASSWORD_BCRYPT);
 
-        if(!$stmt->execute([$role,$firstName,$lastName,$email,$hashedPassword,$phone,$this->addressID,0,date('Y-m-d H:i:s'),date('Y-m-d H:i:s')])) {
+        if(!$stmt->execute([$role,$firstName,$lastName,$email,$hashedPassword,$phone,$this->addressID,0,date('Y-m-d H:i:s'),date('Y-m-d H:i:s'), ])) {
             $stmt = null;
             $array = array("error" => "stmtCreateUserFail");
             echo json_encode($array);
@@ -60,7 +60,6 @@ class Signup extends Dbconn {
             echo json_encode($array);
             die();
         }
-
 
         if($stmt3->rowCount()>0){
             return true;
