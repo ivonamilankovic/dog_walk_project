@@ -23,10 +23,8 @@ class VerifyControler extends Verify{
             return;
         }
         //checks code match with the one in db
-        $this->codeMatch($this->code, $this->columnName);
+        return  $this->codeMatch($this->code, $this->columnName);
 
-        $array = array("verify" => "done");
-        echo json_encode($array);
     }
 
     //function that checks if code is empty

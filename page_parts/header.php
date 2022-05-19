@@ -131,11 +131,11 @@
                 <!--inputs for all the users-->
                 <div id="inputsForEveryone" class="row g-2 d-flex justify-content-center">
                         <div class="form-floating col-lg-6 mx-2" style="width: 300px">
-                            <input class="form-control form-control-sm" id="firstName" name="fname" type="text" placeholder="First name" required style="width: 300px">
+                            <input class="form-control" id="firstName" name="fname" type="text" placeholder="First name" required style="width: 300px">
                             <label for="firstName">First Name</label>
                         </div>
                         <div class="form-floating col-lg-6 mx-2" style="width: 300px">
-                            <input class="form-control form-control-lg" id="lastName" name="lname" type="text" placeholder="Last name" required style="width: 300px">
+                            <input class="form-control" id="lastName" name="lname" type="text" placeholder="Last name" required style="width: 300px">
                             <label for="lastName">Last Name</label>
                         </div>
                         <div class="form-floating col-lg-6 mx-2" style="width: 300px">

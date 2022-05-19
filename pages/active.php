@@ -17,17 +17,17 @@ if($col === "fp"){
 
 //class that checks if code match
 $verify = new VerifyControler($code, $column);
-$verify->checkCode();
+$result = $verify->checkCode();
 
-if($column === "verification_code"){
-?>
-<script>
-    alert("You have successfully signup up!");
-</script>
-<?php
-    header("location: ./home.php");
+if($result === true){
+    if($column === "verification_code"){
+        header("location: ./home.php?act=success");
+    }
+    else if($column === "forgot_password_code"){
+        header("location: ./changePassword.php");
+    }
 }
-else if($column === "forgot_password_code"){
-    header("location: ./changePassword.php");
+else{
+    header("location: ./home.php?act=expired");
 }
 

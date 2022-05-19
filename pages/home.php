@@ -21,6 +21,14 @@
 
 <?php
     include_once '../page_parts/header.php';
+
+
+    if($_GET['act'] === "success"){
+        echo '<script> alert("You have successfully signed up!");</script>';
+    }
+    else if($_GET['act'] === "expired"){
+        echo '<script> alert("Your registration link has expired! Please sign up again.");</script>';
+    }
 ?>
     <!--freedom for your dog-->
     <div class="container mt-4 p-4">
