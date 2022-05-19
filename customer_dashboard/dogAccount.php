@@ -26,9 +26,9 @@ include_once '../page_parts/header.php';
     require_once '../page_parts/header.php';
     require_once ("../include/dbconfig.inc.php");
 
-    $sqlDog = "SELECT d.dog_name, d.gender, d.age, d.notes, d.breed_id, d.owner_id, b.breed_name FROM dog d
-                    INNER JOIN breeds b ON b.id = d.breed_id
-                    WHERE d.owner_id = ".$_SESSION['id'];
+    $sqlDog = "SELECT d.id, d.dog_name, d.gender, d.age, d.notes, d.breed_id, d.owner_id, b.breed_name FROM dog d
+               INNER JOIN breeds b ON b.id = d.breed_id
+               WHERE d.owner_id = ".$_SESSION['id'];
 
     try{
         $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
@@ -52,7 +52,8 @@ include_once '../page_parts/header.php';
     ?>
     <div class="col-4 mx-auto my-3 border border-2 border-dark rounded p-4 text-center" style="background-color: rgba(191,172,170,0.75); border-color: #44310d; width: 380px; height: 380px">
             <div class="p-2"><b><?php echo $dog['dog_name']; ?></b></div>
-            <div class="p-2">Dogs breed: <?php
+            <div class="p-2">Dogs breed:
+                <?php
                 if(strlen($dog['breed_name']) >20) {
                     echo substr($dog['breed_name'], 0, 20)."...";
                 }
@@ -67,13 +68,17 @@ include_once '../page_parts/header.php';
                 elseif($dog['gender'] === "f"){
                     echo "female";
                 }
+
                 ?>
             </div>
             <div class="p-2">Age: <?php echo $dog['age']; ?></div>
             <div class="p-2">About: <?php echo $dog['notes']; ?></div>
 
         <!--uraditi da radi delete dugme-->
-            <div class="p-2"><button class="btn btn-secondary btn-sm" style="background-color: #bfacd5">Delete Dog</button></div>
+        <form action="../include/deleteDog.inc.php" method="post">
+            <input type="hidden" value="<?php echo $dog['id']; ?>" id="dog_id" name="dog_id">
+            <div class="p-2"><button class="btn btn-secondary btn-sm" name="deleteDog" id="deleteDog" style="background-color: #bfacd5">Delete Dog</button></div>
+        </form>
     </div>
     <?php
         }

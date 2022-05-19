@@ -27,7 +27,7 @@ include_once '../include/dbconfig.inc.php';
 
 if(isset($_GET['walker'])){
 
-    $sqlWalker = "SELECT  u.first_name, u.last_name, u.picture, wd.biography, a.city, a.postal_code, b.breed_name FROM user u
+    $sqlWalker = "SELECT u.id,  u.first_name, u.last_name, u.picture, wd.biography, a.city, a.postal_code, b.breed_name FROM user u
                 INNER JOIN walker_details wd ON wd.walker_id = u.id
                 INNER JOIN address a ON a.id = u.address_id
                 INNER JOIN walker_favourite_breeds wb ON wb.walker_id = u.id
@@ -74,41 +74,77 @@ catch (Exception $ex){
             <div class="row g-0 mt-4" id="reservationDiv" style="display: none;">
                 <div class="col-10 mx-auto">
                     <!--Part for reservation-->
-                    <div class="form-floating">
-                        <input  class="form-control" id="dateOfWalk" name="dateOfWalk" type="datetime-local" placeholder="Date of walk">
-                        <label for="dateOfWalk">Date of Walk</label>
-                    </div>
-                    <br>
-                    <select class="form-select" style="height: 72px;">
-                        <option disabled selected>hh:mm</option>
-                        <option value="00:15">00:15</option>
-                        <option value="00:30">00:30</option>
-                        <option value="00:45">00:45</option>
-                        <option value="01:00">01:00</option>
-                        <option value="01:15">01:15</option>
-                        <option value="01:30">01:30</option>
-                        <option value="01:45">01:45</option>
-                        <option value="02:00">02:00</option>
-                    </select>
-                    <br>
-                    <div class="form-floating">
-                        <input  class="form-control" id="startLoc" name="startLoc" type="text" placeholder="Start Location">
-                        <label for="startLoc">Start Location</label>
-                    </div>
-                    <br>
-                    <div class="form-floating">
-                        <input  class="form-control" id="endLoc" name="endLoc" type="text" placeholder="End Location">
-                        <label for="endLoc">End Location</label>
-                    </div>
+                    <form action="../include/reservation.inc.php" method="post">
+                        <div class="form-floating">
+                            <input  class="form-control" id="dateOfWalk" name="dateOfWalk" type="datetime-local" placeholder="Date of walk">
+                            <label for="dateOfWalk">Date of Walk</label>
+                        </div>
+                        <br>
+                        <select class="form-select" style="height: 72px;" name="duration">
+                            <option disabled selected value="choose">hh:mm</option>
+                            <option value="00:15">00:15</option>
+                            <option value="00:30">00:30</option>
+                            <option value="00:45">00:45</option>
+                            <option value="01:00">01:00</option>
+                            <option value="01:15">01:15</option>
+                            <option value="01:30">01:30</option>
+                            <option value="01:45">01:45</option>
+                            <option value="02:00">02:00</option>
+                        </select>
+                        <br>
+                        <div class="form-floating">
+                            <input  class="form-control" id="startLoc" name="startLoc" type="text" placeholder="Start Location">
+                            <label for="startLoc">Start Location</label>
+                        </div>
+                        <br>
+                        <div class="form-floating">
+                            <input  class="form-control" id="endLoc" name="endLoc" type="text" placeholder="End Location">
+                            <label for="endLoc">End Location</label>
+                        </div>
 
-                    <br>
-                    <div class="form-floating">
-                        <textarea class="form-control" id="details" style="height: 160px;" placeholder="Enter some extra info if you want..."></textarea>
-                        <label for="details">Enter some extra info if you want...</label>
+                        <br>
+                        <div>
+                            <div>Select dog for a walk:</div>
+                            <!--customer dogs-->
+                            <?php
+                            require_once ("../include/dbconfig.inc.php");
+
+                            $sqlDog = "SELECT d.id, d.dog_name FROM dog d
+                                        WHERE d.owner_id = ".$_SESSION['id'];
+
+                            try{
+                                $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+                                $stmtDog=$conn->prepare($sqlDog);
+                                $stmtDog->execute();
+                                $dogData = $stmtDog->fetchAll(PDO::FETCH_ASSOC);
+
+                                $rows = array();
+                                while( $stmtDog->fetch(PDO::FETCH_ASSOC))
+                                    $rows[] = $stmtDog;
+                            }
+                            catch (Exception $ex){
+                                echo($ex -> getMessage());
+                            }
+
+                                foreach ($dogData as $dog){
+                                    ?>
+                                    <input type="checkbox" value="<?php echo $dog['id']; ?>" name="dogs[]" id="dog">
+                                    <label for="dog"><?php echo $dog['dog_name']; ?></label> <br>
+                                <?php
+                                }
+                                ?>
+                        </div>
+
+                        <br>
+                        <div class="form-floating">
+                            <textarea class="form-control" name="details" id="details" style="height: 160px;" placeholder="Enter some extra info if you want..."></textarea>
+                            <label for="details">Enter some extra info if you want...</label>
+                        </div>
+                        <input type="hidden" value="<?php echo $_GET['walker']?>" name="walker_id" id="walker_id">
+                        <br>
+                        <button id="submitReservation" name="submitReservation" class="mx-auto my-3" style="padding: 12px; background-color: #9c7a97;border: 1px solid black; border-radius: 5px; display: block;">Submit my reservation</button>
                     </div>
-                    <br>
-                    <button id="submitReservation" class="mx-auto my-3" style="padding: 12px; background-color: #9c7a97;border: 1px solid black; border-radius: 5px; display: block;">Submit my reservation</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>

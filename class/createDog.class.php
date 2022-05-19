@@ -16,8 +16,4 @@ class Create extends Dbconn{
         $pdoStatement = null;
     }
 
-
-
-
-
 }
