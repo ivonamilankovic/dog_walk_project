@@ -7,7 +7,7 @@ if(isset($_POST["submitReservation"])){
     $endLoc = $_POST['endLoc'];
     $details = $_POST['details'];
     $status = 0;
-    $code = 0; //rand ???
+    $code = null; //??? code for rate ???
     $rate = null;
     $customer_id = $_SESSION['id'];
     $walker_id = $_POST['walker_id'];
@@ -22,8 +22,8 @@ include "../class/dbconn.class.php";
 include "../class/reservation.class.php";
 include "../class/reservationController.class.php";
 
-$reserv = new ReservationController($dateOfWalk, $duration, $startLoc, $endLoc, $details, $status, $code, $rate, $customer_id, $walker_id, $dogs_id);
-$reserv->reserveWalk();
+$reserve = new ReservationController($dateOfWalk, $duration, $startLoc, $endLoc, $details, $status, $code, $rate, $customer_id, $walker_id, $dogs_id);
+$reserve->reserveWalk();
 
-header("location: ../pages/oneWalker.php");
+header("location: ../customer_dashboard/reservedWalks.php?error=none");
 die();

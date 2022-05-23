@@ -34,15 +34,17 @@ if(isset($_GET['walker'])){
                 INNER JOIN breeds b ON b.id = wb.breed_id
                 WHERE  u.id = ".$_GET['walker'];
 }
-try{
-    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
-    $stmtWalker=$conn->prepare($sqlWalker);
-    $stmtWalker->execute();
-    $walker= $stmtWalker->fetch(PDO::FETCH_ASSOC);
-}
-catch (Exception $ex){
-    echo($ex -> getMessage());
-}
+
+
+    try{
+        $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+        $stmtWalker=$conn->prepare($sqlWalker);
+        $stmtWalker->execute();
+        $walker= $stmtWalker->fetch(PDO::FETCH_ASSOC);
+    }
+    catch (Exception $ex){
+        echo($ex -> getMessage());
+    }
 ?>
 
 
@@ -125,13 +127,21 @@ catch (Exception $ex){
                             catch (Exception $ex){
                                 echo($ex -> getMessage());
                             }
-
+                            if(!empty($dogData)){
                                 foreach ($dogData as $dog){
                                     ?>
                                     <input type="checkbox" value="<?php echo $dog['id']; ?>" name="dogs[]" id="dog">
                                     <label for="dog"><?php echo $dog['dog_name']; ?></label> <br>
-                                <?php
+                                    <?php
                                 }
+                            }
+                            else{
+                                ?>
+                                <a href="../customer_dashboard/createDog.php" style="color: #f00;">First you have to insert your dog to your profile!</a><br>
+                                <?php
+                            }
+
+
                                 ?>
                         </div>
 

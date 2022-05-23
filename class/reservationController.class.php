@@ -16,11 +16,12 @@ class ReservationController extends Reserve {
         $this->status = $status;
         $this->code = $code;
         $this->rate = $rate;
+        $this->customer_id = $customer_id;
         $this->walker_id = $walker_id;
         $this->dogs_id = $dogs_id;
     }
 
-    //function for sending data to make new user
+    //function for sending data to make new reservation
     public function reserveWalk()
     {
         if($this->emptyInput() === false){
@@ -30,9 +31,11 @@ class ReservationController extends Reserve {
         }
 
         //function that creates users address(because it is in separate table)
-        $this->createWalk($this->address, $this->city, $this->postalCode);
+        $walk_id = $this->createWalk($this->dateOfWalk, $this->startLoc, $this->endLoc, $this->details, $this->duration, $this->status, $this->code, $this->rate, $this->customer_id, $this->walker_id);
         //function that creates user
-        $this->createWalkDogs($this->role,$this->firstName,$this->lastName,$this->email,$this->pass1, $this->phone);
+        foreach ($this->dogs_id as $dog_id){
+            $this->createWalkDogs($walk_id,$dog_id);
+        }
 
         //$array = array("signup" => "done");
         //echo json_encode($array);
