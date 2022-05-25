@@ -133,9 +133,27 @@ if(!isset($_SESSION['id'])){
                                     echo($ex -> getMessage());
                                 }
 
+
+
+                                    $sqlWFB = "SELECT b.id, b.breed_name, wfb.breed_id, wfb.walker_id FROM breeds b
+                                                    INNER JOIN walker_favourite_breeds wfb ON wfb.breed_id = b.id
+                                                    WHERE  wfb.walker_id = ".$_SESSION['id'];
+
+
+
+                                try{
+                                    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+                                    $stmtWFB=$conn->prepare($sqlWFB);
+                                    $stmtWFB->execute();
+                                    $walker= $stmtWFB->fetch(PDO::FETCH_ASSOC);
+                                }
+                                catch (Exception $ex){
+                                    echo($ex -> getMessage());
+                                }
+
                                 ?>
                                 <select id="favBreedSelect" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 form-select">
-                                    <option value="choose" disabled selected>--choose--</option>
+                                    <option value="<?php echo $walker['id'];?>"><?php echo $walker['breed_name'];?></option>
                                     <?php
                                         foreach ($results as $output) {?>
                                         <option value="<?php echo $output["id"];?>"><?php echo $output["breed_name"];?></option>

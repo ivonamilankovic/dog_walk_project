@@ -30,9 +30,12 @@ openResBtn.addEventListener('click', ()=>{
     }
 });
 
+<!--OVO ISPRAVITI DA RADI-->
+
 function chkDate(input, errOutput){
     let today = new Date();
-    if(input.value < today ){
+    let datetime = today.getDate() + today.getHours() + today.getMinutes() + today.getSeconds();
+    if(input.value < datetime ){
         showError(input, "Reservation must be in future!", errOutput);
         return false;
     } else {
