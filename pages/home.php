@@ -23,10 +23,10 @@
     include_once '../page_parts/header.php';
 
 
-    if($_GET['act'] === "success"){
+    if(isset($_GET['act']) === "success"){
         echo '<script> alert("You have successfully signed up!");</script>';
     }
-    else if($_GET['act'] === "expired"){
+    else if(isset($_GET['act']) === "expired"){
         echo '<script> alert("Your registration link has expired! Please sign up again.");</script>';
     }
 ?>

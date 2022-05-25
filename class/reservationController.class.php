@@ -24,30 +24,28 @@ class ReservationController extends Reserve {
     //function for sending data to make new reservation
     public function reserveWalk()
     {
-        if($this->emptyInput() === false){
-            $array = array("error"=>"emptyInput");
-            echo json_encode($array);
-            return;
+        switch (true){
+            case $this->isEmpty($this->dateOfWalk):
+            case $this->isEmpty($this->duration):
+            case $this->isEmpty($this->startLoc):
+            case $this->isEmpty($this->endLoc):
+            case $this->isEmpty($this->details):
+            case $this->isEmpty($this->dogs_id):
+                $inputisempty = true;
+                header("location: ../pages/oneWalker.php?error=inputisempty".$inputisempty);
+                exit();
         }
 
-        //function that creates users address(because it is in separate table)
         $walk_id = $this->createWalk($this->dateOfWalk, $this->startLoc, $this->endLoc, $this->details, $this->duration, $this->status, $this->code, $this->rate, $this->customer_id, $this->walker_id);
-        //function that creates user
+
         foreach ($this->dogs_id as $dog_id){
             $this->createWalkDogs($walk_id,$dog_id);
         }
 
-        //$array = array("signup" => "done");
-        //echo json_encode($array);
     }
 
     //function that checks if data is empty
-    private function emptyInput(){
-        if(empty($this->dateOfWalk) || empty($this->duration) || empty($this->startLoc) || empty($this->endLoc) || empty($this->details) || empty($this->dogs_id)){
-            return false;
-        }
-        else{
-            return  true;
-        }
+    private function isEmpty($input){
+        return empty($input);
     }
 }

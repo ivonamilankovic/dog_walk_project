@@ -15,6 +15,7 @@ session_start();
     <link rel="stylesheet" href="../css/signup.css">
     <link rel="stylesheet" href="../css/homeStyle.css">
     <link rel="stylesheet" href="../css/scrollbar.css">
+
 </head>
 
 <body>
@@ -76,13 +77,13 @@ if(isset($_GET['walker'])){
             <div class="row g-0 mt-4" id="reservationDiv" style="display: none;">
                 <div class="col-10 mx-auto">
                     <!--Part for reservation-->
-                    <form action="../include/reservation.inc.php" method="post">
+                    <form action="../include/reservation.inc.php" method="post" id="reservationForm">
                         <div class="form-floating">
                             <input  class="form-control" id="dateOfWalk" name="dateOfWalk" type="datetime-local" placeholder="Date of walk">
                             <label for="dateOfWalk">Date of Walk</label>
                         </div>
                         <br>
-                        <select class="form-select" style="height: 72px;" name="duration">
+                        <select class="form-select" style="height: 72px;" name="duration" id="duration">
                             <option disabled selected value="choose">hh:mm</option>
                             <option value="00:15">00:15</option>
                             <option value="00:30">00:30</option>
@@ -152,6 +153,7 @@ if(isset($_GET['walker'])){
                         </div>
                         <input type="hidden" value="<?php echo $_GET['walker']?>" name="walker_id" id="walker_id">
                         <br>
+                        <small id="errorReservation" style="color: #ff0000"></small>
                         <button id="submitReservation" name="submitReservation" class="mx-auto my-3" style="padding: 12px; background-color: #9c7a97;border: 1px solid black; border-radius: 5px; display: block;">Submit my reservation</button>
                     </div>
                 </form>

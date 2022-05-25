@@ -25,5 +25,5 @@ include "../class/reservationController.class.php";
 $reserve = new ReservationController($dateOfWalk, $duration, $startLoc, $endLoc, $details, $status, $code, $rate, $customer_id, $walker_id, $dogs_id);
 $reserve->reserveWalk();
 
-header("location: ../customer_dashboard/reservedWalks.php?error=none");
+header("location: ../customer_dashboard/reservedWalks.php");
 die();
