@@ -1,7 +1,7 @@
 <?php
 
 
-class ReservationController extends Reserve {
+class ReservationController extends Reservation {
 
     private $dateOfWalk, $duration, $startLoc, $endLoc, $details, $status, $code, $rate, $customer_id, $walker_id, $dogs_id;
 

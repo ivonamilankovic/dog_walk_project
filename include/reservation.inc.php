@@ -6,7 +6,7 @@ if(isset($_POST["submitReservation"])){
     $startLoc = $_POST['startLoc'];
     $endLoc = $_POST['endLoc'];
     $details = $_POST['details'];
-    $status = 0;
+    $status = "pending";
     $code = null; //??? code for rate ???
     $rate = null;
     $customer_id = $_SESSION['id'];

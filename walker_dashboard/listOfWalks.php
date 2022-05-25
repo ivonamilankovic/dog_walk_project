@@ -22,50 +22,79 @@ if(!isset($_SESSION['id'])){
 <!--HEADER-->
 <?php
 require_once '../page_parts/header.php';
+require_once ("../include/dbconfig.inc.php");
+
+$sqlList = "SELECT w.id AS reservation_id, w.walker_id, w.customer_id, w.walk_date, w.start_location, w.end_location, w.description, w.duration, w.status, w.rate, wd.walk_id, wd.dog_id, d.id, d.dog_name, u.id, u.first_name, u.last_name 
+            FROM walk w
+            INNER JOIN walk_dogs wd ON w.id = wd.walk_id
+            INNER JOIN dog d ON wd.dog_id = d.id
+            INNER JOIN user u ON w.customer_id = u.id
+            WHERE w.walker_id = ".$_SESSION['id'];
+
+try{
+    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+    $stmtList=$conn->prepare($sqlList);
+    $stmtList->execute();
+    $listData = $stmtList->fetchAll(PDO::FETCH_ASSOC);
+
+    $rows = array();
+    while( $stmtList->fetch(PDO::FETCH_ASSOC))
+        $rows[] = $stmtList;
+}
+catch (Exception $ex){
+    echo($ex -> getMessage());
+}
+
+
 ?>
 
 <!--List of walks-->
 <div class="container" style="margin-top: 100px">
     <table class="table">
         <tr>
-            <th scope="col">Broj setnje</th>
-            <th scope="col">Dogs</th>
-            <th scope="col">Breeds</th>
-            <th scope="col">Status</th>
-            <th scope="col">Datum</th>
+            <th scope="col">Customer name</th>
+            <th scope="col">Dogs name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Start location</th>
+            <th scope="col">End location</th>
+            <th scope="col">Description</th>
+            <th scope="col">Duration</th>
             <th scope="col">Rate</th>
-            <th scope="col">Select</th>
+            <th scope="col">Status</th>
+            <th scope="col">Change status</th>
+            <th scope="col">Save changes</th>
         </tr>
-        <tr>
-            <td>1.</td>
-            <td>Fluffy</td>
-            <td>American Bulldog - Američki Bulldog</td>
-            <td>Pending</td>
-            <td>2022.02.04</td>
-            <td>-</td>
-            <td>
-                <select>
-                    <option>Select</option>
-                        <option value="Accepted">Accepted</option>
-                        <option value="Declined">Declined</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>2.</td>
-            <td>Puppy</td>
-            <td>Africanis - Afrički Pas</td>
-            <td>Finished</td>
-            <td>2022.11.10.</td>
-            <td>***</td>
-            <td>
-                <select>
-                    <option>Select</option>
-                    <option value="Accepted">Accepted</option>
-                    <option value="Declined">Declined</option>
-                </select>
-            </td>
-        </tr>
+
+        <?php
+        foreach ($listData as $data){
+            ?>
+        <form action="../include/updateStatus.inc.php" method="post">
+            <tr>
+                <td><?php echo $data['first_name']. " " .$data['last_name']; ?></td>
+                <td><?php echo $data['dog_name']; ?></td>
+                <td><?php echo $data['walk_date']; ?></td>
+                <td><?php echo $data['start_location']; ?></td>
+                <td><?php echo $data['end_location']; ?></td>
+                <td><?php echo $data['description']; ?></td>
+                <td><?php echo $data['duration']; ?></td>
+                <td><?php echo $data['rate']; ?></td>
+                <td><?php echo $data['status']; ?></td>
+                    <td><select name="status" id="status" class="form-select">
+                            <option value="<?php echo $data['status']; ?>" disabled selected><?php echo $data['status']; ?></option>
+                            <option value="confirmed">confirmed</option>
+                            <option value="declined">declined</option>D
+                            <option value="in progress">in progress</option>
+                        </select>
+                        <input value="<?php echo $data['reservation_id']; ?>" type="hidden" id="idWalk" name="idWalk">
+                    </td>
+                    <td><button type="submit" class="btn btn-success" name="saveStatus" id="saveStatus">Save</button> </td>
+
+            </tr>
+        </form>
+            <?php
+        }
+        ?>
+        
     </table>
 </div>
 

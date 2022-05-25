@@ -24,7 +24,7 @@ if(!isset($_SESSION['id'])){
 include_once '../page_parts/header.php';
 require_once ("../include/dbconfig.inc.php");
 
-$sqlRes = "SELECT w.id, w.walker_id, w.customer_id, w.walk_date, w.start_location, w.end_location, w.duration, wd.walk_id, wd.dog_id, d.id, d.dog_name, u.id, u.first_name, u.last_name 
+$sqlRes = "SELECT w.id, w.walker_id, w.customer_id, w.walk_date, w.start_location, w.end_location, w.duration, w.status, wd.walk_id, wd.dog_id, d.id, d.dog_name, u.id, u.first_name, u.last_name 
             FROM walk w
                INNER JOIN walk_dogs wd ON w.id = wd.walk_id
                INNER JOIN dog d ON wd.dog_id = d.id
@@ -52,15 +52,30 @@ catch (Exception $ex){
 </div>
 
 <!--table of reserved walks-->
-<div class="m-4">
-<table class="table table-dark table-striped ">
-    <thead>
-    <tr><th>Date</th><th>Start location</th><th>End location</th><th>Duration</th><th>Walker name</th><th>Dog/s name</th></tr>
-    </thead>
+<div class="container mt-4">
+<table class="table">
+
+    <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Start location</th>
+        <th scope="col">End location</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Walker name</th>
+        <th scope="col">Dogs name</th>
+        <th scope="col">Status</th>
+    </tr>
     <?php
     foreach ($reservationData as $walk){
         ?>
-        <tr><td><?php echo $walk['walk_date']; ?></td><td><?php echo $walk['start_location']; ?></td><td><?php echo $walk['end_location']; ?></td><td><?php echo $walk['duration']; ?></td><td><?php echo $walk['first_name']. " " .$walk['last_name']; ?></td><td><?php echo $walk['dog_name']; ?></td></tr>
+        <tr>
+            <td><?php echo $walk['walk_date']; ?></td>
+            <td><?php echo $walk['start_location']; ?></td>
+            <td><?php echo $walk['end_location']; ?></td>
+            <td><?php echo $walk['duration']; ?></td>
+            <td><?php echo $walk['first_name']. " " .$walk['last_name']; ?></td>
+            <td><?php echo $walk['dog_name']; ?></td>
+            <td><?php echo $walk['status']; ?></td>
+        </tr>
     <?php
     }
     ?>

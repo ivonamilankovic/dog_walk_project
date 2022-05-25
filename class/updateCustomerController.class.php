@@ -25,7 +25,7 @@ class UpdateCustomerController extends UpdateCustomer{
     }
 
     //function that will update all the data
-    public function update()
+    public function updateStatus()
     {
 
         if ($this->emptyInput() === false) {

@@ -1,6 +1,6 @@
 <?php
 
-class Reserve extends Dbconn {
+class Reservation extends Dbconn {
 
     protected function createWalk($dateOfWalk, $startLoc, $endLoc, $details, $duration, $status, $code, $rate, $customer_id, $walker_id){
         $pdo = $this->setConnection();
