@@ -5,7 +5,6 @@ class FinishWalkController extends FinishWalk {
 
     private $path, $id_walk, $customer_email;
 
-    //test!!!
     //constructor
     public function __construct($path, $id_walk, $customer_email)
     {
