@@ -48,8 +48,8 @@ class GetVerification extends Dbconn
                 $subject = "Welcome to Paw Walks!";
                 $txt = "To verify your email address, click to the following link: http://localhost/dog_walk/pages/active.php?code=".$code."&col=ver";
             }
-            mail($to, $subject, $txt, 'From: ivonamilankovic@yahoo.com');
-            //mail($to, $subject, $txt, 'From: sarababic01@yahoo.com');
+            //mail($to, $subject, $txt, 'From: ivonamilankovic@yahoo.com');
+            mail($to, $subject, $txt, 'From: sarababic01@yahoo.com');
 
         }
     }

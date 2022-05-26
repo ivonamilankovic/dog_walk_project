@@ -24,7 +24,7 @@ if(!isset($_SESSION['id'])){
 require_once '../page_parts/header.php';
 require_once ("../include/dbconfig.inc.php");
 
-$sqlList = "SELECT w.id AS reservation_id, w.walker_id, w.customer_id, w.walk_date, w.start_location, w.end_location, w.description, w.duration, w.status, w.rate, wd.walk_id, wd.dog_id, d.id, d.dog_name, u.id, u.first_name, u.last_name 
+$sqlList = "SELECT w.id AS reservation_id, w.walker_id, w.customer_id, w.walk_date, w.start_location, w.end_location, w.description, w.duration, w.status, w.rate, wd.walk_id, wd.dog_id, d.id, d.dog_name, u.id, u.first_name, u.last_name, u.email
             FROM walk w
             INNER JOIN walk_dogs wd ON w.id = wd.walk_id
             INNER JOIN dog d ON wd.dog_id = d.id
@@ -63,6 +63,7 @@ catch (Exception $ex){
             <th scope="col">Status</th>
             <th scope="col">Change status</th>
             <th scope="col">Save changes</th>
+            <th scope="col">Finish walk</th>
         </tr>
 
         <?php
@@ -82,13 +83,14 @@ catch (Exception $ex){
                     <td><select name="status" id="status" class="form-select">
                             <option value="<?php echo $data['status']; ?>" disabled selected><?php echo $data['status']; ?></option>
                             <option value="confirmed">confirmed</option>
-                            <option value="declined">declined</option>D
+                            <option value="declined">declined</option>
                             <option value="in progress">in progress</option>
                         </select>
                         <input value="<?php echo $data['reservation_id']; ?>" type="hidden" id="idWalk" name="idWalk">
+                        <input type="hidden" value="<?php echo $data['email']; ?>" name="customer_email" id="customer_email">
                     </td>
-                    <td><button type="submit" class="btn btn-success" name="saveStatus" id="saveStatus">Save</button> </td>
-
+                    <td><button type="submit" class="btn btn-outline-success" name="saveStatus" id="saveStatus">Save</button> </td>
+                    <td><a href="./finishWalk.php" class="btn btn-success">Finish!</a></td>
             </tr>
         </form>
             <?php
