@@ -36,6 +36,9 @@ function logUser(){
                errorMessage.innerText = "User is not verified. To be able to login please verify your profile on your email.";
            }
            else if(response.login === "done"){
+               if('<%=Session["role"] %>' === "admin"){
+                   window.location.href = '../admin/admin.php';
+               }
                window.location.reload();
            }
         },

@@ -14,6 +14,9 @@
 
                 require_once '../walker_dashboard/walker_header.php';
             }
+            elseif($_SESSION['role'] === "admin"){
+                require_once  '../admin/admin_header.php';
+            }
         ?>
 
         <div class="p-3 align-self-center">
