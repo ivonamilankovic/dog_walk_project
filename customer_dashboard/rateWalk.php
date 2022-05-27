@@ -39,7 +39,12 @@ include_once '../page_parts/header.php';
     <div class="d-flex justify-content-center">
         <form action="../include/rateWalk.inc.php" method="post">
             <table class="p-4">
-                <tr><td class="px-4">1</td><td class="px-4">2</td><td class="px-4">3</td><td class="px-4">4</td><td class="px-4">5</td></tr>
+                <tr><td class="px-4">1</td>
+                    <td class="px-4">2</td>
+                    <td class="px-4">3</td>
+                    <td class="px-4">4</td>
+                    <td class="px-4">5</td>
+                </tr>
                 <tr><td class="px-4"><input type="radio" name="rate" value="1"></td>
                     <td  class="px-4"><input type="radio" name="rate" value="2"></td>
                     <td class="px-4"><input type="radio" name="rate" value="3"></td>
