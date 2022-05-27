@@ -29,7 +29,7 @@ class Verify extends Dbconn{
         if (!$stmt2->execute([date('Y-m-d H:i:s'), $user['id']])) {
             $stmt2 = null;
         }
-        if($stmt2->rowCount()<=0) {
+        if($stmt2->rowCount()<=0 && $columnName === "verification_code") {
 
             //ne izvrsi brisanje???
             $sql3 = "DELETE FROM user WHERE user.id = ?";
