@@ -90,7 +90,7 @@ catch (Exception $ex){
                         <input type="hidden" value="<?php echo $data['email']; ?>" name="customer_email" id="customer_email">
                     </td>
                     <td><button type="submit" class="btn btn-outline-success" name="saveStatus" id="saveStatus">Save</button> </td>
-                    <td><a href="./finishWalk.php" class="btn btn-success">Finish!</a></td>
+                    <td><a href="./finishWalk.php?reservation_id=<?php echo $data['reservation_id']; ?>" class="btn btn-success">Finish!</a></td>
             </tr>
         </form>
             <?php

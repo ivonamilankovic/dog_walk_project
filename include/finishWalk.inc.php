@@ -2,8 +2,8 @@
 if(isset($_POST["finish"])){
     //grabbing the data
     $path = $_POST["path"];
-    $id_walk = $_POST["idWalk"];
-    $customer_email = $_POST["customer_email"];
+    $id_walk = $_GET['reservation_id'];
+    var_dump($id_walk); die();
 
 }
 else{
@@ -18,7 +18,7 @@ include "../class/createDogControler.class.php";
 include_once '../class/getVerification.class.php' ;
 include_once '../class/getVerificationControler.class.php' ;
 
-$finish = new FinishWalkController($path, $id_walk, $customer_email);
+$finish = new FinishWalkController($path, $id_walk);
 $finish->finishWalk();
 
 
