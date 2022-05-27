@@ -33,6 +33,7 @@ require_once '../page_parts/header.php';
                 <textarea class="form-control" id="path" name="path" placeholder="Where have you been during the walk?" style="height: 400px; font-size: x-large"></textarea>
             </div>
             <div class="d-flex justify-content-center">
+                <input type="hidden" value="<?= isset($_GET['reservation_id']) ? $_GET['reservation_id']:""?>" name="reservation_id">
                 <button type="submit" id="finish" name="finish" class="btn btn-success m-4">Finish!</button>
             </div>
         </form>

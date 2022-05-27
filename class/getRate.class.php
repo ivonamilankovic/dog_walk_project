@@ -4,10 +4,26 @@ class GetRate extends Dbconn
 {
 
     //function that generates and send verification code to users email address
-    protected function sendVerificationCode($email, $columnName, $type)
+    protected function sendRateCode($id_walk, $columnName)
     {
+        $sql = "SELECT user.email, walk.status FROM user 
+                INNER JOIN walk ON user.id = walk.customer_id
+                WHERE walk.id = ?
+                LIMIT 1";
+        $stmt = $this->setConnection()->prepare($sql);
+        if (!$stmt->execute([$id_walk])) {
+            $stmt = null;
+            $array = array("error" => "stmtFindUserEmailFailed");
+            echo json_encode($array);
+            die();
+        }
+        else {
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $email = $result['email'];
+            $status = $result['status'];
+        }
 
-        if ($type === "old") {
+        if ($status === "finished") {
 
             $sql11 = "SELECT * FROM user WHERE email = ?";
             $stmt11 = $this->setConnection()->prepare($sql11);
@@ -29,10 +45,10 @@ class GetRate extends Dbconn
 
         $code = rand(100000, 999999);
 
-        $sql5 = "UPDATE user SET " . $columnName . " = ?, updated_at = ? WHERE email = ?";
+        $sql5 = "UPDATE walk SET " . $columnName . " = ? WHERE id = ?";
         $stmtCode = $this->setConnection()->prepare($sql5);
 
-        if (!$stmtCode->execute([$code, date('Y-m-d H:i:s'), $email])) {
+        if (!$stmtCode->execute([$code, $id_walk])) {
             $stmtCode = null;
             $array = array("error" => "stmtSendCodeFailed");
             echo json_encode($array);
@@ -43,10 +59,10 @@ class GetRate extends Dbconn
             $txt = "";
             if ($columnName === "forgot_password_code") {
                 $subject = "Paw walks sends you code to rate the walk!";
-                $txt = "To rate a walk, click to the following link: http://localhost/dog_walk/pages/active.php?code=".$code."&col=fp";
+                $txt = "To rate a walk, click to the following link: http://localhost/dog_walk/customer_dashboard/rateWalk.php?code=".$code."&col=fp";
             } elseif ($columnName === "verification_code") {
                 $subject = "Welcome to Paw Walks!";
-                $txt = "To verify your email address, click to the following link: http://localhost/dog_walk/pages/active.php?code=".$code."&col=ver";
+                $txt = "To verify your email address, click to the following link: http://localhost/dog_walk/customer_dashboard/rateWalk.php?code=".$code."&col=ver";
             }
             //mail($to, $subject, $txt, 'From: ivonamilankovic@yahoo.com');
             mail($to, $subject, $txt, 'From: sarababic01@yahoo.com');

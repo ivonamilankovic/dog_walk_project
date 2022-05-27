@@ -17,7 +17,6 @@ if(!isset($_SESSION['id'])){
         <link rel="stylesheet" href="../css/homeStyle.css">
         <link rel="stylesheet" href="../css/scrollbar.css">
     </head>
-
     <body>
 
 <?php
@@ -25,6 +24,36 @@ include_once '../page_parts/header.php';
 ?>
 
 
+
+
+<div class="container">
+
+    <div class="d-flex justify-content-center p-4">
+        <h1>Rate a walk!</h1>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <p>Walkers comment for the walk:</p>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <form action="../include/rateWalk.inc.php" method="post">
+            <table class="p-4">
+                <tr><td class="px-4">1</td><td class="px-4">2</td><td class="px-4">3</td><td class="px-4">4</td><td class="px-4">5</td></tr>
+                <tr><td class="px-4"><input type="radio" name="rate" value="1"></td>
+                    <td  class="px-4"><input type="radio" name="rate" value="2"></td>
+                    <td class="px-4"><input type="radio" name="rate" value="3"></td>
+                    <td class="px-4"><input type="radio" name="rate" value="4"></td>
+                    <td class="px-4"><input type="radio" name="rate" value="5"></td>
+                </tr>
+            </table>
+            <div class="d-flex justify-content-center p-4">
+                <button type="submit" name="rate" id="rate" class="btn btn-success">Rate!</button>
+            </div>
+
+        </form>
+    </div>
+</div>
 
 
 

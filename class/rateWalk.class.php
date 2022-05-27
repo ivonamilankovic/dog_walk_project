@@ -1,13 +1,13 @@
 <?php
 
-class FinishWalk extends Dbconn {
+class RateWalk extends Dbconn {
 
-    protected function setPath($path, $id_walk){
+    protected function setRate($rate, $id_walk){
         //insert description for walk
-        $sql1 = "UPDATE walk SET path = ?, status = 'finished' WHERE id = ?";
+        $sql1 = "UPDATE walk SET rate = ? WHERE id = ?";
         $stmt = $this->setConnection()->prepare($sql1);
 
-        if(!$stmt->execute([$path, $id_walk])) {
+        if(!$stmt->execute([$rate, $id_walk])) {
             $stmt = null;
             $array = array("error" => "stmtFinishWalkFail");
             echo json_encode($array);

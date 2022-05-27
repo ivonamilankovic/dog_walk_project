@@ -2,8 +2,7 @@
 if(isset($_POST["finish"])){
     //grabbing the data
     $path = $_POST["path"];
-    $id_walk = $_GET['reservation_id'];
-    var_dump($id_walk); die();
+    $id_walk = $_POST['reservation_id'];
 
 }
 else{
@@ -12,22 +11,21 @@ else{
 }
 
 include "../class/dbconn.class.php";
-include "../class/createDog.class.php";
-include "../class/createDogControler.class.php";
+include "../class/finishWalk.class.php";
+include "../class/finishWalkController.class.php";
 //classes for code
-include_once '../class/getVerification.class.php' ;
-include_once '../class/getVerificationControler.class.php' ;
+include_once '../class/getRate.class.php' ;
+include_once '../class/getRateController.php';
 
 $finish = new FinishWalkController($path, $id_walk);
-$finish->finishWalk();
+$finish->finish();
 
 
 $column = "code";
-$status = "finished";
 //create class that sends verification code
-$verify = new GetVerificationControler($customer_email, $column, $status);
+$verify = new GetRateController($id_walk, $column);
 $verify->getCode();
 
 
-header("location: ../walker_dashboard/finishWalk.php");
+header("location: ../pages/home.php");
 die();

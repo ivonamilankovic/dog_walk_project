@@ -3,20 +3,19 @@
 
 class FinishWalkController extends FinishWalk {
 
-    private $path, $id_walk, $customer_email;
+    private $path, $id_walk;
 
     //constructor
-    public function __construct($path, $id_walk, $customer_email)
+    public function __construct($path, $id_walk)
     {
         $this->path = $path;
         $this->id_walk = $id_walk;
-        $this->customer_email = $customer_email;
     }
 
     //function for sending data to make new user
-    public function finishWalk()
+    public function finish()
     {
-        $this->finishW($this->path, $this->id_walk, $this->customer_email);
+        $this->setPath($this->path, $this->id_walk);
     }
 
 
