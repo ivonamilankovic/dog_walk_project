@@ -1,6 +1,6 @@
 <?php
 
-class GetVerification extends Dbconn
+class GetRate extends Dbconn
 {
 
     //function that generates and send verification code to users email address
@@ -42,8 +42,8 @@ class GetVerification extends Dbconn
             $subject = "";
             $txt = "";
             if ($columnName === "forgot_password_code") {
-                $subject = "Paw walks sends you code to reset your password!";
-                $txt = "To reset your password, click to the following link: http://localhost/dog_walk/pages/active.php?code=".$code."&col=fp";
+                $subject = "Paw walks sends you code to rate the walk!";
+                $txt = "To rate a walk, click to the following link: http://localhost/dog_walk/pages/active.php?code=".$code."&col=fp";
             } elseif ($columnName === "verification_code") {
                 $subject = "Welcome to Paw Walks!";
                 $txt = "To verify your email address, click to the following link: http://localhost/dog_walk/pages/active.php?code=".$code."&col=ver";

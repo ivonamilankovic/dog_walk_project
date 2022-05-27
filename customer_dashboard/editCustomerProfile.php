@@ -47,8 +47,6 @@ try{
     catch (Exception $ex){
         echo($ex -> getMessage());
     }
-
-
 ?>
     <!--Edit Profile-->
     <div class="container d-flex align-self-center" style="padding: 50px 0">
@@ -72,7 +70,7 @@ try{
 
                                     foreach ($dogNameData as $dogData) {
                                 ?>
-                                <a href="./dogAccount.php" style="text-decoration: none; color: black;"><?php echo $dogData['dog_name'] ?></a> <br>
+                                    <a href="./dogAccount.php" style="text-decoration: none; color: black;"><?php echo $dogData['dog_name'] ?></a> <br>
 
                                 <?php
                                     }
