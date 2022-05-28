@@ -36,7 +36,6 @@ if(isset($_GET['walker'])){
                 WHERE  u.id = ".$_GET['walker'];
 }
 
-
     try{
         $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
         $stmtWalker=$conn->prepare($sqlWalker);

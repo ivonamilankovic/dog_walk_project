@@ -21,6 +21,8 @@ if(!isset($_SESSION['id'])){
 
 <?php
 include_once '../page_parts/header.php';
+
+
 ?>
 
 
@@ -34,6 +36,7 @@ include_once '../page_parts/header.php';
 
     <div class="d-flex justify-content-center">
         <p>Walkers comment for the walk:</p>
+        <p></p>
     </div>
 
     <div class="d-flex justify-content-center">
@@ -53,9 +56,9 @@ include_once '../page_parts/header.php';
                 </tr>
             </table>
             <div class="d-flex justify-content-center p-4">
-                <button type="submit" name="rate" id="rate" class="btn btn-success">Rate!</button>
+                <button type="submit" name="rateBtn" id="rate" class="btn btn-success">Rate!</button>
             </div>
-
+            <input type="hidden" id="id_walk" name="id_walk" value="<?=$_GET['id_walk']?>">
         </form>
     </div>
 </div>

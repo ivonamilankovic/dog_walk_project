@@ -1,12 +1,12 @@
 <?php
-if(isset($_POST["rate"])){
+if(isset($_POST["rateBtn"])){
     //grabbing the data
-    $path = $_POST["path"];
-    $id_walk = $_POST['reservation_id'];
+    $rate = $_POST['rate'];
+    $id_walk = $_POST['id_walk'];
 
 }
 else{
-    header("location: ../walker_dashboard/finishWalk.php");
+    header("location: ../customer_dashboard/rateWalk.php");
     exit();
 }
 
@@ -14,8 +14,8 @@ include "../class/dbconn.class.php";
 include "../class/rateWalk.class.php";
 include "../class/rateWalkController.class.php";
 
-$rate = new RateWalkController($path, $id_walk);
-$rate->rate();
+$rating = new RateWalkController($rate, $id_walk);
+$rating->rate();
 
 
 header("location: ../pages/home.php");

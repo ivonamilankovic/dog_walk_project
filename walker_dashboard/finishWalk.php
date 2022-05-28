@@ -28,10 +28,11 @@ require_once '../page_parts/header.php';
         <div class="d-flex justify-content-center">
             <h1 class="p-4">Finish your walk!</h1>
         </div>
-        <form action="../include/finishWalk.inc.php" method="post">
+        <form action="../include/finishWalk.inc.php" method="post" id="finishWalkForm">
             <div class="d-flex justify-content-center">
-                <textarea class="form-control" id="path" name="path" placeholder="Where have you been during the walk?" style="height: 400px; font-size: x-large"></textarea>
+                <textarea class="form-control" id="path" name="path" placeholder="Where have you been during the walk?" style="height: 400px; font-size: x-large"></textarea> <br>
             </div>
+            <small id="errorPath" style="color: #ff0000"></small>
             <div class="d-flex justify-content-center">
                 <input type="hidden" value="<?= isset($_GET['reservation_id']) ? $_GET['reservation_id']:""?>" name="reservation_id">
                 <button type="submit" id="finish" name="finish" class="btn btn-success m-4">Finish!</button>
@@ -52,6 +53,8 @@ require_once '../page_parts/header.php';
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="../script/home.js"></script>
+    <script src="../script/finishWalk.js"></script>
+    <script src="../script/checkFunctions.js"></script>
 
     </body>
 </html>
