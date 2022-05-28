@@ -34,6 +34,7 @@ catch (Exception $ex){
             <th scope="col">Verified</th>
             <th scope="col">Street</th>
             <th scope="col">City</th>
+            <th scope="col">PC</th>
             <th scope="col">Dog count</th>
             <th scope="col">Options</th>
         </tr>
