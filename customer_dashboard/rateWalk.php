@@ -22,10 +22,23 @@ if(!isset($_SESSION['id'])){
 <?php
 include_once '../page_parts/header.php';
 
+require_once ("../include/dbconfig.inc.php");
 
+$sql = "SELECT walk.path FROM walk WHERE walk.id = ". $_GET['id_walk'];
+
+
+try{
+    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+    //for user
+    $stmt=$conn->prepare($sql);
+    $stmt->execute();
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+}
+catch (Exception $ex){
+    echo($ex -> getMessage());
+}
 ?>
-
-
 
 
 <div class="container">
@@ -36,7 +49,10 @@ include_once '../page_parts/header.php';
 
     <div class="d-flex justify-content-center">
         <p>Walkers comment for the walk:</p>
-        <p></p>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <p><?php echo $data['path'];?></p>
     </div>
 
     <div class="d-flex justify-content-center">
