@@ -15,14 +15,19 @@ if(!isset($_SESSION['id']) && $_SESSION['role']!=="admin"){
     <title>Admin page</title>
     <link rel="stylesheet" href="../css/homeStyle.css">
     <link rel="stylesheet" href="../css/scrollbar.css">
+    <link rel="stylesheet" href="../css/admin.css">
     <style>
         .a{
             background-color: #9c7a97;
             border: 1px solid black;
             padding: 8px;
             text-decoration: none;
+            text-align: center;
             color: black;
             border-radius: 5px;
+            display: block;
+            width: 250px;
+            margin: 30px auto;
         }
         .a:hover{
             color: white;
@@ -39,17 +44,12 @@ if(!isset($_SESSION['id']) && $_SESSION['role']!=="admin"){
     if(!isset($_GET['a'])){
     ?>
 
-    <div class="mx-auto mt-5 text-center" style="display: block;">
-        <h3>See all customers</h3>
-        <a href="admin.php?a=c" class="a">Open</a>
-        <h3 class="mt-4">See all walkers</h3>
-        <a href="admin.php?a=w" class="a">Open</a>
-        <h3 class="mt-4">See all walks</h3>
-        <a href="admin.php?a=walk" class="a">Open</a>
-        <h3 class="mt-4">See all breeds</h3>
-        <a href="admin.php?a=b" class="a">Open</a>
-        <h3 class="mt-4">See all dogs</h3>
-        <a href="admin.php?a=d" class="a">Open</a>
+    <div class="mx-auto mt-5 " style="display: block;">
+        <a href="admin.php?a=c" class="a">See all customers</a>
+        <a href="admin.php?a=w" class="a">See all walkers</a>
+        <a href="admin.php?a=walk" class="a">See all walks</a>
+        <a href="admin.php?a=b" class="a">See all breeds</a>
+        <a href="admin.php?a=d" class="a">See all dogs</a>
     </div>
 
     <?php
@@ -74,6 +74,15 @@ if(!isset($_SESSION['id']) && $_SESSION['role']!=="admin"){
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+<script>
+    document.getElementsByName('delete').forEach((btn)=>{
+
+        btn.addEventListener('click',(e)=>{
+            if (!confirm('Are you sure?')) e.preventDefault();
+        });
+
+    });
+</script>
 </body>
 
 </html>

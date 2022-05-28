@@ -62,18 +62,23 @@ catch (Exception $ex){
             echo '
                     <tr>
                         <td>'.$count.'</td>
-                        <td>'.$r['cust'].'</td>
-                        <td>'.$r['walker'].'</td>
-                        <td>'.$dogs['c'].'</td>
-                        <td>'.$r['walk_date'].'</td>
-                        <td>'.$r['start_location'].'</td>
-                        <td>'.$r['end_location'].'</td>
-                        <td>'.$r['duration'].'</td>
-                        <td>'.$r['description'].'</td>
-                        <td>'.$r['status'].'</td>
-                        <td>'.$r['path'].'</td>
-                        <td>'.$r['rate'].'</td>
-                        <td> <button class="btn btn-warning">Change</button> <button class="btn btn-danger">Delete</button> </td>
+                        <td style="color: gray;">'.$r['cust'].'</td>
+                        <td style="color: gray;">'.$r['walker'].'</td>
+                        <td><a href="./admin.php?a=d&owner='.$r['id'].'">'.$dogs['c'].'</a></td>
+                        <form action="./options/updateWalk.php" method="post">
+                        <td><input type="text" name="date" value="'.$r['walk_date'].'"></td>
+                        <td><input type="text" name="start" value="'.$r['start_location'].'"></td>
+                        <td><input type="text" name="end" value="'.$r['end_location'].'"></td>
+                        <td><input type="text" name="dur" value="'.$r['duration'].'"></td>
+                        <td><input type="text" name="desc" value="'.$r['description'].'"></td>
+                        <td style="color: gray;">'.$r['status'].'</td>
+                        <td><input type="text" name="path" value="'.$r['path'].'"></td>
+                        <td style="color: gray;">'.$r['rate'].'</td>
+                        <td> <button class="btn btn-warning" name="update" value="'.$r['id'].'">Change</button> 
+                        </form>
+                        <form action="./options/deleteWalk.php" method="post">
+                        <button class="btn btn-danger" name="delete" value="'.$r['id'].'">Delete</button> 
+                        </form></td>
                     </tr>
                 ';
             $count++;

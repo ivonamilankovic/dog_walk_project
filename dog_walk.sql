@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2022 at 02:46 PM
+-- Generation Time: May 28, 2022 at 06:12 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -39,20 +39,15 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`id`, `street`, `city`, `postal_code`) VALUES
-(39, 'ulica vts', 'subotica', 24000),
-(58, 'Ulica kesten 2', 'Novi sad', 400423),
-(59, 'Prizrenska 98', 'Beograd', 111115),
+(58, 'Ulica kesten 2', 'Novi SAD', 5412),
 (60, 'Kralja Kraljica 15', 'Suboticaxxx', 240015),
-(61, 'Rajhla Ferenca 5', 'Subotica', 24001),
+(61, 'Rajhla Ferenca 15', 'Subotica', 24011),
 (62, 'Orlovska ulica 55', 'Novi sad', 400652),
 (63, 'cfvgbj', 'hcfbhj', 45698),
-(64, 'ulica 12345', 'subb', 41532),
-(65, 'fgh', 'cvghbj', 45141),
-(66, 'cfgvhb', 'cgvh', 145872),
-(67, 'cfvgbh', 'fcvgbh', 258621),
-(68, 'vgbhjn', 'cgvhbjn', 415256),
+(64, 'ULlica neka 12345', 'subb', 41532),
 (69, 'fcgvhbj', 'cfgvhb12', 12541),
-(70, 'gbhj', 'vgbh', 45289);
+(70, 'gbhj', 'vgbh', 45289),
+(71, 'vts', 'vts', 1);
 
 -- --------------------------------------------------------
 
@@ -74,9 +69,8 @@ INSERT INTO `breeds` (`id`, `breed_name`) VALUES
 (8, 'Africanis - Afrički Pas'),
 (9, 'Afghan Hound - Afganistanski Hrt'),
 (10, 'Aidi - Atlas Mountain Dog - Atlaski Planinski Pas'),
-(11, 'Ainu-Dog (Ainu Hund, Ainu Ken) - Japanski Špic'),
+(11, 'Ainu - Dog - Japanski Špic'),
 (12, 'Airedale-Terrier - Erdel Terijer'),
-(13, 'Akbash'),
 (14, 'Akita Inu'),
 (15, 'Alapaha Blue Blood Bulldog'),
 (16, 'Alangu Mastiff'),
@@ -452,10 +446,11 @@ CREATE TABLE `dog` (
 --
 
 INSERT INTO `dog` (`id`, `dog_name`, `gender`, `age`, `notes`, `breed_id`, `owner_id`) VALUES
-(4, 'misko', 'm', 8, 'slatkis mali', 72, 64),
-(6, 'lala', 'f', 1, 'lalicica', 90, 64),
-(7, 'nin', 'm', 5, 'ninikaaaaaaaaaaaaa', 254, 64),
-(8, 'rari', 'm', 6, 'mrgud', 22, 64);
+(4, 'misko', 'm', 8, 'slatkis mali', 10, 64),
+(7, 'ninika', 'm', 5, 'dobrica je stvarno', 254, 64),
+(8, 'rari', 'm', 6, 'mrgud', 22, 64),
+(10, 'dogi', 'm', 8, 'be good', 16, 61),
+(13, 'lili', 'f', 4, 'dobra je', 20, 72);
 
 -- --------------------------------------------------------
 
@@ -486,12 +481,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `role`, `first_name`, `last_name`, `email`, `password`, `forgot_password_code`, `phone_number`, `address_id`, `picture`, `is_verified`, `verification_code`, `created_at`, `updated_at`, `registration_expires`) VALUES
-(58, 'walker', 'Masa', 'Macic', 'masa@testmail.com', '$2y$10$zLu5wdCLape9lXr0RtWWmutiACJs0m9NKrjnnVImLD4xetTmpHtry', NULL, '1235456248', 58, '', 1, '190375', '2022-04-23 12:24:23', '2022-05-12 22:20:42', NULL),
-(59, 'walker', 'Misko', 'Lukic', 'luki@testmail.com', '$2y$10$Ys40O7/0BGFWxU/fHFV5oeyXjXIQjCSShZwS1rsOL8Rzne0TZP/MO', NULL, '7485620158', 59, NULL, 1, '765480', '2022-04-23 12:26:02', '2022-04-23 12:26:28', NULL),
-(60, 'walker', 'Lenkica', 'Petrovic', 'petrlenka@testmail.com', '$2y$10$i8a/G2lCZXo.UIO0Iz8KN.zBpbeN7KTpnR.IJZh2ea6U9ceR9We.a', NULL, '9999451899', 60, '', 1, '515233', '2022-04-23 12:28:18', '2022-05-20 08:44:41', NULL),
-(61, 'customer', 'Milorad', 'Vasic', 'mili@testmail.com', '$2y$10$q4oY0hwtVcWlefUQogW3fOgrp/ON5Gfaiw6aWf5yMLLb9CZfWbPZS', NULL, '4856214856', 61, NULL, 1, '331298', '2022-04-23 12:29:31', '2022-04-23 12:29:53', NULL),
-(64, 'customer', 'ivi', 'ivi', 'ivona@gmail.com', '$2y$10$4yFK7iti3RohmJXDKKRDyOevCK9aMYTB0Uce3YoCn7M6BonRoq1za', NULL, '1236547899', 64, '', 1, '630333', '2022-05-12 12:40:17', '2022-05-27 09:33:02', NULL),
-(71, 'walker', 'iv', 'iv', 'ivonamilankovic@gmail.com', '$2y$10$bLH6mJ0.iIzW8PbIPDXH8emMBA7PST0G8OB6R9hLIQnstGebN9h/e', '966031', '1234569877', 70, '', 1, NULL, '2022-05-27 09:35:07', '2022-05-27 09:49:49', NULL);
+(1, 'admin', 'no name', 'deleted', 'deleted-user', '.NE BRISATI!!!!', NULL, '0000000000', 71, NULL, 1, NULL, '2022-05-28 15:38:29', '2022-05-28 15:38:29', NULL),
+(58, 'walker', 'Masa', 'Macic', 'masa@testmail.com', '$2y$10$zLu5wdCLape9lXr0RtWWmutiACJs0m9NKrjnnVImLD4xetTmpHtry', NULL, '9999999948', 58, '', 1, '190375', '2022-04-23 12:24:23', '2022-05-28 18:11:49', NULL),
+(61, 'customer', 'Milorad', 'Vasic', 'mili@testmail.com', '$2y$10$q4oY0hwtVcWlefUQogW3fOgrp/ON5Gfaiw6aWf5yMLLb9CZfWbPZS', NULL, '4856214899', 61, '', 1, '331298', '2022-04-23 12:29:31', '2022-05-28 18:05:47', NULL),
+(64, 'customer', 'ivi', 'ivika', 'ivona@gmail.com', '$2y$10$4yFK7iti3RohmJXDKKRDyOevCK9aMYTB0Uce3YoCn7M6BonRoq1za', NULL, '1236547899', 64, '', 1, '630333', '2022-05-12 12:40:17', '2022-05-28 18:05:09', NULL),
+(72, 'admin', 'ivona', 'admin', 'ivonamilankovic@gmail.com', '$2y$10$FM9oWIZxdVEzIv7hzxD4D.tQQI45094p1fn.tUFhZizvufZXmLhVS', NULL, '1485962314', 71, NULL, 1, '894966', '2022-05-27 15:50:43', '2022-05-27 15:50:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -519,7 +513,8 @@ CREATE TABLE `walk` (
 --
 
 INSERT INTO `walk` (`id`, `walk_date`, `start_location`, `end_location`, `description`, `duration`, `path`, `status`, `code`, `rate`, `customer_id`, `walker_id`) VALUES
-(3, '2022-06-10 10:55:00', 'bhn', 'fghbjn', 'xdcfvgb', '01:15:00', NULL, 'pending', NULL, NULL, 64, 58);
+(12, '2022-05-28 17:13:58', 'vbhj', 'vgbhjb', 'th', '01:45:00', 'ehh', 'finished', NULL, 5, 61, 58),
+(13, '2022-05-28 17:13:58', 'vbhj', 'vgbhjb', 'nesto', '01:45:00', '', 'pending', NULL, NULL, 61, 58);
 
 -- --------------------------------------------------------
 
@@ -529,7 +524,7 @@ INSERT INTO `walk` (`id`, `walk_date`, `start_location`, `end_location`, `descri
 
 CREATE TABLE `walker_details` (
   `id` int(10) UNSIGNED NOT NULL,
-  `biography` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `biography` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_active` tinyint(4) NOT NULL DEFAULT 0,
   `walker_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -539,10 +534,7 @@ CREATE TABLE `walker_details` (
 --
 
 INSERT INTO `walker_details` (`id`, `biography`, `is_active`, `walker_id`) VALUES
-(5, 'hello im masha how are you', 0, 58),
-(6, 'hhellolooooooooooooo ', 0, 59),
-(11, 'ja sam lenkica ko si ti ', 1, 60),
-(13, 'ghj', 1, 71);
+(5, 'hello my name is masha how are you', 1, 58);
 
 -- --------------------------------------------------------
 
@@ -561,10 +553,7 @@ CREATE TABLE `walker_favourite_breeds` (
 --
 
 INSERT INTO `walker_favourite_breeds` (`id`, `breed_id`, `walker_id`) VALUES
-(5, 22, 58),
-(13, 94, 59),
-(14, 38, 60),
-(109, 11, 71);
+(5, 14, 58);
 
 -- --------------------------------------------------------
 
@@ -583,8 +572,8 @@ CREATE TABLE `walk_dogs` (
 --
 
 INSERT INTO `walk_dogs` (`id`, `walk_id`, `dog_id`) VALUES
-(5, 3, 6),
-(6, 3, 7);
+(10, 12, 7),
+(11, 13, 13);
 
 --
 -- Indexes for dumped tables
@@ -659,7 +648,7 @@ ALTER TABLE `walk_dogs`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `breeds`
@@ -671,25 +660,25 @@ ALTER TABLE `breeds`
 -- AUTO_INCREMENT for table `dog`
 --
 ALTER TABLE `dog`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `walk`
 --
 ALTER TABLE `walk`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `walker_details`
 --
 ALTER TABLE `walker_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `walker_favourite_breeds`
@@ -701,7 +690,7 @@ ALTER TABLE `walker_favourite_breeds`
 -- AUTO_INCREMENT for table `walk_dogs`
 --
 ALTER TABLE `walk_dogs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -718,33 +707,33 @@ ALTER TABLE `dog`
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`);
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `walk`
 --
 ALTER TABLE `walk`
-  ADD CONSTRAINT `fk_customer_user` FOREIGN KEY (`customer_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `fk_walker_user` FOREIGN KEY (`walker_id`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `fk_owner` FOREIGN KEY (`customer_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `fk_walker` FOREIGN KEY (`walker_id`) REFERENCES `user` (`id`);
 
 --
 -- Constraints for table `walker_details`
 --
 ALTER TABLE `walker_details`
-  ADD CONSTRAINT `fk_walker_details_walker` FOREIGN KEY (`walker_id`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `fk_walker_details_walker` FOREIGN KEY (`walker_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `walker_favourite_breeds`
 --
 ALTER TABLE `walker_favourite_breeds`
   ADD CONSTRAINT `fk_walker_breeds_breed` FOREIGN KEY (`breed_id`) REFERENCES `breeds` (`id`),
-  ADD CONSTRAINT `fk_walker_breeds_walker` FOREIGN KEY (`walker_id`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `fk_walker_breeds_walker` FOREIGN KEY (`walker_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `walk_dogs`
 --
 ALTER TABLE `walk_dogs`
-  ADD CONSTRAINT `fk_walk_dog_walk` FOREIGN KEY (`walk_id`) REFERENCES `walk` (`id`),
+  ADD CONSTRAINT `fk_walk_dog_walk` FOREIGN KEY (`walk_id`) REFERENCES `walk` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `walk_dogs_ibfk_1` FOREIGN KEY (`dog_id`) REFERENCES `dog` (`id`);
 COMMIT;
 

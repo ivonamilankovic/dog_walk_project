@@ -33,9 +33,15 @@ catch (Exception $ex){
             foreach ($result as $r){
                 echo '
                     <tr>
+                    <form action="./options/updateBreed.php" method="post">
                         <td>'.$count.'</td>
-                        <td>'.$r['breed_name'].'</td>
-                        <td> <button class="btn btn-warning">Change</button> <button class="btn btn-danger">Delete</button> </td>
+                        <td><input type="text" name="breed_name" value="'.$r['breed_name'].'"></td>
+                        <td> <button class="btn btn-warning" name="update" value="'.$r['id'].'">Update</button> 
+                    </form>
+                    <form action="./options/deleteBreed.php" method="post">
+                        <button class="btn btn-danger" name="delete" value="'.$r['id'].'">Delete</button> 
+                    </form>
+                    </td>
                     </tr>
                 ';
                 $count++;

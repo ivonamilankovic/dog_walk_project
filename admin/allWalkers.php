@@ -4,7 +4,7 @@ include_once '../include/dbconfig.inc.php';
 
 try{
     $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
-    $sql = "SELECT u.id, u.first_name, u.last_name, u.email, u.phone_number, u.picture, u.is_verified, a.street, a.city, a.postal_code 
+    $sql = "SELECT u.id, u.first_name, u.last_name, u.email, u.phone_number, u.picture, u.is_verified, a.id as addrID, a.street, a.city, a.postal_code 
             FROM user u INNER JOIN address a ON u.address_id=a.id WHERE u.role = 'walker';";
     $stmt = $conn->prepare($sql);
     if(!$stmt->execute()){
@@ -34,6 +34,7 @@ catch (Exception $ex){
             <th scope="col">Verified</th>
             <th scope="col">Street</th>
             <th scope="col">City</th>
+            <th scope="col">PC</th>
             <th scope="col">Active</th>
             <th scope="col">Biography</th>
             <th scope="col">Fav. breed</th>
@@ -45,15 +46,26 @@ catch (Exception $ex){
 
             try{
                 $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
-                $sql = "SELECT wd.biography, wd.is_active, b.breed_name 
-                        FROM walker_details wd INNER JOIN walker_favourite_breeds wb ON wb.walker_id =".$r['id']." 
-                        INNER JOIN breeds b ON b.id= wb.breed_id WHERE wd.walker_id = ".$r['id'];
+                $sql = "SELECT biography, is_active
+                        FROM walker_details WHERE walker_id = ".$r['id'];
                 $stmt = $conn->prepare($sql);
                 if(!$stmt->execute()){
                     echo 'Could not read data from database';
                 }
                 else {
                     $details = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $stmt=null;
+
+                    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+                    $sql = "SELECT b.breed_name, b.id as breed_id FROM walker_favourite_breeds wb 
+                            INNER JOIN breeds b ON wb.breed_id=b.id WHERE wb.walker_id = ".$r['id'];
+                    $stmt = $conn->prepare($sql);
+                    if(!$stmt->execute()){
+                        echo 'Could not read data from database';
+                    }
+                    else {
+                        $favBreed = $stmt->fetch(PDO::FETCH_ASSOC);
+                    }
                 }
             }
             catch (Exception $ex){
@@ -63,38 +75,72 @@ catch (Exception $ex){
             echo '
                     <tr>
                         <td>'.$count.'</td>
-                        <td>'.$r['first_name'].'</td>
-                        <td>'.$r['last_name'].'</td>
-                        <td>'.$r['email'].'</td>
-                        <td>'.$r['phone_number'].'</td>
-                        <td>'.$r['picture'].'</td>
-                        <td>'.$r['is_verified'].'</td>
-                        <td>'.$r['street'].'</td>
-                        <td>'.$r['city'].' '.$r['postal_code'].'</td>';
+                        <form action="./options/updateWalker.php" method="post">
+                        <td><input type="text" name="fn" value="'.$r['first_name'].'"></td>
+                        <td><input type="text" name="ln" value="'.$r['last_name'].'"></td>
+                        <td><input type="email" name="email" value="'.$r['email'].'"></td>
+                        <td><input type="tel" name="phone" value="'.$r['phone_number'].'"></td>
+                        <td><input type="text" name="pic" value="'.$r['picture'].'"></td>
+                        <td><input type="text" name="is_ver" value="'.$r['is_verified'].'"></td>
+                        <td><input type="text" name="strt" value="'.$r['street'].'"></td>
+                        <td><input type="text" name="city" value="'.$r['city'].'"></td>
+                        <td><input type="text" name="PC" value="'.$r['postal_code'].'"></td>';
 
+            if($details) {
+                if ($details['is_active'] == 0) {
+                    echo '<td><a href="./options/makeWalkerActive.php?id=' . $r['id'] . '" class="btn btn-success" >Make active</a> </td>';
+                } elseif ($details['is_active'] == 1) {
+                    echo '<td><input type="text" name="is_active" value="' . $details['is_active'] . '"></td>';
+                }
 
-            if($details['is_active'] == 0){
-                echo '<td><button class="btn btn-success">Make active</button> </td>';
-            }
-            elseif ($details['is_active'] == 1){
-                echo '<td>'.$details['is_active'].'</td>';
-            }
+                if (!empty($details['biography'])) {
+                    echo '<td><input type="text" name="bio" value="' . $details['biography'] . '"></td>';
+                } else {
+                    echo '<td></td>';
+                }
 
-            if(!empty($details['biography'])){
-                echo '<td>'.$details['biography'].'</td>';
-            }
-            else {
+            }else{
+                echo '<td></td>';
                 echo '<td></td>';
             }
+            if($favBreed){
+                if (!empty($favBreed['breed_name'])) {
+                    echo '<td>
+                        <select name="breed">
+                                <option value="' . $favBreed['breed_id'] . '" selected disabled>' . $favBreed['breed_name'] . '</option>';
 
-            if(!empty($details['breed_name'])){
-                echo '<td>'.$details['breed_name'].'</td>';
+
+                    try {
+                        $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+                        $sql = "SELECT * FROM breeds";
+                        $stmt = $conn->prepare($sql);
+                        if (!$stmt->execute()) {
+                            echo 'Could not read data from database';
+                        } else {
+                            $breeds = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        }
+                    } catch (Exception $ex) {
+                        echo($ex->getMessage());
+                    }
+
+                    foreach ($breeds as $breed) {
+                        echo '<option value="' . $breed['id'] . '">' . $breed['breed_name'] . '</option>';
+                    }
+
+                    echo '</select></td>';
+                } else {
+                    echo '<td></td>';
+                }
             }
-            else {
+            else{
                 echo '<td></td>';
             }
             echo '
-                        <td> <button class="btn btn-warning">Change</button> <button class="btn btn-danger">Delete</button> </td>
+                        <td> <button class="btn btn-warning" name="update" value="'.$r['id'].' '.$r['addrID'].'">Change</button> 
+                        </form>
+                        <form action="./options/deleteWalker.php" method="post">
+                        <button class="btn btn-danger" name="delete" value="'.$r['id'].' '.$r['addrID'].'">Delete</button>
+                         </form></td>
                     </tr>
                 ';
             $count++;

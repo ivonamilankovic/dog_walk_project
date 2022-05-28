@@ -16,8 +16,9 @@
             <li><a class="dropdown-item" href="../admin/admin.php">Admin home</a></li>
             <li><a class="dropdown-item" href="../admin/admin.php?a=c">Customers</a></li>
             <li><a class="dropdown-item" href="../admin/admin.php?a=w">Walkers</a></li>
-            <li><a class="dropdown-item" href="../admin/admin.php?a=walk">Walks</a></li>
+            <li><a class="dropdown-item" href="../admin/admin.php?a=d">Dogs</a></li>
             <li><a class="dropdown-item" href="../admin/admin.php?a=b">Breeds</a></li>
+            <li><a class="dropdown-item" href="../admin/admin.php?a=walk">Walks</a></li>
         </ul>
     </div>
 </div>

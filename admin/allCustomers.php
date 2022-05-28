@@ -4,7 +4,7 @@ include_once '../include/dbconfig.inc.php';
 
 try{
     $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
-    $sql = "SELECT u.id, u.first_name, u.last_name, u.email, u.phone_number, u.picture, u.is_verified, a.street, a.city, a.postal_code 
+    $sql = "SELECT u.id, u.first_name, u.last_name, u.email, u.phone_number, u.picture, u.is_verified, a.id as addrId, a.street, a.city, a.postal_code 
             FROM user u INNER JOIN address a ON u.address_id=a.id WHERE u.role = 'customer';";
     $stmt = $conn->prepare($sql);
     if(!$stmt->execute()){
@@ -59,16 +59,23 @@ catch (Exception $ex){
             echo '
                     <tr>
                         <td>'.$count.'</td>
-                        <td>'.$r['first_name'].'</td>
-                        <td>'.$r['last_name'].'</td>
-                        <td>'.$r['email'].'</td>
-                        <td>'.$r['phone_number'].'</td>
-                        <td>'.$r['picture'].'</td>
-                        <td>'.$r['is_verified'].'</td>
-                        <td>'.$r['street'].'</td>
-                        <td>'.$r['city'].' '.$r['postal_code'].'</td>
-                        <td>'.$dog['c'].'</td>
-                        <td> <button class="btn btn-warning">Change</button> <button class="btn btn-danger">Delete</button> </td>
+                        <form action="./options/updateCustomer.php" method="post">
+                        <td><input type="text" name="first_name" value="'.$r['first_name'].'"></td>
+                        <td><input type="text" name="last_name" value="'.$r['last_name'].'"></td>
+                        <td><input type="email" name="email" value="'.$r['email'].'"></td>
+                        <td><input type="tel" name="phone" value="'.$r['phone_number'].'"></td>
+                        <td><input type="text" name="pic" value="'.$r['picture'].'"></td>
+                        <td><input type="text" name="is_verified" value="'.$r['is_verified'].'"></td>
+                        <td><input type="text" name="street" value="'.$r['street'].'"></td>
+                        <td><input type="text" name="city" value="'.$r['city'].'"></td>
+                        <td><input type="text" name="PC" value="'.$r['postal_code'].'"></td>
+                        <td><a href="./admin.php?a=d&owner='.$r['id'].'">'.$dog['c'].'</a></td>
+                        <td> <button class="btn btn-warning" name="update" value="'.$r['id'].' '.$r['addrId'].'">Update</button>
+                         </form>
+                         <form method="post" action="./options/deleteCustomer.php">
+                            <button class="btn btn-danger" name="delete" value="'.$r['id'].' '.$r['addrId'].'">Delete</button> 
+                         </form>
+                         </td>
                     </tr>
                 ';
             $count++;

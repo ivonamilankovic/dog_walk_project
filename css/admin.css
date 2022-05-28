@@ -1,0 +1,17 @@
+form{
+    display: inline;
+}
+input{
+    border: none;
+    width: 100%;
+}
+select{
+    width: 70%;
+    border: gray;
+}
+td{
+    width: fit-content;
+}
+a{
+    text-decoration: none;
+}
