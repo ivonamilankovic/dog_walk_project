@@ -8,8 +8,7 @@ class GetRate extends Dbconn
     {
         $sql = "SELECT user.email, walk.status FROM user 
                 INNER JOIN walk ON user.id = walk.customer_id
-                WHERE walk.id = ?
-                LIMIT 1";
+                WHERE walk.id = ?";
         $stmt = $this->setConnection()->prepare($sql);
         if (!$stmt->execute([$id_walk])) {
             $stmt = null;
@@ -23,9 +22,9 @@ class GetRate extends Dbconn
             $status = $result['status'];
         }
 
-        if ($status === "finished") {
 
-            $sql11 = "SELECT * FROM user WHERE email = ?";
+
+            /*$sql11 = "SELECT * FROM user WHERE email = ?";
             $stmt11 = $this->setConnection()->prepare($sql11);
             if (!$stmt11->execute([$email])) {
                 $stmt11 = null;
@@ -39,8 +38,8 @@ class GetRate extends Dbconn
                 $array = array("error" => "notExistingAccount");
                 echo json_encode($array);
                 die();
-            }
-        }
+            }*/
+
 
 
         $code = rand(100000, 999999);
@@ -57,12 +56,9 @@ class GetRate extends Dbconn
             $to = $email;
             $subject = "";
             $txt = "";
-            if ($columnName === "forgot_password_code") {
+            if ($columnName === "code") {
                 $subject = "Paw walks sends you code to rate the walk!";
-                $txt = "To rate a walk, click to the following link: http://localhost/dog_walk/customer_dashboard/rateWalk.php?code=".$code."&col=fp";
-            } elseif ($columnName === "verification_code") {
-                $subject = "Welcome to Paw Walks!";
-                $txt = "To verify your email address, click to the following link: http://localhost/dog_walk/customer_dashboard/rateWalk.php?code=".$code."&col=ver";
+                $txt = "To rate a walk, click to the following link: http://localhost/dog_walk/customer_dashboard/rateWalk.php?code=".$code."&id_walk=".$id_walk;
             }
             //mail($to, $subject, $txt, 'From: ivonamilankovic@yahoo.com');
             mail($to, $subject, $txt, 'From: sarababic01@yahoo.com');

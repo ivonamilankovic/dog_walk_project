@@ -21,9 +21,24 @@ if(!isset($_SESSION['id'])){
 
 <?php
 include_once '../page_parts/header.php';
+
+require_once ("../include/dbconfig.inc.php");
+
+$sql = "SELECT walk.path FROM walk WHERE walk.id = ". $_GET['id_walk'];
+
+
+try{
+    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+    //for user
+    $stmt=$conn->prepare($sql);
+    $stmt->execute();
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+}
+catch (Exception $ex){
+    echo($ex -> getMessage());
+}
 ?>
-
-
 
 
 <div class="container">
@@ -37,9 +52,18 @@ include_once '../page_parts/header.php';
     </div>
 
     <div class="d-flex justify-content-center">
+        <p><?php echo $data['path'];?></p>
+    </div>
+
+    <div class="d-flex justify-content-center">
         <form action="../include/rateWalk.inc.php" method="post">
             <table class="p-4">
-                <tr><td class="px-4">1</td><td class="px-4">2</td><td class="px-4">3</td><td class="px-4">4</td><td class="px-4">5</td></tr>
+                <tr><td class="px-4">1</td>
+                    <td class="px-4">2</td>
+                    <td class="px-4">3</td>
+                    <td class="px-4">4</td>
+                    <td class="px-4">5</td>
+                </tr>
                 <tr><td class="px-4"><input type="radio" name="rate" value="1"></td>
                     <td  class="px-4"><input type="radio" name="rate" value="2"></td>
                     <td class="px-4"><input type="radio" name="rate" value="3"></td>
@@ -48,9 +72,9 @@ include_once '../page_parts/header.php';
                 </tr>
             </table>
             <div class="d-flex justify-content-center p-4">
-                <button type="submit" name="rate" id="rate" class="btn btn-success">Rate!</button>
+                <button type="submit" name="rateBtn" id="rate" class="btn btn-success">Rate!</button>
             </div>
-
+            <input type="hidden" id="id_walk" name="id_walk" value="<?=$_GET['id_walk']?>">
         </form>
     </div>
 </div>
