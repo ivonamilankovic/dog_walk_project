@@ -2,7 +2,6 @@
 
 const errorReservation = document.getElementById('errorReservation');
 
-const dateOfWalk = document.getElementById('dateOfWalk');
 const duration = document.getElementById('duration');
 const startLocation = document.getElementById('startLoc');
 const endLocation = document.getElementById('endLoc');
@@ -30,18 +29,6 @@ openResBtn.addEventListener('click', ()=>{
     }
 });
 
-<!--OVO ISPRAVITI DA RADI-->
-
-function chkDate(input, errOutput){
-    let today = new Date();
-    let datetime = today.getDate() + today.getHours() + today.getMinutes() + today.getSeconds();
-    if(input.value < datetime ){
-        showError(input, "Reservation must be in future!", errOutput);
-        return false;
-    } else {
-        return true;
-    }
-}
 
 function chkDuration(input, errOutput){
     if(input.value === "choose"){
@@ -83,10 +70,6 @@ reservationBtn.addEventListener('click',function(event){
 
     //button for signup
     errorReservation.innerText = null;
-    let date = chkDate(dateOfWalk,errorReservation);
-    if(!date){
-        formIsOk = false;
-    }
 
     let dur = chkDuration(duration,errorReservation);
     if(!dur){

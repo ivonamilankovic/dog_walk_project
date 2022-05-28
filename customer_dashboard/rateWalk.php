@@ -66,7 +66,7 @@ catch (Exception $ex){
                 </tr>
                 <tr><td class="px-4"><input type="radio" name="rate" value="1"></td>
                     <td  class="px-4"><input type="radio" name="rate" value="2"></td>
-                    <td class="px-4"><input type="radio" name="rate" value="3"></td>
+                    <td class="px-4"><input type="radio" name="rate" value="3" checked></td>
                     <td class="px-4"><input type="radio" name="rate" value="4"></td>
                     <td class="px-4"><input type="radio" name="rate" value="5"></td>
                 </tr>

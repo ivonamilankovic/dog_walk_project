@@ -78,7 +78,13 @@ if(isset($_GET['walker'])){
                     <!--Part for reservation-->
                     <form action="../include/reservation.inc.php" method="post" id="reservationForm">
                         <div class="form-floating">
-                            <input  class="form-control" id="dateOfWalk" name="dateOfWalk" type="datetime-local" placeholder="Date of walk">
+                            <?php
+                            $epoch = strtotime("+2 week");
+                            $dt = new DateTime("@$epoch");
+                            $timestamp = $dt->format('Y-m-d H:i:s');
+                            $endlimit = str_replace(' ', 'T', date_format(date_create($timestamp), 'Y-m-d H:i'));
+                            ?>
+                            <input  class="form-control" id="dateOfWalk" name="dateOfWalk" type="datetime-local" placeholder="Date of walk" min="<?=str_replace(' ', 'T', date_format(date_create(date("Y-m-d H:i:s")), 'Y-m-d H:i'));?>" max="<?=$endlimit?>">
                             <label for="dateOfWalk">Date of Walk</label>
                         </div>
                         <br>
