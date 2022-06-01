@@ -61,7 +61,7 @@ try{
                         <div class="account-settings">
                             <div class="user-profile">
                                 <div class="user-avatar d-flex justify-content-center">
-                                    <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle m-2" alt="Profile picture">
+                                    <img src="../profile_images/user-icon.png" class="img-fluid rounded-circle m-2" alt="Profile picture">
                                 </div>
                                 <h5 id="emailCust" class="user-email" style="font-weight: bold"><?php echo $userData['email'];?></h5>
                                 <h6 class="user-name"><?php echo $userData['first_name']." ".$userData['last_name'];?></h6>
@@ -119,7 +119,7 @@ try{
                                 <div class="form-group">
                                     <label for="filename">Choose image: </label> <br>
                                     <div class="form-group d-flex justify-content-between align-items-center">
-                                        <img src="https://picsum.photos/60/60" class="img-fluid rounded-circle m-2" alt="Profile picture">
+                                        <img src="../profile_images/user-icon.png" width="30" height="30" class="img-fluid rounded-circle m-2" alt="Profile picture">
                                         <form action="#">
                                             <input type="file" id="myFileCust" name="filename">
                                         </form>

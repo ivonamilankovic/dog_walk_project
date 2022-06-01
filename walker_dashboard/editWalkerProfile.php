@@ -82,7 +82,7 @@ if($_SESSION['role'] === 'customer'){
                     <div class="account-settings">
                         <div class="user-profile">
                             <div class="user-avatar d-flex justify-content-center">
-                                <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle m-2" alt="Profile picture">
+                                <img src="../profile_images/user-icon.png"  class="img-fluid rounded-circle m-2" alt="Profile picture">
                             </div>
                             <h5 id="emailWalker" class="user-email" style="font-weight: bold"><?php if(!empty($userData['email'])) echo $userData['email'];?></h5>
                             <h6 class="user-name"><?php if(!empty($userData['first_name']) && !empty($userData['last_name'])) echo $userData['first_name']. " " . $userData['last_name'];?></h6>
@@ -161,7 +161,7 @@ if($_SESSION['role'] === 'customer'){
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="filename">Choose image: </label> <br>
-                                <img src="https://picsum.photos/100/100" class="img-fluid rounded-circle m-2 p-4" alt="Profile picture">
+                                <img src="../profile_images/user-icon.png" width="30" height="30" class="img-fluid rounded-circle m-2 p-4" alt="Profile picture">
                                 <form action="#">
                                     <input type="file" id="myFileW" name="filename">
                                 </form>

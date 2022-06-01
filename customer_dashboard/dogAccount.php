@@ -92,23 +92,9 @@ include_once '../page_parts/header.php';
 </div>
 
 
-
-
-
-
-
-
-
-
-
 <div class="text-right d-flex justify-content-center">
     <a href="./createDog.php" style="color: #000000; text-decoration: none; font-weight: bold;"><button class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000">Add Dog to your profile...</button></a>
 </div>
-
-
-
-
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
