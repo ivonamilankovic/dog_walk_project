@@ -4,7 +4,7 @@ class RateWalk extends Dbconn {
 
     protected function setRate($rate, $id_walk){
         //insert description for walk
-        $sql1 = "UPDATE walk SET rate = ? WHERE id = ?";
+        $sql1 = "UPDATE walk SET rate = ?, code = null WHERE id = ?";
         $stmt = $this->setConnection()->prepare($sql1);
 
         if(!$stmt->execute([$rate, $id_walk])) {
