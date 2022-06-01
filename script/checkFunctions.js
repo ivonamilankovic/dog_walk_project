@@ -133,8 +133,8 @@ function checkPassMatch(pass1,pass2,errOutput){
 }
 function checkPhone(input, errOutput){
     //checks length of phone number
-    if(input.value.length !== 10){
-        showError(input, "Phone number must have 10 digits!",errOutput);
+    if(input.value.length <= 6 && input.value.length >= 20){
+        showError(input, "Phone number must have 6 to 20 digits!",errOutput);
     }
     else if(isNaN(input.value)){
         showError(input, "Phone number must have digits, not letters!",errOutput);
@@ -147,6 +147,9 @@ function checkPostalCode(input,errOutput){
     //checks length of postal code
     if(input.value.length < 5 || input.value.length > 10){
         showError(input, "Postal code must have 5 to 10 digits!",errOutput);
+    }
+    else if(isNaN(input.value)){
+        showError(input, "Postal code must have digits, not letters!",errOutput);
     }
     else{
         showSuccess(input);
