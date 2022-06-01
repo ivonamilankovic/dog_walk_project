@@ -3,6 +3,9 @@ session_start();
 if(!isset($_SESSION['id'])){
     header("location: ../pages/home.php");
 }
+if($_SESSION['role'] === 'walker'){
+    header('location: ../walker_dashboard/editWalkerProfile.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +51,7 @@ try{
         echo($ex -> getMessage());
     }
 ?>
+<div id="update2div"></div>
     <!--Edit Profile-->
     <div class="container d-flex align-self-center" style="padding: 50px 0">
         <div class="row gutters">
@@ -96,19 +100,19 @@ try{
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="firstName">First name</label>
-                                    <input type="text" class="form-control" id="firstNameCust" placeholder="Enter your first name" value="<?php echo $userData['first_name'];?>">
+                                    <input type="text" class="form-control" id="firstNameCust" placeholder="First name" value="<?php echo $userData['first_name'];?>">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="lastName">Last name</label>
-                                    <input type="text" class="form-control" id="lastNameCust" placeholder="Enter your last name" value="<?php echo $userData['last_name'];?>">
+                                    <input type="text" class="form-control" id="lastNameCust" placeholder="Last name" value="<?php echo $userData['last_name'];?>">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input type="text" class="form-control" id="phoneCust" placeholder="Enter phone number" value="<?php echo $userData['phone_number'];?>">
+                                    <input type="text" class="form-control" id="phoneCust" placeholder="Phone number" value="<?php echo $userData['phone_number'];?>">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -135,13 +139,13 @@ try{
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="Street">Street</label>
-                                    <input type="text" class="form-control" id="streetCust" placeholder="Enter Street" value="<?php echo $userData['street'];?>">
+                                    <input type="text" class="form-control" id="streetCust" placeholder="Street" value="<?php echo $userData['street'];?>">
                                 </div>
                             </div> <br>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="city">City</label>
-                                    <input type="text" class="form-control" id="cityCust" placeholder="Enter City" value="<?php echo $userData['city'];?>">
+                                    <input type="text" class="form-control" id="cityCust" placeholder="City" value="<?php echo $userData['city'];?>">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">

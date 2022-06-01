@@ -53,7 +53,7 @@ function makeUser(){
         success:(response) => {
             console.log(response);
             //if any statement fails, creating user is failing
-            if(response.error === "stmtCreateAddressFail" || response.error === "stmtLastAddressIDFail" || response.error === "stmtCreateUserFail" || response.error === "stmtIsEmailTakenFail"){
+            if(response.error === "stmtCreateAddressFail" || response.error === "stmtLastAddressIDFail" || response.error === "stmtCreateUserFail" || response.error === "stmtIsEmailTakenFail" || response.error === "stmtCreateWalkerDetailsFail"){
                 errorMsg.innerText = "Failed creating user. Please try again!";
             }
             else if(response.error === "emailAlreadyTaken"){
@@ -63,7 +63,9 @@ function makeUser(){
             //if everything is fine it opens modal to enter verification code
             else if(response.signup === "done" || response.verify === "sent"){
                 $("#modal_signup").modal('hide');
-                alert("We sent you link on email to verify yourself.");
+                goodmsg.innerHTML = "We have sent you link on email to verify yourself!   <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>"
+                goodmsg.classList.add('alert');
+                goodmsg.classList.add('alert-success');
             }
         },
         error: (msg) => {

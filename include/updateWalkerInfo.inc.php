@@ -15,7 +15,8 @@ $street = $_POST['street'];
 $city = $_POST['city'];
 $zip = $_POST['zip'];
 $email = $_POST['email'];
+$active = $_POST['is_active'];
 
 //do update
-$update = new UpdateWalkerController($fname,$lname,$phone,$image,$favBreed,$bio,$street,$city,$zip,$email);
+$update = new UpdateWalkerController($fname,$lname,$phone,$image,$favBreed,$bio,$street,$city,$zip,$email, $active);
 $update->update();

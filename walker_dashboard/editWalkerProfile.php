@@ -3,6 +3,9 @@ session_start();
 if(!isset($_SESSION['id'])){
     header("location: ../pages/home.php");
 }
+if($_SESSION['role'] === 'customer'){
+    header('location: ../customer_dashboard/editCustomerProfile.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +21,7 @@ if(!isset($_SESSION['id'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+
 <!--HEADER-->
 <?php
     require_once '../page_parts/header.php';
@@ -27,11 +31,11 @@ if(!isset($_SESSION['id'])){
                 INNER JOIN address a ON a.id = u.address_id
                 WHERE u.id =".$_SESSION['id'];
 
-        $sql2 ="SELECT wd.biography FROM walker_details wd 
+        $sql2 ="SELECT wd.biography, wd.is_active FROM walker_details wd 
                 INNER JOIN user u ON u.id = wd.walker_id
                 WHERE u.id = ".$_SESSION['id'];
 
-        $sql3="SELECT b.breed_id FROM breeds b 
+        $sql3="SELECT b.id, b.breed_name FROM breeds b 
                 INNER JOIN walker_favourite_breeds wb ON wb.breed_id=b.id
                 INNER JOIN user u ON u.id = wb.walker_id
                 WHERE u.id=".$_SESSION['id'];
@@ -67,6 +71,7 @@ if(!isset($_SESSION['id'])){
 
 ?>
 
+<div id="updatemsg"> </div>
 
 <!--Edit Profile-->
 <div class="container d-flex align-self-center" style="padding: 50px 0">
@@ -100,19 +105,19 @@ if(!isset($_SESSION['id'])){
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="firstName">First name</label>
-                                <input type="text" class="form-control" id="firstNameW" placeholder="Enter your first name" value="<?php if(!empty($userData['first_name'])) echo $userData['first_name'];?>">
+                                <input type="text" class="form-control" id="firstNameW" placeholder="First name" value="<?php if(!empty($userData['first_name'])) echo $userData['first_name'];?>">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="lastName">Last name</label>
-                                <input type="text" class="form-control" id="lastNameW" placeholder="Enter your last name" value="<?php if(!empty($userData['last_name'])) echo $userData['last_name'];?>">
+                                <input type="text" class="form-control" id="lastNameW" placeholder="Last name" value="<?php if(!empty($userData['last_name'])) echo $userData['last_name'];?>">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input type="text" class="form-control" id="phoneW" placeholder="Enter phone number" value="<?php if(!empty($userData['phone_number'])) echo $userData['phone_number'];?>">
+                                <input type="text" class="form-control" id="phoneW" placeholder="Phone number" value="<?php if(!empty($userData['phone_number'])) echo $userData['phone_number'];?>">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -134,26 +139,9 @@ if(!isset($_SESSION['id'])){
                                 }
 
 
-
-                                    $sqlWFB = "SELECT b.id, b.breed_name, wfb.breed_id, wfb.walker_id FROM breeds b
-                                                    INNER JOIN walker_favourite_breeds wfb ON wfb.breed_id = b.id
-                                                    WHERE  wfb.walker_id = ".$_SESSION['id'];
-
-
-
-                                try{
-                                    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
-                                    $stmtWFB=$conn->prepare($sqlWFB);
-                                    $stmtWFB->execute();
-                                    $walker= $stmtWFB->fetch(PDO::FETCH_ASSOC);
-                                }
-                                catch (Exception $ex){
-                                    echo($ex -> getMessage());
-                                }
-
                                 ?>
-                                <select id="favBreedSelect" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 form-select">
-                                    <option value="<?php echo $walker['id'];?>"><?php echo $walker['breed_name'];?></option>
+                                <select id="favBreedSelect" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 form-select"  <?php if($userDetails['is_active'] == 0){ echo 'disabled readonly';} ?>>
+                                    <option value="<?php if(!empty($userFavBreed['id'])) echo $userFavBreed['id'];?>"><?php if(!empty($userFavBreed['breed_name'])) echo $userFavBreed['breed_name'];?></option>
                                     <?php
                                         foreach ($results as $output) {?>
                                         <option value="<?php echo $output["id"];?>"><?php echo $output["breed_name"];?></option>
@@ -167,7 +155,7 @@ if(!isset($_SESSION['id'])){
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="biography">Biography:</label>
-                                <textarea class="form-control" id="biography" placeholder="Biography..." style="height: 200px"><?php if(!empty($userDetails['biography'])) echo $userDetails['biography'];?></textarea>
+                                <textarea <?php if($userDetails['is_active'] == 0){ echo 'disabled readonly';} ?> class="form-control" id="biography" placeholder="Biography..." style="height: 200px"><?php if(!empty($userDetails['biography'])) echo $userDetails['biography'];?></textarea>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -187,13 +175,13 @@ if(!isset($_SESSION['id'])){
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="Street">Street</label>
-                                <input type="text" class="form-control" id="streetW" placeholder="Enter Street" value="<?php if(!empty($userData['street'])) echo $userData['street'];?>">
+                                <input type="text" class="form-control" id="streetW" placeholder="Street" value="<?php if(!empty($userData['street'])) echo $userData['street'];?>">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="city">City</label>
-                                <input type="text" class="form-control" id="cityW" placeholder="Enter City" value="<?php if(!empty($userData['city'])) echo $userData['city'];?>">
+                                <input type="text" class="form-control" id="cityW" placeholder="City" value="<?php if(!empty($userData['city'])) echo $userData['city'];?>">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -206,6 +194,7 @@ if(!isset($_SESSION['id'])){
                     <br>
                     <small id="errUpdateWalker" style="color: red; text-align: center;"></small>
                     <br>
+                    <input type="hidden" id="is_active" value="<?php echo $userDetails['is_active']; ?>" name="is_active">
                     <div class="row gutters">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="text-right d-flex justify-content-center">

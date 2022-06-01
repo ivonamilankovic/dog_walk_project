@@ -12,8 +12,9 @@ class UpdateWalkerController extends UpdateWalker{
     private $city;
     private $zip;
     private $email;
+    private $active;
 
-    public function __construct($firstName, $lastName, $phone, $image, $favBreed, $bio, $street, $city, $zip, $email)
+    public function __construct($firstName, $lastName, $phone, $image, $favBreed, $bio, $street, $city, $zip, $email, $active)
     {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
@@ -25,6 +26,7 @@ class UpdateWalkerController extends UpdateWalker{
         $this->city = $city;
         $this->zip = $zip;
         $this->email = $email;
+        $this->active = $active;
     }
 
     //function that will update all the data
@@ -47,12 +49,14 @@ class UpdateWalkerController extends UpdateWalker{
         }
 
         $id = $this->getId($this->email);
+
         if($id !== "") {
             $this->updateUserInfo($this->firstName, $this->lastName, $this->phone, $this->image, $id);
             $this->updateAddress($this->street, $this->city, $this->zip, $id);
-            $this->updateFavBreed($this->favBreed, $id);
-            $this->updateWalkerDetails($this->bio, $id);
-
+            if($this->active != 0) {
+                $this->updateFavBreed($this->favBreed, $id);
+                $this->updateWalkerDetails($this->bio, $id);
+            }
             $array = array("updated" => "done");
             echo json_encode($array);
         }else{
@@ -66,12 +70,20 @@ class UpdateWalkerController extends UpdateWalker{
 
     //ADD IMAGE HERE!!!!!!!!!!!!!!!!!!!!!!!
     private function emptyInput(){
-        if(empty($this->email) || empty($this->firstName) || empty($this->lastName) || empty($this->favBreed) || empty($this->bio) || empty($this->phone) || empty($this->street) || empty($this->city) || empty($this->zip)){
-            return false;
+        if($this->active != 0) {
+            if (empty($this->email) || empty($this->firstName) || empty($this->lastName) || empty($this->favBreed) || empty($this->bio) || empty($this->phone) || empty($this->street) || empty($this->city) || empty($this->zip)) {
+                return false;
+            }else{
+                return  true;
+            }
+        }else{
+            if (empty($this->email) || empty($this->firstName) || empty($this->lastName) || empty($this->phone) || empty($this->street) || empty($this->city) || empty($this->zip)) {
+                return false;
+            }else{
+                return  true;
+            }
         }
-        else{
-            return  true;
-        }
+
     }
 
     //function that checks if phone number is correct length and if its just numbers

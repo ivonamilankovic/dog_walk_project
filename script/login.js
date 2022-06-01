@@ -8,7 +8,7 @@ const errorMessage = document.getElementById('errorMessage');
 const goToSignup = document.getElementById('goToSignup');
 const forgotPasswordTxt = document.getElementById('forgotPass');
 const errorNewPass = document.getElementById('errorNewPass');
-
+const goodmsg = document.getElementById('goodMessages');
 
 //functions
 function logUser(){
@@ -36,9 +36,6 @@ function logUser(){
                errorMessage.innerText = "User is not verified. To be able to login please verify your profile on your email.";
            }
            else if(response.login === "done"){
-               if('<%=Session["role"] %>' === "admin"){
-                   window.location.href = '../admin/admin.php';
-               }
                window.location.reload();
            }
         },
@@ -61,7 +58,9 @@ function sendCodeForNewPassword(){
                 console.log(response);
                 if (response.verify === "sent") {
                     $("#modal_login").modal('hide');
-                    alert("We have sent you link on email to verify yourself!");
+                    goodmsg.innerHTML = "We have sent you link on email to verify yourself!   <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>"
+                    goodmsg.classList.add('alert');
+                    goodmsg.classList.add('alert-success');
                 } else if (response.error === "stmtSendCodeFailed" || response.error === "stmtFindUserEmailFailed") {
                     errorMessage.innerText = "Failed to send code. Please try again.";
                 } else if (response.error === "notExistingAccount"){

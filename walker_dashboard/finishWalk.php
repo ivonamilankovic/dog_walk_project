@@ -3,6 +3,9 @@ session_start();
 if(!isset($_SESSION['id'])){
     header("location: ../pages/home.php");
 }
+if($_SESSION['role'] === 'customer'){
+    header('location: ../customer_dashboard/editCustomerProfile.php');
+}
 ?>
 
     <!DOCTYPE html>

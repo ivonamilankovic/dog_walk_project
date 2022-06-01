@@ -31,6 +31,7 @@
     }
 
 ?>
+<div id="goodMessages"></div>
     <!--freedom for your dog-->
     <div class="container mt-4 p-4">
         <img src="../images/freedom.jpg" alt="dog" class="img-fluid w-100" id="homePicture">

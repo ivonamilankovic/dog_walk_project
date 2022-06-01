@@ -5,6 +5,7 @@ const password2 = document.getElementById('newPassword2');
 const email = document.getElementById('emailP');
 const changeBtn = document.getElementById('changePasswordBtn');
 const newErrorMessage = document.getElementById('newErrorMessage');
+const changemsgDiv = document.getElementById('changemsg');
 //functions
 function changePassword(){
     //changes password
@@ -21,9 +22,14 @@ function changePassword(){
             console.log(response);
             if(response.newPassword === "set"){
                 $("#newErrorMessage").innerText = null;
-                alert("You have succesfully changed your password!");
+                changemsgDiv.innerHTML ="You have successfully changed your password! <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>";
+                changemsgDiv.classList.add('alert');
+                changemsgDiv.classList.add('alert-success');
+
             }else if(response.error === "stmtSetNewPasswordFailed"){
                 errorNewPass.innerText = "Failed to set new password. Try again.";
+                errorNewPass.classList.add('alert');
+                errorNewPass.classList.add('alert-danger');
             }
         },
         error: (msg) => {

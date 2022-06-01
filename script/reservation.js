@@ -13,6 +13,13 @@ const reservationBtn = document.getElementById('submitReservation');
 const openResBtn = document.getElementById('openReservation');
 const reservationFormDiv = document.getElementById('reservationDiv');
 
+var visitor= document.getElementById('visitor').value;
+if(visitor === "walker"){
+    openResBtn.disabled = true;
+    openResBtn.style.backgroundColor = "#d8d8d8";
+    openResBtn.style.cursor = "not-allowed";
+}
+
 openResBtn.addEventListener('click', ()=>{
     //open/closes form
     if(reservationFormDiv.style.display === "none"){

@@ -17,7 +17,20 @@ class UpdateWalker extends Dbconn{
 
     }
 
-    protected function ifExists($id, $table){
+    private function getAddrID($idUser){
+        $sqlGetId = "SELECT address_id FROM user WHERE id =?";
+        $stmt = $this->setConnection()->prepare($sqlGetId);
+        if(!$stmt->execute([$idUser])){
+            $stmt = null;
+            $array = array("error" => "stmtGetAddressIDFailed");
+            echo json_encode($array);
+            die();
+        }
+        $addrid= $stmt->fetch(PDO::FETCH_ASSOC);
+        return $addrid['address_id'];
+    }
+
+    private function ifExists($id, $table){
         $sqlFindWalker = "SELECT * FROM ".$table." WHERE walker_id = ?";
         $stmt = $this->setConnection()->prepare($sqlFindWalker);
         if(!$stmt->execute([$id])){
@@ -48,7 +61,8 @@ class UpdateWalker extends Dbconn{
         $stmt = null;
     }
 
-    protected function updateAddress($street,$city,$zipCode,$id){
+    protected function updateAddress($street,$city,$zipCode, $idUser){
+        $id = $this->getAddrID($idUser);
         $updateAddress = "UPDATE address SET street = ?, city = ?, postal_code = ? WHERE id = ?";
         $stmt = $this->setConnection()->prepare($updateAddress);
 
@@ -93,7 +107,7 @@ class UpdateWalker extends Dbconn{
 
     protected function updateFavBreed($favBreed,$id){
         //first we have to check if they have some data in db if yes-update else -insert
-        $existsAlready = $this->ifExists($id,"walker_details");
+        $existsAlready = $this->ifExists($id,"walker_favourite_breeds");
         if($existsAlready) {
             //yes
             $updateFavBreed = "UPDATE walker_favourite_breeds SET breed_id = ? WHERE walker_id = ?";

@@ -18,6 +18,32 @@ class Signup extends Dbconn {
         }
         $stmt = null;
 
+        //if its walker set to be not active until admin gives him permission
+        if($role === "walker"){
+
+            $sqlGetId = "SELECT MAX(id) as id FROM user ";
+            $stmtid = $this->setConnection()->prepare($sqlGetId);
+
+            if(!$stmtid->execute()) {
+                $stmtid = null;
+                $array = array("error" => "stmtGetIdFailed");
+                echo json_encode($array);
+                die();
+            }
+            $id = $stmtid->fetch();
+            $stmtid = null;
+
+            $sqlW = "INSERT INTO walker_details(is_active, walker_id) VALUES (0,?)";
+            $stmt = $this->setConnection()->prepare($sqlW);
+
+            if(!$stmt->execute([$id['id']])) {
+                $stmt = null;
+                $array = array("error" => "stmtCreateWalkerDetailsFail");
+                echo json_encode($array);
+                die();
+            }
+        }
+
     }
 
     protected function createAddress($address, $city, $postalCode)

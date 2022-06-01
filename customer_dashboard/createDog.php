@@ -3,6 +3,9 @@ session_start();
 if(!isset($_SESSION['id'])){
     header("location: ../pages/home.php");
 }
+if($_SESSION['role'] === 'walker'){
+    header('location: ../walker_dashboard/editWalkerProfile.php');
+}
 ?>
 
 <!DOCTYPE html>

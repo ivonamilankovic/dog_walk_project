@@ -10,8 +10,10 @@ const imageWalker = document.getElementById('myFileW');
 const streetWalker = document.getElementById('streetW');
 const cityWalker = document.getElementById('cityW');
 const zipWalker = document.getElementById('zipW');
+const activeW = document.getElementById('is_active');
 const errorWalker = document.getElementById('errUpdateWalker');
 const updateWalkerBtn = document.getElementById('updateWalker');
+const updatemsgDiv = document.getElementById('updatemsg');
 
 //functions
 function updateWalker(){
@@ -29,14 +31,19 @@ function updateWalker(){
            "street": streetWalker.value,
            "city": cityWalker.value,
            "zip": zipWalker.value,
-           "email":emailWalker.innerText
+           "email":emailWalker.innerText,
+           "is_active": activeW.value
        },
        success: (response)=>{
            console.log(response);
             if(response.updated === "done"){
-                window.location.reload();
+                updatemsgDiv.innerHTML ="You have successfully updated your data! <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>";
+                updatemsgDiv.classList.add('alert');
+                updatemsgDiv.classList.add('alert-success');
             }else if(response.updated === "failedToGetId" || response.error === "stmtIfExistInTableFailed" || response.error === "stmtUpdateUserInfoFailed" || response.error === "stmtUpdateAddressFailed" || response.error === "stmtUpdateWalkerDetailsFailed" || response.error === "stmtInsertWalkerDetailsFailed" || response.error === "stmtUpdateFavBreedFailed" || response.error === "stmtInsertFavBreedFailed"){
                 errorWalker.innerText = "Failed to change your data. Please try again!";
+                errorWalker.classList.add('alert');
+                errorWalker.classList.add('alert-danger');
             }
        } ,
         error: (msg) => {
@@ -48,11 +55,13 @@ function updateWalker(){
 //event listener
 updateWalkerBtn.addEventListener('click', (e)=>{
     errorWalker.innerText = "";
+    if(activeW.value != 0){
+        isEmpty(biography,errorWalker);
+        checkSelectBreed(favBreed,errorWalker);
+    }
     checkInputsArray([fNameWalker,lNameWalker,phoneWalker,streetWalker,cityWalker,zipWalker],errorWalker);
     checkImage(imageWalker,errorWalker); //TO DO
-    isEmpty(biography,errorWalker);
-    checkSelectBreed(favBreed,errorWalker);
-    if(errorWalker.innerText!==""){
+     if(errorWalker.innerText!==""){
         e.preventDefault();
     }else{
         updateWalker();

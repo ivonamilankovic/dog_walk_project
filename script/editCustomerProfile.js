@@ -10,6 +10,7 @@ const cityCust = document.getElementById('cityCust');
 const zipCust = document.getElementById('zipCust');
 const errorCust = document.getElementById('errorUpdateCust');
 const updateCustBtn = document.getElementById('updateCustomer');
+const update2div = document.getElementById('update2div');
 
 //functions
 function updateCust(){
@@ -30,9 +31,14 @@ function updateCust(){
         success: (response)=>{
             console.log(response);
             if(response.updated === "done"){
-                window.location.reload();
+                update2div.innerHTML ="You have successfully updated your data! <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>";
+                update2div.classList.add('alert');
+                update2div.classList.add('alert-success');
+
             }else if(response.updated === "failedToGetId"  || response.error === "stmtUpdateUserInfoFailed" || response.error === "stmtUpdateAddressFailed"){
-                errorCust.innerText = "Failed to change your data. Please try again!";
+                errorCust.innerHTML = "Failed to change your data. Please try again! ";
+                errorCust.classList.add('alert');
+                errorCust.classList.add('alert-danger');
             }
         } ,
         error: (msg) => {
