@@ -55,6 +55,13 @@
         <div class="row border rounded karta d-flex justify-content-center fixed">
             <h1 class="d-flex justify-content-center">Best rated walkers</h1>
             <!--BEST RATED DOG WALKERS-->
+
+
+            <?php
+
+            ?>
+
+
             <!--1.karta-->
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">

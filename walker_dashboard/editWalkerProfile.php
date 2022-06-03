@@ -18,6 +18,7 @@ if($_SESSION['role'] === 'customer'){
     <link rel="stylesheet" type="text/css" href="../css/editProfileStyle.css">
     <link rel="stylesheet" href="../css/homeStyle.css">
     <link rel="stylesheet" href="../css/scrollbar.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
@@ -140,7 +141,7 @@ if($_SESSION['role'] === 'customer'){
 
 
                                 ?>
-                                <select id="favBreedSelect" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 form-select"  <?php if($userDetails['is_active'] == 0){ echo 'disabled readonly';} ?>>
+                                <select id="favBreedSelect" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 form-select js-example-basic-single"  <?php if($userDetails['is_active'] == 0){ echo 'disabled readonly';} ?>>
                                     <option value="<?php if(!empty($userFavBreed['id'])) echo $userFavBreed['id'];?>"><?php if(!empty($userFavBreed['breed_name'])) echo $userFavBreed['breed_name'];?></option>
                                     <?php
                                         foreach ($results as $output) {?>
@@ -214,6 +215,11 @@ if($_SESSION['role'] === 'customer'){
 <script src="../script/home.js"></script>
 <script src="../script/editWalkerProfile.js"></script>
 <script src="../script/checkFunctions.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js">
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
 </body>
 </html>
 
