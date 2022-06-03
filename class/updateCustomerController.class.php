@@ -43,6 +43,16 @@ class UpdateCustomerController extends UpdateCustomer{
             echo json_encode($array);
             return;
         }
+        if($this->containsNumbers($this->phone) === false){
+            $array = array("error" => "phoneIsNotNum");
+            echo json_encode($array);
+            return;
+        }
+        if($this->containsNumbers($this->zip) === false){
+            $array = array("error" => "postalCodeIsNotNum");
+            echo json_encode($array);
+            return;
+        }
 
         $id = $this->getId($this->email);
         if($id !== "") {
@@ -70,7 +80,6 @@ class UpdateCustomerController extends UpdateCustomer{
     }
 
     //function that checks if phone number is correct length and if its just numbers
-    //  !!!!!!!!!!!!!!!!!!!DODATI DA PROVERI DA LI SU SAMO BROJEVI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     private function validPhoneNumber(){
         if(strlen($this->phone) !== 10){
             return false;
@@ -89,5 +98,15 @@ class UpdateCustomerController extends UpdateCustomer{
             return  true;
         }
     }
+    //function that checks if string is just numbers
+    private function containsNumbers($val){
+        if(!is_numeric($val)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
 
     }

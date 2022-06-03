@@ -10,6 +10,19 @@ if(isset($_POST['update'])){
     $notes = $_POST['notes'];
     $breed = $_POST['breed'];
 
+    if($name === "" || $gender === "" || $notes === "" || $breed === ""){
+        header('location: ../admin.php?a=d&e=empty');
+        exit();
+    }
+    if($gender !== "f" || $gender !== "m"){
+        header('location: ../admin.php?a=d&e=invalidGender');
+        exit();
+    }
+    if(!is_numeric($age)){
+        header('location: ../admin.php?a=d&e=notNumAge');
+        exit();
+    }
+
     try{
         $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
         $sql = "UPDATE dog SET dog_name = ?, gender = ?, age =?, notes = ?, breed_id = ? WHERE id=?";

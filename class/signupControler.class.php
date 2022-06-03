@@ -48,6 +48,11 @@ class SignupControler extends Signup {
             echo json_encode($array);
             return;
         }
+        if($this->containsNumbers($this->phone) === false){
+            $array = array("error"=>"phoneIsNotNum");
+            echo json_encode($array);
+            return;
+        }
         if($this->validRole() === false){
             $array = array("error"=>"wrongRole");
             echo json_encode($array);
@@ -55,6 +60,11 @@ class SignupControler extends Signup {
         }
         if($this->validPostalCode() === false){
             $array = array( "error"=>"wrongPostalCode");
+            echo json_encode($array);
+            return;
+        }
+        if($this->containsNumbers($this->postalCode) === false){
+            $array = array("error"=>"postalCodeIsNotNum");
             echo json_encode($array);
             return;
         }
@@ -114,10 +124,19 @@ class SignupControler extends Signup {
         }
     }
 
-    //function that checks if phone number is correct length and if its just numbers
-    //  !!!!!!!!!!!!!!!!!!!DODATI DA PROVERI DA LI SU SAMO BROJEVI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //function that checks if phone number is correct length
     private function validPhoneNumber(){
-        if(strlen($this->phone) !== 10){
+        if(strlen($this->phone) <= 5 && strlen($this->postalCode) >15){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    //function that checks if string is just numbers
+    private function containsNumbers($val){
+        if(!is_numeric($val)){
             return false;
         }
         else{

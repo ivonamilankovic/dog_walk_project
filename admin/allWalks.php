@@ -18,6 +18,18 @@ try{
 catch (Exception $ex){
     echo($ex -> getMessage());
 }
+
+
+if(isset($_GET['e'])){
+    if($_GET['e'] === "empty"){
+        echo '<div class="alert alert-danger">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                You have some empty fields! It can not be updated.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
+    }
+}
+
 ?>
 
 <h1 class="m-3">Walks</h1>

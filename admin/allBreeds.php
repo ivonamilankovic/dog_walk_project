@@ -16,6 +16,16 @@ try{
 catch (Exception $ex){
     echo($ex -> getMessage());
 }
+
+if(isset($_GET['e'])){
+    if($_GET['e'] === "empty"){
+        echo '<div class="alert alert-danger">
+                You have some empty fields! It can not be updated.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
+    }
+}
+
 ?>
 
 <h1 class="m-3">Breeds</h1>

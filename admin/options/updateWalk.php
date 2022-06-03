@@ -11,6 +11,11 @@ if(isset($_POST['update'])){
     $desc =$_POST['desc'];
     $path =$_POST['path'];
 
+    if(empty($date) || empty($start) || empty($end) || empty($dur) || empty($desc)){
+        header("location: ../admin.php?a=walk&e=empty");
+        exit();
+    }
+
     try{
         $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
         $sql = "UPDATE walk SET walk_date = ?, start_location = ?, end_location =?, description = ?, duration = ?, path =? WHERE id=?";

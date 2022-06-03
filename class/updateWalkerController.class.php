@@ -47,6 +47,16 @@ class UpdateWalkerController extends UpdateWalker{
             echo json_encode($array);
             return;
         }
+        if($this->containsNumbers($this->phone) === false){
+            $array = array("error" => "phoneIsNotNum");
+            echo json_encode($array);
+            return;
+        }
+        if($this->containsNumbers($this->zip) === false){
+            $array = array("error" => "postalCodeIsNotNum");
+            echo json_encode($array);
+            return;
+        }
 
         $id = $this->getId($this->email);
 
@@ -104,6 +114,16 @@ class UpdateWalkerController extends UpdateWalker{
         }
         else{
             return  true;
+        }
+    }
+
+    //function that checks if string is just numbers
+    private function containsNumbers($val){
+        if(!is_numeric($val)){
+            return false;
+        }
+        else{
+            return true;
         }
     }
 

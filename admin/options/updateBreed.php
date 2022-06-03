@@ -6,6 +6,10 @@ if(isset($_POST['update'])){
     $id=$_POST['update'];
     $bred_name = $_POST['breed_name'];
 
+    if($bred_name === ""){
+        header('location: ../admin.php?a=b&e=empty');
+        exit();
+    }
     try{
         $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
         $sql = "UPDATE breeds SET breed_name = ? WHERE id=?";

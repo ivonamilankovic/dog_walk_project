@@ -18,6 +18,42 @@ if(isset($_POST['update'])){
     $bio = $_POST['bio'];
     $breed = $_POST['breed'];
 
+
+    if($fn === "" || $ln === "" || $email === "" || $phone === "" || $street === "" || $city === "" || $postCode === ""){
+        header('location: ../admin.php?a=w&e=empty');
+        exit();
+    }
+
+    if($ver != "1" || $ver != "0"){
+        header('location: ../admin.php?a=w&e=verNotValid');
+        exit();
+    }
+
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        header('location: ../admin.php?a=w&e=wrongFormat');
+        exit();
+    }
+
+    if(strlen($phone) < 5 && strlen($phone) > 15){
+        header('location: ../admin.php?a=w&e=wrongLengthPH');
+        exit();
+    }
+
+    if(strlen($postCode) < 5 && strlen($postCode) > 10){
+        header('location: ../admin.php?a=w&e=wrongLengthPC');
+        exit();
+    }
+
+    if(!is_numeric($phone)){
+        header('location: ../admin.php?a=w&e=notNumPH');
+        exit();
+    }
+
+    if(!is_numeric( $postCode)){
+        header('location: ../admin.php?a=w&e=notNumPC');
+        exit();
+    }
+
     try{
         $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
         $sql = "UPDATE user SET first_name = ?, last_name = ?, email = ?, phone_number = ?, picture = ? ,
