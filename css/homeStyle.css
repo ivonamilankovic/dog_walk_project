@@ -1,3 +1,8 @@
+/*loader*/
+.loader{
+    display: none;
+}
+
 .header{
     background-color: #9c7a97;
 }

@@ -1,5 +1,5 @@
 <!-- HEADER -->
-
+<small id="top"></small>
 <div class="header sticky-top">
     <div class="container d-flex">
         <div class="me-auto p-3"><a href="../pages/home.php"> <img src="../images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
@@ -50,7 +50,7 @@
             <nav class="navbar">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <img src="../images/loupe.png" alt="search" class="social">
+                        <a href="#top"><img src="../images/loupe.png" alt="search" class="social"></a>
                     </button>
                 </div>
             </nav>
