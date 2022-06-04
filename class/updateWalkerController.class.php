@@ -5,7 +5,6 @@ class UpdateWalkerController extends UpdateWalker{
     private $firstName;
     private $lastName;
     private $phone;
-    private $image;
     private $favBreed;
     private $bio;
     private $street;
@@ -14,12 +13,11 @@ class UpdateWalkerController extends UpdateWalker{
     private $email;
     private $active;
 
-    public function __construct($firstName, $lastName, $phone, $image, $favBreed, $bio, $street, $city, $zip, $email, $active)
+    public function __construct($firstName, $lastName, $phone, $favBreed, $bio, $street, $city, $zip, $email, $active)
     {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->phone = $phone;
-        $this->image = $image;
         $this->favBreed = $favBreed;
         $this->bio = $bio;
         $this->street = $street;
@@ -61,7 +59,7 @@ class UpdateWalkerController extends UpdateWalker{
         $id = $this->getId($this->email);
 
         if($id !== "") {
-            $this->updateUserInfo($this->firstName, $this->lastName, $this->phone, $this->image, $id);
+            $this->updateUserInfo($this->firstName, $this->lastName, $this->phone, $id);
             $this->updateAddress($this->street, $this->city, $this->zip, $id);
             if($this->active != 0) {
                 $this->updateFavBreed($this->favBreed, $id);
@@ -77,8 +75,6 @@ class UpdateWalkerController extends UpdateWalker{
 
 
     //function that checks if data is empty
-
-    //ADD IMAGE HERE!!!!!!!!!!!!!!!!!!!!!!!
     private function emptyInput(){
         if($this->active != 0) {
             if (empty($this->email) || empty($this->firstName) || empty($this->lastName) || empty($this->favBreed) || empty($this->bio) || empty($this->phone) || empty($this->street) || empty($this->city) || empty($this->zip)) {

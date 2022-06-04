@@ -5,19 +5,17 @@ class UpdateCustomerController extends UpdateCustomer{
     private $firstName;
     private $lastName;
     private $phone;
-    private $image;
     private $street;
     private $city;
     private $zip;
     private $email;
 
 
-    public function __construct($firstName, $lastName, $phone, $image, $street, $city, $zip, $email)
+    public function __construct($firstName, $lastName, $phone, $street, $city, $zip, $email)
     {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->phone = $phone;
-        $this->image = $image;
         $this->street = $street;
         $this->city = $city;
         $this->zip = $zip;
@@ -25,7 +23,7 @@ class UpdateCustomerController extends UpdateCustomer{
     }
 
     //function that will update all the data
-    public function updateStatus()
+    public function update()
     {
 
         if ($this->emptyInput() === false) {
@@ -56,7 +54,7 @@ class UpdateCustomerController extends UpdateCustomer{
 
         $id = $this->getId($this->email);
         if($id !== "") {
-            $this->updateUserInfo($this->firstName, $this->lastName, $this->phone, $this->image, $id);
+            $this->updateUserInfo($this->firstName, $this->lastName, $this->phone, $id);
             $this->updateAddress($this->street, $this->city, $this->zip, $id);
 
             $array = array("updated" => "done");
@@ -69,7 +67,6 @@ class UpdateCustomerController extends UpdateCustomer{
 
 
     //function that checks if data is empty
-    //ADD IMAGE HERE!!!!!!!!!!!!!!!!!!!!!!!
     private function emptyInput(){
         if(empty($this->email) || empty($this->firstName) || empty($this->lastName) || empty($this->phone) || empty($this->street) || empty($this->city) || empty($this->zip)){
             return false;

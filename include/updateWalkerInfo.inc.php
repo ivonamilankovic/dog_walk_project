@@ -10,7 +10,6 @@ $lname = $_POST['lastName'];
 $phone = $_POST['phone'];
 $favBreed = $_POST['favBreed'];
 $bio = $_POST['bio'];
-$image = $_POST['image'];
 $street = $_POST['street'];
 $city = $_POST['city'];
 $zip = $_POST['zip'];
@@ -18,5 +17,5 @@ $email = $_POST['email'];
 $active = $_POST['is_active'];
 
 //do update
-$update = new UpdateWalkerController($fname,$lname,$phone,$image,$favBreed,$bio,$street,$city,$zip,$email, $active);
+$update = new UpdateWalkerController($fname,$lname,$phone,$favBreed,$bio,$street,$city,$zip,$email, $active);
 $update->update();

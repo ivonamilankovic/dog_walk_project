@@ -39,11 +39,11 @@ if($file_extension == "jpg" || $file_extension == "jpeg" || $file_extension == "
                 //echo json_encode($er);
                 die();
             }
-            $sql = "UPDATE user set picture = '../include/profile_images/" . $file_new_name . "' WHERE id = ?";
+            $sql = "UPDATE user set picture = '../include/profile_images/" . $file_new_name . "', updated_at = ? WHERE id = ?";
             try {
                 $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
                 $stmt = $conn->prepare($sql);
-                if (!$stmt->execute([$id])) {
+                if (!$stmt->execute([$id, date('Y-m-d H:i:s')])) {
                     header("location: ../". $address ."?e=failedStmt");
                    // $er = ["error" => "failedStmt"];
                     //echo json_encode($er);
