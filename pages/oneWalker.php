@@ -79,8 +79,7 @@ if(!isset($_SESSION['id'])){
             </div>
             <?php
             if(isset($_SESSION['role'])){
-
-            if($_SESSION['role'] === "user"){
+            if($_SESSION['role'] === "customer"){
             ?>
             <div class="row g-0 mt-4" id="reservationDiv" style="display: none;">
                 <div class="col-10 mx-auto">
