@@ -1,7 +1,7 @@
 <!-- HEADER -->
 <small id="top"></small>
 <div class="header sticky-top">
-    <div class="container d-flex">
+    <div class="container d-flex header">
         <div class="me-auto p-3"><a href="../pages/home.php"> <img src="../images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a></div>
         <?php
         if(isset($_SESSION['id'])){
@@ -46,7 +46,7 @@
         }
         ?>
         <!--toggle search-->
-        <div class="p-3">
+        <div class="p-0">
             <nav class="navbar">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +54,6 @@
                     </button>
                 </div>
             </nav>
-
         </div>
     </div>
 </div>

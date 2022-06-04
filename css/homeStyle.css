@@ -5,11 +5,36 @@
 
 .header{
     background-color: #9c7a97;
+    height: 80px;
 }
 
+
+.picture-text {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.centered {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.centered-bottom{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.text{
+    font-size: 50px;
+    font-family: 'Lobster', cursive;
+    color: rgba(0, 0, 0, 0.97);
+}
 .logo{
     margin-top: 5px;
-    height:65px;
+    height:50px;
     text-align: center;
 }
 .btn{
@@ -110,6 +135,9 @@
     #homePicture{
         max-width: 800px;
     }
+    .text{
+        font-size: 40px;
+    }
 }
 @media only screen and (max-width: 960px){
     #homePicture{
@@ -117,6 +145,12 @@
     }
     .logo{
         height: 55px;
+    }
+    .text{
+        font-size: 30px;
+    }
+    .centered-bottom{
+        top: 60%;
     }
     .header-btn{
         width: 82px;
@@ -158,6 +192,9 @@
 @media only screen and (max-width: 780px){
     #homePicture{
         max-width: 520px;
+    }
+    .text{
+        font-size: 20px;
     }
 
 

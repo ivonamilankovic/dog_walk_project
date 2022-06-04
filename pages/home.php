@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="../css/signup.css">
     <link rel="stylesheet" href="../css/homeStyle.css">
     <link rel="stylesheet" href="../css/scrollbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@100;300;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -32,9 +35,16 @@
 
 ?>
 <div id="goodMessages"></div>
-    <!--freedom for your dog-->
+    <!--dog_walk picture-->
+<div class="picture-text">
+    <img src="../images/dog_walk.jpg" alt="dog" class="img-fluid w-100">
+    <div class="centered text">Dog walking in your neighborhood!</div>
+    <div class="centered-bottom"><a href="./allWalkers.php"><button type="button" class="btn btn-outline-dark rounded-pill" style="width: 10rem; height:3rem; background-color: #866464">See walkers</button></a></div>
+</div>
+
+
+
     <div class="container mt-4 p-4">
-        <img src="../images/freedom.jpg" alt="dog" class="img-fluid w-100" id="homePicture">
         <!--how to use site-->
         <div class="container-fluid border rounded-pill p-4 mt-4" style="background-color: #C4C4C4">
             <div class="d-flex justify-content-between align-items-center site-journey">
@@ -48,19 +58,34 @@
     </div>
 
 
-
-<!--all walkers-->
-
     <div class="container d-flex justify-content-between karte">
         <div class="row border rounded karta d-flex justify-content-center fixed">
             <h1 class="d-flex justify-content-center">Best rated walkers</h1>
             <!--BEST RATED DOG WALKERS-->
 
-
             <?php
+            include_once '../include/dbconfig.inc.php';
 
+            $sqlWalkers = "SELECT avg(walk.rate) AS avg_rate, walk.walker_id, user.first_name, user.last_name, user.picture, walker_details.biography
+                            FROM walk 
+                            INNER JOIN user ON walk.walker_id = user.id
+                            INNER JOIN walker_details ON walker_details.walker_id = walk.walker_id
+                            WHERE status = 'finished' AND rate IS NOT NULL GROUP BY walker_id
+                            ORDER BY avg_rate DESC
+                            LIMIT 5;";
+
+            try{
+                $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+                $stmtWalker=$conn->prepare($sqlWalkers);
+                $stmtWalker->execute();
+                $walkers= $stmtWalker->fetchAll(PDO::FETCH_ASSOC);
+            }
+            catch (Exception $ex){
+                echo($ex -> getMessage());
+            }
+
+            foreach ($walkers as $walker){
             ?>
-
 
             <!--1.karta-->
             <div class="card mb-3" style="max-width: 540px;">
@@ -70,96 +95,43 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Ime Prezime</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
+                            <h5 class="card-title"><?php echo $walker['first_name']." ".$walker['last_name'];?> </h5>
+                            <p class="card-text"><?php echo $walker['biography'];?></p>
+                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="./oneWalker.php?walker=<?php echo $walker['walker_id'];?>">View</a></small><small>Ocena: <?php echo round($walker['avg_rate'], 2);?></small></span>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--2.karta-->
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4 align-self-center p-2 ">
-                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Ime Prezime</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--3.karta-->
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4 align-self-center p-2">
-                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Ime Prezime</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-                <!--4.karta-->
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 align-self-center p-2">
-                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Ime Prezime</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--5.karta-->
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 align-self-center p-2">
-                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Ime Prezime</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--6.karta-->
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 align-self-center p-2">
-                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Ime Prezime</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <?php
+            }
+            ?>
         </div>
 
     <!--    MOST ACTIVE DOG WALKERS -->
+
         <div class="row border rounded karta d-flex justify-content-center fixed">
             <h1 class="d-flex justify-content-center">Most active walkers</h1>
+            <?php
+            $sqlWalkers2 = "SELECT count(walk.id) AS num_walks, walk.walker_id, user.first_name, user.last_name, user.picture, walker_details.biography
+                            FROM walk 
+                            INNER JOIN user ON walk.walker_id = user.id
+                            INNER JOIN walker_details ON walker_details.walker_id = walk.walker_id
+                            WHERE status = 'finished' AND rate IS NOT NULL GROUP BY walker_id
+                            ORDER BY num_walks DESC
+                            LIMIT 5;";
+
+            try{
+                $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+                $stmtWalker2=$conn->prepare($sqlWalkers2);
+                $stmtWalker2->execute();
+                $walkers2= $stmtWalker2->fetchAll(PDO::FETCH_ASSOC);
+            }
+            catch (Exception $ex){
+                echo($ex -> getMessage());
+            }
+
+            foreach ($walkers2 as $walker){
+            ?>
             <!--1.karta-->
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
@@ -168,90 +140,16 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Ime Prezime</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Br. šetnji</small></span>
+                            <h5 class="card-title"><?php echo $walker['first_name']." ".$walker['last_name'];?></h5>
+                            <p class="card-text"><?php echo $walker['biography'];?></p>
+                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="./oneWalker.php?walker=<?php echo $walker['walker_id'];?>">View</a></small><small>Br. šetnji: <?php echo $walker['num_walks'];?></small></span>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--2.karta-->
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4 align-self-center p-2">
-                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Ime Prezime</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Br. šetnji</small></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--3.karta-->
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4 align-self-center p-2">
-                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Ime Prezime</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Br. šetnji</small></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-                <!--4.karta-->
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 align-self-center p-2">
-                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Ime Prezime</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Br. šetnji</small></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--5.karta-->
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 align-self-center p-2">
-                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Ime Prezime</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Br. šetnji</small></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--6.karta-->
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 align-self-center p-2">
-                            <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Ime Prezime</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <span class=" d-flex justify-content-between"><small class="text-muted"><a href="#">View</a></small><small>Ocena</small></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <?php
+            }
+            ?>
         </div>
     </div>
 
