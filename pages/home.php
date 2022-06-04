@@ -46,8 +46,7 @@
 
     <div class="container mt-4 p-4">
         <!--how to use site-->
-        <div class="container-fluid border rounded-pill p-4 mt-4" style="background: rgb(255,239,159);
-background: radial-gradient(circle, rgba(255,239,159,0.8) 0%, rgba(201,196,196,1) 100%);">
+        <div class="container-fluid border rounded-pill p-4 mt-4" style="background: rgb(255,239,159); background: radial-gradient(circle, rgba(255,239,159,0.8) 0%, rgba(201,196,196,1) 100%);">
             <div class="d-flex justify-content-between align-items-center site-journey">
                 <button type="button" class="btn btn-outline-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#modal_signup" style="width: 10rem; height:4rem; background-color: #866464"><b>Sign Up!</b></button>
                 <div><img src="../images/arrow.png" alt="arrow" style="width: 90px; height: 80px"></div>
@@ -92,7 +91,7 @@ background: radial-gradient(circle, rgba(255,239,159,0.8) 0%, rgba(201,196,196,1
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4 align-self-center p-2">
-                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                        <img src="<?php if(!empty($user['picture'])) echo $user['picture']; else echo '../include/profile_images/user-icon.png'; ?>" class="img-fluid rounded-circle" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -137,7 +136,7 @@ background: radial-gradient(circle, rgba(255,239,159,0.8) 0%, rgba(201,196,196,1
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4 align-self-center p-2">
-                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                        <img src="<?php if(!empty($user['picture'])) echo $user['picture']; else echo '../include/profile_images/user-icon.png'; ?>" class="img-fluid rounded-circle" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
