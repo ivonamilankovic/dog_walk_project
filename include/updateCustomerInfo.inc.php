@@ -8,12 +8,11 @@ include_once '../class/updateCustomerController.class.php';
 $fname = $_POST['firstName'];
 $lname = $_POST['lastName'];
 $phone = $_POST['phone'];
-$image = $_POST['image'];
 $street = $_POST['street'];
 $city = $_POST['city'];
 $zip = $_POST['zip'];
 $email = $_POST['email'];
 
 //updates users data
-$update = new UpdateCustomerController($fname,$lname,$phone,$image,$street,$city,$zip,$email);
+$update = new UpdateCustomerController($fname,$lname,$phone,$street,$city,$zip,$email);
 $update->update();

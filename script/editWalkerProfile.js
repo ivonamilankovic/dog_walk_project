@@ -27,7 +27,6 @@ function updateWalker(){
            "phone": phoneWalker.value,
            "favBreed": favBreed.value,
            "bio": biography.value,
-           "image": imageWalker.value,
            "street": streetWalker.value,
            "city": cityWalker.value,
            "zip": zipWalker.value,
@@ -74,6 +73,7 @@ document.getElementById('idW').addEventListener('click', (e)=>{
         errorWalker.innerText = "Image must be jpg, jpeg or png type.";
         e.preventDefault();
     }
+    window.scrollTo(0,0);
     //updateImage('myFileW','idW', errorWalker);
     //POPRAVITI AKO JE MOGUCE
 

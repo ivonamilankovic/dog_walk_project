@@ -22,7 +22,6 @@ function updateCust(){
             "firstName": fNameCust.value,
             "lastName": lNameCust.value,
             "phone": phoneCust.value,
-            "image": imageCust.value,
             "street": streetCust.value,
             "city": cityCust.value,
             "zip": zipCust.value,
@@ -51,9 +50,6 @@ function updateCust(){
 updateCustBtn.addEventListener('click', (e)=>{
     errorCust.innerText = "";
     checkInputsArray([fNameCust,lNameCust,phoneCust,streetCust,cityCust,zipCust],errorCust);
-    if(!validateImage('myFileCust')){
-        errorCust.innerText = "Image must be jpg, jpeg or png type.";
-    }
     if(errorCust.innerText!==""){
         e.preventDefault();
     }else{
@@ -67,6 +63,7 @@ document.getElementById('idC').addEventListener('click', (e)=>{
         errorWalker.innerText = "Image must be jpg, jpeg or png type.";
         e.preventDefault();
     }
+    window.scrollTo(0,0);
     //updateImage('myFileW','idW', errorWalker);
     //POPRAVITI AKO JE MOGUCE
 

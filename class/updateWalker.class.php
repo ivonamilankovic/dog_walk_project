@@ -47,11 +47,11 @@ class UpdateWalker extends Dbconn{
         }
     }
 
-    protected function updateUserInfo($fName,$lName,$phone,$image,$id){
-        $updateInfo = "UPDATE user SET first_name = ?, last_name = ?, phone_number = ?, picture = ?, updated_at = ? WHERE id = ?";
+    protected function updateUserInfo($fName,$lName,$phone,$id){
+        $updateInfo = "UPDATE user SET first_name = ?, last_name = ?, phone_number = ?,  updated_at = ? WHERE id = ?";
         $stmt = $this->setConnection()->prepare($updateInfo);
 
-        if(!$stmt->execute([$fName,$lName,$phone,$image,date('Y-m-d H:i:s') ,$id])){
+        if(!$stmt->execute([$fName,$lName,$phone,date('Y-m-d H:i:s') ,$id])){
             $stmt = null;
             $array = array("error" => "stmtUpdateUserInfoFailed");
             echo $stmt;
