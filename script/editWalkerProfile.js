@@ -60,10 +60,21 @@ updateWalkerBtn.addEventListener('click', (e)=>{
         checkSelectBreed(favBreed,errorWalker);
     }
     checkInputsArray([fNameWalker,lNameWalker,phoneWalker,streetWalker,cityWalker,zipWalker],errorWalker);
-    checkImage(imageWalker,errorWalker); //TO DO
+
      if(errorWalker.innerText!==""){
         e.preventDefault();
     }else{
         updateWalker();
     }
 });
+
+document.getElementById('idW').addEventListener('click', (e)=>{
+    //e.preventDefault();
+    if(!validateImage('myFileW')){
+        errorWalker.innerText = "Image must be jpg, jpeg or png type.";
+        e.preventDefault();
+    }
+    //updateImage('myFileW','idW', errorWalker);
+    //POPRAVITI AKO JE MOGUCE
+
+})

@@ -23,7 +23,6 @@ if($_SESSION['role'] === 'walker'){
 </head>
 <body>
 <?php
-    require_once '../page_parts/header.php';
     require_once ("../include/dbconfig.inc.php");
 
     $sqlUser = "SELECT u.first_name, u.last_name, u.email, u.phone_number, u.picture,a.street, a.city, a.postal_code FROM user u
@@ -50,6 +49,8 @@ try{
     catch (Exception $ex){
         echo($ex -> getMessage());
     }
+
+require_once '../page_parts/header.php';
 ?>
 <div id="update2div"></div>
     <!--Edit Profile-->
@@ -61,7 +62,7 @@ try{
                         <div class="account-settings">
                             <div class="user-profile">
                                 <div class="user-avatar d-flex justify-content-center">
-                                    <img src="../profile_images/user-icon.png" class="img-fluid rounded-circle m-2" alt="Profile picture">
+                                    <img src="<?php if(!empty($userData['picture'])) echo $userData['picture']; else echo '../include/profile_images/user-icon.png'; ?>" class="img-fluid rounded-circle m-2" alt="Profile picture">
                                 </div>
                                 <h5 id="emailCust" class="user-email" style="font-weight: bold"><?php echo $userData['email'];?></h5>
                                 <h6 class="user-name"><?php echo $userData['first_name']." ".$userData['last_name'];?></h6>
@@ -116,12 +117,12 @@ try{
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label for="filename">Choose image: </label> <br>
+                                <div class="form-group mt-5">
+                                    <label for="filename">Choose your profile image: </label> <br>
                                     <div class="form-group d-flex justify-content-between align-items-center">
-                                        <img src="../profile_images/user-icon.png" width="30" height="30" class="img-fluid rounded-circle m-2" alt="Profile picture">
-                                        <form action="#">
-                                            <input type="file" id="myFileCust" name="filename">
+                                        <form id="formC" action="../include/changeProfilePic.inc.php" enctype="multipart/form-data" method="post">
+                                            <input type="file" id="myFileC" name="filename" accept="image/*">
+                                            <input type="hidden" name="address" value="customer_dashboard/editCustomerProfile.php">
                                         </form>
                                     </div>
                                 </div>
@@ -156,12 +157,35 @@ try{
                             </div>
                         </div>
                         <br>
-                        <small id="errorUpdateCust" style="color: red;"></small>
+                        <small id="errorUpdateCust" style="color: red;">
+                            <?php
+                            if(isset($_GET['e'])){
+                                if($_GET['e'] == "wrongImgFormat"){
+                                    echo "Wrong picture format.";
+                                }
+                                elseif($_GET['e'] == "fileError"){
+                                    echo "Unexpected file error.";
+                                }
+                                elseif($_GET['e'] == "bigImg"){
+                                    echo "Image too big.";
+                                }
+                                elseif($_GET['e'] == "couldNotMoveImg"){
+                                    echo "Some issues occurred.";
+                                }
+                                elseif($_GET['e'] == "failedStmt"){
+                                    echo "Failed to update. Please try again.";
+                                }
+                            }
+
+                            ?>
+                        </small>
                         <br>
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="text-right d-flex justify-content-center">
                                     <button id="updateCustomer" class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Update</button>
+                                    <button class="btn m-4" type="submit" id="idC" name="id" value="<?php echo $_SESSION['id']; ?>" form="formC" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Update profile image</button>
+
                                 </div>
                             </div>
                         </div>
@@ -177,6 +201,7 @@ try{
 <script src="../script/home.js"></script>
 <script src="../script/editCustomerProfile.js"></script>
 <script src="../script/checkFunctions.js"></script>
+<script src="../script/updateImage.js"></script>
 </body>
 </html>
 

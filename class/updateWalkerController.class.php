@@ -96,8 +96,7 @@ class UpdateWalkerController extends UpdateWalker{
 
     }
 
-    //function that checks if phone number is correct length and if its just numbers
-    //  !!!!!!!!!!!!!!!!!!!DODATI DA PROVERI DA LI SU SAMO BROJEVI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //function that checks if phone number is correct length
     private function validPhoneNumber(){
         if(strlen($this->phone) !== 10){
             return false;
@@ -109,7 +108,7 @@ class UpdateWalkerController extends UpdateWalker{
 
     //function that checks postal code
     private function validPostalCode(){
-        if(strlen($this->zip) < 5 || strlen($this->zip) > 10){
+        if(strlen($this->zip) < 3 || strlen($this->zip) > 10){
             return false;
         }
         else{

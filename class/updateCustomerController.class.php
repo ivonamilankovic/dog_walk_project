@@ -91,7 +91,7 @@ class UpdateCustomerController extends UpdateCustomer{
 
     //function that checks postal code
     private function validPostalCode(){
-        if(strlen($this->zip) < 5 || strlen($this->zip) > 10){
+        if(strlen($this->zip) < 3 || strlen($this->zip) > 10){
             return false;
         }
         else{

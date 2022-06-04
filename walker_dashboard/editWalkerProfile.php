@@ -25,7 +25,7 @@ if($_SESSION['role'] === 'customer'){
 
 <!--HEADER-->
 <?php
-    require_once '../page_parts/header.php';
+
     require_once ("../include/dbconfig.inc.php");
 
         $sql1 = "SELECT u.first_name, u.last_name, u.email, u.phone_number, u.picture,a.street, a.city, a.postal_code FROM user u
@@ -69,7 +69,7 @@ if($_SESSION['role'] === 'customer'){
         echo($ex -> getMessage());
     }
 
-
+require_once '../page_parts/header.php';
 ?>
 
 <div id="updatemsg"> </div>
@@ -83,7 +83,7 @@ if($_SESSION['role'] === 'customer'){
                     <div class="account-settings">
                         <div class="user-profile">
                             <div class="user-avatar d-flex justify-content-center">
-                                <img src="../profile_images/user-icon.png"  class="img-fluid rounded-circle m-2" alt="Profile picture">
+                                <img src="<?php if(!empty($userData['picture'])) echo $userData['picture']; else echo '../include/profile_images/user-icon.png'; ?>" class="img-fluid rounded-circle m-2" alt="Profile picture">
                             </div>
                             <h5 id="emailWalker" class="user-email" style="font-weight: bold"><?php if(!empty($userData['email'])) echo $userData['email'];?></h5>
                             <h6 class="user-name"><?php if(!empty($userData['first_name']) && !empty($userData['last_name'])) echo $userData['first_name']. " " . $userData['last_name'];?></h6>
@@ -160,11 +160,11 @@ if($_SESSION['role'] === 'customer'){
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="filename">Choose image: </label> <br>
-                                <img src="../profile_images/user-icon.png" width="30" height="30" class="img-fluid rounded-circle m-2 p-4" alt="Profile picture">
-                                <form action="#">
-                                    <input type="file" id="myFileW" name="filename">
+                            <div class="form-group mt-5">
+                                <label for="filename">Choose your profile image: </label> <br>
+                                <form id="formW" enctype="multipart/form-data" action="../include/changeProfilePic.inc.php" method="post">
+                                    <input type="file" id="myFileW" name="filename" accept="image/*">
+                                    <input type="hidden" name="address" value="walker_dashboard/editWalkerProfile.php">
                                 </form>
                             </div>
                         </div>
@@ -193,13 +193,35 @@ if($_SESSION['role'] === 'customer'){
                         </div>
                     </div>
                     <br>
-                    <small id="errUpdateWalker" style="color: red; text-align: center;"></small>
+                    <small id="errUpdateWalker" style="color: red; text-align: center;">
+                    <?php
+                    if(isset($_GET['e'])){
+                        if($_GET['e'] == "wrongImgFormat"){
+                            echo "Wrong picture format.";
+                        }
+                        elseif($_GET['e'] == "fileError"){
+                            echo "Unexpected file error.";
+                        }
+                        elseif($_GET['e'] == "bigImg"){
+                            echo "Image too big.";
+                        }
+                        elseif($_GET['e'] == "couldNotMoveImg"){
+                            echo "Some issues occurred.";
+                        }
+                        elseif($_GET['e'] == "failedStmt"){
+                            echo "Failed to update. Please try again.";
+                        }
+                    }
+
+                    ?>
+                    </small>
                     <br>
                     <input type="hidden" id="is_active" value="<?php echo $userDetails['is_active']; ?>" name="is_active">
                     <div class="row gutters">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="text-right d-flex justify-content-center">
-                                <button id="updateWalker" class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Update</button>
+                                <button id="updateWalker" class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000" >Update</button>
+                                <button class="btn m-4" type="submit" id="idW" name="id" value="<?php echo $_SESSION['id']; ?>" form="formW" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Update profile image</button>
                             </div>
                         </div>
                     </div>
@@ -215,6 +237,8 @@ if($_SESSION['role'] === 'customer'){
 <script src="../script/home.js"></script>
 <script src="../script/editWalkerProfile.js"></script>
 <script src="../script/checkFunctions.js"></script>
+<script src="../script/updateImage.js"></script>
+<script src="../script/updateImage.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js">
     $(document).ready(function() {
         $('.js-example-basic-single').select2();

@@ -1,5 +1,5 @@
 <div class="p-4 align-self-center">
-    <img src="../profile_images/user-icon.png"  width="50" height="50"  class="img-fluid rounded-circle m-2" alt="Profile picture">
+    <img src="<?php if(!empty($userData['picture'])) echo $userData['picture']; else echo '../include/profile_images/user-icon.png'; ?>" width="50" height="50" class="img-fluid rounded-circle m-2" alt="Profile picture">
     <div class="btn-group">
         <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             Profile
