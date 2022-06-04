@@ -26,12 +26,12 @@ include_once '../include/dbconfig.inc.php';
 if(isset($_GET['name'])){
     $sqlWalkers = "SELECT u.id, u.first_name, u.last_name, u.picture, wd.biography FROM user u
                 INNER JOIN walker_details wd ON wd.walker_id = u.id
-                WHERE  u.role='walker' AND (u.first_name LIKE '%".$_GET['name']."%' OR u.last_name LIKE '%".$_GET['name']."%' );";
+                WHERE  u.role='walker' AND (u.first_name LIKE '%".$_GET['name']."%' OR u.last_name LIKE '%".$_GET['name']."%' ) AND wd.is_active = 1;";
 }else {
 
     $sqlWalkers = "SELECT u.id, u.first_name, u.last_name, u.picture, wd.biography FROM user u
                 INNER JOIN walker_details wd ON wd.walker_id = u.id
-                WHERE  u.role='walker'";
+                WHERE  u.role='walker' AND wd.is_active = 1";
 }
 try{
     $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
