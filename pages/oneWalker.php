@@ -45,6 +45,10 @@ if(isset($_GET['walker'])){
     catch (Exception $ex){
         echo($ex -> getMessage());
     }
+
+if(!isset($_SESSION['id'])){
+    echo '<div class="alert alert-warning">Please <a href="#" data-bs-toggle="modal" data-bs-target="#modal_login" style="color: black">login</a> to be able to reserve a walk.</div>';
+}
 ?>
 
 
@@ -53,7 +57,7 @@ if(isset($_GET['walker'])){
         <div class="card mb-3" style="max-width: 1000px;">
             <div class="row g-0">
                 <div class="col-md-4 align-self-center p-2">
-                    <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                    <img src="<?php if(!empty($walker['picture'])) echo $walker['picture']; else echo '../include/profile_images/user-icon.png'; ?>" class="img-fluid rounded-circle picture_card" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -73,6 +77,11 @@ if(isset($_GET['walker'])){
                     </div>
                 </div>
             </div>
+            <?php
+            if(isset($_SESSION['role'])){
+
+            if($_SESSION['role'] === "user"){
+            ?>
             <div class="row g-0 mt-4" id="reservationDiv" style="display: none;">
                 <div class="col-10 mx-auto">
                     <!--Part for reservation-->
@@ -116,9 +125,12 @@ if(isset($_GET['walker'])){
                             <!--customer dogs-->
                             <?php
                             require_once ("../include/dbconfig.inc.php");
+                            $session = "";
+                            if(isset($_SESSION['id']))
+                                $session = $_SESSION['id'];
 
                             $sqlDog = "SELECT d.id, d.dog_name FROM dog d
-                                        WHERE d.owner_id = ".$_SESSION['id'];
+                                        WHERE d.owner_id = ". $session;
 
                             try{
                                 $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
@@ -163,6 +175,12 @@ if(isset($_GET['walker'])){
                     </div>
                 </form>
             </div>
+            <?php
+            }
+            elseif ($_SESSION['role'] === "walker"){
+                echo '<h2>You must be user to reserve a walk!</h2>';
+            }
+            }?>
         </div>
     </div>
 </div>

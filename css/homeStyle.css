@@ -2,12 +2,44 @@
 .loader{
     display: none;
 }
+/*nav burger*/
+.topnav {
+    display: none;
+    overflow: hidden;
+    background-color: #9c7a97;
+    position: relative;
+}
 
+.topnav #myLinks {
+    display: none;
+}
+
+.topnav a {
+    color: black;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+}
+
+.topnav a.icon {
+    display: block;
+    z-index: 1000;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+
+/*header*/
 .header{
     background-color: #9c7a97;
     height: 80px;
 }
-
+.btn_see_walkers{
+    width: 10rem;
+    height:3rem;
+}
 
 .picture-text {
     position: relative;
@@ -54,6 +86,10 @@
     padding-top: 55px;
     background-color: #0a0a0a;
     color: #000;
+}
+
+.all_in_footer, .links{
+    display: flex !important;
 }
 .bottom-logo, .soc-icons, .footer div{
     filter: invert(50%);
@@ -188,6 +224,18 @@
     .soc-icons{
         display: block !important;
     }
+    .social{
+        padding: 5px;
+        width: 50px;
+        height: 50px;
+    }
+    #howToUse, .profile_picture{
+        display: none;
+    }
+    .picture_card{
+        width: 100px;
+        height: 100px;
+    }
 
 }
 @media only screen and (max-width: 780px){
@@ -205,5 +253,30 @@
     .logo{
         height:40px;
     }
+    .all_in_footer{
+        display: flex !important;
+    }
 
+    .btn_see_walkers{
+        width: 8rem;
+        height: 1.5rem;
+    }
+}
+@media only screen and (max-width: 480px){
+
+    .topnav{
+        display: block;
+    }
+    .header{
+        display: none;
+    }
+    .all_in_footer{
+        display: block !important;
+    }
+    .soc-icons{
+        display: flex;
+    }
+    .footer{
+        height: 400px;
+    }
 }

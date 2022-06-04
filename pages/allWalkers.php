@@ -29,9 +29,11 @@ if(isset($_GET['name'])){
                 WHERE  u.role='walker' AND (u.first_name LIKE '%".$_GET['name']."%' OR u.last_name LIKE '%".$_GET['name']."%' ) AND wd.is_active = 1;";
 }else {
 
-    $sqlWalkers = "SELECT u.id, u.first_name, u.last_name, u.picture, wd.biography FROM user u
-                INNER JOIN walker_details wd ON wd.walker_id = u.id
-                WHERE  u.role='walker' AND wd.is_active = 1";
+    $sqlWalkers = "SELECT avg(walk.rate) AS avg_rate, walk.walker_id, user.first_name, user.last_name, user.picture, walker_details.biography
+                            FROM walk 
+                            INNER JOIN user ON walk.walker_id = user.id
+                            INNER JOIN walker_details ON walker_details.walker_id = walk.walker_id
+                            WHERE status = 'finished' AND rate IS NOT NULL AND walker_details.is_active = 1 GROUP BY walker_id";
 }
 try{
     $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
@@ -53,7 +55,7 @@ foreach ($walkers as $walker){
             <div class="card mb-3" style="max-width: 900px;">
                 <div class="row g-0">
                     <div class="col-md-4 align-self-center p-2">
-                        <img src="https://picsum.photos/150/150" class="img-fluid rounded-circle" alt="...">
+                        <img src="<?php if(!empty($walker['picture'])) echo $walker['picture']; else echo '../include/profile_images/user-icon.png'; ?>" width="130" height="130" class="img-fluid rounded-circle picture_card" alt="profile picture">
                     </div>
                     <div class="col-md-8 my-3">
                         <div class="card-body">
@@ -61,9 +63,9 @@ foreach ($walkers as $walker){
                             <p class="card-text"><?php echo $walker['biography'];?></p>
                             <span class="d-flex justify-content-between align-middle">
                                 <small class="text-muted">
-                                    <a id="viewWalker" href="./oneWalker.php?walker=<?php echo $walker['id'];?>">View</a>
+                                    <a id="viewWalker" href="./oneWalker.php?walker=<?php echo $walker['walker_id'];?>">View</a>
                                 </small>
-                                <small>Ocena</small>
+                                <small>Average rate: <?php echo round($walker['avg_rate'], 2);?></small>
                             </span>
                         </div>
                     </div>

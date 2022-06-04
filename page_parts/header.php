@@ -73,6 +73,44 @@
     </div>
 </div>
 
+
+<div class="topnav">
+    <a href="../pages/home.php" class="active"> <img src="../images/pawwalks.svg" alt="PawWalks-logo" class="logo"></a>
+    <div id="myLinks">
+       <?php
+        if(isset($_SESSION['id'])){
+
+        if($_SESSION['role'] === "customer"){
+
+        require_once '../customer_dashboard/customer_mini_header.php';
+        }
+        elseif ($_SESSION['role'] === "walker"){
+
+        require_once '../walker_dashboard/walker_mini_header.php';
+        }
+        elseif($_SESSION['role'] === "admin"){
+        require_once  '../admin/admin_header.php';
+        }
+        ?>
+        <a href="../include/logout.inc.php" >Log out</a>
+           <?php
+       }
+
+       else{
+       ?>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#modal_login">Log in</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#modal_signup">Sign up</a>
+        <?php
+       }
+       ?>
+        <a href="../pages/allWalkers.php">All walkers</a>
+        <a href="#">About</a>
+    </div>
+    <a href="#" class="icon" onclick="myFunction()">
+        <img src="../images/navburger.ico" width="40" height="40" alt="navigation">
+    </a>
+</div>
+
 <!--Modal for Log in-->
 
 <div class="modal fade" id="modal_login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

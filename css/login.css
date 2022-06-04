@@ -25,3 +25,9 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 480px){
+    .form-control{
+        width: 280px !important;
+    }
+}

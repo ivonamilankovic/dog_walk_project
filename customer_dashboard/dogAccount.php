@@ -34,7 +34,7 @@ include_once '../page_parts/header.php';
 
     $sqlDog = "SELECT d.id, d.dog_name, d.gender, d.age, d.notes, d.breed_id, d.owner_id, b.breed_name FROM dog d
                INNER JOIN breeds b ON b.id = d.breed_id
-               WHERE d.owner_id = ".$_SESSION['id'];
+               WHERE d.owner_id = ".$_SESSION['id'] ." ORDER BY d.id ASC";
 
     try{
         $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);

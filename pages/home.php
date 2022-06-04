@@ -39,12 +39,12 @@
 <div class="picture-text">
     <img src="../images/dog_walk.jpg" alt="dog" class="img-fluid w-100">
     <div class="centered text">Dog walking in your neighborhood!</div>
-    <div class="centered-bottom"><a href="./allWalkers.php"><button type="button" class="btn btn-outline-dark rounded-pill" style="width: 10rem; height:3rem; background-color: #866464">See walkers</button></a></div>
+    <div class="centered-bottom btn_see_walkers"><a href="./allWalkers.php"><button type="button" class="btn btn-outline-dark rounded-pill" style=" background-color: #866464">See walkers</button></a></div>
 </div>
 
 
 
-    <div class="container mt-4 p-4">
+    <div class="container mt-4 p-4" id="howToUse">
         <!--how to use site-->
         <div class="container-fluid border rounded-pill p-4 mt-4" style="background: rgb(255,239,159); background: radial-gradient(circle, rgba(255,239,159,0.8) 0%, rgba(201,196,196,1) 100%);">
             <div class="d-flex justify-content-between align-items-center site-journey">
@@ -60,7 +60,7 @@
 
     <div class="container d-flex justify-content-between karte">
         <div class="row border rounded karta d-flex justify-content-center fixed">
-            <h1 class="d-flex justify-content-center">Best rated walkers</h1>
+            <h1 class="d-flex justify-content-center my-3">Best rated walkers</h1>
             <!--BEST RATED DOG WALKERS-->
 
             <?php
@@ -70,7 +70,7 @@
                             FROM walk 
                             INNER JOIN user ON walk.walker_id = user.id
                             INNER JOIN walker_details ON walker_details.walker_id = walk.walker_id
-                            WHERE status = 'finished' AND rate IS NOT NULL GROUP BY walker_id
+                            WHERE status = 'finished' AND rate IS NOT NULL AND walker_details.is_active = 1 GROUP BY walker_id
                             ORDER BY avg_rate DESC
                             LIMIT 5;";
 
@@ -87,17 +87,17 @@
             foreach ($walkers as $walker){
             ?>
 
-            <!--1.karta-->
+            <!--karta-->
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4 align-self-center p-2">
-                        <img src="<?php if(!empty($user['picture'])) echo $user['picture']; else echo '../include/profile_images/user-icon.png'; ?>" class="img-fluid rounded-circle" alt="...">
+                        <img src="<?php if(!empty($walker['picture'])) echo $walker['picture']; else echo '../include/profile_images/user-icon.png'; ?>" class="img-fluid rounded-circle picture_card" alt="profile picture">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $walker['first_name']." ".$walker['last_name'];?> </h5>
                             <p class="card-text"><?php echo $walker['biography'];?></p>
-                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="./oneWalker.php?walker=<?php echo $walker['walker_id'];?>">View</a></small><small>Ocena: <?php echo round($walker['avg_rate'], 2);?></small></span>
+                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="./oneWalker.php?walker=<?php echo $walker['walker_id'];?>">View</a></small><small>Average rate: <?php echo round($walker['avg_rate'], 2);?></small></span>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
     <!--    MOST ACTIVE DOG WALKERS -->
 
         <div class="row border rounded karta d-flex justify-content-center fixed">
-            <h1 class="d-flex justify-content-center">Most active walkers</h1>
+            <h1 class="d-flex justify-content-center my-3">Most active walkers</h1>
             <?php
             $sqlWalkers2 = "SELECT count(walk.id) AS num_walks, walk.walker_id, user.first_name, user.last_name, user.picture, walker_details.biography
                             FROM walk 
@@ -136,13 +136,13 @@
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4 align-self-center p-2">
-                        <img src="<?php if(!empty($user['picture'])) echo $user['picture']; else echo '../include/profile_images/user-icon.png'; ?>" class="img-fluid rounded-circle" alt="...">
+                        <img src="<?php if(!empty($walker['picture'])) echo $walker['picture']; else echo '../include/profile_images/user-icon.png'; ?>" class="img-fluid rounded-circle picture_card" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $walker['first_name']." ".$walker['last_name'];?></h5>
                             <p class="card-text"><?php echo $walker['biography'];?></p>
-                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="./oneWalker.php?walker=<?php echo $walker['walker_id'];?>">View</a></small><small>Br. šetnji: <?php echo $walker['num_walks'];?></small></span>
+                            <span class=" d-flex justify-content-between"><small class="text-muted"><a href="./oneWalker.php?walker=<?php echo $walker['walker_id'];?>">View</a></small><small>Number of walks: <?php echo $walker['num_walks'];?></small></span>
                         </div>
                     </div>
                 </div>
@@ -167,9 +167,9 @@
 
     <!-- FOOTER -->
     <div class="footer py-5">
-        <div class="container-fluid d-flex justify-content-between p-4">
+        <div class="container-fluid d-flex justify-content-between p-4 all_in_footer">
             <img src="../images/pawwalks.svg" class="logo bottom-logo" alt="PawWalksLogo"/>
-
+            <div class="links">
                 <div class="footer-part">
                     <h6><b>Company</b></h6>
                     <a href="#" >About PawWalks</a> <br>
@@ -181,8 +181,9 @@
                 </div>
                 <div class="footer-part">
                     <h6><b>Apply</b></h6>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal_signup">Become a Dog Walker</a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal_signup">Become a Walker</a>
                 </div>
+            </div>
                 <div class="d-flex align-self-end soc-icons footer-part">
                     <a href="#" class="p-2"><img src="../images/facebook.png" alt="facebookLogo" class="social"></a>
                     <a href="#" class="p-2"><img src="../images/linkedin.png" alt="linkedinLogo" class="social"></a>
