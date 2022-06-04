@@ -145,8 +145,8 @@ function checkPhone(input, errOutput){
 }
 function checkPostalCode(input,errOutput){
     //checks length of postal code
-    if(input.value.length < 5 || input.value.length > 10){
-        showError(input, "Postal code must have 5 to 10 digits!",errOutput);
+    if(input.value.length < 3 || input.value.length > 10){
+        showError(input, "Postal code must have 3 to 10 digits!",errOutput);
     }
     else if(isNaN(input.value)){
         showError(input, "Postal code must have digits, not letters!",errOutput);
@@ -172,9 +172,20 @@ function checkSelectBreed(input, errOutput){
     }
 }
 
+function validateImage(id)
+{
+    let allowedExtension = ['jpeg', 'jpg', 'png'];
+    let fileExtension = document.getElementById(id).value.split('.').pop().toLowerCase();
+    let isValidFile = false;
 
-
-function checkImage(input,errOutput){}
+    for(let index in allowedExtension) {
+        if(fileExtension === allowedExtension[index]) {
+            isValidFile = true;
+            break;
+        }
+    }
+    return isValidFile;
+}
 
 
 

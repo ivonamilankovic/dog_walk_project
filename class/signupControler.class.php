@@ -156,7 +156,7 @@ class SignupControler extends Signup {
 
     //function that checks postal code
     private function validPostalCode(){
-        if(strlen($this->postalCode) < 5 || strlen($this->postalCode) > 10){
+        if(strlen($this->postalCode) < 3 || strlen($this->postalCode) > 10){
             return false;
         }
         else{

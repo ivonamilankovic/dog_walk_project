@@ -51,10 +51,23 @@ function updateCust(){
 updateCustBtn.addEventListener('click', (e)=>{
     errorCust.innerText = "";
     checkInputsArray([fNameCust,lNameCust,phoneCust,streetCust,cityCust,zipCust],errorCust);
-    checkImage(imageCust,errorCust); //TO DO
+    if(!validateImage('myFileCust')){
+        errorCust.innerText = "Image must be jpg, jpeg or png type.";
+    }
     if(errorCust.innerText!==""){
         e.preventDefault();
     }else{
         updateCust();
     }
 });
+
+document.getElementById('idC').addEventListener('click', (e)=>{
+    //e.preventDefault();
+    if(!validateImage('myFileC')){
+        errorWalker.innerText = "Image must be jpg, jpeg or png type.";
+        e.preventDefault();
+    }
+    //updateImage('myFileW','idW', errorWalker);
+    //POPRAVITI AKO JE MOGUCE
+
+})
