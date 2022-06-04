@@ -43,7 +43,7 @@
 }
 .karta{
     background-color: rgba(255, 239, 159, 0.8);
-    padding: 20px;
+    padding: 10px;
     margin: 30px 15px 20px 15px;
 }
 .footer a{
@@ -123,10 +123,7 @@
 }
 
 @media only screen and (max-width: 1400px) {
-    .karte{
-        display: none;
-        flex-direction: column;
-    }
+
     #homePicture{
         max-width: 1100px;
     }
@@ -137,6 +134,10 @@
     }
     .text{
         font-size: 40px;
+    }
+    .karte{
+        display: none;
+        flex-direction: column;
     }
 }
 @media only screen and (max-width: 960px){
@@ -153,7 +154,7 @@
         top: 60%;
     }
     .header-btn{
-        width: 82px;
+        width: 80px;
         font-size: 0.70rem;
         font-weight: 600;
     }
@@ -196,6 +197,13 @@
     .text{
         font-size: 20px;
     }
-
+    .header-btn{
+        width: 70px;
+        font-size: 0.70rem;
+        font-weight: 600;
+    }
+    .logo{
+        height:40px;
+    }
 
 }
