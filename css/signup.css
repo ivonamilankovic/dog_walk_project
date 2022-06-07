@@ -36,4 +36,10 @@
     .form-control{
         width: 280px !important;
     }
+    #signupBtn{
+        width: 200px !important;
+    }
+    #chooseYourStatus{
+        justify-content: left;
+    }
 }

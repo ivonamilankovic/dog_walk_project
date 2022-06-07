@@ -52,9 +52,9 @@ if(!isset($_SESSION['id'])){
 ?>
 
 
-<div class="container ">
-    <div class="row border rounded karta mx-auto" style="max-width: 1000px;">
-        <div class="card mb-3" style="max-width: 1000px;">
+<div class="container setac_pojedinacno">
+    <div class="row border rounded karta mx-auto karta-jedan">
+        <div class="card mb-3 mx-auto">
             <div class="row g-0">
                 <div class="col-md-4 align-self-center p-2">
                     <img src="<?php if(!empty($walker['picture'])) echo $walker['picture']; else echo '../include/profile_images/user-icon.png'; ?>" class="img-fluid rounded-circle picture_card" alt="...">
@@ -147,8 +147,10 @@ if(!isset($_SESSION['id'])){
                             if(!empty($dogData)){
                                 foreach ($dogData as $dog){
                                     ?>
-                                    <input type="checkbox" value="<?php echo $dog['id']; ?>" name="dogs[]" id="dog">
-                                    <label for="dog"><?php echo $dog['dog_name']; ?></label> <br>
+                                    <div class="form-check d-flex " style="width: 110px !important;">
+                                        <input class="form-check-input" type="checkbox" value="<?php echo $dog['id']; ?>" name="dogs[]">
+                                        <label class="form-check-label" style="width: 100px"><?php echo $dog['dog_name']; ?></label>
+                                    </div>
                                     <?php
                                 }
                             }

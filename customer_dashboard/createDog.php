@@ -31,7 +31,7 @@ require_once ("../include/dbconfig.inc.php");
 
 
 
-<div class="container" style="padding: 50px 0">
+<div class="container new_dog" style="padding: 50px 0">
     <div class="row gutters d-flex justify-content-center">
         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
             <div class="card h-100">

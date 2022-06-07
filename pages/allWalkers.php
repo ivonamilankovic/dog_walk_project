@@ -50,9 +50,9 @@ if(!empty($walkers)){
 foreach ($walkers as $walker){
     ?>
 
-    <div class="container ">
-        <div class="row border rounded karta mx-auto" style="max-width: 900px;">
-            <div class="card mb-3" style="max-width: 900px;">
+    <div class="container setac_pojedinacno">
+        <div class="row border rounded karta mx-auto pt-3">
+            <div class="card mb-3 mx-auto" >
                 <div class="row g-0">
                     <div class="col-md-4 align-self-center p-2">
                         <img src="<?php if(!empty($walker['picture'])) echo $walker['picture']; else echo '../include/profile_images/user-icon.png'; ?>" width="130" height="130" class="img-fluid rounded-circle picture_card" alt="profile picture">

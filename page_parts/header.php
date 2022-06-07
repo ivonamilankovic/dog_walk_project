@@ -104,7 +104,7 @@
        }
        ?>
         <a href="../pages/allWalkers.php">All walkers</a>
-        <a href="#">About</a>
+        <a href="../pages/about.php">About</a>
     </div>
     <a href="#" class="icon" onclick="myFunction()">
         <img src="../images/navburger.ico" width="40" height="40" alt="navigation">

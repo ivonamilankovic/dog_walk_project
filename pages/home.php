@@ -59,7 +59,7 @@
 
 
     <div class="container d-flex justify-content-between karte">
-        <div class="row border rounded karta d-flex justify-content-center fixed">
+        <div class="row border rounded karta d-flex justify-content-center fixed skup_karata">
             <h1 class="d-flex justify-content-center my-3">Best rated walkers</h1>
             <!--BEST RATED DOG WALKERS-->
 
@@ -109,7 +109,7 @@
 
     <!--    MOST ACTIVE DOG WALKERS -->
 
-        <div class="row border rounded karta d-flex justify-content-center fixed">
+        <div class="row border rounded karta d-flex justify-content-center fixed skup_karata">
             <h1 class="d-flex justify-content-center my-3">Most active walkers</h1>
             <?php
             $sqlWalkers2 = "SELECT count(walk.id) AS num_walks, walk.walker_id, user.first_name, user.last_name, user.picture, walker_details.biography
@@ -154,13 +154,13 @@
     </div>
 
     <!--About us-->
-    <div class="container-fluid border rounded p-4" style="background-color: #C4C4C4; text-align: center;">
+    <div class="container-fluid border rounded p-4 about_home" style="background-color: #C4C4C4; text-align: center;">
         <div class="d-inline"><img src="../images/paw.svg" class="social"><h2>Here when you need us</h2></div>
         <p class="p-4 about-text">Whether you're looking for daily walks, planning a trip, stuck at work, or just want your best friend to have some company — we offer any day, anytime care.</p>
         <div class="d-inline"><img src="../images/paw.svg" class="social"><h2>Safety is serious business</h2></div>
         <p class="p-4 about-text">Your dog's safety is our top priority. Every Pet Caregiver passes an enhanced background check, our services are insured, and support is standing by around the clock.</p>
         <div class="d-inline"><img src="../images/paw.svg" class="social"><h2>We've been around the block</h2></div>
-        <p class="p-4 about-text">Paw Walks! has a trusted record of experience with over 10M pet care services across 4,600 cities and counting. More than 150,000 Pet Caregivers nationwide are dog people, and it shows.</p>
+        <p class="p-4 about-text">Paw Walks has a trusted record of experience with over 10M pet care services across 4,600 cities and counting. More than 150,000 Pet Caregivers nationwide are dog people, and it shows.</p>
     </div>
 
 
@@ -172,12 +172,12 @@
             <div class="links">
                 <div class="footer-part">
                     <h6><b>Company</b></h6>
-                    <a href="#" >About PawWalks</a> <br>
+                    <a href="../pages/about.php" >About us</a> <br>
                     <a href="#">Blog</a>
                 </div>
                 <div class="footer-part">
                     <h6><b>Support</b></h6>
-                    <a href="#" >Trust and Safety</a> <br>
+                    <a href="../pages/about.php" >Trust and Safety</a> <br>
                 </div>
                 <div class="footer-part">
                     <h6><b>Apply</b></h6>

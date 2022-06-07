@@ -91,6 +91,9 @@
 .all_in_footer, .links{
     display: flex !important;
 }
+.footer-part{
+    width: 250px;
+}
 .bottom-logo, .soc-icons, .footer div{
     filter: invert(50%);
 }
@@ -157,6 +160,14 @@
     color: black;
     border-radius: 5px;
 }
+.about_home p{
+    font-size: 1.25rem;
+}
+
+.setac_pojedinacno{
+    max-width: 900px;
+    padding-top: 10px;
+}
 
 @media only screen and (max-width: 1400px) {
 
@@ -175,8 +186,15 @@
         display: none;
         flex-direction: column;
     }
+    .footer-part{
+        width: 200px;
+    }
 }
 @media only screen and (max-width: 960px){
+    .setac_pojedinacno{
+        max-width: 750px;
+        margin: 0 auto !important;
+    }
     #homePicture{
         max-width: 600px;
     }
@@ -236,9 +254,15 @@
         width: 100px;
         height: 100px;
     }
+    .footer-part{
+        width: 180px;
+    }
 
 }
 @media only screen and (max-width: 780px){
+    .border{
+        border: none !important;
+    }
     #homePicture{
         max-width: 520px;
     }
@@ -261,15 +285,39 @@
         width: 8rem;
         height: 1.5rem;
     }
-}
-@media only screen and (max-width: 480px){
-
+    .footer-part{
+        width: 100px;
+    }
+    .skup_karata:first-child{
+        margin-top: 30px !important;
+    }
+    .karta-jedan{
+        padding-right: 40px !important;
+        margin: 0 !important;
+    }
+    .setac_pojedinacno, .karta{
+        margin: 0 auto !important;
+        padding: 0;
+    }
+    .setac_pojedinacno{
+        max-width: 500px;
+    }
+    .karta{
+        padding: 20px 40px;
+        margin: auto !important;
+        width: 500px;
+    }
     .topnav{
         display: block;
     }
     .header{
         display: none;
     }
+
+}
+@media only screen and (max-width: 480px){
+
+
     .all_in_footer{
         display: block !important;
     }
@@ -278,5 +326,30 @@
     }
     .footer{
         height: 400px;
+    }
+    .about_home p{
+        font-size: 1.1rem !important;
+    }
+    .karte{
+        padding: 0;
+    }
+    .skup_karata{
+        width: 100%;
+        margin: 0;
+    }
+    .setac_pojedinacno, .karta{
+        max-width: 350px;
+    }
+    .card{
+        width: 100% !important;
+    }
+    .footer-part{
+        width: fit-content;
+    }
+    #openReservation{
+        margin: 0 !important;
+    }
+    #reservationForm input, #reservationForm textarea, #reservationForm select{
+        width: 222px !important;
     }
 }

@@ -42,7 +42,7 @@ session_start();
 ?>
 
     <div id="changemsg"></div>
-        <div class="container">
+        <div class="container mx-auto">
             <div class="row">
                 <h3 class="text-center mt-5">Change your password</h3>
             </div>

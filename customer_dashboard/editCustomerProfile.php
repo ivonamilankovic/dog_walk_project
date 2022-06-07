@@ -54,7 +54,7 @@ require_once '../page_parts/header.php';
 ?>
 <div id="update2div"></div>
     <!--Edit Profile-->
-    <div class="container d-flex align-self-center" style="padding: 50px 0">
+    <div class="container d-flex align-self-center" style="padding: 50px 0 !important;">
         <div class="row gutters">
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                 <div class="card h-100">
