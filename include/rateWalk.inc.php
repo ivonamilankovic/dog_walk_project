@@ -18,5 +18,5 @@ $rating = new RateWalkController($rate, $id_walk);
 $rating->rate();
 
 
-header("location: ../pages/home.php");
+header("location: ../pages/home.php?rate=y");
 die();

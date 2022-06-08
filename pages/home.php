@@ -28,12 +28,16 @@
 
     if(isset($_GET['act'])) {
         if ($_GET['act'] === "success") {
-            echo '<div class="alert alert-success">You have successfully signed up!
+            echo '<div class="alert alert-success alert-dismissible">You have successfully signed up!
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
         } elseif ($_GET['act'] === "expired") {
-            echo '<div class="alert alert-warning">Your link has expired! Please try again.
+            echo '<div class="alert alert-warning alert-dismissible">Your link has expired! Please try again.
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
         }
+    }
+    if(isset($_GET['rate'])){
+        echo '<div class="alert alert-success alert-dismissible">Thank you for rating walker!
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
     }
 ?>
 <div id="goodMessages"></div>

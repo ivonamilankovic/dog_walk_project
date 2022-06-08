@@ -1,10 +1,10 @@
 <?php
 session_start();
-if(!isset($_SESSION['id'])){
-    header("location: ../pages/home.php");
-}
 if($_SESSION['role'] === 'walker'){
     header('location: ../walker_dashboard/editWalkerProfile.php');
+}
+if(isset($_GET['id_walk'])){
+    header("location: ../pages/home.php");
 }
 ?>
 
@@ -19,6 +19,22 @@ if($_SESSION['role'] === 'walker'){
         <title>Paw Walks - My walks</title>
         <link rel="stylesheet" href="../css/homeStyle.css">
         <link rel="stylesheet" href="../css/scrollbar.css">
+        <style>
+            input[type=radio] {
+                display: none;
+            }
+            label {
+                font-size: 30px;
+            }
+            input:checked ~ label {
+                background-color: #ebebeb;
+                border-radius: 50px;
+            }
+            td{
+                width: fit-content;
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
 
@@ -61,17 +77,19 @@ catch (Exception $ex){
     <div class="d-flex justify-content-center">
         <form action="../include/rateWalk.inc.php" method="post">
             <table class="p-4">
-                <tr><td class="px-4">1</td>
+                <tr>
+                    <td class="px-4">1</td>
                     <td class="px-4">2</td>
                     <td class="px-4">3</td>
                     <td class="px-4">4</td>
                     <td class="px-4">5</td>
                 </tr>
-                <tr><td class="px-4"><input type="radio" name="rate" value="1"></td>
-                    <td  class="px-4"><input type="radio" name="rate" value="2"></td>
-                    <td class="px-4"><input type="radio" name="rate" value="3" checked></td>
-                    <td class="px-4"><input type="radio" name="rate" value="4"></td>
-                    <td class="px-4"><input type="radio" name="rate" value="5"></td>
+                <tr>
+                    <td class="px-4"><input id="r1" type="radio" name="rate" value="1"><label for="r1"><img src="../images/star.png" alt="star"></label></td>
+                    <td  class="px-4"><input id="r2" type="radio" name="rate" value="2"><label for="r2"><img src="../images/star.png" alt="star"></label></td>
+                    <td class="px-4"><input id="r3" type="radio" name="rate" value="3" checked><label for="r3"><img src="../images/star.png" alt="star"></label></td>
+                    <td class="px-4"><input id="r4" type="radio" name="rate" value="4"><label for="r4"><img src="../images/star.png" alt="star"></label></td>
+                    <td class="px-4"><input id="r5" type="radio" name="rate" value="5"><label for="r5"><img src="../images/star.png" alt="star"></label></td>
                 </tr>
             </table>
             <div class="d-flex justify-content-center p-4">

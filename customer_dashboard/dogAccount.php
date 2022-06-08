@@ -53,13 +53,13 @@ include_once '../page_parts/header.php';
 
     if(isset($_GET['succ'])){
         if($_GET['succ'] === "y"){
-            echo '<div class="alert alert-success">You have successfully added new dog! 
+            echo '<div class="alert alert-success alert-dismissible">You have successfully added new dog! 
  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
         }
     }
     if(isset($_GET['del'])){
         if($_GET['del'] === "y"){
-            echo '<div class="alert alert-success">You have successfully deleted dog! 
+            echo '<div class="alert alert-success alert-dismissible">You have successfully deleted dog! 
      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
         }
     }

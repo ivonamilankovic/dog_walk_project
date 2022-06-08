@@ -14,6 +14,7 @@ class Reservation extends Dbconn {
         }
         $walk_id = $pdo->lastInsertId();
         $pdoStatement = null;
+        $this->sendMail($walker_id);
         return $walk_id;
     }
 
@@ -32,4 +33,20 @@ class Reservation extends Dbconn {
         }
         $stmt = null;
     }
+
+    private function sendMail($walker_id){
+        $sql = "SELECT email FROM user WHERE id = ? ";
+        $stmt = $this->setConnection()->prepare($sql);
+        if(!$stmt->execute([$walker_id])){
+            $stmt = null;
+            $array = array("error" => "stmtGetWalkerEmailFailed");
+            echo json_encode($array);
+            die();
+        }
+        $walker = $stmt->fetch(PDO::FETCH_ASSOC);
+        $txt = "You have new request for walk. Please go to your profile to confirm or decline.";
+        $subject = "New reservation request for you! - Paw Walks";
+        mail($walker['email'], $subject,$txt, 'From: ivonamilankovic@yahoo.com');
+    }
+
 }

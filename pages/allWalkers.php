@@ -29,6 +29,11 @@ if(isset($_GET['name'])){
                             INNER JOIN user ON walk.walker_id = user.id
                             INNER JOIN walker_details ON walker_details.walker_id = walk.walker_id
                             WHERE status = 'finished' AND rate IS NOT NULL AND walker_details.is_active = 1 AND (user.first_name LIKE '%".$_GET['name']."%' OR user.last_name LIKE '%".$_GET['name']."%' ) GROUP BY walker_id;";
+
+    $sqlNewWalkers = "SELECT user.id, user.first_name, user.last_name, user.picture, walker_details.biography
+                            FROM walker_details
+                            INNER JOIN user ON walker_details.walker_id = user.id
+                            WHERE walker_details.is_active = 1 AND (user.first_name LIKE '%".$_GET['name']."%' OR user.last_name LIKE '%".$_GET['name']."%' );";
 }else {
 
     $sqlWalkers = "SELECT avg(walk.rate) AS avg_rate, walk.walker_id, user.first_name, user.last_name, user.picture, walker_details.biography
@@ -36,12 +41,26 @@ if(isset($_GET['name'])){
                             INNER JOIN user ON walk.walker_id = user.id
                             INNER JOIN walker_details ON walker_details.walker_id = walk.walker_id
                             WHERE status = 'finished' AND rate IS NOT NULL AND walker_details.is_active = 1 GROUP BY walker_id";
+
+    $sqlNewWalkers = "SELECT user.id, user.first_name, user.last_name, user.picture, walker_details.biography
+                                FROM walker_details
+                                INNER JOIN user ON walker_details.walker_id = user.id
+                                WHERE walker_details.is_active = 1 ;";
 }
 try{
     $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
     $stmtWalker=$conn->prepare($sqlWalkers);
     $stmtWalker->execute();
     $walkers= $stmtWalker->fetchAll(PDO::FETCH_ASSOC);
+}
+catch (Exception $ex){
+    echo($ex -> getMessage());
+}
+try{
+    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+    $stmtNewWalker=$conn->prepare($sqlNewWalkers);
+    $stmtNewWalker->execute();
+    $newWalkers= $stmtNewWalker->fetchAll(PDO::FETCH_ASSOC);
 }
 catch (Exception $ex){
     echo($ex -> getMessage());
@@ -62,7 +81,7 @@ foreach ($walkers as $walker){
                     <div class="col-md-8 my-3">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $walker['first_name']." ".$walker['last_name'];?></h5>
-                            <p class="card-text"><?php echo $walker['biography'];?></p>
+                            <p class="card-text" style="font-style: italic"><?php if(!empty($walker['biography'])) echo $walker['biography']; else echo '<span style="color: gray;">No biography</span>'; ?></p>
                             <span class="d-flex justify-content-between align-middle">
                                 <small class="text-muted">
                                     <a id="viewWalker" href="./oneWalker.php?walker=<?php echo $walker['walker_id'];?>">View</a>
@@ -79,7 +98,43 @@ foreach ($walkers as $walker){
     <?php
 }
 }
-else{
+if(!empty($newWalkers)){
+
+    foreach ($newWalkers as $new){
+
+            if(!in_array($new['id'],array_column($walkers,'walker_id'))){
+
+        ?>
+
+        <div class="container setac_pojedinacno">
+            <div class="row border rounded karta mx-auto pt-3">
+                <div class="card mb-3 mx-auto" >
+                    <div class="row g-0">
+                        <div class="col-md-4 align-self-center p-2">
+                            <img src="<?php if(!empty($new['picture'])) echo $new['picture']; else echo '../include/profile_images/user-icon.png'; ?>" width="130" height="130" class="img-fluid rounded-circle picture_card" alt="profile picture">
+                        </div>
+                        <div class="col-md-8 my-3">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $new['first_name']." ".$new['last_name'];?></h5>
+                                <p class="card-text" style="font-style: italic"><?php if(!empty($new['biography'])) echo $new['biography']; else echo '<span style="color: gray;">No biography</span>'; ?></p>
+                                <span class="d-flex justify-content-between align-middle">
+                                <small class="text-muted">
+                                    <a id="viewWalker" href="./oneWalker.php?walker=<?php echo $new['id'];?>">View</a>
+                                </small>
+                                <small>Average rate: 0</small>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php
+            }
+    }
+}
+if(empty($walkers) && empty($newWalkers)){
     ?>
     <h5 class="mt-5 text-center">No results.</h5>
 <?php

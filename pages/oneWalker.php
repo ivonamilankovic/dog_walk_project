@@ -47,7 +47,10 @@ if(isset($_GET['walker'])){
     }
 
 if(!isset($_SESSION['id'])){
-    echo '<div class="alert alert-warning">Please <a href="#" data-bs-toggle="modal" data-bs-target="#modal_login" style="color: black">login</a> to be able to reserve a walk.</div>';
+    echo '<div class="alert alert-warning alert-dismissible">Please <a href="#" data-bs-toggle="modal" data-bs-target="#modal_login" style="color: black">login</a> to be able to reserve a walk.</div>';
+}
+if ($_SESSION['role'] === "walker"){
+    echo '<div class="alert alert-danger alert-dismissible">You must be user to reserve a walk!</div>';
 }
 ?>
 
@@ -67,7 +70,7 @@ if(!isset($_SESSION['id'])){
                             <br>
                             <div class="border-bottom border-end">
                                 <p>About me: </p>
-                                <p style="text-indent: 30px;"><?php echo $walker['biography'];?></p>
+                                <p style="text-indent: 30px;font-style: italic"><?php if(!empty($walker['biography'])) echo $walker['biography']; else echo '<span style="color: gray;">No biography</span>'; ?></p>
                                 <p>My favourite breed: </p>
                                 <p style="text-indent: 30px;"><?php echo $walker['breed_name'];?></p>
                             </div>
@@ -177,10 +180,7 @@ if(!isset($_SESSION['id'])){
                 </form>
             </div>
             <?php
-            }
-            elseif ($_SESSION['role'] === "walker"){
-                echo '<h2>You must be user to reserve a walk!</h2>';
-            }
+                }
             }?>
         </div>
     </div>

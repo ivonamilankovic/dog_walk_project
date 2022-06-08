@@ -43,11 +43,15 @@ function updateWalker(){
                 updatemsgDiv.innerHTML ="You have successfully updated your data! <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>";
                 updatemsgDiv.classList.add('alert');
                 updatemsgDiv.classList.add('alert-success');
+                updatemsgDiv.classList.add('alert-dismissible');
+
                 window.scrollTo(0,0);
             }else if(response.updated === "failedToGetId" || response.error === "stmtIfExistInTableFailed" || response.error === "stmtUpdateUserInfoFailed" || response.error === "stmtUpdateAddressFailed" || response.error === "stmtUpdateWalkerDetailsFailed" || response.error === "stmtInsertWalkerDetailsFailed" || response.error === "stmtUpdateFavBreedFailed" || response.error === "stmtInsertFavBreedFailed"){
                 errorWalker.innerText = "Failed to change your data. Please try again!";
                 errorWalker.classList.add('alert');
                 errorWalker.classList.add('alert-danger');
+                errorWalker.classList.add('alert-dismissible');
+
             }
        } ,
         error: (msg) => {

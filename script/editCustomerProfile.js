@@ -37,12 +37,14 @@ function updateCust(){
                 update2div.innerHTML ="You have successfully updated your data! <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>";
                 update2div.classList.add('alert');
                 update2div.classList.add('alert-success');
+                update2div.classList.add('alert-dismissible');
                 window.scrollTo(0,0);
 
             }else if(response.updated === "failedToGetId"  || response.error === "stmtUpdateUserInfoFailed" || response.error === "stmtUpdateAddressFailed"){
                 errorCust.innerHTML = "Failed to change your data. Please try again! ";
                 errorCust.classList.add('alert');
                 errorCust.classList.add('alert-danger');
+                errorCust.classList.add('alert-dismissible');
             }
         } ,
         error: (msg) => {

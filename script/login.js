@@ -65,6 +65,7 @@ function sendCodeForNewPassword(){
                     goodmsg.innerHTML = "We have sent you link on email to verify yourself!   <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>"
                     goodmsg.classList.add('alert');
                     goodmsg.classList.add('alert-success');
+                    goodmsg.classList.add('alert-dismissible');
                 } else if (response.error === "stmtSendCodeFailed" || response.error === "stmtFindUserEmailFailed") {
                     errorMessage.innerText = "Failed to send code. Please try again.";
                 } else if (response.error === "notExistingAccount"){

@@ -29,12 +29,14 @@ function changePassword(){
                 changemsgDiv.innerHTML ="You have successfully changed your password! <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>";
                 changemsgDiv.classList.add('alert');
                 changemsgDiv.classList.add('alert-success');
+                changemsgDiv.classList.add('alert-dismissible');
                 window.scrollTo(0,0);
 
             }else if(response.error === "stmtSetNewPasswordFailed"){
                 errorNewPass.innerText = "Failed to set new password. Try again.";
                 errorNewPass.classList.add('alert');
                 errorNewPass.classList.add('alert-danger');
+                errorNewPass.classList.add('alert-dismissible');
             }
         },
         error: (msg) => {

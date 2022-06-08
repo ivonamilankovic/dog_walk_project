@@ -68,6 +68,7 @@ function makeUser(){
                 goodmsg.innerHTML = "We have sent you link on email to verify yourself!   <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>"
                 goodmsg.classList.add('alert');
                 goodmsg.classList.add('alert-success');
+                goodmsg.classList.add('alert-dismissible');
             }
         },
         error: (msg) => {

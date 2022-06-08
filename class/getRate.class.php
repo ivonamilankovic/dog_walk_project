@@ -60,8 +60,8 @@ class GetRate extends Dbconn
                 $subject = "Paw walks sends you code to rate the walk!";
                 $txt = "To rate a walk, click to the following link: http://localhost/dog_walk/customer_dashboard/rateWalk.php?code=".$code."&id_walk=".$id_walk;
             }
-            //mail($to, $subject, $txt, 'From: ivonamilankovic@yahoo.com');
-            mail($to, $subject, $txt, 'From: sarababic01@yahoo.com');
+            mail($to, $subject, $txt, 'From: ivonamilankovic@yahoo.com');
+            //mail($to, $subject, $txt, 'From: sarababic01@yahoo.com');
 
         }
     }
