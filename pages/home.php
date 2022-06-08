@@ -26,20 +26,23 @@
     include_once '../page_parts/header.php';
 
 
-    if(isset($_GET['act']) === "success"){
-        echo '<script> alert("You have successfully signed up!");</script>';
+    if(isset($_GET['act'])) {
+        if ($_GET['act'] === "success") {
+            echo '<div class="alert alert-success">You have successfully signed up!
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+        } elseif ($_GET['act'] === "expired") {
+            echo '<div class="alert alert-warning">Your link has expired! Please try again.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+        }
     }
-    else if(isset($_GET['act']) === "expired"){
-        echo '<script> alert("Your registration link has expired! Please sign up again.");</script>';
-    }
-
 ?>
 <div id="goodMessages"></div>
+<div class="loader d-flex align-items-center " id="loader"><img class="text-center" src="../images/loading-img.gif" alt="loading..."></div>
     <!--dog_walk picture-->
 <div class="picture-text">
-    <img src="../images/dog_walk.jpg" alt="dog" class="img-fluid w-100">
+    <img src="../images/dog_walk1.jpg" alt="dog" class="img-fluid w-100">
     <div class="centered text">Dog walking in your neighborhood!</div>
-    <div class="centered-bottom btn_see_walkers"><a href="./allWalkers.php"><button type="button" class="btn btn-outline-dark rounded-pill" style=" background-color: #866464">See walkers</button></a></div>
+    <div class="centered-bottom btn_see_walkers"><a href="./allWalkers.php"><button id="btnonimg" type="button" class="btn btn-outline-dark ">See walkers</button></a></div>
 </div>
 
 

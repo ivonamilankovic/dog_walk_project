@@ -24,7 +24,7 @@ if($result === true){
         header("location: ./home.php?act=success");
     }
     else if($column === "forgot_password_code"){
-        header("location: ./changePassword.php");
+        header("location: ./changePassword.php?fp=y");
     }
 }
 else{

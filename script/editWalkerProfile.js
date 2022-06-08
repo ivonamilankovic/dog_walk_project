@@ -18,6 +18,9 @@ const updatemsgDiv = document.getElementById('updatemsg');
 //functions
 function updateWalker(){
     $.ajax({
+        beforeSend: ()=>{
+            $('.loader').show();
+        },
        url: "../include/updateWalkerInfo.inc.php",
        method: "POST",
        dataType: "JSON",
@@ -36,9 +39,11 @@ function updateWalker(){
        success: (response)=>{
            console.log(response);
             if(response.updated === "done"){
+                $('.loader').hide();
                 updatemsgDiv.innerHTML ="You have successfully updated your data! <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>";
                 updatemsgDiv.classList.add('alert');
                 updatemsgDiv.classList.add('alert-success');
+                window.scrollTo(0,0);
             }else if(response.updated === "failedToGetId" || response.error === "stmtIfExistInTableFailed" || response.error === "stmtUpdateUserInfoFailed" || response.error === "stmtUpdateAddressFailed" || response.error === "stmtUpdateWalkerDetailsFailed" || response.error === "stmtInsertWalkerDetailsFailed" || response.error === "stmtUpdateFavBreedFailed" || response.error === "stmtInsertFavBreedFailed"){
                 errorWalker.innerText = "Failed to change your data. Please try again!";
                 errorWalker.classList.add('alert');
@@ -73,7 +78,6 @@ document.getElementById('idW').addEventListener('click', (e)=>{
         errorWalker.innerText = "Image must be jpg, jpeg or png type.";
         e.preventDefault();
     }
-    window.scrollTo(0,0);
     //updateImage('myFileW','idW', errorWalker);
     //POPRAVITI AKO JE MOGUCE
 

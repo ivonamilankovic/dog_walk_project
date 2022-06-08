@@ -53,12 +53,13 @@ try{
 require_once '../page_parts/header.php';
 ?>
 <div id="update2div"></div>
+<div class="loader"><img src="../images/loading-img.gif" alt="loading..."></div>
     <!--Edit Profile-->
     <div class="container d-flex align-self-center" style="padding: 50px 0 !important;">
-        <div class="row gutters">
+        <div class="row mx-auto gutters">
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                 <div class="card h-100">
-                    <div class="card-body">
+                    <div class="card-body" style="padding: 1rem 1rem !important;">
                         <div class="account-settings">
                             <div class="user-profile">
                                 <div class="user-avatar d-flex justify-content-center">
@@ -117,7 +118,7 @@ require_once '../page_parts/header.php';
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group mt-5">
+                                <div class="form-group choose_img_fg">
                                     <label for="filename">Choose your profile image: </label> <br>
                                     <div class="form-group d-flex justify-content-between align-items-center">
                                         <form id="formC" action="../include/changeProfilePic.inc.php" enctype="multipart/form-data" method="post">
@@ -180,9 +181,9 @@ require_once '../page_parts/header.php';
                             ?>
                         </small>
                         <br>
-                        <div class="row gutters">
+                        <div class="row gutters ">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="text-right d-flex justify-content-center">
+                                <div class="text-right justify-content-center buttons_editprof">
                                     <button id="updateCustomer" class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Update</button>
                                     <button class="btn m-4" type="submit" id="idC" name="id" value="<?php echo $_SESSION['id']; ?>" form="formC" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Update profile image</button>
 

@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if(!isset($_SESSION['id']) && !isset($_GET['fp'])){
+    header("location: ../pages/home.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +20,13 @@ session_start();
         <link rel="stylesheet" type="text/css" href="../css/scrollbar.css"/>
         <link rel="stylesheet" type="text/css" href="../css/login.css"/>
         <link rel="stylesheet" type="text/css" href="../css/signup.css"/>
+        <style>
+            @media only screen and (max-width: 480px){
+                .form-floating{
+                    width: 80%;
+                }
+            }
+        </style>
     </head>
 
     <body>
@@ -42,23 +54,24 @@ session_start();
 ?>
 
     <div id="changemsg"></div>
-        <div class="container mx-auto">
+    <div class="loader"><img src="../images/loading-img.gif" alt="loading..."></div>
+    <div class="container mx-auto">
             <div class="row">
                 <h3 class="text-center mt-5">Change your password</h3>
             </div>
-            <div class="row">
+            <div class="row mx-auto">
                 <div class="col-sm-8 col-lg-6 text-center mt-5 m-auto">
-                    <div class="form-floating">
+                    <div class="form-floating mx-auto">
                         <input  class="form-control" id="emailP" name="email" type="email" placeholder="Email" value="<?php if (!empty($userData)) echo $userData['email'];?>">
                         <label for="emailP">Email</label>
                     </div>
                     <br>
-                    <div class="form-floating">
+                    <div class="form-floating mx-auto">
                         <input  class="form-control" id="newPassword1" name="newPass1" type="password" placeholder="New Password">
                         <label for="newPassword1">New Password</label>
                     </div>
                     <br>
-                    <div class="form-floating">
+                    <div class="form-floating mx-auto">
                         <input  class="form-control" id="newPassword2" name="newPass2" type="password" placeholder="Repeat Password">
                         <label for="newPassword2">Repeat Password</label>
                     </div>

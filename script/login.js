@@ -14,6 +14,9 @@ const goodmsg = document.getElementById('goodMessages');
 function logUser(){
     //sends data to log user on page
     $.ajax({
+        beforeSend: ()=>{
+            $('.loader').show();
+        },
        url: '../include/login.inc.php',
        method: 'POST',
        data: {
@@ -36,6 +39,7 @@ function logUser(){
                errorMessage.innerText = "User is not verified. To be able to login please verify your profile on your email.";
            }
            else if(response.login === "done"){
+               $('.loader').hide();
                window.location.reload();
            }
         },

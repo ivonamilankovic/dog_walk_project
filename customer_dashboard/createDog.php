@@ -19,6 +19,19 @@ if($_SESSION['role'] === 'walker'){
     <title>Paw Walks - My dogs</title>
     <link rel="stylesheet" href="../css/homeStyle.css">
     <link rel="stylesheet" href="../css/scrollbar.css">
+    <style>
+        @media only screen and (max-width: 480px){
+            .card-body{
+                padding: 10px 0 0 22px !important;
+            }
+            .form-group{
+                width: 95% !important;
+            }
+            .row{
+                width: 98% !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -32,7 +45,7 @@ require_once ("../include/dbconfig.inc.php");
 
 
 <div class="container new_dog" style="padding: 50px 0">
-    <div class="row gutters d-flex justify-content-center">
+    <div class="row mx-auto gutters d-flex justify-content-center">
         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
             <div class="card h-100">
                 <div class="card-body">

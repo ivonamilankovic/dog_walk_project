@@ -16,5 +16,5 @@ $delete = new deleteDogController($dog_id);
 
 $delete->delDog();
 
-header("location: ../customer_dashboard/dogAccount.php");
+header("location: ../customer_dashboard/dogAccount.php?del=y");
 die();

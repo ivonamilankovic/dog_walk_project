@@ -10,6 +10,9 @@ const changemsgDiv = document.getElementById('changemsg');
 function changePassword(){
     //changes password
     $.ajax({
+        beforeSend: ()=>{
+            $('.loader').show();
+        },
         url: '../include/changePassword.inc.php',
         method: 'POST',
         dataType: "JSON",
@@ -21,10 +24,12 @@ function changePassword(){
         success: (response) => {
             console.log(response);
             if(response.newPassword === "set"){
+                $('.loader').hide();
                 $("#newErrorMessage").innerText = null;
                 changemsgDiv.innerHTML ="You have successfully changed your password! <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>";
                 changemsgDiv.classList.add('alert');
                 changemsgDiv.classList.add('alert-success');
+                window.scrollTo(0,0);
 
             }else if(response.error === "stmtSetNewPasswordFailed"){
                 errorNewPass.innerText = "Failed to set new password. Try again.";

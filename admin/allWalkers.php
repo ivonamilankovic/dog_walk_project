@@ -140,7 +140,7 @@ if(isset($_GET['e'])){
                 if ($details['is_active'] == 0) {
                     echo '<td><a href="./options/makeWalkerActive.php?id=' . $r['id'] . '" class="btn btn-success" >Make active</a> </td>';
                 } elseif ($details['is_active'] == 1) {
-                    echo '<td><input type="text" name="is_active" value="' . $details['is_active'] . '"></td>';
+                    echo '<td><a href="./options/makeWalkerUnactive.php?id=' . $r['id'] . '" class="btn btn-danger" >Make not active</a></td>';
                 }
 
                 if (!empty($details['biography'])) {

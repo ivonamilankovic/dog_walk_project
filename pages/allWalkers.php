@@ -24,9 +24,11 @@ include_once '../page_parts/header.php';
 include_once '../include/dbconfig.inc.php';
 
 if(isset($_GET['name'])){
-    $sqlWalkers = "SELECT u.id, u.first_name, u.last_name, u.picture, wd.biography FROM user u
-                INNER JOIN walker_details wd ON wd.walker_id = u.id
-                WHERE  u.role='walker' AND (u.first_name LIKE '%".$_GET['name']."%' OR u.last_name LIKE '%".$_GET['name']."%' ) AND wd.is_active = 1;";
+    $sqlWalkers = "SELECT avg(walk.rate) AS avg_rate, walk.walker_id, user.first_name, user.last_name, user.picture, walker_details.biography
+                            FROM walk 
+                            INNER JOIN user ON walk.walker_id = user.id
+                            INNER JOIN walker_details ON walker_details.walker_id = walk.walker_id
+                            WHERE status = 'finished' AND rate IS NOT NULL AND walker_details.is_active = 1 AND (user.first_name LIKE '%".$_GET['name']."%' OR user.last_name LIKE '%".$_GET['name']."%' ) GROUP BY walker_id;";
 }else {
 
     $sqlWalkers = "SELECT avg(walk.rate) AS avg_rate, walk.walker_id, user.first_name, user.last_name, user.picture, walker_details.biography

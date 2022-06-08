@@ -22,5 +22,5 @@ $create = new createDogControler($dogName, $dogGender, $dogAge, $breed_id, $note
 
 $create->createDog();
 
-header("location: ../customer_dashboard/dogAccount.php");
+header("location: ../customer_dashboard/dogAccount.php?succ=y");
 die();

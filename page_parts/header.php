@@ -33,12 +33,12 @@
             ?>
 
             <div class="p-3 align-self-center">
-                <button type="button" class="btn btn-outline-dark header-btn" data-bs-toggle="modal" data-bs-target="#modal_login">
+                <button id="btnLogin" type="button" class="btn header-btn" data-bs-toggle="modal" data-bs-target="#modal_login">
                     Log in
                 </button>
             </div>
             <div class="p-3 align-self-center">
-                <button type="button" class="btn btn-outline-dark header-btn" data-bs-toggle="modal" data-bs-target="#modal_signup">
+                <button id="btnSignup" type="button" class="btn  header-btn" data-bs-toggle="modal" data-bs-target="#modal_signup">
                     Sign up
                 </button>
             </div>
@@ -54,21 +54,6 @@
                     </button>
                 </div>
             </nav>
-        </div>
-    </div>
-</div>
-
-<!--active toggle search-->
-<div class=" d-flex justify-content-around">
-    <div class="collapse" id="navbarToggleExternalContent">
-        <div class="p-3">
-            <div class="input-group rounded" style="width: 600px; height: 60px">
-                <input id="searchInput" type="search" class="form-control rounded border border-dark" placeholder="Search for dog walkers..." aria-label="Search" aria-describedby="search-addon" />
-                <button id="searchWalkersBtn" type="button" class="btn btn-dark search" style="width: 120px">Search</button>
-            </div>
-        </div>
-        <div class="d-flex justify-content-center">
-            <button type="button" class="findWalkers btn btn-outline-dark" style="width: 600px">Show all dog walkers...</button>
         </div>
     </div>
 </div>
@@ -104,11 +89,28 @@
        }
        ?>
         <a href="../pages/allWalkers.php">All walkers</a>
+        <a href="#" onclick="myFunction()" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">Search for walkers</a>
         <a href="../pages/about.php">About</a>
     </div>
     <a href="#" class="icon" onclick="myFunction()">
         <img src="../images/navburger.ico" width="40" height="40" alt="navigation">
     </a>
+</div>
+
+
+<!--active toggle search-->
+<div class=" d-flex justify-content-around">
+    <div class="collapse mb-4" id="navbarToggleExternalContent">
+        <div class="p-3">
+            <div class="input-group rounded">
+                <input id="searchInput" type="search" class="form-control rounded border border-dark" placeholder="Search for dog walkers..." aria-label="Search" aria-describedby="search-addon" />
+                <button id="searchWalkersBtn" type="button" class="btn btn-dark search">Search</button>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="button" class="findWalkers btn btn-outline-dark">Show all dog walkers...</button>
+        </div>
+    </div>
 </div>
 
 <!--Modal for Log in-->

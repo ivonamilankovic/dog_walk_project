@@ -1,6 +1,14 @@
 /*loader*/
 .loader{
-    display: none;
+    display: none !important;
+    border: none;
+    padding: 15px;
+    background-color: #000;
+    opacity: .5;
+    position: absolute;
+    z-index: 99999 !important;
+    width: 100%;
+    height: 100vh;
 }
 /*nav burger*/
 .topnav {
@@ -40,7 +48,19 @@
     width: 10rem;
     height:3rem;
 }
-
+#btnonimg, #searchWalkersBtn{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    font-size: 0.85rem ;
+}
+#btnLogin:focus, #btnSignup:focus{
+    box-shadow: none;
+}
+#btnonimg:hover, #searchWalkersBtn:hover{
+    background-color: #454545;
+}
 .picture-text {
     position: relative;
     text-align: center;
@@ -167,6 +187,10 @@
 .setac_pojedinacno{
     max-width: 900px;
     padding-top: 10px;
+}
+
+#navbarToggleExternalContent{
+    width: 600px;
 }
 
 @media only screen and (max-width: 1400px) {
@@ -313,11 +337,23 @@
     .header{
         display: none;
     }
+    #searchInput{
+        border: 1px solid black !important;
+    }
+    #btnonimg, #searchWalkersBtn{
+        font-size: 0.75rem;
+        padding: 12px;
+    }
+    .about_home{
+        margin-top: 30px !important;
+    }
 
 }
 @media only screen and (max-width: 480px){
 
-
+    #navbarToggleExternalContent{
+        width: 330px;
+    }
     .all_in_footer{
         display: block !important;
     }
@@ -352,4 +388,5 @@
     #reservationForm input, #reservationForm textarea, #reservationForm select{
         width: 222px !important;
     }
+
 }

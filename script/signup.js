@@ -35,6 +35,8 @@ function getRoleOfUser(){
 function makeUser(){
     //send data to make new user in db
     $.ajax({
+        beforeSend: ()=>{
+        },
         url: '../include/signup.inc.php',
         method: 'POST',
         data: {

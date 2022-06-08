@@ -7,7 +7,7 @@ class SetNewPassword extends Dbconn{
 
         $hashedPassword =  password_hash($password,PASSWORD_BCRYPT);
 
-        $sql = "UPDATE user SET password = ?, updated_at =? WHERE email = ?";
+        $sql = "UPDATE user SET password = ?, updated_at =?, forgot_password_code = null WHERE email = ?";
         $stmt = $this->setConnection()->prepare($sql);
 
         if(!$stmt->execute([$hashedPassword,date('Y-m-d H:i:s'),$email])){

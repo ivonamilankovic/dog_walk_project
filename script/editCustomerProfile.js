@@ -15,6 +15,9 @@ const update2div = document.getElementById('update2div');
 //functions
 function updateCust(){
     $.ajax({
+        beforeSend: ()=>{
+            $('.loader').show();
+        },
         url: "../include/updateCustomerInfo.inc.php",
         method: "POST",
         dataType: "JSON",
@@ -30,9 +33,11 @@ function updateCust(){
         success: (response)=>{
             console.log(response);
             if(response.updated === "done"){
+                $('.loader').hide();
                 update2div.innerHTML ="You have successfully updated your data! <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>";
                 update2div.classList.add('alert');
                 update2div.classList.add('alert-success');
+                window.scrollTo(0,0);
 
             }else if(response.updated === "failedToGetId"  || response.error === "stmtUpdateUserInfoFailed" || response.error === "stmtUpdateAddressFailed"){
                 errorCust.innerHTML = "Failed to change your data. Please try again! ";
@@ -63,7 +68,6 @@ document.getElementById('idC').addEventListener('click', (e)=>{
         errorWalker.innerText = "Image must be jpg, jpeg or png type.";
         e.preventDefault();
     }
-    window.scrollTo(0,0);
     //updateImage('myFileW','idW', errorWalker);
     //POPRAVITI AKO JE MOGUCE
 
