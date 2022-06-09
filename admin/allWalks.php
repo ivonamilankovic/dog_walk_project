@@ -76,7 +76,7 @@ if(isset($_GET['e'])){
                         <td>'.$count.'</td>
                         <td style="color: gray;">'.$r['cust'].'</td>
                         <td style="color: gray;">'.$r['walker'].'</td>
-                        <td><a href="./admin.php?a=d&owner='.$r['id'].'">'.$dogs['c'].'</a></td>
+                        <td><a href="./admin.php?a=d&walk='.$r['id'].'">'.$dogs['c'].'</a></td>
                         <form action="./options/updateWalk.php" method="post">
                         <td><input type="text" name="date" value="'.$r['walk_date'].'"></td>
                         <td><input type="text" name="start" value="'.$r['start_location'].'"></td>
@@ -86,10 +86,10 @@ if(isset($_GET['e'])){
                         <td style="color: gray;">'.$r['status'].'</td>
                         <td><input type="text" name="path" value="'.$r['path'].'"></td>
                         <td style="color: gray;">'.$r['rate'].'</td>
-                        <td> <button class="btn btn-warning" name="update" value="'.$r['id'].'">Change</button> 
+                        <td> <button class="btn btn-warning" name="update" value="'.$r['id'].'" style="width: 80px; margin-bottom: 5px">Change</button> 
                         </form>
                         <form action="./options/deleteWalk.php" method="post">
-                        <button class="btn btn-danger" name="delete" value="'.$r['id'].'">Delete</button> 
+                        <button class="btn btn-danger" name="delete" value="'.$r['id'].'" style="width: 80px">Delete</button> 
                         </form></td>
                     </tr>
                 ';

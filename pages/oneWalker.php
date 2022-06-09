@@ -151,8 +151,8 @@ if ($_SESSION['role'] === "walker"){
                                 foreach ($dogData as $dog){
                                     ?>
                                     <div class="form-check d-flex " style="width: 110px !important;">
-                                        <input class="form-check-input" type="checkbox" value="<?php echo $dog['id']; ?>" name="dogs[]">
-                                        <label class="form-check-label" style="width: 100px"><?php echo $dog['dog_name']; ?></label>
+                                        <input class="form-check-input" type="checkbox" value="<?php echo $dog['id']; ?>" name="dogs[]" style="width: 20px !important;">
+                                        <label class="form-check-label" style="width: 100px; padding-left: 10px"><?php echo $dog['dog_name']; ?></label>
                                     </div>
                                     <?php
                                 }

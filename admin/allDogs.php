@@ -5,10 +5,14 @@ include_once '../include/dbconfig.inc.php';
 try{
     $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
 
-    if(isset($_GET['owner'])){
-        $sql = "SELECT d.id as dogID, d.breed_id, d.dog_name, d.gender, d.age, d.notes, b.breed_name , u.email 
-            FROM dog d INNER JOIN user u ON d.owner_id = u.id INNER JOIN breeds b ON b.id= d.breed_id
-            WHERE d.owner_id =".$_GET['owner'];
+    if(isset($_GET['walk'])){
+        $sql = "SELECT d.id as dogID, d.breed_id, d.dog_name, d.gender, d.age, d.notes, b.breed_name , u.email, w.id, wd.walk_id 
+					FROM walk w
+                    INNER JOIN walk_dogs wd ON w.id = wd.walk_id
+                    INNER JOIN dog d ON d.id = wd.dog_id
+                    INNER JOIN user u ON d.owner_id = u.id 
+                    INNER JOIN breeds b ON b.id= d.breed_id
+                    WHERE wd.walk_id = ".$_GET['walk'];
     }else {
         $sql = "SELECT d.id as dogID, d.breed_id, d.dog_name, d.gender, d.age, d.notes, b.breed_name , u.email 
             FROM dog d INNER JOIN user u ON d.owner_id = u.id INNER JOIN breeds b ON b.id= d.breed_id;";
@@ -102,9 +106,9 @@ if(isset($_GET['e'])){
                         </td>
                         <td><input type="text" name="notes" value="'.$r['notes'].'"></td>
                         <td style="color: gray;">'.$r['email'].'</td>
-                        <td> <button class="btn btn-warning" name="update" value="'.$r['dogID'].'">Change</button> </form>
+                        <td> <button class="btn btn-warning" name="update" value="'.$r['dogID'].'" style="width: 80px; margin-bottom: 5px">Change</button> </form>
                         <form action="./options/deleteDog.php" method="post">
-                        <button class="btn btn-danger" name="delete" value="'.$r['dogID'].'">Delete</button>
+                        <button class="btn btn-danger" name="delete" value="'.$r['dogID'].'" style="width: 80px">Delete</button>
                         </form> </td>
                     </tr>
                 ';

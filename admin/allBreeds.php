@@ -30,9 +30,9 @@ if(isset($_GET['e'])){
 
 <h1 class="m-3">Breeds</h1>
 
-<div>
+<div class="d-flex justify-content-center">
 
-    <table class="table mt-3">
+    <table class="table mt-3 m-5">
         <tr>
             <th scope="col">No.</th>
             <th scope="col">Breed name</th>
