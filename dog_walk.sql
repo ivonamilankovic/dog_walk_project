@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2022 at 02:22 PM
+-- Generation Time: Jun 09, 2022 at 04:18 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,32 +39,22 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`id`, `street`, `city`, `postal_code`) VALUES
-(58, 'Ulica kesten 2', 'Novi SAD', 54120),
-(60, 'Kralja Kraljica 15', 'Suboticaxxx', 240015),
-(61, 'Rajhla Ferenca 15', 'Subotica', 24011),
-(62, 'Orlovska ulica 55', 'Novi sad', 400652),
-(63, 'cfvgbj', 'hcfbhj', 45698),
-(64, 'ULlica neka 12345', 'subaja', 41532),
-(69, 'fcgvhbj', 'cfgvhb12', 12541),
-(70, 'gbhj', 'vgbh', 45289),
-(71, 'vts', 'vts', 1),
-(73, 'Jovana M. 432', 'Subotica', 24000),
-(74, 'Prespanska 34', 'Subotica', 24000),
-(75, 'Celjska 34', 'Subotica', 24000),
-(76, 'Vinarska 89', 'Subotica', 24000),
-(77, 'Jovana M. 432', 'Subotica', 24000),
-(78, 'Filinska 9', 'Subotica', 24000),
-(79, 'Nesto', 'Nesto', 13398),
-(80, 'ulica 1', 'sub', 12345),
-(81, 'ulica 234', 'sombor', 6335),
-(82, 'ulica xxx', 'ns', 655),
-(86, 'fghbjn', 'cgvhb', 532),
-(87, 'vgbhjn', 'bhjn', 4210),
-(88, 'vghbjn', 'bhjn', 45623),
-(89, 'cfhvjb', 'cfgvbh', 6485312),
-(90, 'cgvhb', 'hbjn', 874512),
-(91, 'cgvhbj', 'nvghbjn48512', 8475312),
-(92, 'Ulica cveca 5', 'Subotica', 24000);
+(3, 'Jovana M. 432', 'Subotica', 42000),
+(4, 'Prespanska', 'Subotica', 24000),
+(5, 'Lovacka ulica', 'Subotica', 24000),
+(6, 'Bajmocka 32', 'Subotica', 24000),
+(7, 'Strosmajerova 2', 'Subotica', 24000),
+(8, 'Sandor 6', 'Aleksandrovo', 24000),
+(9, 'Arsenija Carnojevica 43', 'Sandor', 24000),
+(10, 'Elecka 43', 'Subotica', 24000),
+(11, 'Kulinska 43', 'Subotica', 24000),
+(12, 'Locanska 09', 'Subotica', 24000),
+(13, 'Celjska 09', 'Subotica', 24000),
+(14, 'Divizija 09', 'Subotica', 24000),
+(15, 'Dusanova 32', 'Subotica', 24000),
+(16, 'Srpski sor 3', 'Subotica', 24000),
+(17, 'Ruzina 3', 'Subotica', 24000),
+(18, 'Prvomajska 3', 'Subotica', 24000);
 
 -- --------------------------------------------------------
 
@@ -463,14 +453,12 @@ CREATE TABLE `dog` (
 --
 
 INSERT INTO `dog` (`id`, `dog_name`, `gender`, `age`, `notes`, `breed_id`, `owner_id`) VALUES
-(1, 'deleted_dog', 'm', 0, '.NE BRISATI!!!', 365, 1),
-(4, 'misko', 'm', 8, 'slatkis mali', 10, 64),
-(7, 'ninika', 'm', 5, 'dobrica je stvarno', 254, 64),
-(8, 'rari', 'm', 6, 'mrgud', 22, 64),
-(10, 'dogi', 'm', 8, 'be good', 16, 61),
-(15, 'Puppy', 'm', 2, 'nesto nesto', 139, 77),
-(16, 'Buca', 'm', 4, 'star je', 45, 77),
-(17, 'Lilic', 'f', 7, 'Lepa je', 69, 64);
+(1, 'deleted_dog', 'f', 3, NULL, 365, 1),
+(2, 'Puppy', 'm', 2, 'Sladak je.', 173, 99),
+(3, 'Gagi', 'm', 7, 'Voli da trci.', 162, 99),
+(4, 'Fifi', 'm', 6, 'Presladak je.', 108, 110),
+(5, 'Loli', 'f', 1, 'Loli je mlad pas.', 225, 111),
+(6, 'Dudi', 'm', 5, 'Dudi je moj najbolji drug.', 18, 113);
 
 -- --------------------------------------------------------
 
@@ -503,18 +491,23 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `role`, `first_name`, `last_name`, `email`, `password`, `forgot_password_code`, `phone_number`, `address_id`, `picture`, `is_verified`, `verification_code`, `created_at`, `updated_at`, `registration_expires`, `is_banned`) VALUES
 (1, 'admin', 'no name', 'deleted', 'deleted-user', '.NE BRISATI!!!!', NULL, '0000000000', 71, NULL, 1, NULL, '2022-05-28 15:38:29', '2022-05-28 15:38:29', NULL, NULL),
-(58, 'walker', 'Masa', 'Macic', 'masa@testmail.com', '$2y$10$zLu5wdCLape9lXr0RtWWmutiACJs0m9NKrjnnVImLD4xetTmpHtry', NULL, '9999999966', 58, '../include/profile_images/Gpc86NeUPK0bToF.jpg', 1, '190375', '2022-04-23 12:24:23', '2022-06-07 22:43:14', NULL, NULL),
-(61, 'customer', 'Milorad', 'Vasic', 'mili@testmail.com', '$2y$10$q4oY0hwtVcWlefUQogW3fOgrp/ON5Gfaiw6aWf5yMLLb9CZfWbPZS', NULL, '4856214800', 61, '', 1, '331298', '2022-04-23 12:29:31', '2022-06-08 23:23:07', NULL, NULL),
-(64, 'customer', 'ivi', 'ivikaa', 'ivona@gmail.com', '$2y$10$4yFK7iti3RohmJXDKKRDyOevCK9aMYTB0Uce3YoCn7M6BonRoq1za', NULL, '1236547899', 64, '../include/profile_images/cG431Ez8nNuoIlq.jpg', 1, '630333', '2022-05-12 12:40:17', '2022-06-08 11:23:25', NULL, NULL),
 (72, 'admin', 'ivona', 'admin', 'ivonamilankovic@gmail.com', '$2y$10$FM9oWIZxdVEzIv7hzxD4D.tQQI45094p1fn.tUFhZizvufZXmLhVS', '909141', '1485962314', 71, NULL, 1, '894966', '2022-05-27 15:50:43', '2022-06-08 11:01:00', NULL, NULL),
-(77, 'customer', 'Sara', 'Babic', 'sarababic0101@gmail.com', '$2y$10$NCZ.YSgciFoAqv.7bfGOHeswK2fTSnYJzrTK/ZDi00VTUVjNZArhG', NULL, '0989878767', 73, NULL, 1, NULL, '2022-05-28 20:39:18', '2022-05-28 20:39:52', NULL, NULL),
-(78, 'walker', 'Marko', 'Pilic', 'maki@testmail.com', '$2y$10$c/rQdhh.xLH649S5odAVZODr8stksfRgYXiK7KaplSTprFwLKoEBe', NULL, '0987876756', 74, NULL, 1, '965477', '2022-06-04 11:37:51', '2022-06-04 15:58:48', '2022-06-04 13:37:51', NULL),
-(80, 'walker', 'Gagi', 'GA', 'gagi@testmail.com', '$2y$10$hl/scQbPVEqpGvUPuyt9FOHYedi3V.GJcKnt8tZNKglAGVKsNq8.G', NULL, '0632543145', 76, '', 1, '383671', '2022-06-04 11:43:00', '2022-06-04 11:59:39', '2022-06-04 13:43:00', NULL),
-(81, 'walker', 'Tamara', 'Didic', 'tami@testmail.com', '$2y$10$CYN0ATgTMi0/f05bxUVJ8usCY4QHKYu/HzfER2sZwV1ZQcKgCdRbC', NULL, '0657689876', 77, '', 1, '485748', '2022-06-04 11:46:38', '2022-06-04 12:01:32', '2022-06-04 13:46:38', NULL),
-(82, 'walker', 'Lara', 'Konc', 'lara@testmail.com', '$2y$10$g1OsF4HOGcCEIvaP25cgH.K9OGWHLqFudfY0vEtFzwpcia5mndpEG', NULL, '0678982653', 78, '', 1, '517383', '2022-06-04 12:02:48', '2022-06-04 12:04:25', '2022-06-04 14:02:48', NULL),
-(84, 'customer', 'niki', 'nik', 'nik@testmail.com', '$2y$10$.7Y62/.ApWV/5XGEgMFueOz.wcGQb16djeSexTKuXyLxrA4G1Ai2G', NULL, '1234567899', 80, NULL, 0, '661533', '2022-06-08 11:41:25', '2022-06-08 11:41:25', '2022-06-08 13:41:25', NULL),
-(85, 'customer', 'mimi', 'mimi', 'mim@testmail.com', '$2y$10$Ri6DZPAQsvDaZO6TgDdROO/nMQ.gSkisxPNRQjrK8oSgAsxPNxFNe', NULL, '1234567899', 81, NULL, 0, '233252', '2022-06-08 11:42:33', '2022-06-08 11:42:33', '2022-06-08 13:42:33', NULL),
-(96, 'walker', 'Tam', 'Tamaric', 'tamaramilankovicc@gmail.com', '$2y$10$KciJKZCraI8HGvIXiNVKfeDuPKaTpmPONrvzFu1TT7Qg9shgBbwDy', NULL, '7896541333', 92, NULL, 1, NULL, '2022-06-08 21:46:55', '2022-06-08 21:50:54', NULL, NULL);
+(99, 'customer', 'Sara', 'Babic', 'sarababic0101@gmail.com', '$2y$10$Rvm4rcoRXlGw7c.hTgKd9O.k8.6XNaLfXvUshGAxhwloa5IippJsq', NULL, '0632567364', 3, NULL, 1, NULL, '2022-06-09 15:03:52', '2022-06-09 15:24:46', NULL, NULL),
+(100, 'walker', 'Marko', 'Markovic', 'maki@testmail.com', '$2y$10$uxVU/IkDqypC.UXsgjdTIuEeiu.VsghhK9p38pM5UjllUutIiox0u', NULL, '0678767876', 4, '../include/profile_images/TBoJtRjakC5syYI.jpg', 1, '999274', '2022-06-09 15:06:45', '2022-06-09 15:26:56', '2022-06-09 17:06:45', NULL),
+(101, 'walker', 'Milica', 'Jovic', 'milica@testmail.com', '$2y$10$eHLZcggnER.QwqLI2wSE6em35/yTcWQBxwVORCmQHwhq7pPo17mlK', NULL, '0787898767', 5, '../include/profile_images/VH4f3WOulFdjb7w.jpg', 1, '311762', '2022-06-09 15:08:48', '2022-06-09 15:27:57', '2022-06-09 17:08:48', NULL),
+(102, 'walker', 'Luka', 'Prcic', 'luka@testmail.com', '$2y$10$KgeK/zBs5FUHCI3fwZcLyeR/JchASP5xYT0KhFDvhK.3rTbpJEeWe', NULL, '0612342598', 6, '../include/profile_images/sYudqQJVGfMnDx0.jpg', 1, '558582', '2022-06-09 15:09:53', '2022-06-09 15:29:11', '2022-06-09 17:09:53', NULL),
+(103, 'walker', 'Nemanja', 'Mitric', 'nemanja@testmail.com', '$2y$10$NmxW48cpMnRgwcPyjHop/O7wpt6eyhJzVefqyliJIYSmbTkfAU8T.', NULL, '0612342987', 7, '../include/profile_images/aADJ4Y2bzkRS3KO.jpg', 1, '589152', '2022-06-09 15:10:54', '2022-06-09 15:31:37', '2022-06-09 17:10:54', NULL),
+(104, 'walker', 'Viktor', 'Rackov', 'viki@testmail.com', '$2y$10$joP9hiG8xd2UD9I6/royz.bGi.t/Ym46wSq96euOt5wBNt.UMg6qq', NULL, '0698763245', 8, '../include/profile_images/GrnYIa9fKHogxAC.jpg', 1, '370196', '2022-06-09 15:12:04', '2022-06-09 15:32:42', '2022-06-09 17:12:04', NULL),
+(105, 'walker', 'Andrej', 'Bacic', 'ba@testmail.com', '$2y$10$/hCyxdzHXqYwyeJQbnvO1elibIM3mZhkkFyXnCYkGgcDHkWTA6gM.', NULL, '0609812673', 9, '../include/profile_images/qK9byMY2ZoQ4pVL.jpg', 1, '909292', '2022-06-09 15:13:18', '2022-06-09 15:34:18', '2022-06-09 17:13:18', NULL),
+(106, 'walker', 'Helena', 'Milic', 'helena@testmail.com', '$2y$10$6BdeFxWUH3.kuzHSee2j4.Vpolq3AAr6GXDudKQ9SO7svhGUH9szy', NULL, '0607678453', 10, '../include/profile_images/TMxfUnQl5dYAOR1.jpg', 1, '952003', '2022-06-09 15:14:18', '2022-06-09 15:36:26', '2022-06-09 17:14:18', NULL),
+(107, 'walker', 'Lara', 'Konc', 'lara@testmail.com', '$2y$10$j1PsYQE9ELw37s7ccUKxE.EPg6RtM1lcldnWStpHgLgir81XO11BC', NULL, '0626534678', 11, '../include/profile_images/HwdSPYskNq30ot1.jpg', 1, '550869', '2022-06-09 15:15:16', '2022-06-09 15:44:16', '2022-06-09 17:15:16', NULL),
+(108, 'walker', 'Lili', 'Savic', 'lili@testmail.com', '$2y$10$V/VKYzDQ9AWwPlkYayQGHe3QIMDM/7uXamLLAKpoIqZkWG7JMylTW', NULL, '0631576523', 12, '../include/profile_images/F3DQcN5UzdpTI71.jpg', 1, '829355', '2022-06-09 15:16:26', '2022-06-09 15:46:14', '2022-06-09 17:16:26', NULL),
+(109, 'walker', 'Tamara', 'Lolic', 'tami@testmail.com', '$2y$10$5047WjuHntV35nqOowMyQ.Dr1rHkRt7UMhQ0ntPMKvuSztCkBQvLa', NULL, '0609812345', 13, '../include/profile_images/jRcv8egHLDbyUro.jpg', 1, '338240', '2022-06-09 15:17:46', '2022-06-09 15:47:10', '2022-06-09 17:17:46', NULL),
+(110, 'customer', 'Leon', 'Basic', 'leon@testmail.com', '$2y$10$KkjTzmuyN3nO4si.tDg0keaufeA9wRpNyyrzhAMtYE5h4Hdsl3QFC', NULL, '0698123674', 14, NULL, 1, '523438', '2022-06-09 15:19:13', '2022-06-09 15:19:13', '2022-06-09 17:19:13', NULL),
+(111, 'customer', 'Alen', 'Filic', 'alen@testmail.com', '$2y$10$1t2QgqtJS24/3A1Bwjd7FOMexeIr7NUYgTvmSavZ5vr6rwxaiFXa6', NULL, '0621672398', 15, NULL, 1, '666224', '2022-06-09 15:20:02', '2022-06-09 15:20:02', '2022-06-09 17:20:02', NULL),
+(112, 'customer', 'Tanja', 'Buljovcic', 'tanja@testmail.com', '$2y$10$5zr28fn7P/gfhQs6jTCopO5thKuNoHHRmqhJslqDHN7f6Nj9t5omu', NULL, '0602389476', 16, NULL, 1, '880112', '2022-06-09 15:20:58', '2022-06-09 15:20:58', '2022-06-09 17:20:58', NULL),
+(113, 'customer', 'Vesna', 'Popic', 'vesna@testmail.com', '$2y$10$UUztsmngpqM0Lm0ztGedbOChHVzQLK4sXskzH2ky9NnlHD0m1Ra5.', NULL, '0612386574', 17, NULL, 1, '554085', '2022-06-09 15:22:40', '2022-06-09 15:22:40', '2022-06-09 17:22:40', NULL),
+(114, 'customer', 'Mihajlo', 'Zigic', 'mihi@testmail.com', '$2y$10$Eyb4B82y04gtFvp7pL3dSOPj2nuEEQCR/uy3ru78v1ixogj1vfwZe', NULL, '0612386574', 18, NULL, 1, '502434', '2022-06-09 15:23:30', '2022-06-09 15:23:30', '2022-06-09 17:23:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -542,19 +535,15 @@ CREATE TABLE `walk` (
 --
 
 INSERT INTO `walk` (`id`, `walk_date`, `start_location`, `end_location`, `description`, `walk_end`, `path`, `status`, `code`, `rate`, `customer_id`, `walker_id`) VALUES
-(12, '2022-05-28 17:13:58', 'vbhj', 'vgbhjb', 'th', '0000-00-00 00:00:00', 'ehh', 'finished', NULL, 5, 61, 58),
-(15, '2022-02-25 04:32:00', 'Street 43', 'Street 543', 'some extra info', '0000-00-00 00:00:00', 'I have been there and there.......', 'finished', '462812', 3, 77, 58),
-(18, '2022-06-14 03:00:00', 'Prvomajska 32', 'ulica 76', 'Dodji tacno na vreme!', '0000-00-00 00:00:00', 'I have been there and there...', 'finished', '404337', 4, 77, 78),
-(19, '2022-06-17 21:30:00', 'vts ulica 534', 'Palicki put 7', 'Placam gotovinom.', '0000-00-00 00:00:00', 'Bila je super setnja.', 'finished', '894516', 2, 64, 80),
-(20, '2022-06-05 04:00:00', 'Jovana Mikica 423', 'ulica 678', 'Dogi je sladak pas.', '0000-00-00 00:00:00', 'Jako je sladak pas.', 'finished', '208119', 4, 61, 81),
-(21, '2022-06-07 04:10:00', 'Celjska 34', 'Bajmocka 90', 'Hvala ti', '0000-00-00 00:00:00', 'Zavrsila sam setnju.', 'finished', '987527', 5, 61, 82),
-(22, '2022-06-12 00:00:00', 'ulica 543', 'federinska 43', 'some extra info...', '0000-00-00 00:00:00', 'Bilo je sve super.', 'finished', '754493', 5, 64, 81),
-(23, '2022-06-08 18:10:00', 'Kuca', 'Kuca', 'Nis', '2022-06-13 11:55:23', NULL, 'pending', NULL, NULL, 64, 82),
-(24, '2022-06-13 10:45:00', 'k', 'k', 'she is nice', '2022-06-13 11:55:00', 'it was awesome thanks ', 'finished', NULL, 4, 72, 96),
-(33, '2022-06-14 14:06:00', 'bjh', 'bh', 'nj', '2022-06-14 15:06:00', NULL, 'pending', NULL, NULL, 64, 96),
-(34, '2022-06-14 14:06:00', 'bjh', 'bh', 'nj', '2022-06-14 15:06:00', NULL, 'pending', NULL, NULL, 64, 96),
-(35, '2022-06-14 14:06:00', 'bjh', 'bh', 'nj', '2022-06-14 15:06:00', NULL, 'pending', NULL, NULL, 64, 96),
-(36, '2022-06-15 14:08:00', 'nj', 'b ', 'nmn', '2022-06-15 16:08:00', NULL, 'pending', NULL, NULL, 64, 82);
+(1, '2022-06-10 03:00:00', 'Prespanska 324', 'Palicki put 7', 'Dodji na vreme.', '2022-06-10 04:00:00', 'Bilo je sve super!', 'finished', NULL, 4, 99, 101),
+(2, '2022-06-20 08:30:00', 'ulica 43', 'sandorski put 32', 'Hvala ti.', '2022-06-20 09:00:00', 'Sve je dobro proslo.', 'finished', NULL, 5, 99, 104),
+(3, '2022-06-17 01:00:00', 'Prvomajska 32', 'Lovacka 2', 'Placam na kraju setnje.', '2022-06-17 02:30:00', 'Jako sladak pas!', 'finished', NULL, 3, 99, 107),
+(4, '2022-06-18 06:00:00', 'Tucanska 89', 'Jovana Mikica 23', 'Fifi je poslusan pas.', '2022-06-18 07:00:00', 'Hvala na poverenju!', 'finished', NULL, 4, 110, 109),
+(5, '2022-06-12 08:00:00', 'Kolinska 43', 'ulica 678', 'Hvala vam unapred!', '2022-06-12 09:30:00', 'Proslo je sve dobro.', 'finished', NULL, 3, 110, 103),
+(6, '2022-06-18 04:30:00', 'Dudiko 32', 'Ruzina 23', 'Loli je jako aktivan pas.', '2022-06-18 05:00:00', 'Setali smo se po gradu.', 'finished', NULL, 5, 111, 107),
+(7, '2022-06-10 05:00:00', 'Somborska 23', 'Sarajevska 23', 'Hvala Vam!', '2022-06-10 06:00:00', 'Na Palicu smo se setali.', 'finished', NULL, 2, 111, 108),
+(8, '2022-06-15 11:00:00', 'Gulacka 32', 'Jovanina 2', 'Dudi je poslusan pas!', '2022-06-15 00:00:00', 'Setali smo se po parku.', 'finished', NULL, 5, 113, 105),
+(9, '2022-06-18 01:00:00', 'Holidjanska 432', 'Vlasinksa  2', 'Hvala vam puno!', '2022-06-18 02:30:00', 'Super setnja, i poslusan pas!', 'finished', NULL, 5, 113, 101);
 
 -- --------------------------------------------------------
 
@@ -574,12 +563,16 @@ CREATE TABLE `walker_details` (
 --
 
 INSERT INTO `walker_details` (`id`, `biography`, `is_active`, `walker_id`) VALUES
-(5, 'hello my name is masha how are you', 1, 58),
-(18, 'Ja sam Marko i volim pse.', 1, 78),
-(19, 'Ja sam Gagi i super sam lik.', 1, 80),
-(20, 'Tamara sam i volim da se setam.', 1, 81),
-(21, 'Ja sam Lara i volim zivotinje i prirodu.', 1, 82),
-(23, 'hello my name is tam ', 1, 96);
+(1, 'Volim da se setam u prirodi.', 1, 100),
+(2, 'Volim jako zivotinje.', 1, 101),
+(3, 'Volim da trcim. I svaki dan sam slobodan.', 1, 102),
+(4, 'Slobodan sam uglavnom samo vikendima ili preko nedelje uvece.', 1, 103),
+(5, 'Jako volim zivotinje, i veoma sam aktivan.', 1, 104),
+(6, 'Uglavnom volim vise psa odjednom da setam.', 1, 105),
+(7, 'Jako volim male pse.', 1, 106),
+(8, 'Veterinar sam, i u slobodno vreme setam pse.', 1, 107),
+(9, 'Volim velike pse.', 1, 108),
+(10, 'Atleticarka sam, tako da imam dobru kondiciju.', 1, 109);
 
 -- --------------------------------------------------------
 
@@ -598,12 +591,16 @@ CREATE TABLE `walker_favourite_breeds` (
 --
 
 INSERT INTO `walker_favourite_breeds` (`id`, `breed_id`, `walker_id`) VALUES
-(5, 17, 58),
-(110, 260, 78),
-(111, 82, 80),
-(112, 214, 81),
-(113, 365, 82),
-(114, 78, 96);
+(1, 83, 100),
+(2, 148, 101),
+(3, 260, 102),
+(4, 96, 103),
+(5, 301, 104),
+(6, 258, 105),
+(7, 139, 106),
+(8, 122, 107),
+(9, 150, 108),
+(10, 189, 109);
 
 -- --------------------------------------------------------
 
@@ -622,25 +619,16 @@ CREATE TABLE `walk_dogs` (
 --
 
 INSERT INTO `walk_dogs` (`id`, `walk_id`, `dog_id`) VALUES
-(10, 12, 7),
-(13, 15, 15),
-(14, 15, 16),
-(17, 18, 15),
-(18, 19, 8),
-(19, 20, 10),
-(20, 21, 10),
-(21, 22, 7),
-(22, 23, 8),
-(23, 23, 17),
-(24, 24, 1),
-(34, 33, 4),
-(35, 33, 7),
-(36, 34, 4),
-(37, 34, 7),
-(38, 35, 4),
-(39, 35, 7),
-(40, 36, 4),
-(41, 36, 7);
+(1, 1, 2),
+(2, 2, 2),
+(3, 2, 3),
+(4, 3, 2),
+(5, 4, 4),
+(6, 5, 4),
+(7, 6, 5),
+(8, 7, 5),
+(9, 8, 6),
+(10, 9, 6);
 
 --
 -- Indexes for dumped tables
@@ -715,7 +703,7 @@ ALTER TABLE `walk_dogs`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `breeds`
@@ -727,37 +715,37 @@ ALTER TABLE `breeds`
 -- AUTO_INCREMENT for table `dog`
 --
 ALTER TABLE `dog`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `walk`
 --
 ALTER TABLE `walk`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `walker_details`
 --
 ALTER TABLE `walker_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `walker_favourite_breeds`
 --
 ALTER TABLE `walker_favourite_breeds`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `walk_dogs`
 --
 ALTER TABLE `walk_dogs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -769,39 +757,6 @@ ALTER TABLE `walk_dogs`
 ALTER TABLE `dog`
   ADD CONSTRAINT `dog_ibfk_1` FOREIGN KEY (`breed_id`) REFERENCES `breeds` (`id`),
   ADD CONSTRAINT `dog_ibfk_2` FOREIGN KEY (`owner_id`) REFERENCES `user` (`id`);
-
---
--- Constraints for table `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `walk`
---
-ALTER TABLE `walk`
-  ADD CONSTRAINT `fk_owner` FOREIGN KEY (`customer_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `fk_walker` FOREIGN KEY (`walker_id`) REFERENCES `user` (`id`);
-
---
--- Constraints for table `walker_details`
---
-ALTER TABLE `walker_details`
-  ADD CONSTRAINT `fk_walker_details_walker` FOREIGN KEY (`walker_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `walker_favourite_breeds`
---
-ALTER TABLE `walker_favourite_breeds`
-  ADD CONSTRAINT `fk_walker_breeds_breed` FOREIGN KEY (`breed_id`) REFERENCES `breeds` (`id`),
-  ADD CONSTRAINT `fk_walker_breeds_walker` FOREIGN KEY (`walker_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `walk_dogs`
---
-ALTER TABLE `walk_dogs`
-  ADD CONSTRAINT `fk_walk_dog_walk` FOREIGN KEY (`walk_id`) REFERENCES `walk` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `walk_dogs_ibfk_1` FOREIGN KEY (`dog_id`) REFERENCES `dog` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
