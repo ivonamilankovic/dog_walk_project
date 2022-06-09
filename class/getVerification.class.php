@@ -46,7 +46,6 @@ class GetVerification extends Dbconn
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
             if ($columnName === "forgot_password_code") {
                 $subject = "Reset password - Paw Walks";
-<<<<<<< HEAD
                 $txt = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                             <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
                             <head>
@@ -184,7 +183,7 @@ class GetVerification extends Dbconn
                                   <td style="overflow-wrap:break-word;word-break:break-word;padding:13px;font-family:arial,helvetica,sans-serif;" align="left">
                                     
                               <div style="line-height: 150%; text-align: left; word-wrap: break-word;">
-                                <p style="font-size: 14px; line-height: 150%; text-align: center;"><span style="font-family: \'Cabin\', sans-serif; font-size: 20px; line-height: 30px;"><span style="line-height: 30px; font-size: 20px;">Welcome! We are so glad you joining us!</span></span></p>
+                                <p style="font-size: 14px; line-height: 150%; text-align: center;"><span style="font-family: \'Cabin\', sans-serif; font-size: 20px; line-height: 30px;"><span style="line-height: 30px; font-size: 20px;">To reset your password,</span></span></p>
                               </div>
                             
                                   </td>
@@ -198,7 +197,7 @@ class GetVerification extends Dbconn
                                   <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                                     
                               <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                <p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="font-family: \'Cabin\', sans-serif; font-size: 14px; line-height: 19.6px;">To verify your email address, click to the following link:</span></p>
+                                <p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="font-family: \'Cabin\', sans-serif; font-size: 14px; line-height: 19.6px;">click to the following link:</span></p>
                               </div>
                             
                                   </td>
@@ -260,10 +259,6 @@ class GetVerification extends Dbconn
                             
                             </html>
                             ';
-                //$txt = "To reset your password, click to the following link: http://localhost/dog_walk/pages/active.php?code=".$code."&col=fp";
-=======
-                $txt = "To reset your password, click to the following link: http://localhost/dog_walk/pages/active.php?code=".$code."&col=fp";
->>>>>>> 5fd71d14196d4f896f6b49c00f2fac20f1263af2
             } elseif ($columnName === "verification_code") {
 
                 $subject = "Welcome to Paw Walks!";
