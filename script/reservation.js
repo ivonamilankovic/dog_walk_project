@@ -184,11 +184,12 @@ function insertRes(){
             }
             else if (response.success === "done"){
                 const msg = document.getElementById('msgWalkSucc');
-                msg.innerText = "Your request for walk is successfully send to walker. You will get email when the walk is accepted. <a href=\"../customer_dashboard/reservedWalks.php\">Here</a> you can see all your walks. \n" +
+                msg.innerHTML = "Your request for walk is successfully send to walker. You will get email when the walk is accepted. <a href=\"../customer_dashboard/reservedWalks.php\">Here</a> you can see all your walks. \n" +
                     "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>";
                 msg.classList.add('alert');
                 msg.classList.add('alert-success');
                 msg.classList.add('alert-dismissible');
+                window.scrollTo(0,0);
             }
         },
         error: (msg)=>{
