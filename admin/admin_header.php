@@ -1,6 +1,6 @@
 <div class="p-4 align-self-center">
     <div class="btn-group me-3">
-        <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <button type="button" class="btn dropdown-toggle"  id="btnProfA" data-bs-toggle="dropdown" aria-expanded="false">
             My profile
         </button>
         <ul class="dropdown-menu">
@@ -9,7 +9,7 @@
         </ul>
     </div>
     <div class="btn-group">
-        <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <button type="button" class="btn dropdown-toggle" id="btnAdmin" data-bs-toggle="dropdown" aria-expanded="false">
             Administration
         </button>
         <ul class="dropdown-menu">

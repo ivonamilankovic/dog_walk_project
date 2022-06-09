@@ -4,7 +4,7 @@ include_once '../include/dbconfig.inc.php';
 
 try{
     $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
-    $sql = "SELECT w.id, w.walk_date, w.start_location, w.end_location, w.description, w.duration, w.path, w.status, w.rate, u1.email as cust, u2.email as walker 
+    $sql = "SELECT w.id, w.walk_date, w.start_location, w.end_location, w.description, w.walk_end, w.path, w.status, w.rate, u1.email as cust, u2.email as walker 
             FROM walk w INNER JOIN user u1 ON u1.id=w.customer_id 
             INNER JOIN user u2 ON u2.id = w.walker_id;";
     $stmt = $conn->prepare($sql);
@@ -42,10 +42,10 @@ if(isset($_GET['e'])){
             <th scope="col">Customer</th>
             <th scope="col">Walker</th>
             <th scope="col">Dog count</th>
-            <th scope="col">Date</th>
+            <th scope="col">Date start</th>
+            <th scope="col">Date end</th>
             <th scope="col">Start loc.</th>
             <th scope="col">End loc.</th>
-            <th scope="col">Duration</th>
             <th scope="col">Description</th>
             <th scope="col">Status</th>
             <th scope="col">Path</th>
@@ -79,17 +79,17 @@ if(isset($_GET['e'])){
                         <td><a href="./admin.php?a=d&walk='.$r['id'].'">'.$dogs['c'].'</a></td>
                         <form action="./options/updateWalk.php" method="post">
                         <td><input type="text" name="date" value="'.$r['walk_date'].'"></td>
+                        <td><input type="text" name="dur" value="'.$r['walk_end'].'"></td>
                         <td><input type="text" name="start" value="'.$r['start_location'].'"></td>
                         <td><input type="text" name="end" value="'.$r['end_location'].'"></td>
-                        <td><input type="text" name="dur" value="'.$r['duration'].'"></td>
                         <td><input type="text" name="desc" value="'.$r['description'].'"></td>
                         <td style="color: gray;">'.$r['status'].'</td>
                         <td><input type="text" name="path" value="'.$r['path'].'"></td>
                         <td style="color: gray;">'.$r['rate'].'</td>
-                        <td> <button class="btn btn-warning" name="update" value="'.$r['id'].'" style="width: 80px; margin-bottom: 5px">Change</button> 
+                        <td> <button class="btn btn-warning" name="update" value="'.$r['id'].'" style="width: 100px; margin-bottom: 5px">Change</button> 
                         </form>
                         <form action="./options/deleteWalk.php" method="post">
-                        <button class="btn btn-danger" name="delete" value="'.$r['id'].'" style="width: 80px">Delete</button> 
+                        <button class="btn btn-danger" name="delete" value="'.$r['id'].'" style="width: 100px">Delete</button> 
                         </form></td>
                     </tr>
                 ';

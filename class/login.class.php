@@ -36,6 +36,7 @@ class Login extends Dbconn{
                 session_start();
                 $_SESSION['id'] = $user["id"];
                 $_SESSION['role'] = $user['role'];
+                $_SESSION['timestamp'] = time();
             }
         }
         else{

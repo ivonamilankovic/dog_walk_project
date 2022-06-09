@@ -4,7 +4,7 @@ include_once '../include/dbconfig.inc.php';
 
 try{
     $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
-    $sql = "SELECT u.id, u.first_name, u.last_name, u.email, u.phone_number, u.picture, u.is_verified, a.id as addrID, a.street, a.city, a.postal_code 
+    $sql = "SELECT u.id, u.first_name, u.last_name, u.email, u.phone_number, u.picture, u.is_verified,u.is_banned, a.id as addrID, a.street, a.city, a.postal_code 
             FROM user u INNER JOIN address a ON u.address_id=a.id WHERE u.role = 'walker';";
     $stmt = $conn->prepare($sql);
     if(!$stmt->execute()){
@@ -186,11 +186,24 @@ if(isset($_GET['e'])){
                 echo '<td></td>';
             }
             echo '
-                        <td> <button class="btn btn-warning" name="update" value="'.$r['id'].' '.$r['addrID'].'" style="width: 80px; margin-bottom: 5px">Change</button> 
+                        <td> <button class="btn btn-warning" name="update" value="'.$r['id'].' '.$r['addrID'].'" style="width: 100px; margin-bottom: 5px">Change</button> 
                         </form>
                         <form action="./options/deleteWalker.php" method="post">
-                        <button class="btn btn-danger" name="delete" value="'.$r['id'].' '.$r['addrID'].'" style="width: 80px">Delete</button>
-                         </form></td>
+                        <button class="btn btn-danger" name="delete" value="'.$r['id'].' '.$r['addrID'].'" style="width: 100px; margin-bottom: 5px;">Delete</button>
+                         </form>';
+
+            if($r['is_banned'] == 0){
+                echo '<form method="post" action="./options/ban.php">
+                            <button class="btn btn-info" name="ban" value="'.$r['id'].' w" style="width: 100px">Ban</button> 
+                         </form>';
+            }
+            else if ($r['is_banned'] == 1 ){
+                echo '<form method="post" action="./options/unban.php">
+                            <button class="btn btn-info" name="unban" value="'.$r['id'].' w" style="width: 100px">Unban</button> 
+                         </form>';
+            }
+            echo '
+                         </td>
                     </tr>
                 ';
             $count++;
