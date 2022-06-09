@@ -32,7 +32,7 @@ class UpdateStatus extends Dbconn{
         $customer = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if($customer['status'] === "declined"){
-            $txt = "We are sorry to inform you that your request for walk was declined. Check out other walkers on http://192.168.1.7/dog_walk/pages/allWalkers.php or try some other time!\nWe hope your next request will be accepted";
+            $txt = "We are sorry to inform you that your request for walk was declined. Check out other walkers on http://localhost/dog_walk/pages/allWalkers.php or try some other time!\nWe hope your next request will be accepted";
             $subject = "Declined walk - Paw Walks";
         }elseif($customer['status'] === "confirmed"){
             $txt = "Good news! Your request for walk is accepted!\nAfter the walk finishes, you'll get mail to rate your walker!";

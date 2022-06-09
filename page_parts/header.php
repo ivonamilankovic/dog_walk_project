@@ -21,7 +21,7 @@
 
         <div class="p-3 align-self-center">
             <a href="../include/logout.inc.php">
-                <button type="button" class="btn btn-outline-dark">
+                <button type="button" class="btn header-btn" id="btnLogout">
                     Log out
                 </button>
             </a>
