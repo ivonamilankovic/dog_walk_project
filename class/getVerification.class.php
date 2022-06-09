@@ -43,7 +43,7 @@ class GetVerification extends Dbconn
             $txt = "";
             if ($columnName === "forgot_password_code") {
                 $subject = "Reset password - Paw Walks";
-                $txt = "To reset your password, click to the following link: http://192.168.1.7/dog_walk/pages/active.php?code=".$code."&col=fp";
+                $txt = "To reset your password, click to the following link: http://localhost/dog_walk/pages/active.php?code=".$code."&col=fp";
             } elseif ($columnName === "verification_code") {
                 $subject = "Welcome to Paw Walks!";
                 $txt = "Welcome! We are so glad you joining us! \nTo verify your email address, click to the following link: http://192.168.1.7/dog_walk/pages/active.php?code=".$code."&col=ver";
