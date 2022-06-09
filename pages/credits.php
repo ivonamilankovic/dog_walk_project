@@ -25,7 +25,7 @@ session_start();
 <?php
 include_once '../page_parts/header.php';
 ?>
-<div class="container w-75 mx-auto my-5" >
+<div class="container w-75 mx-auto my-5" style="height: 60vh;">
 <h1 class="my-5">Thanks to:</h1>
 <div class="my-5">
     <h3>Images from:</h3>
@@ -38,7 +38,7 @@ include_once '../page_parts/header.php';
 </div>
 
 <!-- FOOTER -->
-<div class="footer py-5 fixed-bottom">
+<div class="footer py-5 ">
     <div class="container-fluid d-flex justify-content-between p-4 all_in_footer">
         <img src="../images/pawwalks.svg" class="logo bottom-logo" alt="PawWalksLogo"/>
         <div class="links">
