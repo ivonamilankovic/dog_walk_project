@@ -2,11 +2,11 @@
 
 class Reservation extends Dbconn {
 
-    protected function createWalk($dateOfWalk, $startLoc, $endLoc, $details, $duration, $status, $code, $rate, $customer_id, $walker_id){
+    protected function createWalk($dateOfWalk, $startLoc, $endLoc, $details, $dateEnd, $status, $customer_id, $walker_id){
         $pdo = $this->setConnection();
-        $pdoStatement = $pdo->prepare('INSERT INTO walk(walk_date, start_location, end_location, description, duration, status, code, rate, customer_id, walker_id) VALUES (?,?,?,?,?,?,?,?,?,?)');
+        $pdoStatement = $pdo->prepare('INSERT INTO walk(walk_date, start_location, end_location, description, walk_end, status, customer_id, walker_id) VALUES (?,?,?,?,?,?,?,?)');
 
-        if(!$pdoStatement->execute([$dateOfWalk, $startLoc, $endLoc, $details, $duration, $status, $code, $rate, $customer_id, $walker_id])) {
+        if(!$pdoStatement->execute([$dateOfWalk, $startLoc, $endLoc, $details, $dateEnd, $status, $customer_id, $walker_id])) {
             $pdoStatement = null;
             $array = array("error" => "stmtCreateReservationFail");
             echo json_encode($array);

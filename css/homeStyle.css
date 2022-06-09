@@ -55,7 +55,7 @@
     padding: 15px;
     font-size: 0.85rem ;
 }
-#btnLogin:focus, #btnSignup:focus, #btnLogout:focus, #btnProfC:focus, #btnProfW:focus{
+#btnLogin:focus, #btnSignup:focus, #btnLogout:focus, #btnProfC:focus, #btnProfW:focus, #btnProfA:focus, #btnAdmin:focus{
     box-shadow: none;
 }
 #btnonimg:hover, #searchWalkersBtn:hover{
