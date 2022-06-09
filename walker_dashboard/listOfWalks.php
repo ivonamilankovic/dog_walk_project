@@ -16,6 +16,7 @@ if($_SESSION['role'] === 'customer'){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paw Walks - My walks</title>
+    <link rel="icon" href="../images/title-bar-icon.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../css/editProfileStyle.css">
     <link rel="stylesheet" href="../css/homeStyle.css">
     <link rel="stylesheet" href="../css/scrollbar.css">

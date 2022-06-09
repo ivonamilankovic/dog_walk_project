@@ -44,7 +44,7 @@ function updateWalker(){
                 updatemsgDiv.classList.add('alert');
                 updatemsgDiv.classList.add('alert-success');
                 updatemsgDiv.classList.add('alert-dismissible');
-
+                removeSuccess([fNameWalker,lNameWalker,phoneWalker,favBreed,biography, streetWalker,cityWalker,zipWalker]);
                 window.scrollTo(0,0);
             }else if(response.updated === "failedToGetId" || response.error === "stmtIfExistInTableFailed" || response.error === "stmtUpdateUserInfoFailed" || response.error === "stmtUpdateAddressFailed" || response.error === "stmtUpdateWalkerDetailsFailed" || response.error === "stmtInsertWalkerDetailsFailed" || response.error === "stmtUpdateFavBreedFailed" || response.error === "stmtInsertFavBreedFailed"){
                 errorWalker.innerText = "Failed to change your data. Please try again!";

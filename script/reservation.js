@@ -189,6 +189,8 @@ function insertRes(){
                 msg.classList.add('alert');
                 msg.classList.add('alert-success');
                 msg.classList.add('alert-dismissible');
+                removeSuccess([date1,date2,startLocation,endLocation,details]);
+                date1.value = date2.value = startLocation.value = endLocation.value = details.value = null;
                 window.scrollTo(0,0);
             }
         },

@@ -10,7 +10,11 @@ function showError(input, mess, errorInput){
     input.classList.add('is-invalid');
     errorInput.innerText = mess.toString();
 }
-
+function removeSuccess(inputArray){
+    inputArray.forEach(input => {
+        input.classList.remove('is-valid');
+    });
+}
 function checkInput(username, password, errOutput){
     //checks if fields are empty
     if (username.value === "" && password.value === ""){

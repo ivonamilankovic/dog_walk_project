@@ -38,6 +38,7 @@ function updateCust(){
                 update2div.classList.add('alert');
                 update2div.classList.add('alert-success');
                 update2div.classList.add('alert-dismissible');
+                removeSuccess([fNameCust,lNameCust,zipCust,streetCust,cityCust,phoneCust]);
                 window.scrollTo(0,0);
 
             }else if(response.updated === "failedToGetId"  || response.error === "stmtUpdateUserInfoFailed" || response.error === "stmtUpdateAddressFailed"){
