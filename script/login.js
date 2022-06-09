@@ -71,6 +71,12 @@ function sendCodeForNewPassword(){
                 } else if (response.error === "notExistingAccount"){
                     errorMessage.innerText = "Account with that mail do not have profile.";
                 }
+                else if(response.ban === "banned user"){
+                    $("#modal_login").modal('hide');
+                    goodmsg.innerHTML = "You can't log in because administrator has banned you! <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>"
+                    goodmsg.classList.add('alert');
+                    goodmsg.classList.add('alert-danger');
+                }
             },
             error: (msg) => {
                 console.log(msg);
