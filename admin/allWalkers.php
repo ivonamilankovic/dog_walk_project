@@ -186,10 +186,10 @@ if(isset($_GET['e'])){
                 echo '<td></td>';
             }
             echo '
-                        <td> <button class="btn btn-warning" name="update" value="'.$r['id'].' '.$r['addrID'].'">Change</button> 
+                        <td> <button class="btn btn-warning" name="update" value="'.$r['id'].' '.$r['addrID'].'" style="width: 80px; margin-bottom: 5px">Change</button> 
                         </form>
                         <form action="./options/deleteWalker.php" method="post">
-                        <button class="btn btn-danger" name="delete" value="'.$r['id'].' '.$r['addrID'].'">Delete</button>
+                        <button class="btn btn-danger" name="delete" value="'.$r['id'].' '.$r['addrID'].'" style="width: 80px">Delete</button>
                          </form></td>
                     </tr>
                 ';

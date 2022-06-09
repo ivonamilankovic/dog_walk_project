@@ -119,10 +119,10 @@ if(isset($_GET['e'])){
                         <td><input type="text" name="city" value="'.$r['city'].'"></td>
                         <td><input type="text" name="PC" value="'.$r['postal_code'].'"></td>
                         <td><a href="./admin.php?a=d&owner='.$r['id'].'">'.$dog['c'].'</a></td>
-                        <td> <button class="btn btn-warning" name="update" value="'.$r['id'].' '.$r['addrId'].'">Update</button>
+                        <td> <button class="btn btn-warning" name="update" value="'.$r['id'].' '.$r['addrId'].'" style="width: 80px; margin-bottom: 5px">Update</button>
                          </form>
                          <form method="post" action="./options/deleteCustomer.php">
-                            <button class="btn btn-danger" name="delete" value="'.$r['id'].' '.$r['addrId'].'">Delete</button> 
+                            <button class="btn btn-danger" name="delete" value="'.$r['id'].' '.$r['addrId'].'" style="width: 80px">Delete</button> 
                          </form>
                          </td>
                     </tr>

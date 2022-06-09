@@ -3,7 +3,7 @@ session_start();
 if($_SESSION['role'] === 'walker'){
     header('location: ../walker_dashboard/editWalkerProfile.php');
 }
-if(isset($_GET['id_walk'])){
+if(!isset($_GET['id_walk'])){
     header("location: ../pages/home.php");
 }
 ?>
