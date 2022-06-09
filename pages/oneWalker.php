@@ -53,7 +53,7 @@ if ($_SESSION['role'] === "walker"){
     echo '<div class="alert alert-danger alert-dismissible">You must be user to reserve a walk!</div>';
 }
 ?>
-
+<div id="msgWalkSucc"></div>
 
 <div class="container setac_pojedinacno">
     <div class="row border rounded karta mx-auto karta-jedan">
@@ -99,17 +99,10 @@ if ($_SESSION['role'] === "walker"){
                             <label for="dateOfWalk">Date of Walk</label>
                         </div>
                         <br>
-                        <select class="form-select" style="height: 72px;" name="duration" id="duration">
-                            <option disabled selected value="choose">hh:mm</option>
-                            <option value="00:15">00:15</option>
-                            <option value="00:30">00:30</option>
-                            <option value="00:45">00:45</option>
-                            <option value="01:00">01:00</option>
-                            <option value="01:15">01:15</option>
-                            <option value="01:30">01:30</option>
-                            <option value="01:45">01:45</option>
-                            <option value="02:00">02:00</option>
-                        </select>
+                        <div class="form-floating">
+                            <input  class="form-control" id="dateEnd" name="dateEnd" type="datetime-local" placeholder="End date" min="<?=str_replace(' ', 'T', date_format(date_create(date("Y-m-d H:i:s")), 'Y-m-d H:i'));?>" max="<?=$endlimit?>">
+                            <label for="dateEnd">End date</label>
+                        </div>
                         <br>
                         <div class="form-floating">
                             <input  class="form-control" id="startLoc" name="startLoc" type="text" placeholder="Start Location">
@@ -151,7 +144,7 @@ if ($_SESSION['role'] === "walker"){
                                 foreach ($dogData as $dog){
                                     ?>
                                     <div class="form-check d-flex " style="width: 110px !important;">
-                                        <input class="form-check-input" type="checkbox" value="<?php echo $dog['id']; ?>" name="dogs[]">
+                                        <input class="form-check-input" type="checkbox" id="dog" value="<?php echo $dog['id']; ?>" name="dogs[]">
                                         <label class="form-check-label" style="width: 100px"><?php echo $dog['dog_name']; ?></label>
                                     </div>
                                     <?php
@@ -172,10 +165,11 @@ if ($_SESSION['role'] === "walker"){
                             <textarea class="form-control" name="details" id="details" style="height: 160px;" placeholder="Enter some extra info if you want..."></textarea>
                             <label for="details">Enter some extra info if you want...</label>
                         </div>
-                        <input type="hidden" value="<?php echo $_GET['walker']?>" name="walker_id" id="walker_id">
+                        <input type="hidden" value="<?php echo $_GET['walker'];?>" name="walker_id" id="walker_id">
+                        <input type="hidden" value="<?php echo $_SESSION['id'];?>" name="customer_id" id="customer_id">
                         <br>
                         <small id="errorReservation" style="color: #ff0000"></small>
-                        <button id="submitReservation" name="submitReservation" class="mx-auto my-3" style="padding: 12px; background-color: #9c7a97;border: 1px solid black; border-radius: 5px; display: block;">Submit my reservation</button>
+                        <button id="submitReservation" class="mx-auto my-3" style="padding: 12px; background-color: #9c7a97;border: 1px solid black; border-radius: 5px; display: block;">Submit my reservation</button>
                     </div>
                 </form>
             </div>
