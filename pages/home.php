@@ -185,6 +185,7 @@
                 <div class="footer-part">
                     <h6><b>Support</b></h6>
                     <a href="../pages/about.php" >Trust and Safety</a> <br>
+                    <a href="../pages/credits.php">Credits</a>
                 </div>
                 <div class="footer-part">
                     <h6><b>Apply</b></h6>
