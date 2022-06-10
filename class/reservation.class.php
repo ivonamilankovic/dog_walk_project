@@ -1,67 +1,49 @@
 <?php
-
-class GetRate extends Dbconn
-{
-
-    //function that generates and send verification code to users email address
-    protected function sendRateCode($id_walk, $columnName)
+class Reservation extends Dbconn {
+    protected function createWalk($dateOfWalk, $startLoc, $endLoc, $details, $dateEnd, $status, $customer_id, $walker_id){
+        $pdo = $this->setConnection();
+        $pdoStatement = $pdo->prepare('INSERT INTO walk(walk_date, start_location, end_location, description, walk_end, status, customer_id, walker_id) VALUES (?,?,?,?,?,?,?,?)');
+        if(!$pdoStatement->execute([$dateOfWalk, $startLoc, $endLoc, $details, $dateEnd, $status, $customer_id, $walker_id])) {
+            $pdoStatement = null;
+            $array = array("error" => "stmtCreateReservationFail");
+            echo json_encode($array);
+            die();
+        }
+        $walk_id = $pdo->lastInsertId();
+        $pdoStatement = null;
+        $this->sendMail($walker_id);
+        return $walk_id;
+    }
+    protected function createWalkDogs($walk_id, $dogs_id)
     {
-        $sql = "SELECT user.email, walk.status FROM user 
-                INNER JOIN walk ON user.id = walk.customer_id
-                WHERE walk.id = ?";
+        //var_dump($walk_id); die();
+        //inserts address in address table
+        $sql = "INSERT INTO walk_dogs (walk_id, dog_id) VALUES (?,?)";
         $stmt = $this->setConnection()->prepare($sql);
-        if (!$stmt->execute([$id_walk])) {
+        if (!$stmt->execute([$walk_id, $dogs_id])) {
             $stmt = null;
-            $array = array("error" => "stmtFindUserEmailFailed");
+            $array = array("error" => "stmtCreateWalkFail");
             echo json_encode($array);
             die();
         }
-        else {
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $email = $result['email'];
-            $status = $result['status'];
-        }
-
-
-
-            /*$sql11 = "SELECT * FROM user WHERE email = ?";
-            $stmt11 = $this->setConnection()->prepare($sql11);
-            if (!$stmt11->execute([$email])) {
-                $stmt11 = null;
-                $array = array("error" => "stmtFindUserEmailFailed");
-                echo json_encode($array);
-                die();
-            }
-
-            if ($stmt11->rowCount() <= 0) {
-                $stmt11 = null;
-                $array = array("error" => "notExistingAccount");
-                echo json_encode($array);
-                die();
-            }*/
-
-
-
-        $code = rand(100000, 999999);
-
-        $sql5 = "UPDATE walk SET " . $columnName . " = ? WHERE id = ?";
-        $stmtCode = $this->setConnection()->prepare($sql5);
-
-        if (!$stmtCode->execute([$code, $id_walk])) {
-            $stmtCode = null;
-            $array = array("error" => "stmtSendCodeFailed");
+        $stmt = null;
+    }
+    private function sendMail($walker_id){
+        $sql = "SELECT email FROM user WHERE id = ? ";
+        $stmt = $this->setConnection()->prepare($sql);
+        if(!$stmt->execute([$walker_id])){
+            $stmt = null;
+            $array = array("error" => "stmtGetWalkerEmailFailed");
             echo json_encode($array);
             die();
-        } else {
-            $to = $email;
-            $subject = "";
-            $txt = "";
-            if ($columnName === "code") {
-                $headers = "From: Paw Walks <ivonamilankovic@yahoo.com>\r\n";
-                $headers .= "MIME-Version: 1.0\r\n";
-                $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-                $subject = "Paw walks sends you code to rate the walk!";
-                $txt = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        }
+        $walker = $stmt->fetch(PDO::FETCH_ASSOC);
+        //$txt = "You have new request for walk. Please go to your profile to confirm or decline.";
+
+        $headers = "From: Paw Walks <ivonamilankovic@yahoo.com>\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        $txt = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                             <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
                             <head>
                             <!--[if gte mso 9]>
@@ -198,7 +180,7 @@ class GetRate extends Dbconn
                                   <td style="overflow-wrap:break-word;word-break:break-word;padding:13px;font-family:arial,helvetica,sans-serif;" align="left">
                                     
                               <div style="line-height: 150%; text-align: left; word-wrap: break-word;">
-                                <p style="font-size: 14px; line-height: 150%; text-align: center;"><span style="font-family: \'Cabin\', sans-serif; font-size: 20px; line-height: 30px;"><span style="line-height: 30px; font-size: 20px;">sends you link to rate the walk!</span></span></p>
+                                <p style="font-size: 14px; line-height: 150%; text-align: center;"><span style="font-family: \'Cabin\', sans-serif; font-size: 20px; line-height: 30px;"><span style="line-height: 30px; font-size: 20px;">New reservation request for you!</span></span></p>
                               </div>
                             
                                   </td>
@@ -212,7 +194,7 @@ class GetRate extends Dbconn
                                   <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                                     
                               <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                <p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="font-family: \'Cabin\', sans-serif; font-size: 14px; line-height: 19.6px;">To rate a walk, click to the following link:</span></p>
+                                <p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="font-family: \'Cabin\', sans-serif; font-size: 14px; line-height: 19.6px;"></span></p>
                               </div>
                             
                                   </td>
@@ -226,7 +208,6 @@ class GetRate extends Dbconn
                                   <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                                     
                               <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                <p style="font-size: 14px; line-height: 140%; text-align: center;"> http://localhost/dog_walk/customer_dashboard/rateWalk.php?code='.$code.'&id_walk='.$id_walk .'</p>
                               </div>
                             
                                   </td>
@@ -274,12 +255,10 @@ class GetRate extends Dbconn
                             
                             </html>
                             ';
-                //$txt = "To rate a walk, click to the following link: http://localhost/dog_walk/customer_dashboard/rateWalk.php?code=".$code."&id_walk=".$id_walk;
-            }
-            //mail($to, $subject, $txt, 'From: ivonamilankovic@yahoo.com');
-            mail($to, $subject, $txt, $headers);
-
-        }
+        //$txt = "You have new request for walk. Please go to your profile to confirm or decline.";
+        $subject = "New reservation request for you! - Paw Walks";
+       // mail($walker['email'], $subject,$txt, 'From: ivonamilankovic@yahoo.com');
+        mail($walker['email'], $subject,$txt, $headers);
     }
 
 }

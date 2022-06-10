@@ -28,7 +28,7 @@ if($_SESSION['role'] === 'customer'){
 require_once '../page_parts/header.php';
 require_once ("../include/dbconfig.inc.php");
 
-$sqlList = "SELECT w.id AS reservation_id, w.walker_id, w.customer_id, w.walk_date, w.start_location, w.end_location, w.description, w.duration, w.status, w.rate, wd.walk_id, wd.dog_id, d.id, d.dog_name, u.id, u.first_name, u.last_name, u.email
+$sqlList = "SELECT w.id AS reservation_id, w.walker_id, w.customer_id, w.walk_date, w.start_location, w.end_location, w.description, w.walk_end, w.status, w.rate, wd.walk_id, wd.dog_id, d.id, d.dog_name, u.id, u.first_name, u.last_name, u.email
             FROM walk w
             INNER JOIN walk_dogs wd ON w.id = wd.walk_id
             INNER JOIN dog d ON wd.dog_id = d.id
@@ -53,16 +53,17 @@ catch (Exception $ex){
 ?>
 
 <!--List of walks-->
-<div class="container" style="margin-top: 100px">
+<div class="" style="margin-top: 100px">
     <table class="table">
         <tr>
             <th scope="col">Customer name</th>
             <th scope="col">Dogs name</th>
-            <th scope="col">Date</th>
+            <th scope="col">Date start</th>
+            <th scope="col">Date end</th>
+
             <th scope="col">Start location</th>
             <th scope="col">End location</th>
             <th scope="col">Description</th>
-            <th scope="col">Duration</th>
             <th scope="col">Rate</th>
             <th scope="col">Status</th>
             <th scope="col">Change status</th>
@@ -78,10 +79,11 @@ catch (Exception $ex){
                 <td><?php echo $data['first_name']. " " .$data['last_name']; ?></td>
                 <td><?php echo $data['dog_name']; ?></td>
                 <td><?php echo $data['walk_date']; ?></td>
+                <td><?php echo $data['walk_end']; ?></td>
+
                 <td><?php echo $data['start_location']; ?></td>
                 <td><?php echo $data['end_location']; ?></td>
                 <td><?php echo $data['description']; ?></td>
-                <td><?php echo $data['duration']; ?></td>
                 <td><?php echo $data['rate']; ?></td>
                 <td><?php echo $data['status']; ?></td>
                     <td><select name="status" id="status" class="form-select">

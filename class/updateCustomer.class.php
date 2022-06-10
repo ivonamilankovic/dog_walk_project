@@ -29,12 +29,25 @@ class UpdateCustomer extends Dbconn{
         }
         $stmt = null;
     }
+    private function getAddrID($idUser){
+        $sqlGetId = "SELECT address_id FROM user WHERE id =?";
+        $stmt = $this->setConnection()->prepare($sqlGetId);
+        if(!$stmt->execute([$idUser])){
+            $stmt = null;
+            $array = array("error" => "stmtGetAddressIDFailed");
+            echo json_encode($array);
+            die();
+        }
+        $addrid= $stmt->fetch(PDO::FETCH_ASSOC);
+        return $addrid['address_id'];
+    }
 
     protected function updateAddress($street,$city,$zipCode,$id){
+        $idAdr = $this->getAddrID($id);
         $updateAddress = "UPDATE address SET street = ?, city = ?, postal_code = ? WHERE id = ?";
         $stmt = $this->setConnection()->prepare($updateAddress);
 
-        if(!$stmt->execute([$street,$city,$zipCode,$id])){
+        if(!$stmt->execute([$street,$city,$zipCode,$idAdr])){
             $stmt = null;
             $array = array("error" => "stmtUpdateAddressFailed");
             echo json_encode($array);

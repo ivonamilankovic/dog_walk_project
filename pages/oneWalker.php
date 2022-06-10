@@ -50,8 +50,10 @@ if(isset($_GET['walker'])){
 if(!isset($_SESSION['id'])){
     echo '<div class="alert alert-warning alert-dismissible">Please <a href="#" data-bs-toggle="modal" data-bs-target="#modal_login" style="color: black">login</a> to be able to reserve a walk.</div>';
 }
-if ($_SESSION['role'] === "walker"){
-    echo '<div class="alert alert-danger alert-dismissible">You must be user to reserve a walk!</div>';
+if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] === "walker") {
+        echo '<div class="alert alert-danger alert-dismissible">You must be user to reserve a walk!</div>';
+    }
 }
 ?>
 <div id="msgWalkSucc"></div>
