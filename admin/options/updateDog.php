@@ -14,7 +14,7 @@ if(isset($_POST['update'])){
         header('location: ../admin.php?a=d&e=empty');
         exit();
     }
-    if($gender !== "f" || $gender !== "m"){
+    if($gender !== "f" && $gender !== "m"){
         header('location: ../admin.php?a=d&e=invalidGender');
         exit();
     }

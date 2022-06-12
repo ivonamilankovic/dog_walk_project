@@ -24,7 +24,7 @@ if(isset($_POST['update'])){
         exit();
     }
 
-    if($ver != "1" || $ver != "0"){
+    if($ver != "1" && $ver != "0"){
         header('location: ../admin.php?a=w&e=verNotValid');
         exit();
     }
