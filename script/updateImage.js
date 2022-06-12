@@ -12,7 +12,7 @@ function updateImage(fileField,id,errField){
         contentType: false,
         cache: false,
         success: (response)=>{
-            console.log(response);
+            //console.log(response);
             if(response.error === "wrongImgFormat"){
                 errField.innerText = "Wrong picture format.";
             }
@@ -30,7 +30,7 @@ function updateImage(fileField,id,errField){
             }
         } ,
         error: (msg) => {
-            console.log(msg);
+            //console.log(msg);
         }
     });
 }

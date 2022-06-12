@@ -110,7 +110,7 @@ reservationBtn.addEventListener('click',function(event){
                 'walker_id': walker.value,
             },
             success: (response)=>{
-                console.log(response);
+                //console.log(response);
                 if(response.error === 'emptyDates'){
                     errorReservation.innerText = 'Date can\'t be empty.';
                     event.preventDefault();
@@ -131,7 +131,7 @@ reservationBtn.addEventListener('click',function(event){
                 }
             },
             error: (msg)=>{
-                console.log(msg);
+                //console.log(msg);
                 event.preventDefault();
                 return false;
             }
@@ -175,7 +175,7 @@ function insertRes(){
             'dogs': dogs
         },
         success: (response)=>{
-            console.log(response);
+            //console.log(response);
             if(response.error === 'empty'){
                 errorReservation.innerText = 'Fields can\'t be empty.';
             }
@@ -195,7 +195,7 @@ function insertRes(){
             }
         },
         error: (msg)=>{
-            console.log(msg);
+            //console.log(msg);
         }
     });
 }

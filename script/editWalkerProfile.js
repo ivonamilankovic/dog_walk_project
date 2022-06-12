@@ -37,7 +37,7 @@ function updateWalker(){
            "is_active": activeW.value
        },
        success: (response)=>{
-           console.log(response);
+           //console.log(response);
             if(response.updated === "done"){
                 $('.loader').hide();
                 updatemsgDiv.innerHTML ="You have successfully updated your data! <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>";
@@ -55,7 +55,7 @@ function updateWalker(){
             }
        } ,
         error: (msg) => {
-           console.log(msg);
+           //console.log(msg);
         }
     });
 }

@@ -53,7 +53,7 @@ function makeUser(){
         },
         dataType: "JSON",
         success:(response) => {
-            console.log(response);
+            //console.log(response);
             //if any statement fails, creating user is failing
             if(response.error === "stmtCreateAddressFail" || response.error === "stmtLastAddressIDFail" || response.error === "stmtCreateUserFail" || response.error === "stmtIsEmailTakenFail" || response.error === "stmtCreateWalkerDetailsFail"){
                 errorMsg.innerText = "Failed creating user. Please try again!";
@@ -72,7 +72,7 @@ function makeUser(){
             }
         },
         error: (msg) => {
-            console.log(msg);
+            //console.log(msg);
         }
     });
 

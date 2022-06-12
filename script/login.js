@@ -25,7 +25,7 @@ function logUser(){
        },
         dataType: "JSON",
         success:(response) => {
-           console.log(response);
+           //console.log(response);
            if(response.error === "stmtGetUserFailed" ){
                errorMessage.innerText = "Failed to login!";
            }
@@ -44,7 +44,7 @@ function logUser(){
            }
         },
         error:(msg) => {
-           console.log(msg);
+           //console.log(msg);
         }
     });
 }
@@ -59,7 +59,7 @@ function sendCodeForNewPassword(){
                 "email": unameField.value
             },
             success: (response) => {
-                console.log(response);
+                //console.log(response);
                 if (response.verify === "sent") {
                     $("#modal_login").modal('hide');
                     goodmsg.innerHTML = "We have sent you link on email to verify yourself!   <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>"
@@ -79,7 +79,7 @@ function sendCodeForNewPassword(){
                 }
             },
             error: (msg) => {
-                console.log(msg);
+                //console.log(msg);
             }
 
         });

@@ -30,11 +30,10 @@ class UpdateCustomer extends Dbconn{
     }
 
     protected function updateUserInfo($fName,$lName,$phone,$id){
-        $idAdr = $this->getAddrID($id);
         $updateInfo = "UPDATE user SET first_name = ?, last_name = ?, phone_number = ?, updated_at = ? WHERE id = ?";
         $stmt = $this->setConnection()->prepare($updateInfo);
 
-        if(!$stmt->execute([$fName,$lName,$phone,date('Y-m-d H:i:s') ,$idAdr])){
+        if(!$stmt->execute([$fName,$lName,$phone,date('Y-m-d H:i:s') ,$id])){
             $stmt = null;
             $array = array("error" => "stmtUpdateUserInfoFailed");
             echo $stmt;

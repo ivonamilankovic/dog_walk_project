@@ -31,7 +31,7 @@ function updateCust(){
             "email":emailCust.innerText
         },
         success: (response)=>{
-            console.log(response);
+            //console.log(response);
             if(response.updated === "done"){
                 $('.loader').hide();
                 update2div.innerHTML ="You have successfully updated your data! <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>";
@@ -49,7 +49,7 @@ function updateCust(){
             }
         } ,
         error: (msg) => {
-            console.log(msg);
+            //console.log(msg);
         }
     });
 }
