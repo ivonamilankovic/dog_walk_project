@@ -6,7 +6,7 @@ if(isset($_GET['id'])){
     $id=$_GET['id'];
 
     try{
-        $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+        $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
         $sql = "UPDATE walker_details SET is_active = 1 WHERE walker_id=?";
         $stmt = $conn->prepare($sql);
         if(!$stmt->execute([$id])){

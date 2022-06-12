@@ -16,7 +16,7 @@ $file_size = $_FILES['filename']['size'];
 $tmp = explode('.', $file_name);
 $file_extension = end($tmp);
 $file_new_name = substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(15/strlen($x)) )),1,15)."." . $file_extension;
-$file_new_location = '\profile_images\\';
+$file_new_location = '/profile_images/';
 
 
 if($file_extension == "jpg" || $file_extension == "jpeg" || $file_extension == "png") {
@@ -41,7 +41,7 @@ if($file_extension == "jpg" || $file_extension == "jpeg" || $file_extension == "
             }
             $sql = "UPDATE user set picture = '../include/profile_images/" . $file_new_name . "' , updated_at = ? WHERE id = ?";
             try {
-                $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+                $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
                 $stmt = $conn->prepare($sql);
                 if (!$stmt->execute([ date('Y-m-d H:i:s'),$id])) {
                     header("location: ../". $address ."?e=failedStmt");

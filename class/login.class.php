@@ -24,9 +24,9 @@ class Login extends Dbconn{
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if($user['is_banned'] == 1){
-            $array = array("error" => "userBanned");
-            echo json_encode($array);
-            die();
+            $ar = ['ban'=>'banned user'];
+            echo json_encode($ar);
+            exit();
         }
 
         if($user['is_verified'] == 1) {

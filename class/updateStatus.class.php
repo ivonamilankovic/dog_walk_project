@@ -1,35 +1,41 @@
 <?php
-class UpdateStatus extends Dbconn{
-    protected function updateWalkStatus($status,$id_walk){
-        $updateInfo = "UPDATE walk SET status = ? WHERE id = ?";
-        $stmt = $this->setConnection()->prepare($updateInfo);
-        if(!$stmt->execute([$status,$id_walk])){
-            $stmt = null;
-            $array = array("error" => "stmtUpdateStatusFailed");
-            echo $stmt;
-            echo json_encode($array);
-            die();
-        }
-        $stmt = null;
-        $this->sendMail($id_walk);
-    }
-    private function sendMail($walk_id){
-        $sql = "SELECT user.email, walk.status FROM user INNER JOIN walk ON walk.customer_id = user.id WHERE walk.id = ?";
-        $stmt = $this->setConnection()->prepare($sql);
-        if(!$stmt->execute([$walk_id])){
-            $stmt = null;
-            $array = array("error" => "stmtGetWalkerEmailFailed");
-            echo json_encode($array);
-            die();
-        }
-        $customer = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if($customer['status'] === "declined"){
-           // $txt = "We are sorry to inform you that your request for walk was declined. Check out other walkers on http://localhost/dog_walk/pages/allWalkers.php or try some other time!\nWe hope your next request will be accepted";
-            $headers = "From: Paw Walks <ivonamilankovic@yahoo.com>\r\n";
-            $headers .= "MIME-Version: 1.0\r\n";
-            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-            $txt = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+class UpdateStatus extends Dbconn
+{
+  protected function updateWalkStatus($status, $id_walk)
+  {
+
+    $updateInfo = "UPDATE walk SET status = ? WHERE id = ?";
+    $stmt = $this->setConnection()->prepare($updateInfo);
+
+    if (!$stmt->execute([$status, $id_walk])) {
+      $stmt = null;
+      $array = array("error" => "stmtUpdateStatusFailed");
+      echo $stmt;
+      echo json_encode($array);
+      die();
+    }
+    $stmt = null;
+    $this->sendMail($id_walk);
+  }
+
+  private function sendMail($walk_id)
+  {
+    $sql = "SELECT user.email, walk.status FROM user INNER JOIN walk ON walk.customer_id = user.id WHERE walk.id = ?";
+    $stmt = $this->setConnection()->prepare($sql);
+    if (!$stmt->execute([$walk_id])) {
+      $stmt = null;
+      $array = array("error" => "stmtGetWalkerEmailFailed");
+      echo json_encode($array);
+      die();
+    }
+    $customer = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($customer['status'] === "declined") {
+      $headers = "From: Paw Walks <sarababic01@yahoo.com>\r\n";
+      $headers .= "MIME-Version: 1.0\r\n";
+      $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+      $txt = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                             <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
                             <head>
                             <!--[if gte mso 9]>
@@ -194,7 +200,7 @@ class UpdateStatus extends Dbconn{
                                   <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                                     
                               <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                <p style="font-size: 14px; line-height: 140%; text-align: center;">http://localhost/dog_walk/pages/allWalkers.php  or try some other time! \n We hope your next request will be accepted</p>
+                                <p style="font-size: 14px; line-height: 140%; text-align: center;">https://brunette.proj.vts.su.ac.rs/dog_walk/pages/allWalkers.php  or try some other time! \n We hope your next request will be accepted</p>
                               </div>
                             
                                   </td>
@@ -242,14 +248,13 @@ class UpdateStatus extends Dbconn{
                             
                             </html>
                             ';
-            //$txt = "We are sorry to inform you that your request for walk was declined. Check out other walkers on http://localhost/dog_walk/pages/allWalkers.php or try some other time!\nWe hope your next request will be accepted";
-            $subject = "Declined walk - Paw Walks";
-        }elseif($customer['status'] === "confirmed"){
-           // $txt = "Good news! Your request for walk is accepted!\nAfter the walk finishes, you'll get mail to rate your walker!";
-            $headers = "From: Paw Walks <ivonamilankovic@yahoo.com>\r\n";
-            $headers .= "MIME-Version: 1.0\r\n";
-            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-            $txt = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      //$txt = "We are sorry to inform you that your request for walk was declined. Check out other walkers on http://localhost/dog_walk/pages/allWalkers.php or try some other time!\nWe hope your next request will be accepted";
+      $subject = "Declined walk - Paw Walks";
+    } elseif ($customer['status'] === "confirmed") {
+      $headers = "From: Paw Walks <sarababic01@yahoo.com>\r\n";
+      $headers .= "MIME-Version: 1.0\r\n";
+      $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+      $txt = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                             <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
                             <head>
                             <!--[if gte mso 9]>
@@ -462,12 +467,10 @@ class UpdateStatus extends Dbconn{
                             
                             </html>
                             ';
-            //$txt = "Good news! Your request for walk is accepted!\nAfter the walk finishes, you'll get mail to rate your walker!";
-            $subject = "Confirmed walk - Paw Walks";
-        }
-
-        //mail($customer['email'], $subject,$txt, 'From: ivonamilankovic@yahoo.com');
-        mail($customer['email'], $subject,$txt, $headers);
+      //$txt = "Good news! Your request for walk is accepted!\nAfter the walk finishes, you'll get mail to rate your walker!";
+      $subject = "Confirmed walk - Paw Walks";
     }
 
+    mail($customer['email'], $subject, $txt, $headers);
+  }
 }

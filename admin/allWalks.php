@@ -3,7 +3,7 @@
 include_once '../include/dbconfig.inc.php';
 
 try{
-    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+    $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
     $sql = "SELECT w.id, w.walk_date, w.start_location, w.end_location, w.description, w.walk_end, w.path, w.status, w.rate, u1.email as cust, u2.email as walker 
             FROM walk w INNER JOIN user u1 ON u1.id=w.customer_id 
             INNER JOIN user u2 ON u2.id = w.walker_id;";
@@ -57,7 +57,7 @@ if(isset($_GET['e'])){
         foreach ($result as $r){
 
             try{
-                $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+                $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
                 $sql = "SELECT COUNT(id) as c FROM walk_dogs WHERE walk_id = ".$r['id'];
                 $stmt = $conn->prepare($sql);
                 if(!$stmt->execute()){

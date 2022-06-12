@@ -9,7 +9,7 @@ if(isset($_POST['unban'])){
     $site = $tmp[1];
 
     try{
-        $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+        $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
         $sql = "UPDATE user SET is_banned = 0 WHERE id=?";
         $stmt = $conn->prepare($sql);
         if(!$stmt->execute([$id])){
@@ -24,4 +24,3 @@ if(isset($_POST['unban'])){
     }
 
 }
-

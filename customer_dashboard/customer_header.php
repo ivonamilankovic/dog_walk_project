@@ -3,7 +3,7 @@ require_once '../include/dbconfig.inc.php';
 
 $sql = "SELECT picture FROM user WHERE id=".$_SESSION['id'];
 try {
-    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+    $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -14,7 +14,8 @@ try {
 ?>
 
 <div class="p-4 align-self-center">
-    <img src="<?php if(!empty($user['picture'])) echo $user['picture']; else echo '../include/profile_images/user-icon.png'; ?>" width="50" height="50" class="img-fluid rounded-circle m-2 mx-auto profile_picture" alt="Profile picture">
+    <img src="<?php if(!empty($user['picture'])) echo $user['picture']; else echo '../include/profile_images/user-icon.png'; ?>"
+        width="50" height="50" class="img-fluid rounded-circle m-2 mx-auto profile_picture" alt="Profile picture">
     <div class="btn-group">
         <button type="button" id="btnProfC" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             Profile

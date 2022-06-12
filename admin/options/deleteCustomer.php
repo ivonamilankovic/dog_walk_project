@@ -8,7 +8,7 @@ if(isset($_POST['delete'])){
     $addrid = $i[1];
 
     try{
-        $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+        $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
         $sql = "DELETE FROM user WHERE id=?; DELETE FROM address WHERE id=?;";
         $stmt = $conn->prepare($sql);
         if(!$stmt->execute([$id, $addrid])){

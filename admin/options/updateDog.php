@@ -14,7 +14,7 @@ if(isset($_POST['update'])){
         header('location: ../admin.php?a=d&e=empty');
         exit();
     }
-    if($gender !== "f" && $gender !== "m"){
+    if($gender !== "f" || $gender !== "m"){
         header('location: ../admin.php?a=d&e=invalidGender');
         exit();
     }
@@ -24,7 +24,7 @@ if(isset($_POST['update'])){
     }
 
     try{
-        $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+        $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
         $sql = "UPDATE dog SET dog_name = ?, gender = ?, age =?, notes = ?, breed_id = ? WHERE id=?";
         $stmt = $conn->prepare($sql);
         if(!$stmt->execute([$name, $gender, $age, $notes, $breed, $id])){

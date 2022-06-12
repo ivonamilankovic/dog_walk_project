@@ -11,7 +11,7 @@ if(isset($_POST['update'])){
         exit();
     }
     try{
-        $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+        $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
         $sql = "UPDATE breeds SET breed_name = ? WHERE id=?";
         $stmt = $conn->prepare($sql);
         if(!$stmt->execute([$bred_name, $id])){

@@ -38,9 +38,6 @@ function logUser(){
            else if(response.error === "userNotVerified"){
                errorMessage.innerText = "User is not verified. To be able to login please verify your profile on your email.";
            }
-           else if(response.error === "userBanned"){
-               errorMessage.innerText = "User is banned by administrator.";
-           }
            else if(response.login === "done"){
                $('.loader').hide();
                window.location.reload();
@@ -73,6 +70,12 @@ function sendCodeForNewPassword(){
                     errorMessage.innerText = "Failed to send code. Please try again.";
                 } else if (response.error === "notExistingAccount"){
                     errorMessage.innerText = "Account with that mail do not have profile.";
+                }
+                else if(response.ban === "banned user"){
+                    $("#modal_login").modal('hide');
+                    goodmsg.innerHTML = "You can't log in because administrator has banned you! <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>"
+                    goodmsg.classList.add('alert');
+                    goodmsg.classList.add('alert-danger');
                 }
             },
             error: (msg) => {

@@ -3,7 +3,7 @@
 include_once '../include/dbconfig.inc.php';
 
 try{
-    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+    $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
 
     if(isset($_GET['walk'])){
         $sql = "SELECT d.id as dogID, d.breed_id, d.dog_name, d.gender, d.age, d.notes, b.breed_name , u.email, w.id, wd.walk_id 
@@ -89,7 +89,7 @@ if(isset($_GET['e'])){
 
 
             try{
-                $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+                $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
                 $sql = "SELECT * FROM breeds";
                 $stmt = $conn->prepare($sql);
                 if(!$stmt->execute()){

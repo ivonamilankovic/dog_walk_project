@@ -1,8 +1,11 @@
 <?php
+
 class Reservation extends Dbconn {
+
     protected function createWalk($dateOfWalk, $startLoc, $endLoc, $details, $dateEnd, $status, $customer_id, $walker_id){
         $pdo = $this->setConnection();
         $pdoStatement = $pdo->prepare('INSERT INTO walk(walk_date, start_location, end_location, description, walk_end, status, customer_id, walker_id) VALUES (?,?,?,?,?,?,?,?)');
+
         if(!$pdoStatement->execute([$dateOfWalk, $startLoc, $endLoc, $details, $dateEnd, $status, $customer_id, $walker_id])) {
             $pdoStatement = null;
             $array = array("error" => "stmtCreateReservationFail");
@@ -14,12 +17,14 @@ class Reservation extends Dbconn {
         $this->sendMail($walker_id);
         return $walk_id;
     }
+
     protected function createWalkDogs($walk_id, $dogs_id)
     {
         //var_dump($walk_id); die();
         //inserts address in address table
         $sql = "INSERT INTO walk_dogs (walk_id, dog_id) VALUES (?,?)";
         $stmt = $this->setConnection()->prepare($sql);
+
         if (!$stmt->execute([$walk_id, $dogs_id])) {
             $stmt = null;
             $array = array("error" => "stmtCreateWalkFail");
@@ -28,6 +33,7 @@ class Reservation extends Dbconn {
         }
         $stmt = null;
     }
+
     private function sendMail($walker_id){
         $sql = "SELECT email FROM user WHERE id = ? ";
         $stmt = $this->setConnection()->prepare($sql);
@@ -38,9 +44,8 @@ class Reservation extends Dbconn {
             die();
         }
         $walker = $stmt->fetch(PDO::FETCH_ASSOC);
-        //$txt = "You have new request for walk. Please go to your profile to confirm or decline.";
 
-        $headers = "From: Paw Walks <ivonamilankovic@yahoo.com>\r\n";
+        $headers = "From: Paw Walks <sarababic01@yahoo.com>\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
         $txt = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -257,7 +262,6 @@ class Reservation extends Dbconn {
                             ';
         //$txt = "You have new request for walk. Please go to your profile to confirm or decline.";
         $subject = "New reservation request for you! - Paw Walks";
-       // mail($walker['email'], $subject,$txt, 'From: ivonamilankovic@yahoo.com');
         mail($walker['email'], $subject,$txt, $headers);
     }
 

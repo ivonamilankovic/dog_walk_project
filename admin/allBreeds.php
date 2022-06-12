@@ -3,7 +3,7 @@
 include_once '../include/dbconfig.inc.php';
 
 try{
-    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+    $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
     $sql = "SELECT * FROM breeds";
     $stmt = $conn->prepare($sql);
     if(!$stmt->execute()){

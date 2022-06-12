@@ -17,8 +17,8 @@ if(isset($_POST['update'])){
     }
 
     try{
-        $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
-        $sql = "UPDATE walk SET walk_date = ?, start_location = ?, end_location =?, description = ?, walk_end = ?, path =? WHERE id=?";
+        $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
+        $sql = "UPDATE walk SET walk_date = ?, start_location = ?, end_location =?, description = ?, duration = ?, path =? WHERE id=?";
         $stmt = $conn->prepare($sql);
         if(!$stmt->execute([$date, $start, $end,$desc, $dur, $path, $id])){
             echo 'Could not update';

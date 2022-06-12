@@ -12,4 +12,3 @@ $column = "verification_code";
 //class that checks if code match
 $verify = new VerifyControler($code, $column);
 $verify->checkCode();
-

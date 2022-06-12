@@ -6,7 +6,7 @@ if(isset($_POST['delete'])){
     $id=$_POST['delete'];
 
     try{
-        $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+        $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
         $sql = "UPDATE walk SET walker_id = 1 WHERE walker_id=?";
         $stmt = $conn->prepare($sql);
         if(!$stmt->execute([$id])){

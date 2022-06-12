@@ -3,7 +3,7 @@
 include_once '../include/dbconfig.inc.php';
 
 try{
-    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+    $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
     $sql = "SELECT u.id, u.first_name, u.last_name, u.email, u.phone_number, u.picture, u.is_verified,u.is_banned, a.id as addrID, a.street, a.city, a.postal_code 
             FROM user u INNER JOIN address a ON u.address_id=a.id WHERE u.role = 'walker';";
     $stmt = $conn->prepare($sql);
@@ -95,7 +95,7 @@ if(isset($_GET['e'])){
         foreach ($result as $r){
 
             try{
-                $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+                $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
                 $sql = "SELECT biography, is_active
                         FROM walker_details WHERE walker_id = ".$r['id'];
                 $stmt = $conn->prepare($sql);
@@ -106,7 +106,7 @@ if(isset($_GET['e'])){
                     $details = $stmt->fetch(PDO::FETCH_ASSOC);
                     $stmt=null;
 
-                    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+                    $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
                     $sql = "SELECT b.breed_name, b.id as breed_id FROM walker_favourite_breeds wb 
                             INNER JOIN breeds b ON wb.breed_id=b.id WHERE wb.walker_id = ".$r['id'];
                     $stmt = $conn->prepare($sql);
@@ -161,7 +161,7 @@ if(isset($_GET['e'])){
 
 
                     try {
-                        $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+                        $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
                         $sql = "SELECT * FROM breeds";
                         $stmt = $conn->prepare($sql);
                         if (!$stmt->execute()) {

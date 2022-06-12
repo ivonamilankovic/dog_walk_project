@@ -20,10 +20,12 @@ if($_SESSION['role'] === 'walker'){
     <link rel="stylesheet" type="text/css" href="../css/editProfileStyle.css">
     <link rel="stylesheet" href="../css/homeStyle.css">
     <link rel="stylesheet" href="../css/scrollbar.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
+
 <body>
-<?php
+    <?php
     require_once ("../include/dbconfig.inc.php");
 
     $sqlUser = "SELECT u.first_name, u.last_name, u.email, u.phone_number, u.picture,a.street, a.city, a.postal_code FROM user u
@@ -36,7 +38,7 @@ if($_SESSION['role'] === 'walker'){
 
 
 try{
-        $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+        $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
         //for user
         $stmtUser=$conn->prepare($sqlUser);
         $stmtUser->execute();
@@ -53,8 +55,8 @@ try{
 
 require_once '../page_parts/header.php';
 ?>
-<div id="update2div"></div>
-<div class="loader"><img src="../images/loading-img.gif" alt="loading..."></div>
+    <div id="update2div"></div>
+    <div class="loader"><img src="../images/loading-img.gif" alt="loading..."></div>
     <!--Edit Profile-->
     <div class="container d-flex align-self-center" style="padding: 50px 0 !important;">
         <div class="row mx-auto gutters">
@@ -64,10 +66,13 @@ require_once '../page_parts/header.php';
                         <div class="account-settings">
                             <div class="user-profile">
                                 <div class="user-avatar d-flex justify-content-center">
-                                    <img src="<?php if(!empty($userData['picture'])) echo $userData['picture']; else echo '../include/profile_images/user-icon.png'; ?>" class="img-fluid rounded-circle m-2" alt="Profile picture">
+                                    <img src="<?php if(!empty($userData['picture'])) echo $userData['picture']; else echo '../include/profile_images/user-icon.png'; ?>"
+                                        class="img-fluid rounded-circle m-2" alt="Profile picture">
                                 </div>
-                                <h5 id="emailCust" class="user-email" style="font-weight: bold"><?php echo $userData['email'];?></h5>
-                                <h6 class="user-name"><?php echo $userData['first_name']." ".$userData['last_name'];?></h6>
+                                <h5 id="emailCust" class="user-email" style="font-weight: bold">
+                                    <?php echo $userData['email'];?></h5>
+                                <h6 class="user-name"><?php echo $userData['first_name']." ".$userData['last_name'];?>
+                                </h6>
                             </div>
                             <hr>
                             <div class="all-my-dogs">
@@ -77,14 +82,16 @@ require_once '../page_parts/header.php';
 
                                     foreach ($dogNameData as $dogData) {
                                 ?>
-                                    <a href="./dogAccount.php" style="text-decoration: none; color: black;"><?php echo $dogData['dog_name'] ?></a> <br>
+                                <a href="./dogAccount.php"
+                                    style="text-decoration: none; color: black;"><?php echo $dogData['dog_name'] ?></a>
+                                <br>
 
                                 <?php
                                     }
                                 }else{
                                     ?>
-                                    <a href="./createDog.php">Here you can insert all your dogs!</a><br>
-                                    <?php
+                                <a href="./createDog.php">Here you can insert all your dogs!</a><br>
+                                <?php
                                 }
                                 ?>
                             </div>
@@ -95,7 +102,7 @@ require_once '../page_parts/header.php';
             <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
                 <div class="card h-100">
                     <div class="card-body">
-                        <div class="row gutters" >
+                        <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <h6 class="mb-2 text-primary">Personal Details</h6>
                             </div>
@@ -103,28 +110,33 @@ require_once '../page_parts/header.php';
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="firstName">First name</label>
-                                    <input type="text" class="form-control" id="firstNameCust" placeholder="First name" value="<?php echo $userData['first_name'];?>">
+                                    <input type="text" class="form-control" id="firstNameCust" placeholder="First name"
+                                        value="<?php echo $userData['first_name'];?>">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="lastName">Last name</label>
-                                    <input type="text" class="form-control" id="lastNameCust" placeholder="Last name" value="<?php echo $userData['last_name'];?>">
+                                    <input type="text" class="form-control" id="lastNameCust" placeholder="Last name"
+                                        value="<?php echo $userData['last_name'];?>">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input type="text" class="form-control" id="phoneCust" placeholder="Phone number" value="<?php echo $userData['phone_number'];?>">
+                                    <input type="text" class="form-control" id="phoneCust" placeholder="Phone number"
+                                        value="<?php echo $userData['phone_number'];?>">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group choose_img_fg">
                                     <label for="filename">Choose your profile image: </label> <br>
                                     <div class="form-group d-flex justify-content-between align-items-center">
-                                        <form id="formC" action="../include/changeProfilePic.inc.php" enctype="multipart/form-data" method="post">
+                                        <form id="formC" action="../include/changeProfilePic.inc.php"
+                                            enctype="multipart/form-data" method="post">
                                             <input type="file" id="myFileC" name="filename" accept="image/*">
-                                            <input type="hidden" name="address" value="customer_dashboard/editCustomerProfile.php">
+                                            <input type="hidden" name="address"
+                                                value="customer_dashboard/editCustomerProfile.php">
                                         </form>
                                     </div>
                                 </div>
@@ -142,19 +154,22 @@ require_once '../page_parts/header.php';
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="Street">Street</label>
-                                    <input type="text" class="form-control" id="streetCust" placeholder="Street" value="<?php echo $userData['street'];?>">
+                                    <input type="text" class="form-control" id="streetCust" placeholder="Street"
+                                        value="<?php echo $userData['street'];?>">
                                 </div>
                             </div> <br>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="city">City</label>
-                                    <input type="text" class="form-control" id="cityCust" placeholder="City" value="<?php echo $userData['city'];?>">
+                                    <input type="text" class="form-control" id="cityCust" placeholder="City"
+                                        value="<?php echo $userData['city'];?>">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="zip">Postal Code</label>
-                                    <input type="text" class="form-control" id="zipCust" placeholder="Postal Code" value="<?php echo $userData['postal_code'];?>">
+                                    <input type="text" class="form-control" id="zipCust" placeholder="Postal Code"
+                                        value="<?php echo $userData['postal_code'];?>">
                                 </div>
                             </div>
                         </div>
@@ -185,8 +200,12 @@ require_once '../page_parts/header.php';
                         <div class="row gutters ">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="text-right justify-content-center buttons_editprof">
-                                    <button id="updateCustomer" class="btn m-4" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Update</button>
-                                    <button class="btn m-4" type="submit" id="idC" name="id" value="<?php echo $_SESSION['id']; ?>" form="formC" style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Update profile image</button>
+                                    <button id="updateCustomer" class="btn m-4"
+                                        style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Update</button>
+                                    <button class="btn m-4" type="submit" id="idC" name="id"
+                                        value="<?php echo $_SESSION['id']; ?>" form="formC"
+                                        style="background-color: #9c7a97; border: 1px solid #000000; font-weight: bold; color:#000000">Update
+                                        profile image</button>
 
                                 </div>
                             </div>
@@ -197,14 +216,16 @@ require_once '../page_parts/header.php';
         </div>
     </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="../script/home.js"></script>
-<script src="../script/editCustomerProfile.js"></script>
-<script src="../script/checkFunctions.js"></script>
-<script src="../script/updateImage.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script src="../script/home.js"></script>
+    <script src="../script/editCustomerProfile.js"></script>
+    <script src="../script/checkFunctions.js"></script>
+    <script src="../script/updateImage.js"></script>
 </body>
+
 </html>
-
-

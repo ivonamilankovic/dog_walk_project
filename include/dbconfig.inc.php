@@ -1,6 +1,6 @@
 <?php
 
-define("HOST", "localhost");
-define("USER", "root");
-define("PASS", "");
-define("DB", "dog_walk");
+define("HOST", "brunette.proj.vts.su.ac.rs/");
+define("USER", "brunette");
+define("PASS", "dog_walk");
+define("DB", "brunette");

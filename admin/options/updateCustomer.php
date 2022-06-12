@@ -53,7 +53,7 @@ if(isset($_POST['update'])){
     }
 
     try{
-        $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASS);
+        $conn = new PDO("mysql:host=localhost;dbname=brunette", 'brunette', 'pUrVSBrnoXxm5Kw');
         $sql = "UPDATE user SET first_name = ?, last_name = ?, email = ?, phone_number = ?, picture = ? ,
                 is_verified = ?, updated_at = ? WHERE id=?; 
                 UPDATE address SET street = ?, city = ?, postal_code = ? WHERE id=?;";

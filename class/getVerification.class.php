@@ -3,50 +3,50 @@
 class GetVerification extends Dbconn
 {
 
-    //function that generates and send verification code to users email address
-    protected function sendVerificationCode($email, $columnName, $type)
-    {
+  //function that generates and send verification code to users email address
+  protected function sendVerificationCode($email, $columnName, $type)
+  {
 
-        if ($type === "old") {
+    if ($type === "old") {
 
-            $sql11 = "SELECT * FROM user WHERE email = ?";
-            $stmt11 = $this->setConnection()->prepare($sql11);
-            if (!$stmt11->execute([$email])) {
-                $stmt11 = null;
-                $array = array("error" => "stmtFindUserEmailFailed");
-                echo json_encode($array);
-                die();
-            }
+      $sql11 = "SELECT * FROM user WHERE email = ?";
+      $stmt11 = $this->setConnection()->prepare($sql11);
+      if (!$stmt11->execute([$email])) {
+        $stmt11 = null;
+        $array = array("error" => "stmtFindUserEmailFailed");
+        echo json_encode($array);
+        die();
+      }
 
-            if ($stmt11->rowCount() <= 0) {
-                $stmt11 = null;
-                $array = array("error" => "notExistingAccount");
-                echo json_encode($array);
-                die();
-            }
-        }
+      if ($stmt11->rowCount() <= 0) {
+        $stmt11 = null;
+        $array = array("error" => "notExistingAccount");
+        echo json_encode($array);
+        die();
+      }
+    }
 
 
-        $code = rand(100000, 999999);
+    $code = rand(100000, 999999);
 
-        $sql5 = "UPDATE user SET " . $columnName . " = ?, updated_at = ? WHERE email = ?";
-        $stmtCode = $this->setConnection()->prepare($sql5);
+    $sql5 = "UPDATE user SET " . $columnName . " = ?, updated_at = ? WHERE email = ?";
+    $stmtCode = $this->setConnection()->prepare($sql5);
 
-        if (!$stmtCode->execute([$code, date('Y-m-d H:i:s'), $email])) {
-            $stmtCode = null;
-            $array = array("error" => "stmtSendCodeFailed");
-            echo json_encode($array);
-            die();
-        } else {
-            $to = $email;
-            $subject = "";
-            $txt = "";
-            $headers = "From: Paw Walks <ivonamilankovic@yahoo.com>\r\n";
-            $headers .= "MIME-Version: 1.0\r\n";
-            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-            if ($columnName === "forgot_password_code") {
-                $subject = "Reset password - Paw Walks";
-                $txt = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    if (!$stmtCode->execute([$code, date('Y-m-d H:i:s'), $email])) {
+      $stmtCode = null;
+      $array = array("error" => "stmtSendCodeFailed");
+      echo json_encode($array);
+      die();
+    } else {
+      $to = $email;
+      $subject = "";
+      $txt = "";
+      $headers = "From: Paw Walks <sarababic01@yahoo.com>\r\n";
+      $headers .= "MIME-Version: 1.0\r\n";
+      $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+      if ($columnName === "forgot_password_code") {
+        $subject = "Reset password - Paw Walks";
+        $txt = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                             <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
                             <head>
                             <!--[if gte mso 9]>
@@ -211,7 +211,7 @@ class GetVerification extends Dbconn
                                   <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                                     
                               <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                <p style="font-size: 14px; line-height: 140%; text-align: center;"> http://localhost/dog_walk/pages/active.php?code='.$code.'&col=fp</p>
+                                <p style="font-size: 14px; line-height: 140%; text-align: center;"> https://brunette.proj.vts.su.ac.rs/dog_walk/pages/active.php?code=' . $code . '&col=fp</p>
                               </div>
                             
                                   </td>
@@ -259,10 +259,10 @@ class GetVerification extends Dbconn
                             
                             </html>
                             ';
-            } elseif ($columnName === "verification_code") {
+      } elseif ($columnName === "verification_code") {
 
-                $subject = "Welcome to Paw Walks!";
-                $txt = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        $subject = "Welcome to Paw Walks!";
+        $txt = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                             <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
                             <head>
                             <!--[if gte mso 9]>
@@ -427,7 +427,7 @@ class GetVerification extends Dbconn
                                   <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                                     
                               <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                <p style="font-size: 14px; line-height: 140%; text-align: center;"> http://localhost/dog_walk/pages/active.php?code='.$code.'&col=ver</p>
+                                <p style="font-size: 14px; line-height: 140%; text-align: center;"> https://brunette.proj.vts.su.ac.rs/dog_walk/pages/active.php?code=' . $code . '&col=ver</p>
                               </div>
                             
                                   </td>
@@ -475,12 +475,10 @@ class GetVerification extends Dbconn
                             
                             </html>
                             ';
-                //$txt = "Welcome! We are so glad you joining us! \nTo verify your email address, click to the following link: http://192.168.1.7/dog_walk/pages/active.php?code=".$code."&col=ver";
-            }
-            //mail($to, $subject, $txt, $headers);
-            mail($to, $subject, $txt, $headers);
-
-        }
+        //$txt = "Welcome! We are so glad you joining us! \nTo verify your email address, click to the following link: http://192.168.1.7/dog_walk/pages/active.php?code=".$code."&col=ver";
+      }
+      //mail($to, $subject, $txt, $headers);
+      mail($to, $subject, $txt, $headers);
     }
-
+  }
 }

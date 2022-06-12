@@ -16,19 +16,6 @@ class UpdateCustomer extends Dbconn{
 
     }
 
-    protected function updateUserInfo($fName,$lName,$phone,$id){
-        $updateInfo = "UPDATE user SET first_name = ?, last_name = ?, phone_number = ?, updated_at = ? WHERE id = ?";
-        $stmt = $this->setConnection()->prepare($updateInfo);
-
-        if(!$stmt->execute([$fName,$lName,$phone,date('Y-m-d H:i:s') ,$id])){
-            $stmt = null;
-            $array = array("error" => "stmtUpdateUserInfoFailed");
-            echo $stmt;
-            echo json_encode($array);
-            die();
-        }
-        $stmt = null;
-    }
     private function getAddrID($idUser){
         $sqlGetId = "SELECT address_id FROM user WHERE id =?";
         $stmt = $this->setConnection()->prepare($sqlGetId);
@@ -40,6 +27,21 @@ class UpdateCustomer extends Dbconn{
         }
         $addrid= $stmt->fetch(PDO::FETCH_ASSOC);
         return $addrid['address_id'];
+    }
+
+    protected function updateUserInfo($fName,$lName,$phone,$id){
+        $idAdr = $this->getAddrID($id);
+        $updateInfo = "UPDATE user SET first_name = ?, last_name = ?, phone_number = ?, updated_at = ? WHERE id = ?";
+        $stmt = $this->setConnection()->prepare($updateInfo);
+
+        if(!$stmt->execute([$fName,$lName,$phone,date('Y-m-d H:i:s') ,$idAdr])){
+            $stmt = null;
+            $array = array("error" => "stmtUpdateUserInfoFailed");
+            echo $stmt;
+            echo json_encode($array);
+            die();
+        }
+        $stmt = null;
     }
 
     protected function updateAddress($street,$city,$zipCode,$id){
